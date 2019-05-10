@@ -25,10 +25,10 @@ install:
   - if [[ $DOCBUILD ]]; then
     pip install sphinx sphinx_rtd_theme doctr sphinxcontrib-napoleon;
     fi
-script:
-  - coverage run -m unittest discover stock_ai "test_*.py"
+#script:
+#  - coverage run -m unittest discover stock_ai "test_*.py"
 after_success:
-  - coverage report
+#  - coverage report
   - |
     if [[ $DOCBUILD ]]; then
       cd docs
@@ -36,4 +36,4 @@ after_success:
       cd ..
       doctr deploy devel --build-tags
     fi
-  - coveralls
+#  - coveralls

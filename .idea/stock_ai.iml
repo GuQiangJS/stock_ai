@@ -5,8 +5,14 @@
     <orderEntry type="jdk" jdkName="Python 3.7 (stock_ai)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PackageRequirementsSettings">
+    <option name="requirementsPath" value="" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="myDocStringFormat" value="Google" />
+  </component>
   <component name="TestRunnerService">
-    <option name="projectConfiguration" value="Twisted Trial" />
-    <option name="PROJECT_TEST_RUNNER" value="Twisted Trial" />
+    <option name="projectConfiguration" value="pytest" />
+    <option name="PROJECT_TEST_RUNNER" value="pytest" />
   </component>
 </module>

@@ -1,0 +1,1 @@
+from QUANTAXIS.QAUtil import QA_util_format_date2str as date2str
