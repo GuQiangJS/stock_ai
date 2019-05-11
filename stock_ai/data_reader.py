@@ -6,9 +6,10 @@ import pandas as pd
 
 
 class DailyReader(object):
+    """股票日线数据读取"""
 
     def fetch_stock(self, code, **kwargs):
-        """
+        """读取股票日线数据
 
         Args:
             code (str): 股票代码。
@@ -20,10 +21,10 @@ class DailyReader(object):
                 * `hfq` - 后复权
                 * `bfq` or `None` - 不复权
             columns (tuple, optional): 获取的列集合。默认为
-            ['open', 'high', 'low', 'close', 'volume', 'amount']
-            **kwargs:
+                ['open', 'high', 'low', 'close', 'volume', 'amount']
 
         Returns:
+            :py:class:`pandas.DataFrame`: 股票日线数据。
 
         """
         start = kwargs.pop('start', '1990-01-01')
@@ -41,7 +42,7 @@ class DailyReader(object):
         """读取股票在线日线数据
 
         Args:
-            start: 
+            start: See parameter ``start`` in :func:`fetch_stock`.
             end: 
             columns: 
             code (str): 股票代码。

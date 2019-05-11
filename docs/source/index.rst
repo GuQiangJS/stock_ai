@@ -7,9 +7,10 @@ Welcome to stock_ai's documentation!
 ====================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
+   data_reader
 
 
 Indices and tables
@@ -18,3 +19,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+

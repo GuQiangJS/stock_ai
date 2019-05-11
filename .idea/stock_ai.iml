@@ -11,6 +11,10 @@
   <component name="PyDocumentationSettings">
     <option name="myDocStringFormat" value="Google" />
   </component>
+  <component name="ReSTService">
+    <option name="workdir" value="D:\Github\stock_ai\stock_ai" />
+    <option name="DOC_DIR" value="D:\Github\stock_ai\stock_ai" />
+  </component>
   <component name="TestRunnerService">
     <option name="projectConfiguration" value="pytest" />
     <option name="PROJECT_TEST_RUNNER" value="pytest" />
