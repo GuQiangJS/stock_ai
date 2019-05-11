@@ -5,7 +5,7 @@ from stock_ai.data_reader import DailyReader
 
 
 @pytest.mark.skipif("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true",
-                    "Skipping this test on Travis CI.")
+                    reason="Skipping this test on Travis CI.")
 def test_read_from_csv():
     for code in test.test_stocks:
         filepath = test._get_stock_daily_filepath(code)
