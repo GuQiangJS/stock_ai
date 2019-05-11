@@ -1,5 +1,8 @@
 # stock_ai
 
+[![Build Status](https://travis-ci.com/GuQiangJS/stock_ai.svg?branch=master)](https://travis-ci.com/GuQiangJS/stock_ai)
+[![Coverage Status](https://coveralls.io/repos/github/GuQiangJS/stock_ai/badge.svg?branch=master)](https://coveralls.io/github/GuQiangJS/stock_ai?branch=master)
+
 ---
 
 ## 环境相关
