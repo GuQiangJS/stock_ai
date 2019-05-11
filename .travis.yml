@@ -27,7 +27,7 @@ install:
     fi
 #script:
 #  - coverage run -m pytest discover stock_ai "test_*.py"
-after_success:
+script:
 #  - coverage report
   - |
     if [[ $DOCBUILD ]]; then
