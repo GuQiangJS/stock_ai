@@ -20,6 +20,7 @@ matrix:
 install:
   - pip install --upgrade pylint pytest pytest-pylint pytest-runner pytest-cov
   - pip install pyecharts==0.5.11
+  - pip install pyecharts-snapshot==0.1.10
   - pip install quantaxis==1.4.0
   - pip install --upgrade tensorflow
   - pip install coveralls

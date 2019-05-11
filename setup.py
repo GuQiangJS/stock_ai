@@ -28,7 +28,7 @@ setup(
         'Topic :: Scientific/Engineering',
     ],
     keywords='data',
-    install_requires=['QUANTAXIS', 'TensorFlow'],
+    install_requires=['QUANTAXIS', 'TensorFlow', 'pandas'],
     packages=find_packages(),
     zip_safe=False,
     exclude_package_data={'': ['test_*.py']}
