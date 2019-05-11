@@ -17,7 +17,8 @@ matrix:
     - python: '3.6'
       env: DOCBUILD=true
 
-
+before_install:
+  - pip install --upgrade pylint pytest pytest-pylint pytest-runner pytest-cov
 install:
   - pip install QUANTAXIS
   - pip install --upgrade tensorflow
@@ -25,15 +26,14 @@ install:
   - if [[ $DOCBUILD ]]; then
     pip install sphinx sphinx_rtd_theme doctr sphinxcontrib-napoleon;
     fi
-#script:
-#  - coverage run -m pytest discover stock_ai "test_*.py"
 script:
-#  - coverage report
+  - pytest --version
+  - pytest --cov=stock_ai test/
   - |
     if [[ $DOCBUILD ]]; then
       cd docs
-      make html && make html
+      make html
       cd ..
-      doctr deploy devel --build-tags
+      doctr deploy --build-tags
     fi
 #  - coveralls
