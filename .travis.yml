@@ -19,7 +19,7 @@ matrix:
 
 install:
   - pip install --upgrade pylint pytest pytest-pylint pytest-runner pytest-cov
-  - pip install quantaxis==1.4.0
+  - pip install quantaxis==1.4.0 Kline
   - pip install --upgrade tensorflow
   - pip install coveralls
   - if [[ $DOCBUILD ]]; then
