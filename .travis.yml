@@ -17,12 +17,11 @@ matrix:
     - python: '3.6'
       env: DOCBUILD=true
 
-before_install:
-  - pip install --upgrade pylint pytest pytest-pylint pytest-runner pytest-cov
 install:
+  - pip install --upgrade pylint pytest pytest-pylint pytest-runner pytest-cov
   - pip install QUANTAXIS
   - pip install --upgrade tensorflow
-  - pip install coverage
+  - pip install coveralls
   - if [[ $DOCBUILD ]]; then
     pip install sphinx sphinx_rtd_theme doctr sphinxcontrib-napoleon;
     fi
@@ -34,6 +33,7 @@ script:
       cd docs
       make html
       cd ..
-      doctr deploy --build-tags
+      doctr deploy . --build-tags
     fi
-#  - coveralls
+after_success:
+  - coveralls
