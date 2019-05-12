@@ -5,7 +5,9 @@
 
 如果需要在travis环境中跳过pytest的单元测试。可以使用以下attribute标记。
 
-`@pytest.mark.skipif("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true", reason="Skipping this test on Travis CI.")`
+```python
+@pytest.mark.skipif("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true", reason="Skipping this test on Travis CI.")
+```
 
 > **reason一定要写**。
 
