@@ -10,7 +10,7 @@ Welcome to stock_ai's documentation!
    :maxdepth: 3
    :caption: Contents:
 
-   data_reader
+   data_processor
 
 
 Indices and tables
