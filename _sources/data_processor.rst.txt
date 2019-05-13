@@ -5,5 +5,5 @@ data_reader
    :maxdepth: 3
    :caption: Contents:
 
-.. automodule:: stock_ai.data_reader
+.. automodule:: stock_ai.data_processor
     :members:
