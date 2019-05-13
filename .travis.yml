@@ -22,7 +22,8 @@ install:
   - pip install pyecharts==0.5.11
   - pip install pyecharts-snapshot==0.1.10
   - pip install quantaxis==1.4.0
-  - pip install --upgrade pytdx
+  - pip uninstall -y pytdx
+  - pip install  pytdx
   - pip install --upgrade tensorflow
   - pip install coveralls
   - if [[ $DOCBUILD ]]; then
