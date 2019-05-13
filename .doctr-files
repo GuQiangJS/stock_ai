@@ -1,5 +1,3 @@
-./_modules/index.html
-./_modules/stock_ai/data_reader.html
 ./_sources/data_reader.rst.txt
 ./_sources/index.rst.txt
 ./_static/basic.css
@@ -60,6 +58,5 @@
 ./genindex.html
 ./index.html
 ./objects.inv
-./py-modindex.html
 ./search.html
 ./searchindex.js
