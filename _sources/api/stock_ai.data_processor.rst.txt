@@ -1,0 +1,18 @@
+stock\_ai.data\_processor
+=========================
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.data_processor
+
+.. autosummary::
+    :nosignatures:
+    
+    load_stock_daily
+    load_stock_daily_csv
+    load_stock_daily_mongodb
+    load_stock_daily_online
+    save_stock_daily_csv
+
+.. automodule:: stock_ai.data_processor
+    :members:
