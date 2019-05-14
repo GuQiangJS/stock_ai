@@ -8,10 +8,20 @@ stock\_ai.data\_processor
 .. autosummary::
     :nosignatures:
     
+    load_index_daily
+    load_index_daily_mongodb
+    load_index_daily_online
+    load_stock_block_mongodb
+    load_stock_block_online
     load_stock_daily
     load_stock_daily_csv
     load_stock_daily_mongodb
     load_stock_daily_online
+    load_stock_info_mongodb
+    load_stock_info_online
+    load_stock_list
+    load_stock_list_mongodb
+    load_stock_list_online
     save_stock_daily_csv
 
 .. automodule:: stock_ai.data_processor

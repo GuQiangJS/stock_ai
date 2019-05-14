@@ -207,11 +207,15 @@
 <div class="viewcode-block" id="load_stock_daily_online"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_stock_daily_online">[文档]</a><span class="k">def</span> <span class="nf">load_stock_daily_online</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;读取股票在线日线数据</span>
 
+<span class="sd">    Notes:</span>
+<span class="sd">        在线数据只取tdx的数据。</span>
+
 <span class="sd">    Args:</span>
-<span class="sd">        start: See parameter ``start`` in :func:`fetch_stock`.</span>
-<span class="sd">        end:</span>
-<span class="sd">        columns:</span>
-<span class="sd">        code (str): 股票代码。</span>
+<span class="sd">        code: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        start: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        end: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        fq: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        columns: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
 <span class="sd">        times (int, optional): 重试次数。默认为 `5`。</span>
 <span class="sd">    Returns:</span>
 <span class="sd">        :py:class:`pandas.DataFrame`: 股票日线数据。</span>
@@ -240,6 +244,8 @@
 <span class="sd">        encoding (str): 文件编码。默认为 `utf-8`。参考 :py:func:`pandas.read_csv` 中同名参数。</span>
 <span class="sd">        parse_dates (str): 文件编码。默认为 `utf-8`。参考 :py:func:`pandas.read_csv` 中同名参数。</span>
 <span class="sd">        float_precision (str): 浮点类型转换。默认为 `round_trip`。参考 :py:func:`pandas.read_csv` 中同名参数。</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票日线数据。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">index_col</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;index_col&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">)</span>
     <span class="n">encoding</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;encoding&#39;</span><span class="p">,</span> <span class="n">_csv_encoding</span><span class="p">)</span>
@@ -256,13 +262,14 @@
     <span class="sd">&quot;&quot;&quot;读取股票本地日线数据</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        code:</span>
-<span class="sd">        start:</span>
-<span class="sd">        end:</span>
-<span class="sd">        fq:</span>
-<span class="sd">        columns:</span>
+<span class="sd">        code: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        start: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        end: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        fq: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        columns: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。</span>
 
 <span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票日线数据。</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">QA</span><span class="o">.</span><span class="n">QA_fetch_stock_day_adv</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
@@ -277,6 +284,302 @@
     <span class="c1"># 原始列名[&#39;open&#39;, &#39;high&#39;, &#39;low&#39;, &#39;close&#39;, &#39;volume&#39;, &#39;amount&#39;, &#39;preclose&#39;, &#39;adj&#39;]</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="load_index_daily"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_index_daily">[文档]</a><span class="k">def</span> <span class="nf">load_index_daily</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;读取指数日线数据（在线或从数据库）</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            code (str): 指数代码。</span>
+<span class="sd">            start (str, optional): 开始日期。数据格式为%Y-%m-%d。默认为`1990-01-01`。</span>
+<span class="sd">            end (str, optional): 结束日期。数据格式为%Y-%m-%d。默认为`当天`。</span>
+<span class="sd">            online (bool, optional): 是否获取在线数据。默认为 `False`。</span>
+<span class="sd">            columns (tuple, optional): 获取的列集合。默认为</span>
+<span class="sd">                [&#39;open&#39;, &#39;high&#39;, &#39;low&#39;, &#39;close&#39;, &#39;up_count&#39;, &#39;down_count&#39;, &#39;volume&#39;,&#39;amount&#39;]</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :py:class:`pandas.DataFrame`: 股票日线数据。</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;1990-01-01&#39;</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="n">util</span><span class="o">.</span><span class="n">date2str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()))</span>
+    <span class="n">online</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;online&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;up_count&#39;</span><span class="p">,</span> <span class="s1">&#39;down_count&#39;</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;amount&#39;</span>
+    <span class="p">])</span>
+    <span class="k">if</span> <span class="n">online</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">load_index_daily_online</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">load_index_daily_mongodb</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_index_daily_online"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_index_daily_online">[文档]</a><span class="k">def</span> <span class="nf">load_index_daily_online</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;读取指数在线日线数据</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        start (str):  参考 :func:`load_index_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        end (str): 参考 :func:`load_index_daily` 中参数 `end` 的说明。</span>
+<span class="sd">        columns: 参考 :func:`load_index_daily` 中参数 `columns` 的说明。原始的列名中volume是vol，为了统一，内部会修改为volume。</span>
+<span class="sd">        code (str): 参考 :func:`load_index_daily` 中参数 `code` 的说明。</span>
+<span class="sd">        times (int, optional): 重试次数。默认为 `5`。</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票日线数据。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">retries</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">QA</span><span class="o">.</span><span class="n">QAFetch</span><span class="o">.</span><span class="n">QATdx</span><span class="o">.</span><span class="n">QA_fetch_get_index_day</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+            <span class="c1"># 原始列名[&#39;open&#39;, &#39;close&#39;, &#39;high&#39;, &#39;low&#39;, &#39;vol&#39;, &#39;amount&#39;, &#39;up_count&#39;, &#39;down_count&#39;, &#39;date&#39;, &#39;code&#39;, &#39;date_stamp&#39;] pylint: disable=C0301</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;vol&#39;</span><span class="p">:</span> <span class="s1">&#39;volume&#39;</span><span class="p">})[</span><span class="n">columns</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">df</span>
+        <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">retries</span> <span class="o">&lt;</span> <span class="n">times</span><span class="p">:</span>
+                <span class="n">retries</span> <span class="o">=</span> <span class="n">retries</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+            <span class="k">raise</span></div>
+
+
+<div class="viewcode-block" id="load_index_daily_mongodb"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_index_daily_mongodb">[文档]</a><span class="k">def</span> <span class="nf">load_index_daily_mongodb</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">columns</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;读取指数本地日线数据</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        start (str):  参考 :func:`load_index_daily` 中参数 `start` 的说明。</span>
+<span class="sd">        end (str): 参考 :func:`load_index_daily` 中参数 `end` 的说明。</span>
+<span class="sd">        columns: 参考 :func:`load_index_daily` 中参数 `columns` 的说明。</span>
+<span class="sd">        code (str): 参考 :func:`load_index_daily` 中参数 `code` 的说明。</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 指数日线数据。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">QA</span><span class="o">.</span><span class="n">QA_fetch_index_day_adv</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="load_stock_list"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_stock_list">[文档]</a><span class="k">def</span> <span class="nf">load_stock_list</span><span class="p">(</span><span class="n">online</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;获取股票列表</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        online (bool): 是否获取在线数据。默认为False。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">load_stock_list_online</span><span class="p">()</span> <span class="k">if</span> <span class="n">online</span> <span class="k">else</span> <span class="n">load_stock_list_mongodb</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="load_stock_list_online"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_stock_list_online">[文档]</a><span class="k">def</span> <span class="nf">load_stock_list_online</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;从在线数据中获取股票列表。</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        在线数据只取tdx的数据。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票列表。</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; data_processor.load_stock_list_mongodb().head()</span>
+<span class="sd">                    code  decimal_point  name    pre_close       sec sse  volunit</span>
+<span class="sd">            code</span>
+<span class="sd">            000001  000001              2  平安银行   648.020000  stock_cn  sz      100</span>
+<span class="sd">            000002  000002              2  万 科Ａ    25.410000  stock_cn  sz      100</span>
+<span class="sd">            000004  000004              2  国农科技    16.299999  stock_cn  sz      100</span>
+<span class="sd">            000005  000005              2  世纪星源  3778.008125  stock_cn  sz      100</span>
+<span class="sd">            000006  000006              2  深振业Ａ     5.270000  stock_cn  sz      100</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">QA</span><span class="o">.</span><span class="n">QAFetch</span><span class="o">.</span><span class="n">QATdx</span><span class="o">.</span><span class="n">QA_fetch_get_stock_list</span><span class="p">()</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="load_stock_list_mongodb"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_stock_list_mongodb">[文档]</a><span class="k">def</span> <span class="nf">load_stock_list_mongodb</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;从本地数据库中获取股票列表。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票列表。</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; data_processor.load_stock_list_mongodb().head()</span>
+<span class="sd">                      code  volunit  decimal_point  name    pre_close sse       sec</span>
+<span class="sd">        code   sse</span>
+<span class="sd">        000001 sz   000001      100              2  平安银行  1096.050000  sz  stock_cn</span>
+<span class="sd">        000002 sz   000002      100              2  万 科Ａ    28.049999  sz  stock_cn</span>
+<span class="sd">        000004 sz   000004      100              2  国农科技    21.410000  sz  stock_cn</span>
+<span class="sd">        000005 sz   000005      100              2  世纪星源  4738.003750  sz  stock_cn</span>
+<span class="sd">        000006 sz   000006      100              2  深振业Ａ     5.680000  sz  stock_cn</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">QA</span><span class="o">.</span><span class="n">QA_fetch_stock_list_adv</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="load_stock_info_mongodb"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_stock_info_mongodb">[文档]</a><span class="k">def</span> <span class="nf">load_stock_info_mongodb</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;从数据库中获取股票信息</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        code (str): 股票代码</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; data_processor.load_stock_info_mongodb(&#39;601398&#39;).dtypes</span>
+<span class="sd">        baoliu2               float64</span>
+<span class="sd">        bgu                   float64</span>
+<span class="sd">        changqifuzhai         float64</span>
+<span class="sd">        code                   object</span>
+<span class="sd">        cunhuo                float64</span>
+<span class="sd">        faqirenfarengu        float64</span>
+<span class="sd">        farengu               float64</span>
+<span class="sd">        gudingzichan          float64</span>
+<span class="sd">        gudongrenshu          float64</span>
+<span class="sd">        guojiagu              float64</span>
+<span class="sd">        hgu                   float64</span>
+<span class="sd">        industry                int64</span>
+<span class="sd">        ipo_date                int64</span>
+<span class="sd">        jinglirun             float64</span>
+<span class="sd">        jingyingxianjinliu    float64</span>
+<span class="sd">        jingzichan            float64</span>
+<span class="sd">        lirunzonghe           float64</span>
+<span class="sd">        liudongfuzhai         float64</span>
+<span class="sd">        liudongzichan         float64</span>
+<span class="sd">        liutongguben          float64</span>
+<span class="sd">        market                  int64</span>
+<span class="sd">        meigujingzichan       float64</span>
+<span class="sd">        province                int64</span>
+<span class="sd">        shuihoulirun          float64</span>
+<span class="sd">        touzishouyu           float64</span>
+<span class="sd">        updated_date            int64</span>
+<span class="sd">        weifenpeilirun        float64</span>
+<span class="sd">        wuxingzichan          float64</span>
+<span class="sd">        yingshouzhangkuan     float64</span>
+<span class="sd">        yingyelirun           float64</span>
+<span class="sd">        zhigonggu             float64</span>
+<span class="sd">        zhuyinglirun          float64</span>
+<span class="sd">        zhuyingshouru         float64</span>
+<span class="sd">        zibengongjijin        float64</span>
+<span class="sd">        zongguben             float64</span>
+<span class="sd">        zongxianjinliu        float64</span>
+<span class="sd">        zongzichan            float64</span>
+<span class="sd">        dtype: object</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票信息。</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">QA</span><span class="o">.</span><span class="n">QA_fetch_stock_info</span><span class="p">(</span><span class="n">code</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_stock_info_online"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_stock_info_online">[文档]</a><span class="k">def</span> <span class="nf">load_stock_info_online</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;在线获取股票信息</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        在线数据只取tdx的数据。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        code (str): 股票代码</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; data_processor.load_stock_info_online(&#39;601398&#39;).dtypes</span>
+<span class="sd">        market                  int64</span>
+<span class="sd">        code                   object</span>
+<span class="sd">        liutongguben          float64</span>
+<span class="sd">        province                int64</span>
+<span class="sd">        industry                int64</span>
+<span class="sd">        updated_date            int64</span>
+<span class="sd">        ipo_date                int64</span>
+<span class="sd">        zongguben             float64</span>
+<span class="sd">        guojiagu              float64</span>
+<span class="sd">        faqirenfarengu        float64</span>
+<span class="sd">        farengu               float64</span>
+<span class="sd">        bgu                   float64</span>
+<span class="sd">        hgu                   float64</span>
+<span class="sd">        zhigonggu             float64</span>
+<span class="sd">        zongzichan            float64</span>
+<span class="sd">        liudongzichan         float64</span>
+<span class="sd">        gudingzichan          float64</span>
+<span class="sd">        wuxingzichan          float64</span>
+<span class="sd">        gudongrenshu          float64</span>
+<span class="sd">        liudongfuzhai         float64</span>
+<span class="sd">        changqifuzhai         float64</span>
+<span class="sd">        zibengongjijin        float64</span>
+<span class="sd">        jingzichan            float64</span>
+<span class="sd">        zhuyingshouru         float64</span>
+<span class="sd">        zhuyinglirun          float64</span>
+<span class="sd">        yingshouzhangkuan     float64</span>
+<span class="sd">        yingyelirun           float64</span>
+<span class="sd">        touzishouyu           float64</span>
+<span class="sd">        jingyingxianjinliu    float64</span>
+<span class="sd">        zongxianjinliu        float64</span>
+<span class="sd">        cunhuo                float64</span>
+<span class="sd">        lirunzonghe           float64</span>
+<span class="sd">        shuihoulirun          float64</span>
+<span class="sd">        jinglirun             float64</span>
+<span class="sd">        weifenpeilirun        float64</span>
+<span class="sd">        meigujingzichan       float64</span>
+<span class="sd">        baoliu2               float64</span>
+<span class="sd">        dtype: object</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票信息。</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">QA</span><span class="o">.</span><span class="n">QAFetch</span><span class="o">.</span><span class="n">QATdx</span><span class="o">.</span><span class="n">QA_fetch_get_stock_info</span><span class="p">(</span><span class="n">code</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_stock_block_mongodb"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_stock_block_mongodb">[文档]</a><span class="k">def</span> <span class="nf">load_stock_block_mongodb</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;从数据库获取股票板块信息</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; df = data_processor.load_stock_block_mongodb().loc[&#39;601398&#39;].head()</span>
+<span class="sd">        &gt;&gt;&gt; df</span>
+<span class="sd">               blockname    code type source</span>
+<span class="sd">        code</span>
+<span class="sd">        601398       环渤海  601398   gn    tdx</span>
+<span class="sd">        601398       含H股  601398   gn    tdx</span>
+<span class="sd">        601398     沪深300  601398   yb    tdx</span>
+<span class="sd">        601398      融资融券  601398   yb    tdx</span>
+<span class="sd">        601398       环渤海  601398   yb    tdx</span>
+
+<span class="sd">        &gt;&gt;&gt; d1 = df.loc[&#39;601398&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; set(d1[&#39;type&#39;].values)</span>
+<span class="sd">        {&#39;yb&#39;, &#39;zs&#39;, &#39;thshy&#39;, &#39;dy&#39;, &#39;zjhhy&#39;, &#39;fg&#39;, &#39;gn&#39;}</span>
+<span class="sd">        &gt;&gt;&gt; set(d1[&#39;source&#39;].values)</span>
+<span class="sd">        {&#39;tdx&#39;, &#39;ths&#39;}</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票板块信息。</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">QA</span><span class="o">.</span><span class="n">QA_fetch_stock_block</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="load_stock_block_online"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.load_stock_block_online">[文档]</a><span class="k">def</span> <span class="nf">load_stock_block_online</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;在线获取股票板块信息</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        在线数据只取tdx的数据。</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; df = data_processor.load_stock_block_online().loc[&#39;601398&#39;].head()</span>
+<span class="sd">        &gt;&gt;&gt; df</span>
+<span class="sd">               blockname    code type source</span>
+<span class="sd">        code</span>
+<span class="sd">        601398       环渤海  601398   gn    tdx</span>
+<span class="sd">        601398       含H股  601398   gn    tdx</span>
+<span class="sd">        601398     沪深300  601398   yb    tdx</span>
+<span class="sd">        601398      融资融券  601398   yb    tdx</span>
+<span class="sd">        601398       环渤海  601398   yb    tdx</span>
+
+<span class="sd">        &gt;&gt;&gt; d1 = df.loc[&#39;601398&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; set(d1[&#39;type&#39;].values)</span>
+<span class="sd">        {{&#39;gn&#39;, &#39;zs&#39;, &#39;fg&#39;, &#39;yb&#39;}</span>
+<span class="sd">        &gt;&gt;&gt; set(d1[&#39;source&#39;].values)</span>
+<span class="sd">        {&#39;tdx&#39;}</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票板块信息。</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">QA</span><span class="o">.</span><span class="n">QAFetch</span><span class="o">.</span><span class="n">QATdx</span><span class="o">.</span><span class="n">QA_fetch_get_stock_block</span><span class="p">()</span></div>
 </pre></div>
 
            </div>
