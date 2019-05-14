@@ -6,17 +6,11 @@
 Welcome to stock_ai's documentation!
 ====================================
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Contents:
+.. py:currentmodule:: stock_ai
 
-   data_processor
+.. autosummary::
+   :toctree: api/
 
+   stock_ai.data_processor
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 

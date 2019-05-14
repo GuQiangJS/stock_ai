@@ -1,3 +1,5 @@
+"""数据读写器"""
+
 from stock_ai import util
 import datetime
 import QUANTAXIS as QA
@@ -26,7 +28,7 @@ def save_stock_daily_csv(data, path, **kwargs):
 
 
 def load_stock_daily(code, **kwargs):
-    """读取股票日线数据（在线或不从数据库中）
+    """读取股票日线数据（在线或从数据库）
 
         Args:
             code (str): 股票代码。
@@ -84,7 +86,7 @@ def load_stock_daily_online(code, start, end, columns, times=5):
 
 
 def load_stock_daily_csv(path, **kwargs):
-    """
+    """从CSV文件读取股票日线数据
 
     Args:
         path (str): csv文件所在的完整路径。
