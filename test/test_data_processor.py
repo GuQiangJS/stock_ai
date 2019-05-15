@@ -28,6 +28,7 @@ def test_load_stock_daily_online():
     assert df_online2 is not None
     assert not df_online2.empty
     assert df_online1.equals(df_online2)
+    print(df_online2.head())
 
 
 @pytest.mark.skipif("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true",

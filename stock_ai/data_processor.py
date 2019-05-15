@@ -42,6 +42,16 @@ def load_stock_daily(code, **kwargs):
             columns (tuple, optional): 获取的列集合。默认为
                 ['open', 'high', 'low', 'close', 'volume', 'amount']
 
+        Examples:
+            >>> data_processor.load_stock_daily('601398').head()
+                        open  high   low  close      volume        amount
+            date
+            2006-10-27  3.40  3.44  3.26   3.28  25825396.0  8.725310e+09
+            2006-10-30  3.27  3.32  3.25   3.29   3519210.0  1.153128e+09
+            2006-10-31  3.28  3.33  3.28   3.30   2301262.0  7.610508e+08
+            2006-11-01  3.30  3.31  3.28   3.30   1328924.0  4.372648e+08
+            2006-11-02  3.30  3.30  3.25   3.28   1751554.0  5.733994e+08
+
         Returns:
             :py:class:`pandas.DataFrame`: 股票日线数据。
 
@@ -377,12 +387,13 @@ def load_stock_info_online(code):
     return QA.QAFetch.QATdx.QA_fetch_get_stock_info(code)
 
 
-def load_stock_block_mongodb():
-    """从数据库获取股票板块信息
+def load_stock_block(**kwargs):
+    """获取股票板块信息
+
 
     Examples:
 
-        >>> df = data_processor.load_stock_block_mongodb().loc['601398'].head()
+        >>> df = data_processor.load_stock_block().loc['601398'].head()
         >>> df
                blockname    code type source
         code
@@ -391,15 +402,31 @@ def load_stock_block_mongodb():
         601398     沪深300  601398   yb    tdx
         601398      融资融券  601398   yb    tdx
         601398       环渤海  601398   yb    tdx
+    Args:
+        online (bool, optional): 是否获取在线数据。默认为 `False`。
+    Returns:
+        :py:class:`pandas.DataFrame`: 股票板块信息。
+    """
+    online = kwargs.pop('online', False)
+    if online:
+        return load_stock_block_online()
+    else:
+        return load_stock_block_mongodb()
 
-        >>> d1 = df.loc['601398']
-        >>> set(d1['type'].values)
+
+def load_stock_block_mongodb():
+    """从数据库获取股票板块信息
+
+    Examples:
+
+        >>> df = data_processor.load_stock_block_mongodb().loc['601398'].head()
+        >>> set(df['type'].values)
         {'yb', 'zs', 'thshy', 'dy', 'zjhhy', 'fg', 'gn'}
-        >>> set(d1['source'].values)
+        >>> set(df['source'].values)
         {'tdx', 'ths'}
 
     Returns:
-        :py:class:`pandas.DataFrame`: 股票板块信息。
+        :py:class:`pandas.DataFrame`: 股票板块信息。返回数据内容参见 :py:func:`load_stock_block`
 
     """
     return QA.QA_fetch_stock_block()
@@ -414,23 +441,13 @@ def load_stock_block_online():
     Examples:
 
         >>> df = data_processor.load_stock_block_online().loc['601398'].head()
-        >>> df
-               blockname    code type source
-        code
-        601398       环渤海  601398   gn    tdx
-        601398       含H股  601398   gn    tdx
-        601398     沪深300  601398   yb    tdx
-        601398      融资融券  601398   yb    tdx
-        601398       环渤海  601398   yb    tdx
-
-        >>> d1 = df.loc['601398']
-        >>> set(d1['type'].values)
+        >>> set(df['type'].values)
         {{'gn', 'zs', 'fg', 'yb'}
-        >>> set(d1['source'].values)
+        >>> set(df['source'].values)
         {'tdx'}
 
     Returns:
-        :py:class:`pandas.DataFrame`: 股票板块信息。
+        :py:class:`pandas.DataFrame`: 股票板块信息。返回数据内容参见 :py:func:`load_stock_block`
 
     """
     return QA.QAFetch.QATdx.QA_fetch_get_stock_block()
