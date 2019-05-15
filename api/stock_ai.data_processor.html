@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="stock_ai.module" href="stock_ai.module.html" />
     <link rel="prev" title="Welcome to stock_ai’s documentation!" href="../index.html" /> 
 </head>
 
@@ -82,6 +83,9 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">stock_ai.data_processor</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">stock_ai.module</a></li>
 </ul>
 
             
@@ -163,45 +167,47 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_index_daily_online" title="stock_ai.data_processor.load_index_daily_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_index_daily_online</span></code></a></p></td>
 <td><p>读取指数在线日线数据</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block_mongodb" title="stock_ai.data_processor.load_stock_block_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block_mongodb</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block" title="stock_ai.data_processor.load_stock_block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block</span></code></a></p></td>
+<td><p>获取股票板块信息</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block_mongodb" title="stock_ai.data_processor.load_stock_block_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block_mongodb</span></code></a></p></td>
 <td><p>从数据库获取股票板块信息</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block_online" title="stock_ai.data_processor.load_stock_block_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block_online</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block_online" title="stock_ai.data_processor.load_stock_block_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block_online</span></code></a></p></td>
 <td><p>在线获取股票板块信息</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily</span></code></a></p></td>
 <td><p>读取股票日线数据（在线或从数据库）</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_csv" title="stock_ai.data_processor.load_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_csv</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_csv" title="stock_ai.data_processor.load_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_csv</span></code></a></p></td>
 <td><p>从CSV文件读取股票日线数据</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_mongodb" title="stock_ai.data_processor.load_stock_daily_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_mongodb</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_mongodb" title="stock_ai.data_processor.load_stock_daily_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_mongodb</span></code></a></p></td>
 <td><p>读取股票本地日线数据</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_online" title="stock_ai.data_processor.load_stock_daily_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_online</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_online" title="stock_ai.data_processor.load_stock_daily_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_online</span></code></a></p></td>
 <td><p>读取股票在线日线数据</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_info_mongodb" title="stock_ai.data_processor.load_stock_info_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_info_mongodb</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_info_mongodb" title="stock_ai.data_processor.load_stock_info_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_info_mongodb</span></code></a></p></td>
 <td><p>从数据库中获取股票信息</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_info_online" title="stock_ai.data_processor.load_stock_info_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_info_online</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_info_online" title="stock_ai.data_processor.load_stock_info_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_info_online</span></code></a></p></td>
 <td><p>在线获取股票信息</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list" title="stock_ai.data_processor.load_stock_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list" title="stock_ai.data_processor.load_stock_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list</span></code></a></p></td>
 <td><p>获取股票列表</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list_mongodb" title="stock_ai.data_processor.load_stock_list_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list_mongodb</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list_mongodb" title="stock_ai.data_processor.load_stock_list_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list_mongodb</span></code></a></p></td>
 <td><p>从本地数据库中获取股票列表。</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list_online" title="stock_ai.data_processor.load_stock_list_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list_online</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list_online" title="stock_ai.data_processor.load_stock_list_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list_online</span></code></a></p></td>
 <td><p>从在线数据中获取股票列表。</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.save_stock_daily_csv" title="stock_ai.data_processor.save_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_stock_daily_csv</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.save_stock_daily_csv" title="stock_ai.data_processor.save_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_stock_daily_csv</span></code></a></p></td>
 <td><p>保存股票日线数据至csv文件。</p></td>
 </tr>
 </tbody>
 </table>
-<span class="target" id="module-stock_ai.data_processor"></span><p>数据读写器</p>
 <dl class="function">
 <dt id="stock_ai.data_processor.load_index_daily">
 <code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_index_daily</code><span class="sig-paren">(</span><em>code</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_index_daily"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_index_daily" title="永久链接至目标">¶</a></dt>
@@ -272,11 +278,11 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="stock_ai.data_processor.load_stock_block_mongodb">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_block_mongodb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_block_mongodb" title="永久链接至目标">¶</a></dt>
-<dd><p>从数据库获取股票板块信息</p>
+<dt id="stock_ai.data_processor.load_stock_block">
+<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_block</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_block" title="永久链接至目标">¶</a></dt>
+<dd><p>获取股票板块信息</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_block_mongodb</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;601398&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_block</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;601398&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
 <span class="go">       blockname    code type source</span>
 <span class="go">code</span>
@@ -287,16 +293,34 @@
 <span class="go">601398       环渤海  601398   yb    tdx</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;601398&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">d1</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 是否获取在线数据。默认为 <cite>False</cite>。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>股票板块信息。</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.data_processor.load_stock_block_mongodb">
+<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_block_mongodb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_block_mongodb" title="永久链接至目标">¶</a></dt>
+<dd><p>从数据库获取股票板块信息</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_block_mongodb</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;601398&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="go">{&#39;yb&#39;, &#39;zs&#39;, &#39;thshy&#39;, &#39;dy&#39;, &#39;zjhhy&#39;, &#39;fg&#39;, &#39;gn&#39;}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">d1</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="go">{&#39;tdx&#39;, &#39;ths&#39;}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>股票板块信息。</p>
+<dd class="field-odd"><p>股票板块信息。返回数据内容参见 <a class="reference internal" href="#stock_ai.data_processor.load_stock_block" title="stock_ai.data_processor.load_stock_block"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_block()</span></code></a></p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
@@ -312,26 +336,15 @@
 <p>在线数据只取tdx的数据。</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_block_online</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;601398&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
-<span class="go">       blockname    code type source</span>
-<span class="go">code</span>
-<span class="go">601398       环渤海  601398   gn    tdx</span>
-<span class="go">601398       含H股  601398   gn    tdx</span>
-<span class="go">601398     沪深300  601398   yb    tdx</span>
-<span class="go">601398      融资融券  601398   yb    tdx</span>
-<span class="go">601398       环渤海  601398   yb    tdx</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;601398&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">d1</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="go">{{&#39;gn&#39;, &#39;zs&#39;, &#39;fg&#39;, &#39;yb&#39;}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">d1</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="go">{&#39;tdx&#39;}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>股票板块信息。</p>
+<dd class="field-odd"><p>股票板块信息。返回数据内容参见 <a class="reference internal" href="#stock_ai.data_processor.load_stock_block" title="stock_ai.data_processor.load_stock_block"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_block()</span></code></a></p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
@@ -358,11 +371,24 @@
 [‘open’, ‘high’, ‘low’, ‘close’, ‘volume’, ‘amount’]</p></li>
 </ul>
 </dd>
-<dt class="field-even">返回</dt>
-<dd class="field-even"><p>股票日线数据。</p>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_daily</span><span class="p">(</span><span class="s1">&#39;601398&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">            open  high   low  close      volume        amount</span>
+<span class="go">date</span>
+<span class="go">2006-10-27  3.40  3.44  3.26   3.28  25825396.0  8.725310e+09</span>
+<span class="go">2006-10-30  3.27  3.32  3.25   3.29   3519210.0  1.153128e+09</span>
+<span class="go">2006-10-31  3.28  3.33  3.28   3.30   2301262.0  7.610508e+08</span>
+<span class="go">2006-11-01  3.30  3.31  3.28   3.30   1328924.0  4.372648e+08</span>
+<span class="go">2006-11-02  3.30  3.30  3.25   3.28   1751554.0  5.733994e+08</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>股票日线数据。</p>
 </dd>
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -650,6 +676,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stock_ai.module.html" class="btn btn-neutral float-right" title="stock_ai.module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to stock_ai’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

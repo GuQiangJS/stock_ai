@@ -1,0 +1,36 @@
+stock_ai.module.Stock
+=====================
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.module
+
+.. autoclass:: Stock
+    :members: __init__
+
+Attributes
+----------
+
+
+.. autosummary::
+    
+    Stock.code
+
+
+
+Methods
+-------
+
+
+.. autosummary::
+    :nosignatures:
+    
+    Stock.get_daily
+
+
+
+
+.. autoattribute:: Stock.code
+
+
+.. automethod:: Stock.get_daily

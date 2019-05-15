@@ -5,12 +5,15 @@ stock\_ai.data\_processor
 
 .. currentmodule:: stock_ai.data_processor
 
+
+
 .. autosummary::
     :nosignatures:
     
     load_index_daily
     load_index_daily_mongodb
     load_index_daily_online
+    load_stock_block
     load_stock_block_mongodb
     load_stock_block_online
     load_stock_daily
@@ -24,5 +27,27 @@ stock\_ai.data\_processor
     load_stock_list_online
     save_stock_daily_csv
 
-.. automodule:: stock_ai.data_processor
-    :members:
+
+
+
+
+.. autofunction:: load_index_daily
+.. autofunction:: load_index_daily_mongodb
+.. autofunction:: load_index_daily_online
+.. autofunction:: load_stock_block
+.. autofunction:: load_stock_block_mongodb
+.. autofunction:: load_stock_block_online
+.. autofunction:: load_stock_daily
+.. autofunction:: load_stock_daily_csv
+.. autofunction:: load_stock_daily_mongodb
+.. autofunction:: load_stock_daily_online
+.. autofunction:: load_stock_info_mongodb
+.. autofunction:: load_stock_info_online
+.. autofunction:: load_stock_list
+.. autofunction:: load_stock_list_mongodb
+.. autofunction:: load_stock_list_online
+.. autofunction:: save_stock_daily_csv
+
+
+
+

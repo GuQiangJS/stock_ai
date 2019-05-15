@@ -1,0 +1,42 @@
+stock_ai.module.StockCN
+=======================
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.module
+
+.. autoclass:: StockCN
+    :members: __init__
+
+Attributes
+----------
+
+
+.. autosummary::
+    
+    StockCN.block
+    StockCN.code
+    StockCN.info
+    StockCN.ipo_date
+
+
+
+Methods
+-------
+
+
+.. autosummary::
+    :nosignatures:
+    
+    StockCN.get_daily
+
+
+
+
+.. autoattribute:: StockCN.block
+.. autoattribute:: StockCN.code
+.. autoattribute:: StockCN.info
+.. autoattribute:: StockCN.ipo_date
+
+
+.. automethod:: StockCN.get_daily

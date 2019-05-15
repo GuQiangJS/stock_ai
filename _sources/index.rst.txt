@@ -8,9 +8,19 @@ Welcome to stock_ai's documentation!
 
 .. py:currentmodule:: stock_ai
 
+数据读取
+--------
+
 .. autosummary::
    :toctree: api/
 
    stock_ai.data_processor
+
+模型定义
+--------
+.. autosummary::
+   :toctree: api/
+
+   stock_ai.module
 
 
