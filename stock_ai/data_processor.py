@@ -6,6 +6,7 @@ import QUANTAXIS as QA
 import socket
 import pandas as pd
 import os
+import tushare as ts
 
 _csv_encoding = 'utf-8'  #CSV文件默认字符编码
 
@@ -17,12 +18,12 @@ def _save_dataframe_to_csv(data, path, **kwargs):
 
 
 def save_stock_daily_csv(data, path, **kwargs):
-    """保存股票日线数据至csv文件。
+    """保存股票日线数据至csv文件
 
     Args:
         data (pd.DataFrame): 数据表。
         path (str): 待保存的文件完整路径。
-        encoding (str): 文件编码。默认为`utf-8`。参考 :py:func:`pandas.DataFrame.to_csv` 中同名参数。
+        encoding (str): 文件编码。默认为 ``utf-8``。参考 :py:func:`pandas.DataFrame.to_csv` 中同名参数。
     """
     _save_dataframe_to_csv(data, path, kwargs)
 
@@ -32,15 +33,15 @@ def load_stock_daily(code, **kwargs):
 
         Args:
             code (str): 股票代码。
-            start (str, optional): 开始日期。数据格式为%Y-%m-%d。默认为`1990-01-01`。
-            end (str, optional): 结束日期。数据格式为%Y-%m-%d。默认为`当天`。
-            online (bool, optional): 是否获取在线数据。默认为 `False`。
-            fq (str, optional): 是否取复权数据。默认为 `qfq`。
-                * `qfq` - 前复权
-                * `hfq` - 后复权
-                * `bfq` or `None` - 不复权
+            start (str, optional): 开始日期。数据格式为%Y-%m-%d。默认为 ``1990-01-01``。
+            end (str, optional): 结束日期。数据格式为%Y-%m-%d。默认为 :func:`datetime.now`。
+            online (bool, optional): 是否获取在线数据。默认为 ``False``。
+            fq (str, optional): 是否取复权数据。默认为 ``qfq``。
+                - ``qfq`` : 前复权
+                - ``hfq`` : 后复权
+                - ``bfq`` or ``None`` : 不复权
             columns (tuple, optional): 获取的列集合。默认为
-                ['open', 'high', 'low', 'close', 'volume', 'amount']
+                ``['open', 'high', 'low', 'close', 'volume', 'amount']``
 
         Examples:
             >>> data_processor.load_stock_daily('601398').head()
@@ -75,12 +76,12 @@ def load_stock_daily_online(code, start, end, columns, times=5):
         在线数据只取tdx的数据。
 
     Args:
-        code: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
-        start: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
-        end: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
-        fq: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
-        columns: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
-        times (int, optional): 重试次数。默认为 `5`。
+        code: 参考 :func:`load_stock_daily` 中参数 ``code`` 的说明。
+        start: 参考 :func:`load_stock_daily` 中参数 ``start`` 的说明。
+        end: 参考 :func:`load_stock_daily` 中参数 ``end`` 的说明。
+        fq: 参考 :func:`load_stock_daily` 中参数 ``fq`` 的说明。
+        columns: 参考 :func:`load_stock_daily` 中参数 ``columns`` 的说明。
+        times (int, optional): 重试次数。默认为 ``5``。
     Returns:
         :py:class:`pandas.DataFrame`: 股票日线数据。
     """
@@ -104,7 +105,7 @@ def load_stock_daily_csv(path, **kwargs):
 
     Args:
         path (str): csv文件所在的完整路径。
-        index_col (int, sequence or bool, optional): 索引列。参考
+        index_col (int, sequence or bool, optional): 索引列。参考 :py:func:`pandas.read_csv` 中同名参数。
         encoding (str): 文件编码。默认为 `utf-8`。参考 :py:func:`pandas.read_csv` 中同名参数。
         parse_dates (str): 文件编码。默认为 `utf-8`。参考 :py:func:`pandas.read_csv` 中同名参数。
         float_precision (str): 浮点类型转换。默认为 `round_trip`。参考 :py:func:`pandas.read_csv` 中同名参数。
@@ -126,11 +127,11 @@ def load_stock_daily_mongodb(code, start, end, fq, columns):
     """读取股票本地日线数据
 
     Args:
-        code: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
-        start: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
-        end: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
-        fq: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
-        columns: 参考 :func:`load_stock_daily` 中参数 `start` 的说明。
+        code: 参考 :func:`load_stock_daily` 中参数 ``code`` 的说明。
+        start: 参考 :func:`load_stock_daily` 中参数 ``start`` 的说明。
+        end: 参考 :func:`load_stock_daily` 中参数 ``end`` 的说明。
+        fq: 参考 :func:`load_stock_daily` 中参数 ``fq`` 的说明。
+        columns: 参考 :func:`load_stock_daily` 中参数 ``columns`` 的说明。
 
     Returns:
         :py:class:`pandas.DataFrame`: 股票日线数据。
@@ -155,11 +156,11 @@ def load_index_daily(code, **kwargs):
 
         Args:
             code (str): 指数代码。
-            start (str, optional): 开始日期。数据格式为%Y-%m-%d。默认为`1990-01-01`。
-            end (str, optional): 结束日期。数据格式为%Y-%m-%d。默认为`当天`。
-            online (bool, optional): 是否获取在线数据。默认为 `False`。
+            start (str, optional): 开始日期。数据格式为%Y-%m-%d。默认为 ``1990-01-01``。
+            end (str, optional): 结束日期。数据格式为%Y-%m-%d。默认为 :func:`datetime.now`。
+            online (bool, optional): 是否获取在线数据。默认为 ``False``。
             columns (tuple, optional): 获取的列集合。默认为
-                ['open', 'high', 'low', 'close', 'up_count', 'down_count', 'volume','amount']
+                ``['open', 'high', 'low', 'close', 'up_count', 'down_count', 'volume','amount']``
 
         Returns:
             :py:class:`pandas.DataFrame`: 股票日线数据。
@@ -182,11 +183,11 @@ def load_index_daily_online(code, start, end, columns, times=5):
     """读取指数在线日线数据
 
     Args:
-        start (str):  参考 :func:`load_index_daily` 中参数 `start` 的说明。
-        end (str): 参考 :func:`load_index_daily` 中参数 `end` 的说明。
-        columns: 参考 :func:`load_index_daily` 中参数 `columns` 的说明。原始的列名中volume是vol，为了统一，内部会修改为volume。
-        code (str): 参考 :func:`load_index_daily` 中参数 `code` 的说明。
-        times (int, optional): 重试次数。默认为 `5`。
+        start (str):  参考 :func:`load_index_daily` 中参数 ``start`` 的说明。
+        end (str): 参考 :func:`load_index_daily` 中参数 ``end`` 的说明。
+        columns: 参考 :func:`load_index_daily` 中参数 ``columns`` 的说明。原始的列名中volume是vol，为了统一，内部会修改为volume。
+        code (str): 参考 :func:`load_index_daily` 中参数 ``code`` 的说明。
+        times (int, optional): 重试次数。默认为 ``5``。
     Returns:
         :py:class:`pandas.DataFrame`: 股票日线数据。
     """
@@ -208,10 +209,10 @@ def load_index_daily_mongodb(code, start, end, columns):
     """读取指数本地日线数据
 
     Args:
-        start (str):  参考 :func:`load_index_daily` 中参数 `start` 的说明。
-        end (str): 参考 :func:`load_index_daily` 中参数 `end` 的说明。
-        columns: 参考 :func:`load_index_daily` 中参数 `columns` 的说明。
-        code (str): 参考 :func:`load_index_daily` 中参数 `code` 的说明。
+        start (str):  参考 :func:`load_index_daily` 中参数 ``start`` 的说明。
+        end (str): 参考 :func:`load_index_daily` 中参数 ``end`` 的说明。
+        columns: 参考 :func:`load_index_daily` 中参数 ``columns`` 的说明。
+        code (str): 参考 :func:`load_index_daily` 中参数 ``code`` 的说明。
     Returns:
         :py:class:`pandas.DataFrame`: 指数日线数据。
     """
@@ -224,7 +225,7 @@ def load_stock_list(online=False):
     """获取股票列表
 
     Args:
-        online (bool): 是否获取在线数据。默认为False。
+        online (bool): 是否获取在线数据。默认为 ``False``。
 
     Returns:
         :py:class:`pandas.DataFrame`: 股票列表。
@@ -233,7 +234,7 @@ def load_stock_list(online=False):
 
 
 def load_stock_list_online():
-    """从在线数据中获取股票列表。
+    """从在线数据中获取股票列表
 
     Notes:
         在线数据只取tdx的数据。
@@ -256,7 +257,7 @@ def load_stock_list_online():
 
 
 def load_stock_list_mongodb():
-    """从本地数据库中获取股票列表。
+    """从本地数据库中获取股票列表
 
     Returns:
         :py:class:`pandas.DataFrame`: 股票列表。
@@ -390,7 +391,6 @@ def load_stock_info_online(code):
 def load_stock_block(**kwargs):
     """获取股票板块信息
 
-
     Examples:
 
         >>> df = data_processor.load_stock_block().loc['601398'].head()
@@ -403,7 +403,7 @@ def load_stock_block(**kwargs):
         601398      融资融券  601398   yb    tdx
         601398       环渤海  601398   yb    tdx
     Args:
-        online (bool, optional): 是否获取在线数据。默认为 `False`。
+        online (bool, optional): 是否获取在线数据。默认为 ``False``。
     Returns:
         :py:class:`pandas.DataFrame`: 股票板块信息。
     """
@@ -426,7 +426,7 @@ def load_stock_block_mongodb():
         {'tdx', 'ths'}
 
     Returns:
-        :py:class:`pandas.DataFrame`: 股票板块信息。返回数据内容参见 :py:func:`load_stock_block`
+        :py:class:`pandas.DataFrame`: 股票板块信息。返回数据内容参见 :py:func:`load_stock_block` 。
 
     """
     return QA.QA_fetch_stock_block()
@@ -451,3 +451,179 @@ def load_stock_block_online():
 
     """
     return QA.QAFetch.QATdx.QA_fetch_get_stock_block()
+
+
+def load_deposit_rate_online(**kwargs):
+    """在线获取历史存款利率
+
+    See Also:
+        http://tushare.org/macro.html#id2
+
+    Examples:
+        >>> df = data_processor.load_deposit_rate_online()
+        >>> df.head()
+        .                          rate
+        date       deposit_type
+        2015-10-24 定活两便(定期)        NaN
+                   定期存款整存整取(半年)   1.30
+                   定期存款整存整取(二年)   2.10
+                   定期存款整存整取(三个月)  1.10
+                   定期存款整存整取(三年)   2.75
+        >>> df.xs('定期存款整存整取(一年)',axis=0,level=1).head()
+                    rate
+        date
+        2015-10-24  1.50
+        2015-08-26  1.75
+        2015-06-28  2.00
+        2015-05-11  2.25
+        2015-03-01  2.50
+        >>> df.index.get_level_values(1).unique().values
+        ['定活两便(定期)' '定期存款整存整取(半年)' '定期存款整存整取(二年)' '定期存款整存整取(三个月)' '定期存款整存整取(三年)'
+         '定期存款整存整取(五年)' '定期存款整存整取(一年)' '活期存款(不定期)' '零存整取、整存零取、存本取息定期存款(三年)'
+         '零存整取、整存零取、存本取息定期存款(五年)' '零存整取、整存零取、存本取息定期存款(一年)' '通知存款(七天)' '通知存款(一天)'
+         '协定存款(定期)']
+
+    Returns:
+        :py:class:`pandas.DataFrame`: 历史存款利率。
+    """
+    df = ts.get_deposit_rate().set_index(['date', 'deposit_type'])
+    df['rate'] = pd.to_numeric(df['rate'], errors='coerce', downcast='float')
+    return df
+
+
+def load_loan_rate_online(**kwargs):
+    """在线获取历史贷款利率
+
+    See Also:
+        http://tushare.org/macro.html#id3
+
+    Examples:
+        >>> df = data_processor.load_loan_rate_online()
+        >>> df.head()
+                                           rate
+        date       loan_type
+        2015-10-24 短期贷款(六个月以内)   4.35
+                   短期贷款(六个月至一年)  4.35
+                   中长期贷款(三至五年)   4.75
+                   中长期贷款(五年以上)   4.90
+                   中长期贷款(一至三年)   4.75
+        >>> df.xs('短期贷款(六个月以内)',axis=0,level=1).head()
+                    rate
+        date
+        2015-10-24  4.35
+        2015-08-26  4.60
+        2015-06-28  4.85
+        2015-05-11  5.10
+        2015-03-01  5.35
+        >>> df.index.get_level_values(1).unique().values
+        ['短期贷款(六个月以内)' '短期贷款(六个月至一年)' '中长期贷款(三至五年)' '中长期贷款(五年以上)' '中长期贷款(一至三年)'
+         '贴现(贴现)' '优惠贷款(扶贫贴息贷款)' '优惠贷款(老少边穷发展经济贷款)' '优惠贷款(民政部门福利工厂贷款)'
+         '优惠贷款(民族贸易及民族用品生产贷款)' '优惠贷款(贫困县办工业贷款)' '个人住房商业贷款(六个月以内)'
+         '个人住房商业贷款(六个月至一年)' '个人住房商业贷款(三至五年)' '个人住房商业贷款(五年以上)' '个人住房商业贷款(一至三年)'
+         '个人住房公积金贷款(五年以上)' '个人住房公积金贷款(五年以下)' '再贴现(再贴现率)' '优惠贷款(成套和高技术含量)'
+         '优惠贷款(低技术含量和一般产品)' '优惠贷款(广深珠高速公路贷款)' '优惠贷款(特区、开发区差别利率贷款（五年以内）)'
+         '优惠贷款(特区、开发区差别利率贷款（五年以上）)' '优惠贷款(银行系统印制企业基建储备贷款)' '优惠贷款(中国进出口银行出口卖方信贷)'
+         '流动资产贷款(流动资产贷款利率)' '个人住房商业贷款(一至六个月（含六个月）)' '罚息(挤占挪用贷款)' '罚息(逾期贷款)'
+         '特种贷款(特种贷款利率)']
+    Returns:
+        :py:class:`pandas.DataFrame`: 历史存款利率。
+    """
+    df = ts.get_loan_rate().set_index(['date', 'loan_type'])
+    df['rate'] = pd.to_numeric(df['rate'], errors='coerce', downcast='float')
+    return df
+
+
+def load_cpi_online(**kwargs):
+    """在线获取居民消费价格指数(CPI)
+
+    Examples:
+        >>> data_processor.load_cpi_online().head()
+        .                cpi
+        month
+        2019.4   102.540001
+        2019.3   102.279999
+        2019.2   101.489998
+        2019.1   101.739998
+        2018.12  101.860001
+
+    Returns:
+        :py:class:`pandas.DataFrame`: 居民消费价格指数(CPI)。
+
+    """
+    df = ts.get_cpi().set_index('month')
+    df['cpi'] = pd.to_numeric(df['cpi'], errors='coerce', downcast='float')
+    return df
+
+
+def load_money_supply_online(**kwargs):
+    """在线获取货币供应量（月）
+
+    Examples:
+        >>> data_processor.load_money_supply_online().head()
+        .                  m2  m2_yoy           m1  ...  sd_yoy          rests  rests_yoy
+        month                                      ...
+        2019.4   1884670.375     8.5  540614.6250  ...     NaN  202474.453125        NaN
+        2019.3   1889412.125     8.6  547575.5625  ...     NaN  200214.984375        NaN
+        2019.2   1867427.500     8.0  527190.5000  ...     NaN  209785.796875        NaN
+        2019.1   1865935.375     8.4  545638.4375  ...     NaN  204300.187500        NaN
+        2018.12  1826744.250     8.1  551685.9375  ...     NaN  213190.828125        NaN
+
+    Returns:
+        :py:class:`pandas.DataFrame`: 货币供应量。
+        
+        列名：
+            * month :统计时间
+            * m2 :货币和准货币（广义货币M2）(亿元)
+            * m2_yoy:货币和准货币（广义货币M2）同比增长(%)
+            * m1:货币(狭义货币M1)(亿元)
+            * m1_yoy:货币(狭义货币M1)同比增长(%)
+            * m0:流通中现金(M0)(亿元)
+            * m0_yoy:流通中现金(M0)同比增长(%)
+            * cd:活期存款(亿元)
+            * cd_yoy:活期存款同比增长(%)
+            * qm:准货币(亿元)
+            * qm_yoy:准货币同比增长(%)
+            * ftd:定期存款(亿元)
+            * ftd_yoy:定期存款同比增长(%)
+            * sd:储蓄存款(亿元)
+            * sd_yoy:储蓄存款同比增长(%)
+            * rests:其他存款(亿元)
+            * rests_yoy:其他存款同比增长(%)
+    """
+    df = ts.get_money_supply().set_index('month')
+    for col in df.columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce', downcast='float')
+    return df
+
+
+def load_money_supply_year_online(**kwargs):
+    """在线获取货币供应量（年底余额）
+
+    Examples: data_processor.load_money_supply_year_online().head()
+        >>>
+        .               m2            m1  ...            sd          rests
+        year                             ...
+        2017  1690235.250  543790.12500  ...  649341.50000  176907.406250
+        2016  1550066.750  486557.18750  ...  603504.18750  152015.593750
+        2015  1392278.125  400953.40625  ...  552073.50000  151010.500000
+        2014  1228374.750  348056.40625  ...  508878.09375  107384.601562
+        2013  1106525.000  337291.09375  ...  467031.09375   69506.203125
+
+    Returns:
+        :py:class:`pandas.DataFrame`: 货币供应量。
+
+        列名：
+            * year :统计年度
+            * m2 :货币和准货币(亿元)
+            * m1:货币(亿元)
+            * m0:流通中现金(亿元)
+            * cd:活期存款(亿元)
+            * qm:准货币(亿元)
+            * ftd:定期存款(亿元)
+            * sd:储蓄存款(亿元)
+            * rests:其他存款(亿元)
+    """
+    df = ts.get_money_supply_bal().set_index('year')
+    for col in df.columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce', downcast='float')
+    return df

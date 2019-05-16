@@ -2,6 +2,8 @@ import test
 from stock_ai import data_processor
 import pytest
 import os
+import numpy as np
+import pprint
 
 
 def test_load_stock_daily_csv():
@@ -97,3 +99,47 @@ def test_load_stock_block_mongodb():
     print(set(d1['type'].values))
     print(set(d1['source'].values))
     print(df.loc['601398'].head())
+
+
+def test_load_deposit_rate_online():
+    """测试在线获取存款利率"""
+    df = data_processor.load_deposit_rate_online()
+    print(df.head())
+    print(df.index.get_level_values(1).unique().values)
+    print(df.xs('定期存款整存整取(一年)', axis=0, level=1).head())
+    assert str(df.loc['2015-03-01', '定期存款整存整取(一年)']['rate']) == str(2.5)
+
+
+def test_load_loan_rate_online():
+    """测试在线获取贷款利率"""
+    df = data_processor.load_loan_rate_online()
+    print(df.head())
+    print(df.index.get_level_values(1).unique().values)
+    print(df.xs('短期贷款(六个月以内)', axis=0, level=1).head())
+    assert str(df.loc['2014-11-22', '短期贷款(六个月以内)']['rate']) == str(5.6)
+
+
+def test_load_cpi_online():
+    """测试在线获取居民消费价格指数(CPI)"""
+    df = data_processor.load_cpi_online()
+    print(df.head())
+    assert str(df.loc['2014.11']['cpi']) == str(101.44)
+
+
+def test_load_money_supply_online():
+    """测试在线获取货币供应量（月）"""
+    df = data_processor.load_money_supply_online()
+    print(df.head())
+    print(df.dtypes)
+    v = df.loc['2019.2']
+    assert str(v['m2']) == str(1867427.5)
+    assert str(v['m1']) == str(527190.5)
+
+
+def test_load_money_supply_year_online():
+    """测试在线获取货币供应量（年）"""
+    df = data_processor.load_money_supply_year_online()
+    print(df.head())
+    print(df.dtypes)
+    v = df.loc['2013']
+    assert v['m2'] == 1106525
