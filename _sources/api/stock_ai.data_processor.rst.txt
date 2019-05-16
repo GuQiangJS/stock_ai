@@ -10,9 +10,14 @@ stock\_ai.data\_processor
 .. autosummary::
     :nosignatures:
     
+    load_cpi_online
+    load_deposit_rate_online
     load_index_daily
     load_index_daily_mongodb
     load_index_daily_online
+    load_loan_rate_online
+    load_money_supply_online
+    load_money_supply_year_online
     load_stock_block
     load_stock_block_mongodb
     load_stock_block_online
@@ -31,9 +36,14 @@ stock\_ai.data\_processor
 
 
 
+.. autofunction:: load_cpi_online
+.. autofunction:: load_deposit_rate_online
 .. autofunction:: load_index_daily
 .. autofunction:: load_index_daily_mongodb
 .. autofunction:: load_index_daily_online
+.. autofunction:: load_loan_rate_online
+.. autofunction:: load_money_supply_online
+.. autofunction:: load_money_supply_year_online
 .. autofunction:: load_stock_block
 .. autofunction:: load_stock_block_mongodb
 .. autofunction:: load_stock_block_online

@@ -158,6 +158,12 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_cpi_online" title="stock_ai.data_processor.load_cpi_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_cpi_online</span></code></a></p></td>
+<td><p>在线获取居民消费价格指数(CPI)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_deposit_rate_online" title="stock_ai.data_processor.load_deposit_rate_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_deposit_rate_online</span></code></a></p></td>
+<td><p>在线获取历史存款利率</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_index_daily</span></code></a></p></td>
 <td><p>读取指数日线数据（在线或从数据库）</p></td>
 </tr>
@@ -167,47 +173,124 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_index_daily_online" title="stock_ai.data_processor.load_index_daily_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_index_daily_online</span></code></a></p></td>
 <td><p>读取指数在线日线数据</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block" title="stock_ai.data_processor.load_stock_block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_loan_rate_online" title="stock_ai.data_processor.load_loan_rate_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_loan_rate_online</span></code></a></p></td>
+<td><p>在线获取历史贷款利率</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_money_supply_online" title="stock_ai.data_processor.load_money_supply_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_money_supply_online</span></code></a></p></td>
+<td><p>在线获取货币供应量（月）</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_money_supply_year_online" title="stock_ai.data_processor.load_money_supply_year_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_money_supply_year_online</span></code></a></p></td>
+<td><p>在线获取货币供应量（年底余额）</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block" title="stock_ai.data_processor.load_stock_block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block</span></code></a></p></td>
 <td><p>获取股票板块信息</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block_mongodb" title="stock_ai.data_processor.load_stock_block_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block_mongodb</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block_mongodb" title="stock_ai.data_processor.load_stock_block_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block_mongodb</span></code></a></p></td>
 <td><p>从数据库获取股票板块信息</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block_online" title="stock_ai.data_processor.load_stock_block_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block_online</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_block_online" title="stock_ai.data_processor.load_stock_block_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block_online</span></code></a></p></td>
 <td><p>在线获取股票板块信息</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily</span></code></a></p></td>
 <td><p>读取股票日线数据（在线或从数据库）</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_csv" title="stock_ai.data_processor.load_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_csv</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_csv" title="stock_ai.data_processor.load_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_csv</span></code></a></p></td>
 <td><p>从CSV文件读取股票日线数据</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_mongodb" title="stock_ai.data_processor.load_stock_daily_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_mongodb</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_mongodb" title="stock_ai.data_processor.load_stock_daily_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_mongodb</span></code></a></p></td>
 <td><p>读取股票本地日线数据</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_online" title="stock_ai.data_processor.load_stock_daily_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_online</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_daily_online" title="stock_ai.data_processor.load_stock_daily_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_daily_online</span></code></a></p></td>
 <td><p>读取股票在线日线数据</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_info_mongodb" title="stock_ai.data_processor.load_stock_info_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_info_mongodb</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_info_mongodb" title="stock_ai.data_processor.load_stock_info_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_info_mongodb</span></code></a></p></td>
 <td><p>从数据库中获取股票信息</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_info_online" title="stock_ai.data_processor.load_stock_info_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_info_online</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_info_online" title="stock_ai.data_processor.load_stock_info_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_info_online</span></code></a></p></td>
 <td><p>在线获取股票信息</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list" title="stock_ai.data_processor.load_stock_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list" title="stock_ai.data_processor.load_stock_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list</span></code></a></p></td>
 <td><p>获取股票列表</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list_mongodb" title="stock_ai.data_processor.load_stock_list_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list_mongodb</span></code></a></p></td>
-<td><p>从本地数据库中获取股票列表。</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list_mongodb" title="stock_ai.data_processor.load_stock_list_mongodb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list_mongodb</span></code></a></p></td>
+<td><p>从本地数据库中获取股票列表</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list_online" title="stock_ai.data_processor.load_stock_list_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list_online</span></code></a></p></td>
-<td><p>从在线数据中获取股票列表。</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list_online" title="stock_ai.data_processor.load_stock_list_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list_online</span></code></a></p></td>
+<td><p>从在线数据中获取股票列表</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.save_stock_daily_csv" title="stock_ai.data_processor.save_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_stock_daily_csv</span></code></a></p></td>
-<td><p>保存股票日线数据至csv文件。</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.save_stock_daily_csv" title="stock_ai.data_processor.save_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_stock_daily_csv</span></code></a></p></td>
+<td><p>保存股票日线数据至csv文件</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="function">
+<dt id="stock_ai.data_processor.load_cpi_online">
+<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_cpi_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_cpi_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_cpi_online" title="永久链接至目标">¶</a></dt>
+<dd><p>在线获取居民消费价格指数(CPI)</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">load_cpi_online</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">.                cpi</span>
+<span class="go">month</span>
+<span class="go">2019.4   102.540001</span>
+<span class="go">2019.3   102.279999</span>
+<span class="go">2019.2   101.489998</span>
+<span class="go">2019.1   101.739998</span>
+<span class="go">2018.12  101.860001</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>居民消费价格指数(CPI)。</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.data_processor.load_deposit_rate_online">
+<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_deposit_rate_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_deposit_rate_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_deposit_rate_online" title="永久链接至目标">¶</a></dt>
+<dd><p>在线获取历史存款利率</p>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p><a class="reference external" href="http://tushare.org/macro.html#id2">http://tushare.org/macro.html#id2</a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_deposit_rate_online</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">.                          rate</span>
+<span class="go">date       deposit_type</span>
+<span class="go">2015-10-24 定活两便(定期)        NaN</span>
+<span class="go">           定期存款整存整取(半年)   1.30</span>
+<span class="go">           定期存款整存整取(二年)   2.10</span>
+<span class="go">           定期存款整存整取(三个月)  1.10</span>
+<span class="go">           定期存款整存整取(三年)   2.75</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="s1">&#39;定期存款整存整取(一年)&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">            rate</span>
+<span class="go">date</span>
+<span class="go">2015-10-24  1.50</span>
+<span class="go">2015-08-26  1.75</span>
+<span class="go">2015-06-28  2.00</span>
+<span class="go">2015-05-11  2.25</span>
+<span class="go">2015-03-01  2.50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<span class="go">[&#39;定活两便(定期)&#39; &#39;定期存款整存整取(半年)&#39; &#39;定期存款整存整取(二年)&#39; &#39;定期存款整存整取(三个月)&#39; &#39;定期存款整存整取(三年)&#39;</span>
+<span class="go"> &#39;定期存款整存整取(五年)&#39; &#39;定期存款整存整取(一年)&#39; &#39;活期存款(不定期)&#39; &#39;零存整取、整存零取、存本取息定期存款(三年)&#39;</span>
+<span class="go"> &#39;零存整取、整存零取、存本取息定期存款(五年)&#39; &#39;零存整取、整存零取、存本取息定期存款(一年)&#39; &#39;通知存款(七天)&#39; &#39;通知存款(一天)&#39;</span>
+<span class="go"> &#39;协定存款(定期)&#39;]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>历史存款利率。</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="function">
 <dt id="stock_ai.data_processor.load_index_daily">
 <code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_index_daily</code><span class="sig-paren">(</span><em>code</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_index_daily"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_index_daily" title="永久链接至目标">¶</a></dt>
@@ -216,11 +299,11 @@
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 指数代码。</p></li>
-<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 开始日期。数据格式为%Y-%m-%d。默认为`1990-01-01`。</p></li>
-<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 结束日期。数据格式为%Y-%m-%d。默认为`当天`。</p></li>
-<li><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 是否获取在线数据。默认为 <cite>False</cite>。</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 开始日期。数据格式为%Y-%m-%d。默认为 <code class="docutils literal notranslate"><span class="pre">1990-01-01</span></code>。</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 结束日期。数据格式为%Y-%m-%d。默认为 <code class="xref py py-func docutils literal notranslate"><span class="pre">datetime.now()</span></code>。</p></li>
+<li><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 是否获取在线数据。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 <li><p><strong>columns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.7)"><em>tuple</em></a><em>, </em><em>optional</em>) – 获取的列集合。默认为
-[‘open’, ‘high’, ‘low’, ‘close’, ‘up_count’, ‘down_count’, ‘volume’,’amount’]</p></li>
+<code class="docutils literal notranslate"><span class="pre">['open',</span> <span class="pre">'high',</span> <span class="pre">'low',</span> <span class="pre">'close',</span> <span class="pre">'up_count',</span> <span class="pre">'down_count',</span> <span class="pre">'volume','amount']</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
@@ -239,10 +322,10 @@
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <cite>end</cite> 的说明。</p></li>
-<li><p><strong>columns</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <cite>columns</cite> 的说明。</p></li>
-<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <cite>code</cite> 的说明。</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">start</span></code> 的说明。</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">end</span></code> 的说明。</p></li>
+<li><p><strong>columns</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">columns</span></code> 的说明。</p></li>
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">code</span></code> 的说明。</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
@@ -261,11 +344,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <cite>end</cite> 的说明。</p></li>
-<li><p><strong>columns</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <cite>columns</cite> 的说明。原始的列名中volume是vol，为了统一，内部会修改为volume。</p></li>
-<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <cite>code</cite> 的说明。</p></li>
-<li><p><strong>times</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – 重试次数。默认为 <cite>5</cite>。</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">start</span></code> 的说明。</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">end</span></code> 的说明。</p></li>
+<li><p><strong>columns</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">columns</span></code> 的说明。原始的列名中volume是vol，为了统一，内部会修改为volume。</p></li>
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_index_daily" title="stock_ai.data_processor.load_index_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_index_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">code</span></code> 的说明。</p></li>
+<li><p><strong>times</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – 重试次数。默认为 <code class="docutils literal notranslate"><span class="pre">5</span></code>。</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
@@ -273,6 +356,144 @@
 </dd>
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.data_processor.load_loan_rate_online">
+<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_loan_rate_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_loan_rate_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_loan_rate_online" title="永久链接至目标">¶</a></dt>
+<dd><p>在线获取历史贷款利率</p>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p><a class="reference external" href="http://tushare.org/macro.html#id3">http://tushare.org/macro.html#id3</a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_loan_rate_online</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">                                   rate</span>
+<span class="go">date       loan_type</span>
+<span class="go">2015-10-24 短期贷款(六个月以内)   4.35</span>
+<span class="go">           短期贷款(六个月至一年)  4.35</span>
+<span class="go">           中长期贷款(三至五年)   4.75</span>
+<span class="go">           中长期贷款(五年以上)   4.90</span>
+<span class="go">           中长期贷款(一至三年)   4.75</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="s1">&#39;短期贷款(六个月以内)&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">            rate</span>
+<span class="go">date</span>
+<span class="go">2015-10-24  4.35</span>
+<span class="go">2015-08-26  4.60</span>
+<span class="go">2015-06-28  4.85</span>
+<span class="go">2015-05-11  5.10</span>
+<span class="go">2015-03-01  5.35</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<span class="go">[&#39;短期贷款(六个月以内)&#39; &#39;短期贷款(六个月至一年)&#39; &#39;中长期贷款(三至五年)&#39; &#39;中长期贷款(五年以上)&#39; &#39;中长期贷款(一至三年)&#39;</span>
+<span class="go"> &#39;贴现(贴现)&#39; &#39;优惠贷款(扶贫贴息贷款)&#39; &#39;优惠贷款(老少边穷发展经济贷款)&#39; &#39;优惠贷款(民政部门福利工厂贷款)&#39;</span>
+<span class="go"> &#39;优惠贷款(民族贸易及民族用品生产贷款)&#39; &#39;优惠贷款(贫困县办工业贷款)&#39; &#39;个人住房商业贷款(六个月以内)&#39;</span>
+<span class="go"> &#39;个人住房商业贷款(六个月至一年)&#39; &#39;个人住房商业贷款(三至五年)&#39; &#39;个人住房商业贷款(五年以上)&#39; &#39;个人住房商业贷款(一至三年)&#39;</span>
+<span class="go"> &#39;个人住房公积金贷款(五年以上)&#39; &#39;个人住房公积金贷款(五年以下)&#39; &#39;再贴现(再贴现率)&#39; &#39;优惠贷款(成套和高技术含量)&#39;</span>
+<span class="go"> &#39;优惠贷款(低技术含量和一般产品)&#39; &#39;优惠贷款(广深珠高速公路贷款)&#39; &#39;优惠贷款(特区、开发区差别利率贷款（五年以内）)&#39;</span>
+<span class="go"> &#39;优惠贷款(特区、开发区差别利率贷款（五年以上）)&#39; &#39;优惠贷款(银行系统印制企业基建储备贷款)&#39; &#39;优惠贷款(中国进出口银行出口卖方信贷)&#39;</span>
+<span class="go"> &#39;流动资产贷款(流动资产贷款利率)&#39; &#39;个人住房商业贷款(一至六个月（含六个月）)&#39; &#39;罚息(挤占挪用贷款)&#39; &#39;罚息(逾期贷款)&#39;</span>
+<span class="go"> &#39;特种贷款(特种贷款利率)&#39;]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>历史存款利率。</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.data_processor.load_money_supply_online">
+<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_money_supply_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_money_supply_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_money_supply_online" title="永久链接至目标">¶</a></dt>
+<dd><p>在线获取货币供应量（月）</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">load_money_supply_online</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">.                  m2  m2_yoy           m1  ...  sd_yoy          rests  rests_yoy</span>
+<span class="go">month                                      ...</span>
+<span class="go">2019.4   1884670.375     8.5  540614.6250  ...     NaN  202474.453125        NaN</span>
+<span class="go">2019.3   1889412.125     8.6  547575.5625  ...     NaN  200214.984375        NaN</span>
+<span class="go">2019.2   1867427.500     8.0  527190.5000  ...     NaN  209785.796875        NaN</span>
+<span class="go">2019.1   1865935.375     8.4  545638.4375  ...     NaN  204300.187500        NaN</span>
+<span class="go">2018.12  1826744.250     8.1  551685.9375  ...     NaN  213190.828125        NaN</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p><p>货币供应量。</p>
+<dl class="simple">
+<dt>列名：</dt><dd><ul class="simple">
+<li><p>month :统计时间</p></li>
+<li><p>m2 :货币和准货币（广义货币M2）(亿元)</p></li>
+<li><p>m2_yoy:货币和准货币（广义货币M2）同比增长(%)</p></li>
+<li><p>m1:货币(狭义货币M1)(亿元)</p></li>
+<li><p>m1_yoy:货币(狭义货币M1)同比增长(%)</p></li>
+<li><p>m0:流通中现金(M0)(亿元)</p></li>
+<li><p>m0_yoy:流通中现金(M0)同比增长(%)</p></li>
+<li><p>cd:活期存款(亿元)</p></li>
+<li><p>cd_yoy:活期存款同比增长(%)</p></li>
+<li><p>qm:准货币(亿元)</p></li>
+<li><p>qm_yoy:准货币同比增长(%)</p></li>
+<li><p>ftd:定期存款(亿元)</p></li>
+<li><p>ftd_yoy:定期存款同比增长(%)</p></li>
+<li><p>sd:储蓄存款(亿元)</p></li>
+<li><p>sd_yoy:储蓄存款同比增长(%)</p></li>
+<li><p>rests:其他存款(亿元)</p></li>
+<li><p>rests_yoy:其他存款同比增长(%)</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.data_processor.load_money_supply_year_online">
+<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_money_supply_year_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_money_supply_year_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_money_supply_year_online" title="永久链接至目标">¶</a></dt>
+<dd><p>在线获取货币供应量（年底余额）</p>
+<dl>
+<dt>Examples: data_processor.load_money_supply_year_online().head()</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
+<span class="go">.               m2            m1  ...            sd          rests</span>
+<span class="go">year                             ...</span>
+<span class="go">2017  1690235.250  543790.12500  ...  649341.50000  176907.406250</span>
+<span class="go">2016  1550066.750  486557.18750  ...  603504.18750  152015.593750</span>
+<span class="go">2015  1392278.125  400953.40625  ...  552073.50000  151010.500000</span>
+<span class="go">2014  1228374.750  348056.40625  ...  508878.09375  107384.601562</span>
+<span class="go">2013  1106525.000  337291.09375  ...  467031.09375   69506.203125</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p><p>货币供应量。</p>
+<dl class="simple">
+<dt>列名：</dt><dd><ul class="simple">
+<li><p>year :统计年度</p></li>
+<li><p>m2 :货币和准货币(亿元)</p></li>
+<li><p>m1:货币(亿元)</p></li>
+<li><p>m0:流通中现金(亿元)</p></li>
+<li><p>cd:活期存款(亿元)</p></li>
+<li><p>qm:准货币(亿元)</p></li>
+<li><p>ftd:定期存款(亿元)</p></li>
+<li><p>sd:储蓄存款(亿元)</p></li>
+<li><p>rests:其他存款(亿元)</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -295,7 +516,7 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 是否获取在线数据。默认为 <cite>False</cite>。</p>
+<dd class="field-odd"><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 是否获取在线数据。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
 </dd>
 <dt class="field-even">返回</dt>
 <dd class="field-even"><p>股票板块信息。</p>
@@ -320,7 +541,7 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>股票板块信息。返回数据内容参见 <a class="reference internal" href="#stock_ai.data_processor.load_stock_block" title="stock_ai.data_processor.load_stock_block"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_block()</span></code></a></p>
+<dd class="field-odd"><p>股票板块信息。返回数据内容参见 <a class="reference internal" href="#stock_ai.data_processor.load_stock_block" title="stock_ai.data_processor.load_stock_block"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_block()</span></code></a> 。</p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
@@ -360,15 +581,15 @@
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 股票代码。</p></li>
-<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 开始日期。数据格式为%Y-%m-%d。默认为`1990-01-01`。</p></li>
-<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 结束日期。数据格式为%Y-%m-%d。默认为`当天`。</p></li>
-<li><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 是否获取在线数据。默认为 <cite>False</cite>。</p></li>
-<li><p><strong>fq</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 是否取复权数据。默认为 <cite>qfq</cite>。
-* <cite>qfq</cite> - 前复权
-* <cite>hfq</cite> - 后复权
-* <cite>bfq</cite> or <cite>None</cite> - 不复权</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 开始日期。数据格式为%Y-%m-%d。默认为 <code class="docutils literal notranslate"><span class="pre">1990-01-01</span></code>。</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 结束日期。数据格式为%Y-%m-%d。默认为 <code class="xref py py-func docutils literal notranslate"><span class="pre">datetime.now()</span></code>。</p></li>
+<li><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 是否获取在线数据。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><strong>fq</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 是否取复权数据。默认为 <code class="docutils literal notranslate"><span class="pre">qfq</span></code>。
+- <code class="docutils literal notranslate"><span class="pre">qfq</span></code> : 前复权
+- <code class="docutils literal notranslate"><span class="pre">hfq</span></code> : 后复权
+- <code class="docutils literal notranslate"><span class="pre">bfq</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code> : 不复权</p></li>
 <li><p><strong>columns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.7)"><em>tuple</em></a><em>, </em><em>optional</em>) – 获取的列集合。默认为
-[‘open’, ‘high’, ‘low’, ‘close’, ‘volume’, ‘amount’]</p></li>
+<code class="docutils literal notranslate"><span class="pre">['open',</span> <span class="pre">'high',</span> <span class="pre">'low',</span> <span class="pre">'close',</span> <span class="pre">'volume',</span> <span class="pre">'amount']</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -401,7 +622,7 @@
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – csv文件所在的完整路径。</p></li>
-<li><p><strong>index_col</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a><em>, </em><em>sequence</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 索引列。参考</p></li>
+<li><p><strong>index_col</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a><em>, </em><em>sequence</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 索引列。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="(在 pandas v0.24.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code></a> 中同名参数。</p></li>
 <li><p><strong>encoding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 文件编码。默认为 <cite>utf-8</cite>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="(在 pandas v0.24.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code></a> 中同名参数。</p></li>
 <li><p><strong>parse_dates</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 文件编码。默认为 <cite>utf-8</cite>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="(在 pandas v0.24.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code></a> 中同名参数。</p></li>
 <li><p><strong>float_precision</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 浮点类型转换。默认为 <cite>round_trip</cite>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="(在 pandas v0.24.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code></a> 中同名参数。</p></li>
@@ -423,11 +644,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>code</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>start</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>end</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>fq</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>columns</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
+<li><p><strong>code</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">code</span></code> 的说明。</p></li>
+<li><p><strong>start</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">start</span></code> 的说明。</p></li>
+<li><p><strong>end</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">end</span></code> 的说明。</p></li>
+<li><p><strong>fq</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">fq</span></code> 的说明。</p></li>
+<li><p><strong>columns</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">columns</span></code> 的说明。</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
@@ -448,12 +669,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>code</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>start</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>end</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>fq</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>columns</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <cite>start</cite> 的说明。</p></li>
-<li><p><strong>times</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – 重试次数。默认为 <cite>5</cite>。</p></li>
+<li><p><strong>code</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">code</span></code> 的说明。</p></li>
+<li><p><strong>start</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">start</span></code> 的说明。</p></li>
+<li><p><strong>end</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">end</span></code> 的说明。</p></li>
+<li><p><strong>fq</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">fq</span></code> 的说明。</p></li>
+<li><p><strong>columns</strong> – 参考 <a class="reference internal" href="#stock_ai.data_processor.load_stock_daily" title="stock_ai.data_processor.load_stock_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_stock_daily()</span></code></a> 中参数 <code class="docutils literal notranslate"><span class="pre">columns</span></code> 的说明。</p></li>
+<li><p><strong>times</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – 重试次数。默认为 <code class="docutils literal notranslate"><span class="pre">5</span></code>。</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
@@ -595,7 +816,7 @@
 <dd><p>获取股票列表</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a>) – 是否获取在线数据。默认为False。</p>
+<dd class="field-odd"><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a>) – 是否获取在线数据。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
 </dd>
 <dt class="field-even">返回</dt>
 <dd class="field-even"><p>股票列表。</p>
@@ -609,7 +830,7 @@
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_list_mongodb">
 <code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_list_mongodb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_list_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_list_mongodb" title="永久链接至目标">¶</a></dt>
-<dd><p>从本地数据库中获取股票列表。</p>
+<dd><p>从本地数据库中获取股票列表</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
 <dd class="field-odd"><p>股票列表。</p>
@@ -634,7 +855,7 @@
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_list_online">
 <code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_list_online</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_list_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_list_online" title="永久链接至目标">¶</a></dt>
-<dd><p>从在线数据中获取股票列表。</p>
+<dd><p>从在线数据中获取股票列表</p>
 <p class="rubric">Notes</p>
 <p>在线数据只取tdx的数据。</p>
 <p class="rubric">Examples</p>
@@ -653,13 +874,13 @@
 <dl class="function">
 <dt id="stock_ai.data_processor.save_stock_daily_csv">
 <code class="descclassname">stock_ai.data_processor.</code><code class="descname">save_stock_daily_csv</code><span class="sig-paren">(</span><em>data</em>, <em>path</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#save_stock_daily_csv"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.save_stock_daily_csv" title="永久链接至目标">¶</a></dt>
-<dd><p>保存股票日线数据至csv文件。</p>
+<dd><p>保存股票日线数据至csv文件</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<em>pd.DataFrame</em>) – 数据表。</p></li>
 <li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 待保存的文件完整路径。</p></li>
-<li><p><strong>encoding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 文件编码。默认为`utf-8`。参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.to_csv()</span></code> 中同名参数。</p></li>
+<li><p><strong>encoding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 文件编码。默认为 <code class="docutils literal notranslate"><span class="pre">utf-8</span></code>。参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.to_csv()</span></code> 中同名参数。</p></li>
 </ul>
 </dd>
 </dl>
