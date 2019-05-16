@@ -17,6 +17,8 @@ stock\_ai.module
     :toctree:
     :nosignatures:
     
+    Index
+    IndexCN
     Stock
     StockCN
 

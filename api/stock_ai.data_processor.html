@@ -597,6 +597,12 @@
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a>) – 是否获取在线数据。默认为False。</p>
 </dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>股票列表。</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -631,14 +637,6 @@
 <dd><p>从在线数据中获取股票列表。</p>
 <p class="rubric">Notes</p>
 <p>在线数据只取tdx的数据。</p>
-<dl class="field-list simple">
-<dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>股票列表。</p>
-</dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
-</dd>
-</dl>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_list_mongodb</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">            code  decimal_point  name    pre_close       sec sse  volunit</span>

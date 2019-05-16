@@ -16,8 +16,11 @@ Attributes
     
     StockCN.block
     StockCN.code
+    StockCN.exchange
     StockCN.info
     StockCN.ipo_date
+    StockCN.name
+    StockCN.simple_info
 
 
 
@@ -35,8 +38,11 @@ Methods
 
 .. autoattribute:: StockCN.block
 .. autoattribute:: StockCN.code
+.. autoattribute:: StockCN.exchange
 .. autoattribute:: StockCN.info
 .. autoattribute:: StockCN.ipo_date
+.. autoattribute:: StockCN.name
+.. autoattribute:: StockCN.simple_info
 
 
 .. automethod:: StockCN.get_daily

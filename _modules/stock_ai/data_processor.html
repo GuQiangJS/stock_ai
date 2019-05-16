@@ -374,6 +374,9 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        online (bool): 是否获取在线数据。默认为False。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :py:class:`pandas.DataFrame`: 股票列表。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">load_stock_list_online</span><span class="p">()</span> <span class="k">if</span> <span class="n">online</span> <span class="k">else</span> <span class="n">load_stock_list_mongodb</span><span class="p">()</span></div>
 
@@ -383,9 +386,6 @@
 
 <span class="sd">    Notes:</span>
 <span class="sd">        在线数据只取tdx的数据。</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票列表。</span>
 
 <span class="sd">    Examples:</span>
 

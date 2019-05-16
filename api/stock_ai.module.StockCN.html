@@ -85,6 +85,8 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="stock_ai.module.html">stock_ai.module</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stock_ai.module.Index.html">stock_ai.module.Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stock_ai.module.IndexCN.html">stock_ai.module.IndexCN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stock_ai.module.Stock.html">stock_ai.module.Stock</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">stock_ai.module.StockCN</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a></li>
@@ -192,16 +194,25 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.block" title="stock_ai.module.StockCN.block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.block</span></code></a></p></td>
-<td><p>股票所属板块</p></td>
+<td><p>股票所属板块。</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.code" title="stock_ai.module.StockCN.code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.code</span></code></a></p></td>
 <td><p>股票代码。</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.info" title="stock_ai.module.StockCN.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.info</span></code></a></p></td>
-<td><p>获取数据来源参考 <code class="xref py py-attr docutils literal notranslate"><span class="pre">getinfo_online</span></code>。</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.exchange" title="stock_ai.module.StockCN.exchange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.exchange</span></code></a></p></td>
+<td><p>所属交易所。</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.ipo_date" title="stock_ai.module.StockCN.ipo_date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.ipo_date</span></code></a></p></td>
-<td><p>数据获取参考 <code class="xref py py-attr docutils literal notranslate"><span class="pre">info</span></code>。</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.info" title="stock_ai.module.StockCN.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.info</span></code></a></p></td>
+<td><p>当前股票信息。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.ipo_date" title="stock_ai.module.StockCN.ipo_date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.ipo_date</span></code></a></p></td>
+<td><p>当前股票ipo日期。</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.name" title="stock_ai.module.StockCN.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.name</span></code></a></p></td>
+<td><p>股票名称。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.simple_info" title="stock_ai.module.StockCN.simple_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.simple_info</span></code></a></p></td>
+<td><p>当前股票简单信息。</p></td>
 </tr>
 </tbody>
 </table>
@@ -222,7 +233,7 @@
 <dl class="attribute">
 <dt id="stock_ai.module.StockCN.block">
 <code class="descclassname">StockCN.</code><code class="descname">block</code><a class="headerlink" href="#stock_ai.module.StockCN.block" title="永久链接至目标">¶</a></dt>
-<dd><p>股票所属板块</p>
+<dd><p>股票所属板块。</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
 <dd class="field-odd"><p>股票板块信息。
@@ -249,9 +260,24 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="stock_ai.module.StockCN.exchange">
+<code class="descclassname">StockCN.</code><code class="descname">exchange</code><a class="headerlink" href="#stock_ai.module.StockCN.exchange" title="永久链接至目标">¶</a></dt>
+<dd><p>所属交易所。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>所属交易所。（返回``sh``或``sz``）</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="stock_ai.module.StockCN.info">
 <code class="descclassname">StockCN.</code><code class="descname">info</code><a class="headerlink" href="#stock_ai.module.StockCN.info" title="永久链接至目标">¶</a></dt>
-<dd><p>获取数据来源参考 <code class="xref py py-attr docutils literal notranslate"><span class="pre">getinfo_online</span></code>。</p>
+<dd><p>当前股票信息。</p>
+<p>获取数据来源参考 <code class="xref py py-attr docutils literal notranslate"><span class="pre">_get_info</span></code>。</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
 <dd class="field-odd"><p>当前股票信息。</p>
@@ -265,13 +291,43 @@
 <dl class="attribute">
 <dt id="stock_ai.module.StockCN.ipo_date">
 <code class="descclassname">StockCN.</code><code class="descname">ipo_date</code><a class="headerlink" href="#stock_ai.module.StockCN.ipo_date" title="永久链接至目标">¶</a></dt>
-<dd><p>数据获取参考 <a class="reference internal" href="#stock_ai.module.StockCN.info" title="stock_ai.module.StockCN.info"><code class="xref py py-attr docutils literal notranslate"><span class="pre">info</span></code></a>。</p>
+<dd><p>当前股票ipo日期。</p>
+<p>数据获取参考 <a class="reference internal" href="#stock_ai.module.StockCN.info" title="stock_ai.module.StockCN.info"><code class="xref py py-attr docutils literal notranslate"><span class="pre">info</span></code></a>。</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
 <dd class="field-odd"><p>当前股票ipo日期。</p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(在 Python v3.7)">datetime.datetime</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stock_ai.module.StockCN.name">
+<code class="descclassname">StockCN.</code><code class="descname">name</code><a class="headerlink" href="#stock_ai.module.StockCN.name" title="永久链接至目标">¶</a></dt>
+<dd><p>股票名称。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>股票名称。</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stock_ai.module.StockCN.simple_info">
+<code class="descclassname">StockCN.</code><code class="descname">simple_info</code><a class="headerlink" href="#stock_ai.module.StockCN.simple_info" title="永久链接至目标">¶</a></dt>
+<dd><p>当前股票简单信息。</p>
+<p>获取数据来源参考 <code class="xref py py-attr docutils literal notranslate"><span class="pre">_get_info</span></code>。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>当前股票简单信息。</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

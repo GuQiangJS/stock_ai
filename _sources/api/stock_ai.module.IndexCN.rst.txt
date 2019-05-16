@@ -1,0 +1,36 @@
+stock_ai.module.IndexCN
+=======================
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.module
+
+.. autoclass:: IndexCN
+    :members: __init__
+
+Attributes
+----------
+
+
+.. autosummary::
+    
+    IndexCN.code
+
+
+
+Methods
+-------
+
+
+.. autosummary::
+    :nosignatures:
+    
+    IndexCN.get_daily
+
+
+
+
+.. autoattribute:: IndexCN.code
+
+
+.. automethod:: IndexCN.get_daily

@@ -190,8 +190,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">getdaily_online</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;getdaily_online&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">getblock_online</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;getblock_online&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_simple_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_block</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_simple_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;根据 getinfo_online 属性确定是否从在线获取数据&quot;&quot;&quot;</span>
+        <span class="n">lst</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">load_stock_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getinfo_online</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lst</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;根据 getinfo_online 属性确定是否从在线获取数据&quot;&quot;&quot;</span>
@@ -201,8 +207,23 @@
             <span class="k">return</span> <span class="n">dp</span><span class="o">.</span><span class="n">load_stock_info_online</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">simple_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;当前股票简单信息。</span>
+
+<span class="sd">        获取数据来源参考 :py:attr:`_get_info`。</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :py:class:`pandas.Series`: 当前股票简单信息。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simple_info</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_simple_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_simple_info</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simple_info</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;获取数据来源参考 :py:attr:`getinfo_online`。</span>
+        <span class="sd">&quot;&quot;&quot;当前股票信息。</span>
+
+<span class="sd">        获取数据来源参考 :py:attr:`_get_info`。</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            :py:class:`pandas.DataFrame`: 当前股票信息。</span>
@@ -212,8 +233,29 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;股票名称。</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: 股票名称。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][</span>
+            <span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">simple_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;所属交易所。</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: 所属交易所。（返回``sh``或``sz``）</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">simple_info</span><span class="p">[</span><span class="s1">&#39;sse&#39;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ipo_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;数据获取参考 :py:attr:`info`。</span>
+        <span class="sd">&quot;&quot;&quot;当前股票ipo日期。</span>
+
+<span class="sd">        数据获取参考 :py:attr:`info`。</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            datetime.datetime: 当前股票ipo日期。</span>
@@ -250,7 +292,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;股票所属板块</span>
+        <span class="sd">&quot;&quot;&quot;股票所属板块。</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            :py:class:`pandas.DataFrame`: 股票板块信息。</span>
@@ -259,6 +301,69 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_block</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_block</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">load_stock_block</span><span class="p">(</span><span class="n">online</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">getblock_online</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_block</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Index"><a class="viewcode-back" href="../../api/stock_ai.module.Index.html#stock_ai.module.Index">[文档]</a><span class="k">class</span> <span class="nc">Index</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;指数类型定义&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Index.__init__"><a class="viewcode-back" href="../../api/stock_ai.module.Index.html#stock_ai.module.Index.__init__">[文档]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_code</span> <span class="o">=</span> <span class="n">code</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;指数代码。</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_code</span>
+
+<div class="viewcode-block" id="Index.get_daily"><a class="viewcode-back" href="../../api/stock_ai.module.Index.html#stock_ai.module.Index.get_daily">[文档]</a>    <span class="k">def</span> <span class="nf">get_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;获取日线数据。未实现该方法。在派生类中实现。&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+
+
+<div class="viewcode-block" id="IndexCN"><a class="viewcode-back" href="../../api/stock_ai.module.IndexCN.html#stock_ai.module.IndexCN">[文档]</a><span class="k">class</span> <span class="nc">IndexCN</span><span class="p">(</span><span class="n">Index</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;中国指数类型定义&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="IndexCN.__init__"><a class="viewcode-back" href="../../api/stock_ai.module.IndexCN.html#stock_ai.module.IndexCN.__init__">[文档]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;构造函数</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            code (str): 指数代码。</span>
+<span class="sd">            getdaily_online (bool): 是否从在线获取股票日线数据。默认为 False。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">IndexCN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">getdaily_online</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;getdaily_online&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="IndexCN.get_daily"><a class="viewcode-back" href="../../api/stock_ai.module.IndexCN.html#stock_ai.module.IndexCN.get_daily">[文档]</a>    <span class="k">def</span> <span class="nf">get_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;获取日线数据。</span>
+
+<span class="sd">        当前实例会缓存所有的日线数据。再从缓存中提取指定日期的数据作为返回值。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start (str): 开始日期。</span>
+<span class="sd">            end (str): 结束日期。</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :py:class:`pandas.DataFrame`: 日线数据。</span>
+<span class="sd">            如果 `start` 和 `end` 相同，则返回一日数据。</span>
+<span class="sd">            数据参考 :py:func:`stock_ai.data_processor.load_index_daily`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">load_index_daily</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span>
+                                              <span class="n">online</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">getdaily_online</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="ow">and</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">start</span><span class="p">),</span>
+                                         <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">end</span><span class="p">))]</span>
+        <span class="k">elif</span> <span class="n">start</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">start</span><span class="p">):]</span>
+        <span class="k">elif</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">end</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span></div></div>
 </pre></div>
 
            </div>
