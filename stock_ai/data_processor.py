@@ -225,6 +225,9 @@ def load_stock_list(online=False):
 
     Args:
         online (bool): 是否获取在线数据。默认为False。
+
+    Returns:
+        :py:class:`pandas.DataFrame`: 股票列表。
     """
     return load_stock_list_online() if online else load_stock_list_mongodb()
 
@@ -234,9 +237,6 @@ def load_stock_list_online():
 
     Notes:
         在线数据只取tdx的数据。
-
-    Returns:
-        :py:class:`pandas.DataFrame`: 股票列表。
 
     Examples:
 
