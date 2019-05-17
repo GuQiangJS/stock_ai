@@ -1,35 +1,28 @@
 import os
-import pandas as pd
 from stock_ai import data_processor
+import pandas as pd
+import logging
 
-test_stocks = ['601398']
+is_travis = "TRAVIS" in os.environ and os.environ["TRAVIS"] == "true"
+stock_code = '601398'
+index_code = '399300'
 
-
-def _current_path():
-    return os.path.abspath(os.path.dirname(__file__))
-
-
-def _get_stock_daily_filepath(code):
-    """根据股票代码，获取股票日线数据文件保存路径"""
-    return os.path.join(_current_path(), 'data', 'daily_stock',
-                        "{0}.csv".format(code))
+_daily_dfs = {}  #日线数据缓存缓存
 
 
-def read_stock_daily_from_csv(code)->pd.DataFrame:
-    filepath = _get_stock_daily_filepath(code)
-    if not os.path.exists(filepath):
-        raise FileNotFoundError(filepath)
-    return data_processor.load_stock_daily_csv(filepath)
+def get_stock_daily(code: str = stock_code) -> pd.DataFrame:
+    if _daily_dfs and code in _daily_dfs:
+        return _daily_dfs[code]
+    df = data_processor.load_stock_daily(code, online=is_travis, fq=None)
+    logging.debug("Load Daily:" + code)
+    _daily_dfs[code] = df
+    return df
 
 
-def init_stock_daily_data():
-    """在本地构建默认的测试用数据"""
-    for code in test_stocks:
-        filepath = _get_stock_daily_filepath(code)
-        if not os.path.exists(filepath):
-            df = data_processor.load_stock_daily_online(code)
-            data_processor.save_stock_daily_csv(df, filepath)
-
-
-if __name__ == '__main__':
-    init_stock_daily_data()
+def get_index_daily(code: str = index_code) -> pd.DataFrame:
+    if _daily_dfs and code in _daily_dfs:
+        return _daily_dfs[code]
+    df = data_processor.load_index_daily(code, online=is_travis)
+    logging.debug("Load Daily:" + code)
+    _daily_dfs[code] = df
+    return df

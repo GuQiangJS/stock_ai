@@ -23,5 +23,5 @@ Welcome to stock_ai's documentation!
 
    stock_ai.data_processor
    stock_ai.module
-   stock_ai.appender
+   stock_ai.calcs
    stock_ai.wrapper

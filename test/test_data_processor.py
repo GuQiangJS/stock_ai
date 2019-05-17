@@ -4,16 +4,7 @@ import pytest
 import os
 import numpy as np
 import pprint
-
-
-def test_load_stock_daily_csv():
-    code = '601398'
-    df_csv = test.read_stock_daily_from_csv(code)
-    assert not df_csv.empty
-    first_line = df_csv.iloc[0]
-    last_line = df_csv.iloc[-1]
-    assert 1.9921332735028636 == first_line['open']
-    assert 484066272.0 == last_line['amount']
+from test import is_travis
 
 
 def test_load_stock_daily_online():
@@ -33,8 +24,7 @@ def test_load_stock_daily_online():
     print(df_online2.head())
 
 
-@pytest.mark.skipif("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true",
-                    reason="Skipping this test on Travis CI.")
+@pytest.mark.skipif(is_travis, reason="Skipping this test on Travis CI.")
 def test_load_stock_list_mongo():
     """测试从数据库中读取股票列表"""
     df = data_processor.load_stock_list_mongodb()
@@ -58,8 +48,7 @@ def test_load_stock_list_online():
         assert name in df.columns
 
 
-@pytest.mark.skipif("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true",
-                    reason="Skipping this test on Travis CI.")
+@pytest.mark.skipif(is_travis, reason="Skipping this test on Travis CI.")
 def test_load_stock_list():
     df1 = data_processor.load_stock_list_mongodb()
     df2 = data_processor.load_stock_list(online=False)
@@ -75,8 +64,7 @@ def test_load_stock_info_online():
     print(df.dtypes)
 
 
-@pytest.mark.skipif("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true",
-                    reason="Skipping this test on Travis CI.")
+@pytest.mark.skipif(is_travis, reason="Skipping this test on Travis CI.")
 def test_load_stock_info_mongo():
     code = '601398'
     df = data_processor.load_stock_info_mongodb(code)
@@ -91,8 +79,7 @@ def test_load_stock_block_online():
     print(df.loc['601398'].head())
 
 
-@pytest.mark.skipif("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true",
-                    reason="Skipping this test on Travis CI.")
+@pytest.mark.skipif(is_travis, reason="Skipping this test on Travis CI.")
 def test_load_stock_block_mongodb():
     df = data_processor.load_stock_block_mongodb()
     d1 = df.loc['601398']

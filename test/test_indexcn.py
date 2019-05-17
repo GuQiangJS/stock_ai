@@ -3,6 +3,7 @@ import pytest
 from stock_ai.util import date2str
 import numpy as np
 import os
+from test import is_travis
 
 def test_getdaily_online():
     d1 = _test_index_daily(IndexCN('399300', getdaily_online=True))
@@ -11,8 +12,7 @@ def test_getdaily_online():
     assert len(d1) == len(d2)
 
 
-@pytest.mark.skipif("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true",
-                    reason="Skipping this test on Travis CI.")
+@pytest.mark.skipif(is_travis, reason="Skipping this test on Travis CI.")
 def test_getdaily_mongodb():
     _test_index_daily(IndexCN('399300'))
 
