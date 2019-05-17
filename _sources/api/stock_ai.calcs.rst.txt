@@ -13,7 +13,14 @@ calcs
     
     calc_month
     calc_year
+    cum_return
+    daily_return
     is_trade_suspension
+    sharpe_ratio
+    tech_boll
+    tech_ewm
+    tech_ma
+    tech_macd
 
 
 
@@ -22,7 +29,14 @@ calcs
 
 .. autofunction:: calc_month
 .. autofunction:: calc_year
+.. autofunction:: cum_return
+.. autofunction:: daily_return
 .. autofunction:: is_trade_suspension
+.. autofunction:: sharpe_ratio
+.. autofunction:: tech_boll
+.. autofunction:: tech_ewm
+.. autofunction:: tech_ma
+.. autofunction:: tech_macd
 
 
 

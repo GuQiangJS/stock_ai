@@ -176,11 +176,18 @@
 <li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a>) – 是否使用copy后的数据。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html#pandas.DataFrame.copy" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.copy()</span></code></a> 方法。默认为 True。</p></li>
 <li><p><strong>rsuffix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 默认为 <code class="docutils literal notranslate"><span class="pre">_index</span></code>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a> 中同名参数。</p></li>
 <li><p><strong>how</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 默认为 <code class="docutils literal notranslate"><span class="pre">right</span></code>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a> 中同名参数。</p></li>
-<li><p><strong>append_funcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.7)"><em>dict</em></a>) – <p>附加其他列数据时的计算方法字典。</p>
+<li><p><strong>append_funcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(在 Python v3.7)"><em>collections.OrderedDict</em></a>) – <p>附加其他列数据时的计算方法字典。</p>
 <ul>
 <li><p>key值为需要附加的列名。</p></li>
 <li><p>value值为可以为方法名称或者是[方法名,参数字典](详见 <code class="xref py py-mod docutils literal notranslate"><span class="pre">stock_ai.appender</span></code>)。</p></li>
 </ul>
+<dl class="simple">
+<dt>关于附加列名的赋值方式：</dt><dd><ul>
+<li><p>如果方法返回的是 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>，用key值来赋值。</p></li>
+<li><p>如果方法返回的是 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>，会用返回的 <cite>DataFrame</cite> 中的列名+Key值赋值。</p></li>
+</ul>
+</dd>
+</dl>
 </p></li>
 </ul>
 </dd>

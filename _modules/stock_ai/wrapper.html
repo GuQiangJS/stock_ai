@@ -150,7 +150,6 @@
 <span></span><span class="sd">&quot;&quot;&quot;数据包装器&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
 <div class="viewcode-block" id="dataframe_merge"><a class="viewcode-back" href="../../api/stock_ai.wrapper.html#stock_ai.wrapper.dataframe_merge">[文档]</a><span class="k">def</span> <span class="nf">dataframe_merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -162,10 +161,14 @@
 <span class="sd">        copy (bool): 是否使用copy后的数据。参考 :meth:`pandas.DataFrame.copy` 方法。默认为 True。</span>
 <span class="sd">        rsuffix (str): 默认为 ``_index``。参考 :meth:`pandas.DataFrame.join` 中同名参数。</span>
 <span class="sd">        how (str): 默认为 ``right``。参考 :meth:`pandas.DataFrame.join` 中同名参数。</span>
-<span class="sd">        append_funcs (dict): 附加其他列数据时的计算方法字典。</span>
+<span class="sd">        append_funcs (collections.OrderedDict): 附加其他列数据时的计算方法字典。</span>
 
 <span class="sd">            - key值为需要附加的列名。</span>
 <span class="sd">            - value值为可以为方法名称或者是[方法名,参数字典](详见 :mod:`.stock_ai.appender`)。</span>
+
+<span class="sd">            关于附加列名的赋值方式：</span>
+<span class="sd">                - 如果方法返回的是 :class:`pandas.Series`，用key值来赋值。</span>
+<span class="sd">                - 如果方法返回的是 :class:`pandas.DataFrame`，会用返回的 `DataFrame` 中的列名+Key值赋值。</span>
 
 <span class="sd">    See Also:</span>
 <span class="sd">        :meth:`pandas.DataFrame.join`</span>
@@ -224,10 +227,18 @@
     <span class="n">df</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="k">else</span> <span class="n">df1</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">rsuffix</span><span class="o">=</span><span class="n">rsuffix</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">append_funcs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">new_value</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">df</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">new_value</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">df</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            <span class="n">new_value</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_value</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+            <span class="n">new_value</span> <span class="o">=</span> <span class="n">new_value</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_value</span><span class="p">,</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="n">new_value</span><span class="o">=</span><span class="n">new_value</span><span class="o">.</span><span class="n">add_suffix</span><span class="p">(</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span></div>
 </pre></div>
 
