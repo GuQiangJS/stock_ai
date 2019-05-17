@@ -1,4 +1,4 @@
-{{ fullname }}
+{{ name }}
 {{ underline }}
 
 .. autodoc_member_order: 'alphabetical'
@@ -8,10 +8,9 @@
 .. autoclass:: {{name}}
     :members: __init__
 
-Attributes
-----------
 {% block attributes %}
 {% if attributes %}
+.. rubric:: Attributes
 .. autosummary::
     {% for item in all_attributes %}
     {%- if not item.startswith('_') %}
@@ -21,10 +20,9 @@ Attributes
 {% endif %}
 {% endblock %}
 
-Methods
--------
 {% block methods %}
 {% if methods %}
+.. rubric:: Methods
 .. autosummary::
     :nosignatures:
     {% for item in all_methods %}
@@ -35,14 +33,20 @@ Methods
 {% endif %}
 {% endblock %}
 
+{% if attributes %}
+.. rubric:: Attributes
 {% for item in all_attributes %}
 {%- if not item.startswith('_') %}
 .. autoattribute:: {{ name }}.{{ item }}
 {%- endif -%}
 {%- endfor %}
+{%- endif -%}
 
+{% if methods %}
+.. rubric:: Methods
 {% for item in all_methods %}
 {%- if not item.startswith('_') or item in ['__call__'] %}
 .. automethod:: {{ name }}.{{ item }}
 {%- endif -%}
 {%- endfor %}
+{%- endif -%}

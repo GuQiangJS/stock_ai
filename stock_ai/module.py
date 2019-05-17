@@ -64,7 +64,7 @@ class StockCN(Stock):
         获取数据来源参考 :py:attr:`_get_info`。
 
         Returns:
-            :py:class:`pandas.Series`: 当前股票简单信息。
+            :class:`~pandas.Series`: 当前股票简单信息。
         """
         if self._simple_info.empty:
             self._simple_info = self._get_simple_info()
@@ -77,7 +77,7 @@ class StockCN(Stock):
         获取数据来源参考 :py:attr:`_get_info`。
 
         Returns:
-            :py:class:`pandas.DataFrame`: 当前股票信息。
+            :class:`~pandas.DataFrame`: 当前股票信息。
         """
         if self._info.empty:
             self._info = self._get_info()
@@ -123,9 +123,9 @@ class StockCN(Stock):
             end (str): 结束日期。
 
         Returns:
-            :py:class:`pandas.DataFrame`: 日线数据。
+            :class:`~pandas.DataFrame`: 日线数据。
             如果 `start` 和 `end` 相同，则返回一日数据。
-            数据参考 :py:func:`stock_ai.data_processor.load_stock_daily`
+            数据参考 :func:`stock_ai.data_processor.load_stock_daily`
 
         """
         if self._daily.empty:
@@ -146,8 +146,8 @@ class StockCN(Stock):
         """股票所属板块。
 
         Returns:
-            :py:class:`pandas.DataFrame`: 股票板块信息。
-            数据参考 :py:func:`stock_ai.data_processor.load_stock_block`
+            :class:`~pandas.DataFrame`: 股票板块信息。
+            数据参考 :func:`stock_ai.data_processor.load_stock_block`
         """
         if self._block.empty:
             self._block = dp.load_stock_block(online=self.getblock_online)
@@ -198,9 +198,9 @@ class IndexCN(Index):
             end (str): 结束日期。
 
         Returns:
-            :py:class:`pandas.DataFrame`: 日线数据。
+            :class:`~pandas.DataFrame`: 日线数据。
             如果 `start` 和 `end` 相同，则返回一日数据。
-            数据参考 :py:func:`stock_ai.data_processor.load_index_daily`
+            数据参考 :func:`stock_ai.data_processor.load_index_daily`
 
         """
         if self._daily.empty:

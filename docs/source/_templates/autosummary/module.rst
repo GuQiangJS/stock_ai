@@ -1,4 +1,4 @@
-{{ fullname | escape | underline}}
+{{ name | escape | underline}}
 
 .. autodoc_member_order: 'alphabetical'
 
@@ -6,6 +6,7 @@
 
 {% block functions %}
 {% if functions %}
+.. rubric:: Methods
 .. autosummary::
     :nosignatures:
     {% for item in functions %}
@@ -15,6 +16,7 @@
 {% endblock %}
 
 {% if functions %}
+.. rubric:: Methods
 {% for item in functions %}
 .. autofunction:: {{ item }}
 {%- endfor %}
@@ -22,6 +24,7 @@
 
 {% block classes %}
 {% if classes %}
+.. rubric:: Class
 .. autosummary::
     :toctree:
     :nosignatures:
