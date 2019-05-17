@@ -13,15 +13,16 @@ def dataframe_merge(df1, df2, **kwargs):
         copy (bool): 是否使用copy后的数据。参考 :meth:`pandas.DataFrame.copy` 方法。默认为 True。
         rsuffix (str): 默认为 ``_index``。参考 :meth:`pandas.DataFrame.join` 中同名参数。
         how (str): 默认为 ``right``。参考 :meth:`pandas.DataFrame.join` 中同名参数。
-        append_funcs (dict): 附加其他列数据时的计算方法字典。key值为需要附加的列名。
-            value值为方法名称(详见 :mod:`.stock_ai.appender`)。
-            示例：``{'year':appender.calc_year}``
+        append_funcs (dict): 附加其他列数据时的计算方法字典。
+
+            - key值为需要附加的列名。
+            - value值为可以为方法名称或者是[方法名,参数字典](详见 :mod:`.stock_ai.appender`)。
 
     See Also:
         :meth:`pandas.DataFrame.join`
 
     Examples:
-        使用默认的 ``how`` 参数合并。
+        使用默认参数合并。
 
         >>> df_1 = data_processor.load_stock_daily('601398')
         >>> df_2 = data_processor.load_index_daily('399300')
@@ -34,18 +35,36 @@ def dataframe_merge(df1, df2, **kwargs):
         2005-01-07   NaN   NaN  NaN  ...           0       72986.0  4.737468e+09
         2005-01-10   NaN   NaN  NaN  ...           0       57916.0  3.762931e+09
 
-        附加列
+        附加列只传递方法名（无参数）
 
         >>> funcs = {'year': stock_ai.appender.calc_year}
         >>> df = wrapper.dataframe_merge(df_1, df_2, append_funcs=funcs)
         >>> df['year'].head()
-        .date
+        date
         2005-01-04    2005
         2005-01-05    2005
         2005-01-06    2005
         2005-01-07    2005
         2005-01-10    2005
         Name: year, dtype: int64
+
+        附加列时传递参数的方式
+
+        >>> def app(df, **kwargs):
+        >>>    v = kwargs.pop('v', '123')
+        >>>    return pd.Series(v, index=df.index)
+        >>> new_col = 'cv'
+        >>> new_value='123'
+        >>> funcs={new_col: [app, {'v': new_value}]}
+        >>> df = wrapper.dataframe_merge(df_1, df_2, append_funcs=funcs)
+        >>> df[new_col].head()
+        date
+        2005-01-04    123
+        2005-01-05    123
+        2005-01-06    123
+        2005-01-07    123
+        2005-01-10    123
+        Name: cv, dtype: object
 
     Returns:
         :class:`~pandas.DataFrame`: 合并后的数据。
@@ -56,5 +75,8 @@ def dataframe_merge(df1, df2, **kwargs):
     df = df1.copy() if kwargs.pop('copy', True) else df1
     df = df.join(df2, rsuffix=rsuffix, how=how)
     for k, v in append_funcs.items():
-        df[k] = v(df)
+        if isinstance(v, (list, tuple)) and len(v) > 1:
+            df[k] = v[0](df, **v[1])
+        else:
+            df[k] = v(df)
     return df

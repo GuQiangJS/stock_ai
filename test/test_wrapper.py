@@ -23,7 +23,7 @@ def _assert_columns_in_dataframe(df: pd.DataFrame, cols):
         assert col in df.columns
 
 
-def test_stock_index_merge_online_appendfuncs():
+def test_stock_index_merge_appendfuncs():
     """测试stock_index_merge。附加列。"""
     funcs = {'year': calcs.calc_year, 'month': calcs.calc_month}
     df = wrapper.dataframe_merge(get_stock_daily(),
@@ -31,3 +31,22 @@ def test_stock_index_merge_online_appendfuncs():
                                  append_funcs=funcs)
     _assert_columns_in_dataframe(df, funcs.keys())
     print(df[funcs.keys()].head())
+
+
+def test_stock_index_merge_appendfuncs_has_params():
+
+    def app(df, **kwargs):
+        v = kwargs.pop('v', '123')
+        return pd.Series(v, index=df.index)
+
+    new_col = 'cv'
+    new_value='123'
+    df = wrapper.dataframe_merge(get_stock_daily(),
+                                 get_index_daily(),
+                                 append_funcs={new_col: [app, {
+                                     'v': new_value
+                                 }]})
+    print(df[new_col].head())
+    v = df[new_col].unique()
+    assert len(v) == 1
+    assert v[0] == new_value

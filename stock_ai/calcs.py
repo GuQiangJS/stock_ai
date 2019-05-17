@@ -27,7 +27,11 @@ def calc_year(df, **kwargs):
 def is_trade_suspension(df, **kwargs):
     """返回是否为停牌
 
-    根据 `df` 中指定列 `close` 来确定是否为停牌日。（如果数据为 NaN 则为True，否则为False）
+    根据 `df` 中指定参数 `colname` 找到指定列，采用 :func:`pandas.Series.isna` 判断。
+    ``True`` 表示是停牌日。
+
+    See Also:
+        :func:`pandas.Series.isna`
 
     Args:
         df (:class:`~pandas.DataFrame`): 原始数据。

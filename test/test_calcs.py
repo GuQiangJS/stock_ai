@@ -29,3 +29,11 @@ def test_is_trade_suspension():
     assert is_sus['2012-02-23']
     assert not is_sus['2012-02-24']
     print(is_sus['2012-02-23'])
+
+def test_call():
+    d={'a':'A','b':'B'}
+    f(**d)
+
+def f(**kwargs):
+    print(kwargs.pop('a','123'))
+    print(kwargs.pop('b','123'))

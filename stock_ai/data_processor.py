@@ -37,9 +37,11 @@ def load_stock_daily(code, **kwargs):
             end (str, optional): 结束日期。数据格式为%Y-%m-%d。默认为 :func:`datetime.now`。
             online (bool, optional): 是否获取在线数据。默认为 ``False``。
             fq (str, optional): 是否取复权数据。默认为 ``qfq``。
+
                 - ``qfq`` : 前复权
                 - ``hfq`` : 后复权
                 - ``bfq`` or ``None`` : 不复权
+
             columns (tuple, optional): 获取的列集合。默认为
                 ``['open', 'high', 'low', 'close', 'volume', 'amount']``
 
