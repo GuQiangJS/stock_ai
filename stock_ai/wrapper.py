@@ -1,7 +1,6 @@
 """数据包装器"""
 
 import pandas as pd
-import numpy as np
 
 
 def dataframe_merge(df1, df2, **kwargs):
@@ -13,10 +12,14 @@ def dataframe_merge(df1, df2, **kwargs):
         copy (bool): 是否使用copy后的数据。参考 :meth:`pandas.DataFrame.copy` 方法。默认为 True。
         rsuffix (str): 默认为 ``_index``。参考 :meth:`pandas.DataFrame.join` 中同名参数。
         how (str): 默认为 ``right``。参考 :meth:`pandas.DataFrame.join` 中同名参数。
-        append_funcs (dict): 附加其他列数据时的计算方法字典。
+        append_funcs (collections.OrderedDict): 附加其他列数据时的计算方法字典。
 
             - key值为需要附加的列名。
             - value值为可以为方法名称或者是[方法名,参数字典](详见 :mod:`.stock_ai.appender`)。
+
+            关于附加列名的赋值方式：
+                - 如果方法返回的是 :class:`pandas.Series`，用key值来赋值。
+                - 如果方法返回的是 :class:`pandas.DataFrame`，会用返回的 `DataFrame` 中的列名+Key值赋值。
 
     See Also:
         :meth:`pandas.DataFrame.join`
@@ -75,8 +78,16 @@ def dataframe_merge(df1, df2, **kwargs):
     df = df1.copy() if kwargs.pop('copy', True) else df1
     df = df.join(df2, rsuffix=rsuffix, how=how)
     for k, v in append_funcs.items():
+        new_value = None
         if isinstance(v, (list, tuple)) and len(v) > 1:
-            df[k] = v[0](df, **v[1])
+            new_value = v[0](df, **v[1])
         else:
-            df[k] = v(df)
+            new_value = v(df)
+        if isinstance(new_value, pd.Series):
+            new_value = new_value.to_frame(k)
+        elif isinstance(new_value,pd.DataFrame):
+            new_value=new_value.add_suffix('_' + k)
+        else:
+            raise NotImplementedError
+        df = df.join(new_value)
     return df

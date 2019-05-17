@@ -40,13 +40,45 @@ def test_stock_index_merge_appendfuncs_has_params():
         return pd.Series(v, index=df.index)
 
     new_col = 'cv'
-    new_value='123'
-    df = wrapper.dataframe_merge(get_stock_daily(),
-                                 get_index_daily(),
-                                 append_funcs={new_col: [app, {
-                                     'v': new_value
-                                 }]})
+    new_value = '123'
+    df = wrapper.dataframe_merge(
+        get_stock_daily(),
+        get_index_daily(),
+        append_funcs={new_col: [app, {
+            'v': new_value
+        }]})
     print(df[new_col].head())
     v = df[new_col].unique()
     assert len(v) == 1
     assert v[0] == new_value
+
+    append_funcs = {
+        'ma7': [calcs.tech_ma, {
+            'days': 7
+        }],
+        'ma5': [calcs.tech_ma, {
+            'days': 5
+        }]
+    }
+    df = wrapper.dataframe_merge(get_stock_daily(),
+                                 get_index_daily(),
+                                 append_funcs=append_funcs)
+    for k in append_funcs.keys():
+        assert k in df.columns
+    print(df.dtypes)
+
+    #macd返回的是DataFrame，DataFrame会在列已存在的情况下加上key值为后缀名
+    append_funcs = {
+        'macd': calcs.tech_macd,
+        'macd1': [calcs.tech_macd, {
+            'short': 5,
+            'long': 15,
+            'mid': 10
+        }]
+    }
+    df = wrapper.dataframe_merge(get_stock_daily(),
+                                 get_index_daily(),
+                                 append_funcs=append_funcs)
+
+    assert len([col for col in df.columns if '_macd1' in col]) > 0
+    print(df.dtypes)
