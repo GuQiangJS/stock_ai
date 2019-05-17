@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="prev" title="appender" href="stock_ai.appender.html" /> 
+    <link rel="prev" title="calcs" href="stock_ai.calcs.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,7 +83,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.data_processor.html">data_processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stock_ai.appender.html">appender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">wrapper</a></li>
 </ul>
 
@@ -158,34 +158,39 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.wrapper.stock_index_merge" title="stock_ai.wrapper.stock_index_merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stock_index_merge</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.wrapper.dataframe_merge" title="stock_ai.wrapper.dataframe_merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe_merge</span></code></a></p></td>
 <td><p>股票日线数据与指数日线数据合并</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
 <dl class="function">
-<dt id="stock_ai.wrapper.stock_index_merge">
-<code class="descclassname">stock_ai.wrapper.</code><code class="descname">stock_index_merge</code><span class="sig-paren">(</span><em>stock</em>, <em>index</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/wrapper.html#stock_index_merge"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.wrapper.stock_index_merge" title="永久链接至目标">¶</a></dt>
+<dt id="stock_ai.wrapper.dataframe_merge">
+<code class="descclassname">stock_ai.wrapper.</code><code class="descname">dataframe_merge</code><span class="sig-paren">(</span><em>df1</em>, <em>df2</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/wrapper.html#dataframe_merge"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.wrapper.dataframe_merge" title="永久链接至目标">¶</a></dt>
 <dd><p>股票日线数据与指数日线数据合并</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stock</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 股票数据。</p></li>
-<li><p><strong>index</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 指数数据。</p></li>
+<li><p><strong>df1</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 股票数据。</p></li>
+<li><p><strong>df2</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 指数数据。</p></li>
+<li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a>) – 是否使用copy后的数据。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html#pandas.DataFrame.copy" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.copy()</span></code></a> 方法。默认为 True。</p></li>
 <li><p><strong>rsuffix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 默认为 <code class="docutils literal notranslate"><span class="pre">_index</span></code>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a> 中同名参数。</p></li>
 <li><p><strong>how</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 默认为 <code class="docutils literal notranslate"><span class="pre">right</span></code>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a> 中同名参数。</p></li>
 <li><p><strong>append_funcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.7)"><em>dict</em></a>) – 附加其他列数据时的计算方法字典。key值为需要附加的列名。
 value值为方法名称(详见 <code class="xref py py-mod docutils literal notranslate"><span class="pre">stock_ai.appender</span></code>)。
-示例：<code class="docutils literal notranslate"><span class="pre">{'year':appender.append_year}</span></code></p></li>
+示例：<code class="docutils literal notranslate"><span class="pre">{'year':appender.calc_year}</span></code></p></li>
 </ul>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a></p>
+</div>
 <p class="rubric">Examples</p>
 <p>使用默认的 <code class="docutils literal notranslate"><span class="pre">how</span></code> 参数合并。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_1</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_daily</span><span class="p">(</span><span class="s1">&#39;601398&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df_2</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_index_daily</span><span class="p">(</span><span class="s1">&#39;399300&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapper</span><span class="o">.</span><span class="n">stock_index_merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapper</span><span class="o">.</span><span class="n">dataframe_merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">.            open  high  low  ...  down_count  volume_index  amount_index</span>
 <span class="go">date                         ...</span>
 <span class="go">2005-01-04   NaN   NaN  NaN  ...           0       74128.0  4.431976e+09</span>
@@ -196,8 +201,8 @@ value值为方法名称(详见 <code class="xref py py-mod docutils literal notr
 </pre></div>
 </div>
 <p>附加列</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">funcs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">stock_ai</span><span class="o">.</span><span class="n">appender</span><span class="o">.</span><span class="n">append_year</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">wrapper</span><span class="o">.</span><span class="n">stock_index_merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">append_funcs</span><span class="o">=</span><span class="n">funcs</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">funcs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">stock_ai</span><span class="o">.</span><span class="n">appender</span><span class="o">.</span><span class="n">calc_year</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">wrapper</span><span class="o">.</span><span class="n">dataframe_merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">append_funcs</span><span class="o">=</span><span class="n">funcs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">.date</span>
 <span class="go">2005-01-04    2005</span>
@@ -229,7 +234,7 @@ value值为方法名称(详见 <code class="xref py py-mod docutils literal notr
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="stock_ai.appender.html" class="btn btn-neutral float-left" title="appender" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="stock_ai.calcs.html" class="btn btn-neutral float-left" title="calcs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

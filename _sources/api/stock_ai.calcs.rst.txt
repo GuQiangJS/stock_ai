@@ -1,0 +1,29 @@
+calcs
+=====
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.calcs
+
+
+
+.. rubric:: Methods
+.. autosummary::
+    :nosignatures:
+    
+    calc_month
+    calc_year
+    is_trade_suspension
+
+
+
+
+.. rubric:: Methods
+
+.. autofunction:: calc_month
+.. autofunction:: calc_year
+.. autofunction:: is_trade_suspension
+
+
+
+

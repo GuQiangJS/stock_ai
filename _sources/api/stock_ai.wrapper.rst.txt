@@ -11,14 +11,14 @@ wrapper
 .. autosummary::
     :nosignatures:
     
-    stock_index_merge
+    dataframe_merge
 
 
 
 
 .. rubric:: Methods
 
-.. autofunction:: stock_index_merge
+.. autofunction:: dataframe_merge
 
 
 

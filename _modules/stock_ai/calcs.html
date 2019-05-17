@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>stock_ai.appender &mdash; stock_ai  文档</title>
+  <title>stock_ai.calcs &mdash; stock_ai  文档</title>
   
 
   
@@ -82,7 +82,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.data_processor.html">data_processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.appender.html">appender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.wrapper.html">wrapper</a></li>
 </ul>
 
@@ -131,7 +131,7 @@
         
           <li><a href="../index.html">模块代码</a> &raquo;</li>
         
-      <li>stock_ai.appender</li>
+      <li>stock_ai.calcs</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -146,19 +146,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>stock_ai.appender 源代码</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;DataFrame附加器&quot;&quot;&quot;</span>
+  <h1>stock_ai.calcs 源代码</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;数据计算器&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 
-<div class="viewcode-block" id="append_year"><a class="viewcode-back" href="../../api/stock_ai.appender.html#stock_ai.appender.append_year">[文档]</a><span class="k">def</span> <span class="nf">append_year</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;附加年信息</span>
+<div class="viewcode-block" id="calc_year"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.calc_year">[文档]</a><span class="k">def</span> <span class="nf">calc_year</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算年信息</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; appender.append_year(data_processor.load_stock_daily(&#39;601398&#39;)).head()</span>
+<span class="sd">        &gt;&gt;&gt; appender.calc_year(data_processor.load_stock_daily(&#39;601398&#39;)).head()</span>
 <span class="sd">        date</span>
 <span class="sd">        2006-10-27    2006</span>
 <span class="sd">        2006-10-30    2006</span>
@@ -171,6 +171,32 @@
 <span class="sd">        :class:`~pandas.Series`: 计算后的列。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_create_series</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="is_trade_suspension"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.is_trade_suspension">[文档]</a><span class="k">def</span> <span class="nf">is_trade_suspension</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;返回是否为停牌</span>
+
+<span class="sd">    根据 `df` 中指定列 `close` 来确定是否为停牌日。（如果数据为 NaN 则为True，否则为False）</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
+<span class="sd">        colname (str): 用来判断的列名。默认为 ``close``。</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; df_stock = data_processor.load_stock_daily(&#39;601398&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; df_index = data_processor.load_index_daily(&#39;399300&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; df = wrapper.dataframe_merge(df_stock, df_index)</span>
+<span class="sd">        &gt;&gt;&gt; is_sus = calcs.is_trade_suspension(df)</span>
+<span class="sd">        &gt;&gt;&gt; is_sus[&#39;2012-02-23&#39;] # 2012-01-06 召开2012年度第1次临时股东大会，停牌一天 ，2012-02-23</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; is_sus[&#39;2012-02-24&#39;]</span>
+<span class="sd">        False</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :class:`~pandas.Series`: 如果是停牌数据则为True，否则为False。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">colname</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;colname&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span></div>
 
 
 <span class="k">def</span> <span class="nf">_create_series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -196,14 +222,14 @@
                      <span class="n">fastpath</span><span class="o">=</span><span class="n">fastpath</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="append_month"><a class="viewcode-back" href="../../api/stock_ai.appender.html#stock_ai.appender.append_month">[文档]</a><span class="k">def</span> <span class="nf">append_month</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;附加月信息</span>
+<div class="viewcode-block" id="calc_month"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.calc_month">[文档]</a><span class="k">def</span> <span class="nf">calc_month</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算月信息</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; appender.append_month(data_processor.load_stock_daily(&#39;601398&#39;)).head()</span>
+<span class="sd">        &gt;&gt;&gt; appender.calc_month(data_processor.load_stock_daily(&#39;601398&#39;)).head()</span>
 <span class="sd">        date</span>
 <span class="sd">        2006-10-27    10</span>
 <span class="sd">        2006-10-30    10</span>
