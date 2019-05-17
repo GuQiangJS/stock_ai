@@ -235,7 +235,12 @@
 <dt id="stock_ai.calcs.is_trade_suspension">
 <code class="descclassname">stock_ai.calcs.</code><code class="descname">is_trade_suspension</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#is_trade_suspension"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.is_trade_suspension" title="永久链接至目标">¶</a></dt>
 <dd><p>返回是否为停牌</p>
-<p>根据 <cite>df</cite> 中指定列 <cite>close</cite> 来确定是否为停牌日。（如果数据为 NaN 则为True，否则为False）</p>
+<p>根据 <cite>df</cite> 中指定参数 <cite>colname</cite> 找到指定列，采用 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.Series.isna()</span></code> 判断。
+<code class="docutils literal notranslate"><span class="pre">True</span></code> 表示是停牌日。</p>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.Series.isna()</span></code></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">

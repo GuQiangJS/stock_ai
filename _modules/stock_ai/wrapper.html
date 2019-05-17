@@ -162,15 +162,16 @@
 <span class="sd">        copy (bool): 是否使用copy后的数据。参考 :meth:`pandas.DataFrame.copy` 方法。默认为 True。</span>
 <span class="sd">        rsuffix (str): 默认为 ``_index``。参考 :meth:`pandas.DataFrame.join` 中同名参数。</span>
 <span class="sd">        how (str): 默认为 ``right``。参考 :meth:`pandas.DataFrame.join` 中同名参数。</span>
-<span class="sd">        append_funcs (dict): 附加其他列数据时的计算方法字典。key值为需要附加的列名。</span>
-<span class="sd">            value值为方法名称(详见 :mod:`.stock_ai.appender`)。</span>
-<span class="sd">            示例：``{&#39;year&#39;:appender.calc_year}``</span>
+<span class="sd">        append_funcs (dict): 附加其他列数据时的计算方法字典。</span>
+
+<span class="sd">            - key值为需要附加的列名。</span>
+<span class="sd">            - value值为可以为方法名称或者是[方法名,参数字典](详见 :mod:`.stock_ai.appender`)。</span>
 
 <span class="sd">    See Also:</span>
 <span class="sd">        :meth:`pandas.DataFrame.join`</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        使用默认的 ``how`` 参数合并。</span>
+<span class="sd">        使用默认参数合并。</span>
 
 <span class="sd">        &gt;&gt;&gt; df_1 = data_processor.load_stock_daily(&#39;601398&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; df_2 = data_processor.load_index_daily(&#39;399300&#39;)</span>
@@ -183,18 +184,36 @@
 <span class="sd">        2005-01-07   NaN   NaN  NaN  ...           0       72986.0  4.737468e+09</span>
 <span class="sd">        2005-01-10   NaN   NaN  NaN  ...           0       57916.0  3.762931e+09</span>
 
-<span class="sd">        附加列</span>
+<span class="sd">        附加列只传递方法名（无参数）</span>
 
 <span class="sd">        &gt;&gt;&gt; funcs = {&#39;year&#39;: stock_ai.appender.calc_year}</span>
 <span class="sd">        &gt;&gt;&gt; df = wrapper.dataframe_merge(df_1, df_2, append_funcs=funcs)</span>
 <span class="sd">        &gt;&gt;&gt; df[&#39;year&#39;].head()</span>
-<span class="sd">        .date</span>
+<span class="sd">        date</span>
 <span class="sd">        2005-01-04    2005</span>
 <span class="sd">        2005-01-05    2005</span>
 <span class="sd">        2005-01-06    2005</span>
 <span class="sd">        2005-01-07    2005</span>
 <span class="sd">        2005-01-10    2005</span>
 <span class="sd">        Name: year, dtype: int64</span>
+
+<span class="sd">        附加列时传递参数的方式</span>
+
+<span class="sd">        &gt;&gt;&gt; def app(df, **kwargs):</span>
+<span class="sd">        &gt;&gt;&gt;    v = kwargs.pop(&#39;v&#39;, &#39;123&#39;)</span>
+<span class="sd">        &gt;&gt;&gt;    return pd.Series(v, index=df.index)</span>
+<span class="sd">        &gt;&gt;&gt; new_col = &#39;cv&#39;</span>
+<span class="sd">        &gt;&gt;&gt; new_value=&#39;123&#39;</span>
+<span class="sd">        &gt;&gt;&gt; funcs={new_col: [app, {&#39;v&#39;: new_value}]}</span>
+<span class="sd">        &gt;&gt;&gt; df = wrapper.dataframe_merge(df_1, df_2, append_funcs=funcs)</span>
+<span class="sd">        &gt;&gt;&gt; df[new_col].head()</span>
+<span class="sd">        date</span>
+<span class="sd">        2005-01-04    123</span>
+<span class="sd">        2005-01-05    123</span>
+<span class="sd">        2005-01-06    123</span>
+<span class="sd">        2005-01-07    123</span>
+<span class="sd">        2005-01-10    123</span>
+<span class="sd">        Name: cv, dtype: object</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        :class:`~pandas.DataFrame`: 合并后的数据。</span>
@@ -205,7 +224,10 @@
     <span class="n">df</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="k">else</span> <span class="n">df1</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">rsuffix</span><span class="o">=</span><span class="n">rsuffix</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">append_funcs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">df</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span></div>
 </pre></div>
 

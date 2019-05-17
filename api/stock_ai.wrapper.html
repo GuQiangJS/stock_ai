@@ -176,9 +176,12 @@
 <li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a>) – 是否使用copy后的数据。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html#pandas.DataFrame.copy" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.copy()</span></code></a> 方法。默认为 True。</p></li>
 <li><p><strong>rsuffix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 默认为 <code class="docutils literal notranslate"><span class="pre">_index</span></code>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a> 中同名参数。</p></li>
 <li><p><strong>how</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 默认为 <code class="docutils literal notranslate"><span class="pre">right</span></code>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a> 中同名参数。</p></li>
-<li><p><strong>append_funcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.7)"><em>dict</em></a>) – 附加其他列数据时的计算方法字典。key值为需要附加的列名。
-value值为方法名称(详见 <code class="xref py py-mod docutils literal notranslate"><span class="pre">stock_ai.appender</span></code>)。
-示例：<code class="docutils literal notranslate"><span class="pre">{'year':appender.calc_year}</span></code></p></li>
+<li><p><strong>append_funcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.7)"><em>dict</em></a>) – <p>附加其他列数据时的计算方法字典。</p>
+<ul>
+<li><p>key值为需要附加的列名。</p></li>
+<li><p>value值为可以为方法名称或者是[方法名,参数字典](详见 <code class="xref py py-mod docutils literal notranslate"><span class="pre">stock_ai.appender</span></code>)。</p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
 </dl>
@@ -187,7 +190,7 @@ value值为方法名称(详见 <code class="xref py py-mod docutils literal notr
 <p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<p>使用默认的 <code class="docutils literal notranslate"><span class="pre">how</span></code> 参数合并。</p>
+<p>使用默认参数合并。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_1</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_daily</span><span class="p">(</span><span class="s1">&#39;601398&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df_2</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_index_daily</span><span class="p">(</span><span class="s1">&#39;399300&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wrapper</span><span class="o">.</span><span class="n">dataframe_merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -200,17 +203,35 @@ value值为方法名称(详见 <code class="xref py py-mod docutils literal notr
 <span class="go">2005-01-10   NaN   NaN  NaN  ...           0       57916.0  3.762931e+09</span>
 </pre></div>
 </div>
-<p>附加列</p>
+<p>附加列只传递方法名（无参数）</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">funcs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">stock_ai</span><span class="o">.</span><span class="n">appender</span><span class="o">.</span><span class="n">calc_year</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">wrapper</span><span class="o">.</span><span class="n">dataframe_merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">append_funcs</span><span class="o">=</span><span class="n">funcs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">.date</span>
+<span class="go">date</span>
 <span class="go">2005-01-04    2005</span>
 <span class="go">2005-01-05    2005</span>
 <span class="go">2005-01-06    2005</span>
 <span class="go">2005-01-07    2005</span>
 <span class="go">2005-01-10    2005</span>
 <span class="go">Name: year, dtype: int64</span>
+</pre></div>
+</div>
+<p>附加列时传递参数的方式</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">app</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">v</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;123&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_col</span> <span class="o">=</span> <span class="s1">&#39;cv&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_value</span><span class="o">=</span><span class="s1">&#39;123&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">funcs</span><span class="o">=</span><span class="p">{</span><span class="n">new_col</span><span class="p">:</span> <span class="p">[</span><span class="n">app</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;v&#39;</span><span class="p">:</span> <span class="n">new_value</span><span class="p">}]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">wrapper</span><span class="o">.</span><span class="n">dataframe_merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">append_funcs</span><span class="o">=</span><span class="n">funcs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="n">new_col</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">date</span>
+<span class="go">2005-01-04    123</span>
+<span class="go">2005-01-05    123</span>
+<span class="go">2005-01-06    123</span>
+<span class="go">2005-01-07    123</span>
+<span class="go">2005-01-10    123</span>
+<span class="go">Name: cv, dtype: object</span>
 </pre></div>
 </div>
 <dl class="field-list simple">

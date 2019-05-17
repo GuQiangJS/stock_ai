@@ -586,10 +586,13 @@
 <li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 开始日期。数据格式为%Y-%m-%d。默认为 <code class="docutils literal notranslate"><span class="pre">1990-01-01</span></code>。</p></li>
 <li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 结束日期。数据格式为%Y-%m-%d。默认为 <code class="xref py py-func docutils literal notranslate"><span class="pre">datetime.now()</span></code>。</p></li>
 <li><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 是否获取在线数据。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
-<li><p><strong>fq</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – 是否取复权数据。默认为 <code class="docutils literal notranslate"><span class="pre">qfq</span></code>。
-- <code class="docutils literal notranslate"><span class="pre">qfq</span></code> : 前复权
-- <code class="docutils literal notranslate"><span class="pre">hfq</span></code> : 后复权
-- <code class="docutils literal notranslate"><span class="pre">bfq</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code> : 不复权</p></li>
+<li><p><strong>fq</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – <p>是否取复权数据。默认为 <code class="docutils literal notranslate"><span class="pre">qfq</span></code>。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">qfq</span></code> : 前复权</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hfq</span></code> : 后复权</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bfq</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code> : 不复权</p></li>
+</ul>
+</p></li>
 <li><p><strong>columns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.7)"><em>tuple</em></a><em>, </em><em>optional</em>) – 获取的列集合。默认为
 <code class="docutils literal notranslate"><span class="pre">['open',</span> <span class="pre">'high',</span> <span class="pre">'low',</span> <span class="pre">'close',</span> <span class="pre">'volume',</span> <span class="pre">'amount']</span></code></p></li>
 </ul>
