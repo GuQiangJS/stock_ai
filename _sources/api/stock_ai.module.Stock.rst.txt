@@ -1,4 +1,4 @@
-stock_ai.module.Stock
+Stock
 =====================
 
 .. autodoc_member_order: 'alphabetical'
@@ -8,20 +8,18 @@ stock_ai.module.Stock
 .. autoclass:: Stock
     :members: __init__
 
-Attributes
-----------
 
 
+.. rubric:: Attributes
 .. autosummary::
     
     Stock.code
 
 
 
-Methods
--------
 
 
+.. rubric:: Methods
 .. autosummary::
     :nosignatures:
     
@@ -30,7 +28,9 @@ Methods
 
 
 
-.. autoattribute:: Stock.code
+.. rubric:: Attributes
 
+.. autoattribute:: Stock.code
+.. rubric:: Methods
 
 .. automethod:: Stock.get_daily

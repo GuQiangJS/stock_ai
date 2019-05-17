@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="stock_ai.data_processor" href="api/stock_ai.data_processor.html" /> 
+    <link rel="next" title="data_processor" href="api/stock_ai.data_processor.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,10 +81,10 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="api/stock_ai.data_processor.html">stock_ai.data_processor</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api/stock_ai.module.html">stock_ai.module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/stock_ai.data_processor.html">data_processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/stock_ai.module.html">module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/stock_ai.appender.html">appender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/stock_ai.wrapper.html">wrapper</a></li>
 </ul>
 
             
@@ -152,7 +152,23 @@
   <div class="section" id="welcome-to-stock-ai-s-documentation">
 <h1>Welcome to stock_ai’s documentation!<a class="headerlink" href="#welcome-to-stock-ai-s-documentation" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id1">
-<h2>数据读取<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h2>模型定义<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="api/stock_ai.module.html"><span class="doc">module</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="api/stock_ai.module.StockCN.html"><span class="doc">StockCN</span></a></p></li>
+<li><p><a class="reference internal" href="api/stock_ai.module.IndexCN.html"><span class="doc">IndexCN</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>包装器<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/stock_ai.wrapper.html"><span class="doc">wrapper</span></a></p></li>
+</ul>
 <table class="longtable docutils align-center">
 <colgroup>
 <col style="width: 10%" />
@@ -162,19 +178,14 @@
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">stock_ai.data_processor</span></code></p></td>
 <td><p>数据读写器</p></td>
 </tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id2">
-<h2>模型定义<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<table class="longtable docutils align-center">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">stock_ai.module</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">stock_ai.module</span></code></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">stock_ai.appender</span></code></p></td>
+<td><p>DataFrame附加器</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">stock_ai.wrapper</span></code></p></td>
+<td><p>数据包装器</p></td>
 </tr>
 </tbody>
 </table>
@@ -189,7 +200,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="api/stock_ai.data_processor.html" class="btn btn-neutral float-right" title="stock_ai.data_processor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api/stock_ai.data_processor.html" class="btn btn-neutral float-right" title="data_processor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

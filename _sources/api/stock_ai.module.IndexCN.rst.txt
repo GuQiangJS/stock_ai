@@ -1,4 +1,4 @@
-stock_ai.module.IndexCN
+IndexCN
 =======================
 
 .. autodoc_member_order: 'alphabetical'
@@ -8,20 +8,18 @@ stock_ai.module.IndexCN
 .. autoclass:: IndexCN
     :members: __init__
 
-Attributes
-----------
 
 
+.. rubric:: Attributes
 .. autosummary::
     
     IndexCN.code
 
 
 
-Methods
--------
 
 
+.. rubric:: Methods
 .. autosummary::
     :nosignatures:
     
@@ -30,7 +28,9 @@ Methods
 
 
 
-.. autoattribute:: IndexCN.code
+.. rubric:: Attributes
 
+.. autoattribute:: IndexCN.code
+.. rubric:: Methods
 
 .. automethod:: IndexCN.get_daily

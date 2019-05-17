@@ -1,0 +1,25 @@
+wrapper
+=======
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.wrapper
+
+
+
+.. rubric:: Methods
+.. autosummary::
+    :nosignatures:
+    
+    stock_index_merge
+
+
+
+
+.. rubric:: Methods
+
+.. autofunction:: stock_index_merge
+
+
+
+

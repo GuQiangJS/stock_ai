@@ -80,10 +80,10 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.data_processor.html">stock_ai.data_processor</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">stock_ai.module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.data_processor.html">data_processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.appender.html">appender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.wrapper.html">wrapper</a></li>
 </ul>
 
             
@@ -172,7 +172,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">        data (pd.DataFrame): 数据表。</span>
 <span class="sd">        path (str): 待保存的文件完整路径。</span>
-<span class="sd">        encoding (str): 文件编码。默认为 ``utf-8``。参考 :py:func:`pandas.DataFrame.to_csv` 中同名参数。</span>
+<span class="sd">        encoding (str): 文件编码。默认为 ``utf-8``。参考 :func:`pandas.DataFrame.to_csv` 中同名参数。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_save_dataframe_to_csv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -203,7 +203,7 @@
 <span class="sd">            2006-11-02  3.30  3.30  3.25   3.28   1751554.0  5.733994e+08</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            :py:class:`pandas.DataFrame`: 股票日线数据。</span>
+<span class="sd">            :class:`~pandas.DataFrame`: 股票日线数据。</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;1990-01-01&#39;</span><span class="p">)</span>
@@ -232,7 +232,7 @@
 <span class="sd">        columns: 参考 :func:`load_stock_daily` 中参数 ``columns`` 的说明。</span>
 <span class="sd">        times (int, optional): 重试次数。默认为 ``5``。</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票日线数据。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票日线数据。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">retries</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -254,12 +254,12 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        path (str): csv文件所在的完整路径。</span>
-<span class="sd">        index_col (int, sequence or bool, optional): 索引列。参考 :py:func:`pandas.read_csv` 中同名参数。</span>
-<span class="sd">        encoding (str): 文件编码。默认为 `utf-8`。参考 :py:func:`pandas.read_csv` 中同名参数。</span>
-<span class="sd">        parse_dates (str): 文件编码。默认为 `utf-8`。参考 :py:func:`pandas.read_csv` 中同名参数。</span>
-<span class="sd">        float_precision (str): 浮点类型转换。默认为 `round_trip`。参考 :py:func:`pandas.read_csv` 中同名参数。</span>
+<span class="sd">        index_col (int, sequence or bool, optional): 索引列。参考 :func:`pandas.read_csv` 中同名参数。</span>
+<span class="sd">        encoding (str): 文件编码。默认为 `utf-8`。参考 :func:`pandas.read_csv` 中同名参数。</span>
+<span class="sd">        parse_dates (str): 文件编码。默认为 `utf-8`。参考 :func:`pandas.read_csv` 中同名参数。</span>
+<span class="sd">        float_precision (str): 浮点类型转换。默认为 `round_trip`。参考 :func:`pandas.read_csv` 中同名参数。</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票日线数据。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票日线数据。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">index_col</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;index_col&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">)</span>
     <span class="n">encoding</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;encoding&#39;</span><span class="p">,</span> <span class="n">_csv_encoding</span><span class="p">)</span>
@@ -283,7 +283,7 @@
 <span class="sd">        columns: 参考 :func:`load_stock_daily` 中参数 ``columns`` 的说明。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票日线数据。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票日线数据。</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">QA</span><span class="o">.</span><span class="n">QA_fetch_stock_day_adv</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
@@ -312,7 +312,7 @@
 <span class="sd">                ``[&#39;open&#39;, &#39;high&#39;, &#39;low&#39;, &#39;close&#39;, &#39;up_count&#39;, &#39;down_count&#39;, &#39;volume&#39;,&#39;amount&#39;]``</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            :py:class:`pandas.DataFrame`: 股票日线数据。</span>
+<span class="sd">            :class:`~pandas.DataFrame`: 股票日线数据。</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;1990-01-01&#39;</span><span class="p">)</span>
@@ -338,7 +338,7 @@
 <span class="sd">        code (str): 参考 :func:`load_index_daily` 中参数 ``code`` 的说明。</span>
 <span class="sd">        times (int, optional): 重试次数。默认为 ``5``。</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票日线数据。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票日线数据。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">retries</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -363,7 +363,7 @@
 <span class="sd">        columns: 参考 :func:`load_index_daily` 中参数 ``columns`` 的说明。</span>
 <span class="sd">        code (str): 参考 :func:`load_index_daily` 中参数 ``code`` 的说明。</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 指数日线数据。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 指数日线数据。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">QA</span><span class="o">.</span><span class="n">QA_fetch_index_day_adv</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
@@ -377,7 +377,7 @@
 <span class="sd">        online (bool): 是否获取在线数据。默认为 ``False``。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票列表。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票列表。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">load_stock_list_online</span><span class="p">()</span> <span class="k">if</span> <span class="n">online</span> <span class="k">else</span> <span class="n">load_stock_list_mongodb</span><span class="p">()</span></div>
 
@@ -409,7 +409,7 @@
     <span class="sd">&quot;&quot;&quot;从本地数据库中获取股票列表</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票列表。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票列表。</span>
 
 <span class="sd">    Examples:</span>
 
@@ -474,7 +474,7 @@
 <span class="sd">        dtype: object</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票信息。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票信息。</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">QA</span><span class="o">.</span><span class="n">QA_fetch_stock_info</span><span class="p">(</span><span class="n">code</span><span class="p">)</span></div>
@@ -531,7 +531,7 @@
 <span class="sd">        dtype: object</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票信息。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票信息。</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">QA</span><span class="o">.</span><span class="n">QAFetch</span><span class="o">.</span><span class="n">QATdx</span><span class="o">.</span><span class="n">QA_fetch_get_stock_info</span><span class="p">(</span><span class="n">code</span><span class="p">)</span></div>
@@ -554,7 +554,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">        online (bool, optional): 是否获取在线数据。默认为 ``False``。</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票板块信息。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票板块信息。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">online</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;online&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">online</span><span class="p">:</span>
@@ -575,7 +575,7 @@
 <span class="sd">        {&#39;tdx&#39;, &#39;ths&#39;}</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票板块信息。返回数据内容参见 :py:func:`load_stock_block` 。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票板块信息。返回数据内容参见 :func:`load_stock_block` 。</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">QA</span><span class="o">.</span><span class="n">QA_fetch_stock_block</span><span class="p">()</span></div>
@@ -596,7 +596,7 @@
 <span class="sd">        {&#39;tdx&#39;}</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 股票板块信息。返回数据内容参见 :py:func:`load_stock_block`</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 股票板块信息。返回数据内容参见 :func:`load_stock_block`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">QA</span><span class="o">.</span><span class="n">QAFetch</span><span class="o">.</span><span class="n">QATdx</span><span class="o">.</span><span class="n">QA_fetch_get_stock_block</span><span class="p">()</span></div>
@@ -633,7 +633,7 @@
 <span class="sd">         &#39;协定存款(定期)&#39;]</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 历史存款利率。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 历史存款利率。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">get_deposit_rate</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;deposit_type&#39;</span><span class="p">])</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
@@ -675,7 +675,7 @@
 <span class="sd">         &#39;流动资产贷款(流动资产贷款利率)&#39; &#39;个人住房商业贷款(一至六个月（含六个月）)&#39; &#39;罚息(挤占挪用贷款)&#39; &#39;罚息(逾期贷款)&#39;</span>
 <span class="sd">         &#39;特种贷款(特种贷款利率)&#39;]</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 历史存款利率。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 历史存款利率。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">get_loan_rate</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;loan_type&#39;</span><span class="p">])</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
@@ -696,7 +696,7 @@
 <span class="sd">        2018.12  101.860001</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 居民消费价格指数(CPI)。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 居民消费价格指数(CPI)。</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">get_cpi</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span>
@@ -718,7 +718,7 @@
 <span class="sd">        2018.12  1826744.250     8.1  551685.9375  ...     NaN  213190.828125        NaN</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 货币供应量。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 货币供应量。</span>
 <span class="sd">        </span>
 <span class="sd">        列名：</span>
 <span class="sd">            * month :统计时间</span>
@@ -759,7 +759,7 @@
 <span class="sd">        2013  1106525.000  337291.09375  ...  467031.09375   69506.203125</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :py:class:`pandas.DataFrame`: 货币供应量。</span>
+<span class="sd">        :class:`~pandas.DataFrame`: 货币供应量。</span>
 
 <span class="sd">        列名：</span>
 <span class="sd">            * year :统计年度</span>

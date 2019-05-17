@@ -8,19 +8,20 @@ Welcome to stock_ai's documentation!
 
 .. py:currentmodule:: stock_ai
 
-数据读取
+模型定义
 --------
+* :doc:`api/stock_ai.module`
+   * :doc:`api/stock_ai.module.StockCN`
+   * :doc:`api/stock_ai.module.IndexCN`
+
+包装器
+--------
+* :doc:`api/stock_ai.wrapper`
 
 .. autosummary::
    :toctree: api/
 
    stock_ai.data_processor
-
-模型定义
---------
-.. autosummary::
-   :toctree: api/
-
    stock_ai.module
-
-
+   stock_ai.appender
+   stock_ai.wrapper

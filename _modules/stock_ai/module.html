@@ -80,10 +80,10 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.data_processor.html">stock_ai.data_processor</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">stock_ai.module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.data_processor.html">data_processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.appender.html">appender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.wrapper.html">wrapper</a></li>
 </ul>
 
             
@@ -213,7 +213,7 @@
 <span class="sd">        获取数据来源参考 :py:attr:`_get_info`。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            :py:class:`pandas.Series`: 当前股票简单信息。</span>
+<span class="sd">            :class:`~pandas.Series`: 当前股票简单信息。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simple_info</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_simple_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_simple_info</span><span class="p">()</span>
@@ -226,7 +226,7 @@
 <span class="sd">        获取数据来源参考 :py:attr:`_get_info`。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            :py:class:`pandas.DataFrame`: 当前股票信息。</span>
+<span class="sd">            :class:`~pandas.DataFrame`: 当前股票信息。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_info</span><span class="p">()</span>
@@ -272,9 +272,9 @@
 <span class="sd">            end (str): 结束日期。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            :py:class:`pandas.DataFrame`: 日线数据。</span>
+<span class="sd">            :class:`~pandas.DataFrame`: 日线数据。</span>
 <span class="sd">            如果 `start` 和 `end` 相同，则返回一日数据。</span>
-<span class="sd">            数据参考 :py:func:`stock_ai.data_processor.load_stock_daily`</span>
+<span class="sd">            数据参考 :func:`stock_ai.data_processor.load_stock_daily`</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
@@ -295,8 +295,8 @@
         <span class="sd">&quot;&quot;&quot;股票所属板块。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            :py:class:`pandas.DataFrame`: 股票板块信息。</span>
-<span class="sd">            数据参考 :py:func:`stock_ai.data_processor.load_stock_block`</span>
+<span class="sd">            :class:`~pandas.DataFrame`: 股票板块信息。</span>
+<span class="sd">            数据参考 :func:`stock_ai.data_processor.load_stock_block`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_block</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_block</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">load_stock_block</span><span class="p">(</span><span class="n">online</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">getblock_online</span><span class="p">)</span>
@@ -347,9 +347,9 @@
 <span class="sd">            end (str): 结束日期。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            :py:class:`pandas.DataFrame`: 日线数据。</span>
+<span class="sd">            :class:`~pandas.DataFrame`: 日线数据。</span>
 <span class="sd">            如果 `start` 和 `end` 相同，则返回一日数据。</span>
-<span class="sd">            数据参考 :py:func:`stock_ai.data_processor.load_index_daily`</span>
+<span class="sd">            数据参考 :func:`stock_ai.data_processor.load_index_daily`</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>

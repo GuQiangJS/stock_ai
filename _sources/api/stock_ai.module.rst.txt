@@ -1,5 +1,5 @@
-stock\_ai.module
-================
+module
+======
 
 .. autodoc_member_order: 'alphabetical'
 
@@ -13,6 +13,7 @@ stock\_ai.module
 
 
 
+.. rubric:: Class
 .. autosummary::
     :toctree:
     :nosignatures:

@@ -1,5 +1,5 @@
-stock\_ai.data\_processor
-=========================
+data\_processor
+===============
 
 .. autodoc_member_order: 'alphabetical'
 
@@ -7,6 +7,7 @@ stock\_ai.data\_processor
 
 
 
+.. rubric:: Methods
 .. autosummary::
     :nosignatures:
     
@@ -35,6 +36,7 @@ stock\_ai.data\_processor
 
 
 
+.. rubric:: Methods
 
 .. autofunction:: load_cpi_online
 .. autofunction:: load_deposit_rate_online

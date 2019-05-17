@@ -1,4 +1,4 @@
-stock_ai.module.StockCN
+StockCN
 =======================
 
 .. autodoc_member_order: 'alphabetical'
@@ -8,10 +8,9 @@ stock_ai.module.StockCN
 .. autoclass:: StockCN
     :members: __init__
 
-Attributes
-----------
 
 
+.. rubric:: Attributes
 .. autosummary::
     
     StockCN.block
@@ -24,10 +23,9 @@ Attributes
 
 
 
-Methods
--------
 
 
+.. rubric:: Methods
 .. autosummary::
     :nosignatures:
     
@@ -36,6 +34,8 @@ Methods
 
 
 
+.. rubric:: Attributes
+
 .. autoattribute:: StockCN.block
 .. autoattribute:: StockCN.code
 .. autoattribute:: StockCN.exchange
@@ -43,6 +43,6 @@ Methods
 .. autoattribute:: StockCN.ipo_date
 .. autoattribute:: StockCN.name
 .. autoattribute:: StockCN.simple_info
-
+.. rubric:: Methods
 
 .. automethod:: StockCN.get_daily
