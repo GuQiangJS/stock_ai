@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; stock_ai  文档</title>
+  <title>ploter &mdash; stock_ai  文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="IndexCN" href="stock_ai.module.IndexCN.html" />
-    <link rel="prev" title="module" href="stock_ai.module.html" /> 
+    <link rel="next" title="report" href="stock_ai.report.html" />
+    <link rel="prev" title="wrapper" href="stock_ai.wrapper.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,16 +83,10 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.data_processor.html">data_processor</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="stock_ai.module.html">module</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Index</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stock_ai.module.IndexCN.html">IndexCN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stock_ai.module.Stock.html">Stock</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stock_ai.module.StockCN.html">StockCN</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.wrapper.html">wrapper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stock_ai.ploter.html">ploter</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ploter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
 </ul>
 
@@ -139,15 +133,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="stock_ai.module.html">module</a> &raquo;</li>
-        
-      <li>Index</li>
+      <li>ploter</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/stock_ai.module.Index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/stock_ai.ploter.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -160,32 +152,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="index">
-<h1>Index<a class="headerlink" href="#index" title="永久链接至标题">¶</a></h1>
-<dl class="class">
-<dt id="stock_ai.module.Index">
-<em class="property">class </em><code class="descclassname">stock_ai.module.</code><code class="descname">Index</code><span class="sig-paren">(</span><em>code: str</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/module.html#Index"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.module.Index" title="永久链接至目标">¶</a></dt>
-<dd><p>指数类型定义</p>
-<dl class="method">
-<dt id="stock_ai.module.Index.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>code: str</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/module.html#Index.__init__"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.module.Index.__init__" title="永久链接至目标">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-</dd></dl>
-
-<p class="rubric">Attributes</p>
-<table class="longtable docutils align-center">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.Index.code" title="stock_ai.module.Index.code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.code</span></code></a></p></td>
-<td><p>指数代码。</p></td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="ploter">
+<h1>ploter<a class="headerlink" href="#ploter" title="永久链接至标题">¶</a></h1>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-center">
 <colgroup>
@@ -193,31 +161,30 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.Index.get_daily" title="stock_ai.module.Index.get_daily"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.get_daily</span></code></a></p></td>
-<td><p>获取日线数据。未实现该方法。在派生类中实现。</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.ploter.plot_daily_return_histogram" title="stock_ai.ploter.plot_daily_return_histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_daily_return_histogram</span></code></a></p></td>
+<td><p>绘制直方图</p></td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Attributes</p>
-<dl class="attribute">
-<dt id="stock_ai.module.Index.code">
-<code class="descclassname">Index.</code><code class="descname">code</code><a class="headerlink" href="#stock_ai.module.Index.code" title="永久链接至目标">¶</a></dt>
-<dd><p>指数代码。</p>
+<p class="rubric">Methods</p>
+<dl class="function">
+<dt id="stock_ai.ploter.plot_daily_return_histogram">
+<code class="descclassname">stock_ai.ploter.</code><code class="descname">plot_daily_return_histogram</code><span class="sig-paren">(</span><em>data</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/ploter.html#plot_daily_return_histogram"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.ploter.plot_daily_return_histogram" title="永久链接至目标">¶</a></dt>
+<dd><p>绘制直方图</p>
 <dl class="field-list simple">
-<dt class="field-odd">返回</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)">str</a></p>
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong> (<em>data</em>) – class:<a href="#id1"><span class="problematic" id="id2">`</span></a>pandas.Series): 日收益数据。</p></li>
+<li><p><strong>bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 参见 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.Series.hist()</span></code> 中的同名参数。默认为 50.</p></li>
+<li><p><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a>) – 是否显示。默认为True。</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 标题。默认为 ‘日收益直方图’。</p></li>
+<li><p><strong>suptitle</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 标题。</p></li>
+<li><p><strong>show_mean</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a>) – 绘制均值。默认为True。</p></li>
+<li><p><strong>show_std</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a>) – 绘制标准差。默认为True。</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-
-<p class="rubric">Methods</p>
-<dl class="method">
-<dt id="stock_ai.module.Index.get_daily">
-<code class="descclassname">Index.</code><code class="descname">get_daily</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/module.html#Index.get_daily"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.module.Index.get_daily" title="永久链接至目标">¶</a></dt>
-<dd><p>获取日线数据。未实现该方法。在派生类中实现。</p>
+<p>Returns:</p>
 </dd></dl>
 
 </div>
@@ -230,10 +197,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="stock_ai.module.IndexCN.html" class="btn btn-neutral float-right" title="IndexCN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="stock_ai.report.html" class="btn btn-neutral float-right" title="report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="stock_ai.module.html" class="btn btn-neutral float-left" title="module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="stock_ai.wrapper.html" class="btn btn-neutral float-left" title="wrapper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

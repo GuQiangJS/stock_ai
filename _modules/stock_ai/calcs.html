@@ -84,6 +84,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.wrapper.html">wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.ploter.html">ploter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.report.html">report</a></li>
 </ul>
 
             
@@ -270,7 +272,7 @@
     <span class="k">return</span> <span class="n">indicators</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">days</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="tech_macd"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.tech_macd">[文档]</a><span class="k">def</span> <span class="nf">tech_macd</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<div class="viewcode-block" id="tech_macd"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.tech_macd">[文档]</a><span class="k">def</span> <span class="nf">tech_macd</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;计算MACD</span>
 
 <span class="sd">    Args:</span>
@@ -345,8 +347,43 @@
     <span class="k">return</span> <span class="n">data</span> <span class="o">/</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="sharpe_ratio"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.sharpe_ratio">[文档]</a><span class="k">def</span> <span class="nf">sharpe_ratio</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">r_std</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="p">:</span>
+<div class="viewcode-block" id="kurtosis"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.kurtosis">[文档]</a><span class="k">def</span> <span class="nf">kurtosis</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算峰度</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="skew"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.skew">[文档]</a><span class="k">def</span> <span class="nf">skew</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算偏度</span>
+
+<span class="sd">    &gt; 若数据分布是对称的，偏度为0；</span>
+<span class="sd">    &gt; 若偏度&gt;0,则可认为分布为右偏，即分布有一条长尾在右；</span>
+<span class="sd">    &gt; 若偏度&lt;0，则可认为分布为左偏，即分布有一条长尾在左；</span>
+<span class="sd">    &gt; 同时偏度的绝对值越大，说明分布的偏移程度越严重。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">skew</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="sharpe_ratio"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.sharpe_ratio">[文档]</a><span class="k">def</span> <span class="nf">sharpe_ratio</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">r_std</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;计算 `夏普比率`_</span>
+
+<span class="sd">    夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；</span>
+<span class="sd">    若为正值，代表基金报酬率高过波动风险；</span>
+<span class="sd">    若为负值，代表基金操作风险大过于报酬率。</span>
+<span class="sd">    这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        r (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 收益数据表或均值(`float`)。</span>
 <span class="sd">        rf (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 无风险收益率表或均值( `float` )。</span>
@@ -368,10 +405,10 @@
     <span class="n">r_mean</span> <span class="o">=</span> <span class="n">r</span>
     <span class="n">rf_mean</span> <span class="o">=</span> <span class="n">rf</span>
     <span class="n">rf_std</span> <span class="o">=</span> <span class="n">r_std</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
         <span class="n">r_mean</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
         <span class="n">rf_std</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
         <span class="n">rf_mean</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">r_mean</span> <span class="o">-</span> <span class="n">rf_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">rf_std</span>

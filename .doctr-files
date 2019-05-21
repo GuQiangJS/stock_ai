@@ -2,6 +2,8 @@
 ./_modules/stock_ai/calcs.html
 ./_modules/stock_ai/data_processor.html
 ./_modules/stock_ai/module.html
+./_modules/stock_ai/ploter.html
+./_modules/stock_ai/report.html
 ./_modules/stock_ai/wrapper.html
 ./_sources/api/stock_ai.calcs.rst.txt
 ./_sources/api/stock_ai.data_processor.rst.txt
@@ -10,6 +12,8 @@
 ./_sources/api/stock_ai.module.Stock.rst.txt
 ./_sources/api/stock_ai.module.StockCN.rst.txt
 ./_sources/api/stock_ai.module.rst.txt
+./_sources/api/stock_ai.ploter.rst.txt
+./_sources/api/stock_ai.report.rst.txt
 ./_sources/api/stock_ai.wrapper.rst.txt
 ./_sources/index.rst.txt
 ./_static/basic.css
@@ -73,6 +77,8 @@
 ./api/stock_ai.module.Stock.html
 ./api/stock_ai.module.StockCN.html
 ./api/stock_ai.module.html
+./api/stock_ai.ploter.html
+./api/stock_ai.report.html
 ./api/stock_ai.wrapper.html
 ./genindex.html
 ./index.html

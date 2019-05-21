@@ -1,0 +1,25 @@
+report
+======
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.report
+
+
+
+.. rubric:: Methods
+.. autosummary::
+    :nosignatures:
+    
+    sharpe_ratio
+
+
+
+
+.. rubric:: Methods
+
+.. autofunction:: sharpe_ratio
+
+
+
+

@@ -92,6 +92,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.wrapper.html">wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.ploter.html">ploter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
 </ul>
 
             
@@ -207,7 +209,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.name" title="stock_ai.module.StockCN.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.name</span></code></a></p></td>
 <td><p>股票名称。</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.simple_info" title="stock_ai.module.StockCN.simple_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.simple_info</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.related_codes" title="stock_ai.module.StockCN.related_codes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.related_codes</span></code></a></p></td>
+<td><p>获取同板块其他股票代码</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.simple_info" title="stock_ai.module.StockCN.simple_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.simple_info</span></code></a></p></td>
 <td><p>当前股票简单信息。</p></td>
 </tr>
 </tbody>
@@ -219,8 +224,14 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.get_daily" title="stock_ai.module.StockCN.get_daily"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.get_daily</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.get_cum_returns" title="stock_ai.module.StockCN.get_cum_returns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.get_cum_returns</span></code></a></p></td>
+<td><p>获取指定日期间的累计收益。</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.get_daily" title="stock_ai.module.StockCN.get_daily"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.get_daily</span></code></a></p></td>
 <td><p>获取日线数据。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.module.StockCN.get_sharpe_ratio" title="stock_ai.module.StockCN.get_sharpe_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN.get_sharpe_ratio</span></code></a></p></td>
+<td><p>计算指定时间段的夏普比率。</p></td>
 </tr>
 </tbody>
 </table>
@@ -313,6 +324,26 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="stock_ai.module.StockCN.related_codes">
+<code class="descclassname">StockCN.</code><code class="descname">related_codes</code><a class="headerlink" href="#stock_ai.module.StockCN.related_codes" title="永久链接至目标">¶</a></dt>
+<dd><p>获取同板块其他股票代码</p>
+<p>根据板块 <a class="reference internal" href="stock_ai.data_processor.html#stock_ai.data_processor.load_stock_block" title="stock_ai.data_processor.load_stock_block"><code class="xref py py-func docutils literal notranslate"><span class="pre">stock_ai.data_processor.load_stock_block()</span></code></a> 中 ‘type’==’thshy’ 的板块获取。</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">related_codes</span>
+<span class="go">(&#39;601169&#39;, &#39;601988&#39;, &#39;600926&#39;, &#39;601939&#39;, &#39;600036&#39;, &#39;601328&#39;, &#39;601229&#39;, &#39;601818&#39;, &#39;601288&#39;, &#39;600919&#39;, &#39;600016&#39;, &#39;601009&#39;, &#39;601998&#39;, &#39;601128&#39;, &#39;601166&#39;, &#39;002142&#39;, &#39;600000&#39;, &#39;000001&#39;, &#39;600015&#39;, &#39;601997&#39;, &#39;002839&#39;, &#39;002807&#39;, &#39;600908&#39;, &#39;603323&#39;, &#39;601838&#39;)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>代码列表。</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.7)">tuple</a>(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="stock_ai.module.StockCN.simple_info">
 <code class="descclassname">StockCN.</code><code class="descname">simple_info</code><a class="headerlink" href="#stock_ai.module.StockCN.simple_info" title="永久链接至目标">¶</a></dt>
 <dd><p>当前股票简单信息。</p>
@@ -328,6 +359,21 @@
 </dd></dl>
 
 <p class="rubric">Methods</p>
+<dl class="method">
+<dt id="stock_ai.module.StockCN.get_cum_returns">
+<code class="descclassname">StockCN.</code><code class="descname">get_cum_returns</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/module.html#StockCN.get_cum_returns"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.module.StockCN.get_cum_returns" title="永久链接至目标">¶</a></dt>
+<dd><p>获取指定日期间的累计收益。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(在 Python v3.7)"><em>datetime.datetime</em></a>) – 开始时间。参考 <a class="reference internal" href="#stock_ai.module.StockCN.get_daily" title="stock_ai.module.StockCN.get_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_daily()</span></code></a>。</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(在 Python v3.7)"><em>datetime.datetime</em></a>) – 开始时间。参考 <a class="reference internal" href="#stock_ai.module.StockCN.get_daily" title="stock_ai.module.StockCN.get_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_daily()</span></code></a>。</p></li>
+<li><p><strong>column</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 计算列。默认为 close。</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="stock_ai.module.StockCN.get_daily">
 <code class="descclassname">StockCN.</code><code class="descname">get_daily</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/module.html#StockCN.get_daily"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.module.StockCN.get_daily" title="永久链接至目标">¶</a></dt>
@@ -347,6 +393,55 @@
 </dd>
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stock_ai.module.StockCN.get_sharpe_ratio">
+<code class="descclassname">StockCN.</code><code class="descname">get_sharpe_ratio</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/module.html#StockCN.get_sharpe_ratio"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.module.StockCN.get_sharpe_ratio" title="永久链接至目标">¶</a></dt>
+<dd><p>计算指定时间段的夏普比率。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(在 Python v3.7)"><em>datetime.datetime</em></a>) – 开始时间。参考 <a class="reference internal" href="#stock_ai.module.StockCN.get_daily" title="stock_ai.module.StockCN.get_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_daily()</span></code></a>。</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(在 Python v3.7)"><em>datetime.datetime</em></a>) – 开始时间。参考 <a class="reference internal" href="#stock_ai.module.StockCN.get_daily" title="stock_ai.module.StockCN.get_daily"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_daily()</span></code></a>。</p></li>
+</ul>
+</dd>
+</dl>
+<p>:param 如果传入字符串，需要满足 <code class="xref py py-func docutils literal notranslate"><span class="pre">stock_ai.util.str2date()</span></code> 方法要求。:
+:param rf: 无风险利率。默认为 1.0。
+:type rf: float
+:param split: 分割规则。包含 year,none。none为不分割。默认为 year。
+:type split: str
+:param column: 计算列。默认为 close。
+:type column: str</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">StockCN</span><span class="p">(</span><span class="s1">&#39;601398&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_sharpe_ratio</span><span class="p">()</span>
+<span class="go">              0</span>
+<span class="go">2006   3.269645</span>
+<span class="go">2007   3.744622</span>
+<span class="go">2008   3.136494</span>
+<span class="go">2009   4.293783</span>
+<span class="go">2010  10.313356</span>
+<span class="go">2011  22.193504</span>
+<span class="go">2012  15.875993</span>
+<span class="go">2013  25.002890</span>
+<span class="go">2014   6.332456</span>
+<span class="go">2015  10.798641</span>
+<span class="go">2016  14.663031</span>
+<span class="go">2017   6.170423</span>
+<span class="go">2018   9.429071</span>
+<span class="go">2019  44.551702</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>夏普比率。
+数据参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">stock_ai.calcs</span> <span class="pre">import</span> <span class="pre">sharpe_ratio()</span></code></p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

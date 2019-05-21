@@ -84,6 +84,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.wrapper.html">wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.ploter.html">ploter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.report.html">report</a></li>
 </ul>
 
             
@@ -149,6 +151,8 @@
   <h1>stock_ai.module 源代码</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">data_processor</span> <span class="k">as</span> <span class="n">dp</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">util</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">calcs</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 
@@ -262,6 +266,69 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">util</span><span class="o">.</span><span class="n">str2date</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">int2str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;ipo_date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
 
+<div class="viewcode-block" id="StockCN.get_cum_returns"><a class="viewcode-back" href="../../api/stock_ai.module.StockCN.html#stock_ai.module.StockCN.get_cum_returns">[文档]</a>    <span class="k">def</span> <span class="nf">get_cum_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;获取指定日期间的累计收益。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start (str or datetime.datetime): 开始时间。参考 :func:`get_daily`。</span>
+<span class="sd">            end (str or datetime.datetime): 开始时间。参考 :func:`get_daily`。</span>
+<span class="sd">            column (str): 计算列。默认为 close。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">column</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">)</span>
+        <span class="n">daily</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_daily</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">calcs</span><span class="o">.</span><span class="n">cum_return</span><span class="p">(</span><span class="n">daily</span><span class="p">[</span><span class="n">column</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="StockCN.get_sharpe_ratio"><a class="viewcode-back" href="../../api/stock_ai.module.StockCN.html#stock_ai.module.StockCN.get_sharpe_ratio">[文档]</a>    <span class="k">def</span> <span class="nf">get_sharpe_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;计算指定时间段的夏普比率。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start (str or datetime.datetime): 开始时间。参考 :func:`get_daily`。</span>
+<span class="sd">            end (str or datetime.datetime): 开始时间。参考 :func:`get_daily`。</span>
+<span class="sd">            如果传入字符串，需要满足 :func:`stock_ai.util.str2date` 方法要求。</span>
+<span class="sd">            rf (float): 无风险利率。默认为 1.0。</span>
+<span class="sd">            split (str): 分割规则。包含 year,none。none为不分割。默认为 year。</span>
+<span class="sd">            column (str): 计算列。默认为 close。</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; StockCN(&#39;601398&#39;).get_sharpe_ratio()</span>
+<span class="sd">                          0</span>
+<span class="sd">            2006   3.269645</span>
+<span class="sd">            2007   3.744622</span>
+<span class="sd">            2008   3.136494</span>
+<span class="sd">            2009   4.293783</span>
+<span class="sd">            2010  10.313356</span>
+<span class="sd">            2011  22.193504</span>
+<span class="sd">            2012  15.875993</span>
+<span class="sd">            2013  25.002890</span>
+<span class="sd">            2014   6.332456</span>
+<span class="sd">            2015  10.798641</span>
+<span class="sd">            2016  14.663031</span>
+<span class="sd">            2017   6.170423</span>
+<span class="sd">            2018   9.429071</span>
+<span class="sd">            2019  44.551702</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :class:`~pandas.DataFrame`: 夏普比率。</span>
+<span class="sd">            数据参考 :func:`stock_ai.calcs import sharpe_ratio`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">rf</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;rf&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">column</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">)</span>
+        <span class="n">split</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;split&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">)</span>
+        <span class="n">daily</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_daily</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">split</span> <span class="ow">and</span> <span class="n">split</span> <span class="o">==</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span>
+            <span class="n">daily</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calcs</span><span class="o">.</span><span class="n">calc_year</span><span class="p">(</span><span class="n">daily</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">daily</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">daily</span><span class="p">[</span><span class="n">daily</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">calcs</span><span class="o">.</span><span class="n">sharpe_ratio</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">rf</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">split</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">calcs</span><span class="o">.</span><span class="n">sharpe_ratio</span><span class="p">(</span><span class="n">daily</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">rf</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="StockCN.get_daily"><a class="viewcode-back" href="../../api/stock_ai.module.StockCN.html#stock_ai.module.StockCN.get_daily">[文档]</a>    <span class="k">def</span> <span class="nf">get_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;获取日线数据。</span>
 
@@ -289,6 +356,27 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">end</span><span class="p">)]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daily</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">related_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;获取同板块其他股票代码</span>
+
+<span class="sd">        根据板块 :func:`stock_ai.data_processor.load_stock_block` 中 &#39;type&#39;==&#39;thshy&#39; 的板块获取。</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; self.related_codes</span>
+<span class="sd">            (&#39;601169&#39;, &#39;601988&#39;, &#39;600926&#39;, &#39;601939&#39;, &#39;600036&#39;, &#39;601328&#39;, &#39;601229&#39;, &#39;601818&#39;, &#39;601288&#39;, &#39;600919&#39;, &#39;600016&#39;, &#39;601009&#39;, &#39;601998&#39;, &#39;601128&#39;, &#39;601166&#39;, &#39;002142&#39;, &#39;600000&#39;, &#39;000001&#39;, &#39;600015&#39;, &#39;601997&#39;, &#39;002839&#39;, &#39;002807&#39;, &#39;600908&#39;, &#39;603323&#39;, &#39;601838&#39;)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple(str): 代码列表。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;blockname&#39;</span>
+        <span class="n">thshy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;thshy&#39;</span><span class="p">][</span><span class="n">b</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">thshy</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_block</span><span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">_block</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">==</span> <span class="n">thshy</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span>
+                                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_block</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)]</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">codes</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="k">return</span> <span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

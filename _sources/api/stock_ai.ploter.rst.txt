@@ -1,0 +1,25 @@
+ploter
+======
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.ploter
+
+
+
+.. rubric:: Methods
+.. autosummary::
+    :nosignatures:
+    
+    plot_daily_return_histogram
+
+
+
+
+.. rubric:: Methods
+
+.. autofunction:: plot_daily_return_histogram
+
+
+
+

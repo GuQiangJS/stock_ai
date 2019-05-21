@@ -16,7 +16,9 @@ calcs
     cum_return
     daily_return
     is_trade_suspension
+    kurtosis
     sharpe_ratio
+    skew
     tech_boll
     tech_ewm
     tech_ma
@@ -32,7 +34,9 @@ calcs
 .. autofunction:: cum_return
 .. autofunction:: daily_return
 .. autofunction:: is_trade_suspension
+.. autofunction:: kurtosis
 .. autofunction:: sharpe_ratio
+.. autofunction:: skew
 .. autofunction:: tech_boll
 .. autofunction:: tech_ewm
 .. autofunction:: tech_ma
