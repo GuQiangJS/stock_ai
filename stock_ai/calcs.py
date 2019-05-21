@@ -121,7 +121,7 @@ def tech_ewm(df: pd.DataFrame, **kwargs) -> pd.Series:
     return indicators.EMA(df['close'], days)
 
 
-def tech_macd(df: pd.DataFrame, **kwargs) -> pd.DataFrame:
+def tech_macd(df: pd.DataFrame, **kwargs):
     """计算MACD
 
     Args:
@@ -196,8 +196,43 @@ def cum_return(data, **kwargs):
     return data / data.iloc[0]
 
 
-def sharpe_ratio(r=None, rf=None, r_std: float = None) :
+def kurtosis(data, **kwargs):
+    """计算峰度
+
+    Args:
+        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+
+    Return:
+        :class:`pandas.Series` or :class:`pandas.DataFrame`:
+    """
+    return data.kurtosis()
+
+
+def skew(data, **kwargs):
+    """计算偏度
+
+    > 若数据分布是对称的，偏度为0；
+    > 若偏度>0,则可认为分布为右偏，即分布有一条长尾在右；
+    > 若偏度<0，则可认为分布为左偏，即分布有一条长尾在左；
+    > 同时偏度的绝对值越大，说明分布的偏移程度越严重。
+
+    Args:
+        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+
+    Return:
+        :class:`pandas.Series` or :class:`pandas.DataFrame`:
+    """
+    return data.skew()
+
+
+def sharpe_ratio(r=None, rf=None, r_std: float = None):
     """计算 `夏普比率`_
+
+    夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；
+    若为正值，代表基金报酬率高过波动风险；
+    若为负值，代表基金操作风险大过于报酬率。
+    这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。
+
     Args:
         r (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 收益数据表或均值(`float`)。
         rf (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 无风险收益率表或均值( `float` )。
@@ -219,10 +254,10 @@ def sharpe_ratio(r=None, rf=None, r_std: float = None) :
     r_mean = r
     rf_mean = rf
     rf_std = r_std
-    if isinstance(r, pd.DataFrame) or isinstance(r,pd.Series):
+    if isinstance(r, pd.DataFrame) or isinstance(r, pd.Series):
         r_mean = r.mean()
         rf_std = r.std()
-    if isinstance(rf, pd.DataFrame) or isinstance(rf,pd.Series):
+    if isinstance(rf, pd.DataFrame) or isinstance(rf, pd.Series):
         rf_mean = rf.mean()
 
     result = (r_mean - rf_mean) / rf_std

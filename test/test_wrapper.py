@@ -80,5 +80,5 @@ def test_stock_index_merge_appendfuncs_has_params():
                                  get_index_daily(),
                                  append_funcs=append_funcs)
 
-    assert len([col for col in df.columns if '_macd1' in col]) > 0
+    assert len([col for col in df.columns if 'macd1' in col]) > 0
     print(df.dtypes)

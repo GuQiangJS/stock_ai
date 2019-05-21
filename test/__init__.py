@@ -7,22 +7,39 @@ is_travis = "TRAVIS" in os.environ and os.environ["TRAVIS"] == "true"
 stock_code = '601398'
 index_code = '399300'
 
-_daily_dfs = {}  #日线数据缓存缓存
+__cache = {}  #日线数据缓存缓存
+
+
+def get_deposit_rate(n='dq1y') -> pd.Series:
+    """获取存款利率"""
+    if n == 'hq':
+        n = '活期存款(不定期)'
+    elif n == 'dq1y':
+        n = '定期存款整存整取(一年)'
+    else:
+        raise ValueError
+    if __cache and 'deposit_rate' in __cache:
+        r = __cache['deposit_rate']
+    else:
+        r = data_processor.load_deposit_rate_online()
+        __cache['deposit_rate'] = r
+        logging.debug("Load deposit_rate_online.")
+    return r.xs(n, axis=0, level=1)['rate']
 
 
 def get_stock_daily(code: str = stock_code) -> pd.DataFrame:
-    if _daily_dfs and code in _daily_dfs:
-        return _daily_dfs[code]
+    if __cache and code in __cache:
+        return __cache[code]
     df = data_processor.load_stock_daily(code, online=is_travis, fq=None)
     logging.debug("Load Daily:" + code)
-    _daily_dfs[code] = df
+    __cache[code] = df
     return df
 
 
 def get_index_daily(code: str = index_code) -> pd.DataFrame:
-    if _daily_dfs and code in _daily_dfs:
-        return _daily_dfs[code]
+    if __cache and code in __cache:
+        return __cache[code]
     df = data_processor.load_index_daily(code, online=is_travis)
     logging.debug("Load Daily:" + code)
-    _daily_dfs[code] = df
+    __cache[code] = df
     return df

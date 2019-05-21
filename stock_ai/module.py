@@ -1,5 +1,7 @@
 from . import data_processor as dp
 from . import util
+from . import calcs
+import numpy as np
 import pandas as pd
 import datetime
 
@@ -113,6 +115,69 @@ class StockCN(Stock):
         """
         return util.str2date(util.int2str(self.info['ipo_date'][0]))
 
+    def get_cum_returns(self, **kwargs):
+        """获取指定日期间的累计收益。
+
+        Args:
+            start (str or datetime.datetime): 开始时间。参考 :func:`get_daily`。
+            end (str or datetime.datetime): 开始时间。参考 :func:`get_daily`。
+            column (str): 计算列。默认为 close。
+        """
+        start = kwargs.pop('start', None)
+        end = kwargs.pop('end', None)
+        column = kwargs.pop('column', 'close')
+        daily = self.get_daily(start, end).copy()
+        return calcs.cum_return(daily[column])
+
+    def get_sharpe_ratio(self, **kwargs):
+        """计算指定时间段的夏普比率。
+
+        Args:
+            start (str or datetime.datetime): 开始时间。参考 :func:`get_daily`。
+            end (str or datetime.datetime): 开始时间。参考 :func:`get_daily`。
+            如果传入字符串，需要满足 :func:`stock_ai.util.str2date` 方法要求。
+            rf (float): 无风险利率。默认为 1.0。
+            split (str): 分割规则。包含 year,none。none为不分割。默认为 year。
+            column (str): 计算列。默认为 close。
+
+        Examples:
+            >>> StockCN('601398').get_sharpe_ratio()
+                          0
+            2006   3.269645
+            2007   3.744622
+            2008   3.136494
+            2009   4.293783
+            2010  10.313356
+            2011  22.193504
+            2012  15.875993
+            2013  25.002890
+            2014   6.332456
+            2015  10.798641
+            2016  14.663031
+            2017   6.170423
+            2018   9.429071
+            2019  44.551702
+
+        Returns:
+            :class:`~pandas.DataFrame`: 夏普比率。
+            数据参考 :func:`stock_ai.calcs import sharpe_ratio`
+        """
+        start = kwargs.pop('start', None)
+        end = kwargs.pop('end', None)
+        rf = kwargs.pop('rf', 1.0)
+        column = kwargs.pop('column', 'close')
+        split = kwargs.pop('split', 'year')
+        daily = self.get_daily(start, end).copy()
+        result = {}
+        if split and split == 'year':
+            daily['year'] = calcs.calc_year(daily)
+            for year in daily['year'].unique():
+                df = daily[daily['year'] == year]
+                result[year] = calcs.sharpe_ratio(df[column], rf)
+        elif not split:
+            return calcs.sharpe_ratio(daily[column], rf)
+        return pd.DataFrame.from_dict(result, orient='index')
+
     def get_daily(self, start=None, end=None):
         """获取日线数据。
 
@@ -140,6 +205,27 @@ class StockCN(Stock):
             return self._daily.loc[:pd.Timestamp(end)]
         else:
             return self._daily
+
+    @property
+    def related_codes(self):
+        """获取同板块其他股票代码
+
+        根据板块 :func:`stock_ai.data_processor.load_stock_block` 中 'type'=='thshy' 的板块获取。
+
+        Examples:
+            >>> self.related_codes
+            ('601169', '601988', '600926', '601939', '600036', '601328', '601229', '601818', '601288', '600919', '600016', '601009', '601998', '601128', '601166', '002142', '600000', '000001', '600015', '601997', '002839', '002807', '600908', '603323', '601838')
+
+        Returns:
+            tuple(str): 代码列表。
+        """
+        b = 'blockname'
+        thshy = self.block[self.block['type'] == 'thshy'][b]
+        if not thshy.empty:
+            codes = self._block[(self._block[b] == thshy.values[0]) &
+                                (self._block['code'] != self.code)]
+            return tuple(codes['code'].unique())
+        return ()
 
     @property
     def block(self):

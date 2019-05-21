@@ -54,5 +54,18 @@ def test_getdaily_online():
 
 
 def test_getblock_online():
-    s = StockCN('601398', getblock_online=True)
+    s = StockCN('601398', getblock_online=is_travis)
+    print(s.block)
     assert not s.block.empty
+
+
+def test_getrelated_codes():
+    s = StockCN('601398', getblock_online=is_travis)
+    print(s.related_codes)
+    assert len(s.related_codes) > 0
+    assert '601398' not in s.related_codes
+    assert '601939' in s.related_codes
+
+
+def test_get_sharpe_ratio():
+    print(StockCN('601398', getdaily_online=is_travis).get_sharpe_ratio())

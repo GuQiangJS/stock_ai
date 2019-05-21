@@ -17,6 +17,15 @@ Welcome to stock_ai's documentation!
 包装器
 --------
 * :doc:`api/stock_ai.wrapper`
+* :doc:`api/stock_ai.calcs`
+
+报表
+--------
+* :doc:`api/stock_ai.report`
+
+绘图
+--------
+* :doc:`api/stock_ai.ploter`
 
 .. autosummary::
    :toctree: api/
@@ -25,3 +34,5 @@ Welcome to stock_ai's documentation!
    stock_ai.module
    stock_ai.calcs
    stock_ai.wrapper
+   stock_ai.ploter
+   stock_ai.report
