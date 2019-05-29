@@ -36,7 +36,6 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="ploter" href="stock_ai.ploter.html" />
     <link rel="prev" title="calcs" href="stock_ai.calcs.html" /> 
 </head>
 
@@ -86,8 +85,8 @@
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">wrapper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stock_ai.ploter.html">ploter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
 
             
@@ -182,7 +181,7 @@
 <li><p><strong>append_funcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(在 Python v3.7)"><em>collections.OrderedDict</em></a>) – <p>附加其他列数据时的计算方法字典。</p>
 <ul>
 <li><p>key值为需要附加的列名。</p></li>
-<li><p>value值为可以为方法名称或者是[方法名,参数字典](详见 <code class="xref py py-mod docutils literal notranslate"><span class="pre">stock_ai.appender</span></code>)。</p></li>
+<li><p>value值为可以为方法名称或者是[方法名,参数字典](详见 <code class="xref py py-mod docutils literal notranslate"><span class="pre">stock_ai.calcs</span></code>)。</p></li>
 </ul>
 <dl class="simple">
 <dt>关于附加列名的赋值方式：</dt><dd><ul>
@@ -214,7 +213,7 @@
 </pre></div>
 </div>
 <p>附加列只传递方法名（无参数）</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">funcs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">stock_ai</span><span class="o">.</span><span class="n">appender</span><span class="o">.</span><span class="n">calc_year</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">funcs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">stock_ai</span><span class="o">.</span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_year</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">wrapper</span><span class="o">.</span><span class="n">dataframe_merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">append_funcs</span><span class="o">=</span><span class="n">funcs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">date</span>
@@ -263,8 +262,6 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="stock_ai.ploter.html" class="btn btn-neutral float-right" title="ploter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="stock_ai.calcs.html" class="btn btn-neutral float-left" title="calcs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

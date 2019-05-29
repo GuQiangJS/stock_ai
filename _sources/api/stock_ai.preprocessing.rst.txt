@@ -1,0 +1,35 @@
+preprocessing
+=============
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.preprocessing
+
+
+
+.. rubric:: Methods
+.. autosummary::
+    :nosignatures:
+    
+    xy_split_1
+    xy_split_2
+
+
+
+
+.. rubric:: Methods
+
+.. autofunction:: xy_split_1
+.. autofunction:: xy_split_2
+
+
+
+
+.. rubric:: Class
+.. autosummary::
+    :toctree:
+    :nosignatures:
+    
+    P
+    P1
+

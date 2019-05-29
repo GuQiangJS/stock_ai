@@ -86,8 +86,8 @@
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.wrapper.html">wrapper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stock_ai.ploter.html">ploter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
 
             
@@ -173,11 +173,23 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.daily_return" title="stock_ai.calcs.daily_return"><code class="xref py py-obj docutils literal notranslate"><span class="pre">daily_return</span></code></a></p></td>
 <td><p>计算日收益</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.is_trade_suspension" title="stock_ai.calcs.is_trade_suspension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_trade_suspension</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.dropna" title="stock_ai.calcs.dropna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropna</span></code></a></p></td>
+<td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.dropna()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.fft" title="stock_ai.calcs.fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fft</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.fillna" title="stock_ai.calcs.fillna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillna</span></code></a></p></td>
+<td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.fillna()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.is_trade_suspension" title="stock_ai.calcs.is_trade_suspension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_trade_suspension</span></code></a></p></td>
 <td><p>返回是否为停牌</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.kurtosis" title="stock_ai.calcs.kurtosis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kurtosis</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.kurtosis" title="stock_ai.calcs.kurtosis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kurtosis</span></code></a></p></td>
 <td><p>计算峰度</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.pct_change" title="stock_ai.calcs.pct_change"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pct_change</span></code></a></p></td>
+<td><p>包装 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.pct_change()</span></code> 方法</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.sharpe_ratio" title="stock_ai.calcs.sharpe_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharpe_ratio</span></code></a></p></td>
 <td><p>计算 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87">夏普比率</a></p></td>
@@ -185,16 +197,19 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.skew" title="stock_ai.calcs.skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skew</span></code></a></p></td>
 <td><p>计算偏度</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_boll" title="stock_ai.calcs.tech_boll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_boll</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_bbands" title="stock_ai.calcs.tech_bbands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_bbands</span></code></a></p></td>
+<td><p>布林带</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_boll" title="stock_ai.calcs.tech_boll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_boll</span></code></a></p></td>
 <td><p>计算布林线</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_ewm" title="stock_ai.calcs.tech_ewm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_ewm</span></code></a></p></td>
-<td><p>计算指数均线</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_ema" title="stock_ai.calcs.tech_ema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_ema</span></code></a></p></td>
+<td><p>计算指数移动均线</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_ma" title="stock_ai.calcs.tech_ma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_ma</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_ma" title="stock_ai.calcs.tech_ma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_ma</span></code></a></p></td>
 <td><p>计算移动均线</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_macd" title="stock_ai.calcs.tech_macd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_macd</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_macd" title="stock_ai.calcs.tech_macd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_macd</span></code></a></p></td>
 <td><p>计算MACD</p></td>
 </tr>
 </tbody>
@@ -279,7 +294,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.daily_return">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">daily_return</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#daily_return"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.daily_return" title="永久链接至目标">¶</a></dt>
+<code class="descclassname">stock_ai.calcs.</code><code class="descname">daily_return</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#daily_return"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.daily_return" title="永久链接至目标">¶</a></dt>
 <dd><p>计算日收益</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -290,6 +305,34 @@
 </dd>
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.dropna">
+<code class="descclassname">stock_ai.calcs.</code><code class="descname">dropna</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#dropna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.dropna" title="永久链接至目标">¶</a></dt>
+<dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.dropna()</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>df</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 原始数据。</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.fft">
+<code class="descclassname">stock_ai.calcs.</code><code class="descname">fft</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#fft"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.fft" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.fillna">
+<code class="descclassname">stock_ai.calcs.</code><code class="descname">fillna</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#fillna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.fillna" title="永久链接至目标">¶</a></dt>
+<dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.fillna()</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>df</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 原始数据。</p>
 </dd>
 </dl>
 </dd></dl>
@@ -351,6 +394,23 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="stock_ai.calcs.pct_change">
+<code class="descclassname">stock_ai.calcs.</code><code class="descname">pct_change</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#pct_change"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.pct_change" title="永久链接至目标">¶</a></dt>
+<dd><p>包装 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.pct_change()</span></code> 方法</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> 或 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – 待计算的数据。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="stock_ai.calcs.sharpe_ratio">
 <code class="descclassname">stock_ai.calcs.</code><code class="descname">sharpe_ratio</code><span class="sig-paren">(</span><em>r=None</em>, <em>rf=None</em>, <em>r_std: float = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#sharpe_ratio"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.sharpe_ratio" title="永久链接至目标">¶</a></dt>
 <dd><p>计算 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87">夏普比率</a></p>
@@ -397,6 +457,39 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="stock_ai.calcs.tech_bbands">
+<code class="descclassname">stock_ai.calcs.</code><code class="descname">tech_bbands</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_bbands"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_bbands" title="永久链接至目标">¶</a></dt>
+<dd><p>布林带</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – 日线数据。</p></li>
+<li><p><strong>timeperiod</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 窗口期。默认为 <code class="docutils literal notranslate"><span class="pre">5</span></code>。</p></li>
+<li><p><strong>nbdevup</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 上轨标准差。默认为 <code class="docutils literal notranslate"><span class="pre">2</span></code>。</p></li>
+<li><p><strong>nbdevdn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 下轨标准差。默认为 <code class="docutils literal notranslate"><span class="pre">2</span></code>。</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_stock</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_daily</span><span class="p">(</span><span class="s1">&#39;601398&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">tech_bbands</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<span class="go">             BOLL        UB        LB</span>
+<span class="go">date</span>
+<span class="go">2019-01-18  5.262  5.409919  5.114081</span>
+<span class="go">2019-01-21  5.312  5.514188  5.109812</span>
+<span class="go">2019-01-22  5.344  5.531403  5.156597</span>
+<span class="go">2019-01-23  5.384  5.543750  5.224250</span>
+<span class="go">2019-01-24  5.426  5.493231  5.358769</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="stock_ai.calcs.tech_boll">
 <code class="descclassname">stock_ai.calcs.</code><code class="descname">tech_boll</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_boll"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_boll" title="永久链接至目标">¶</a></dt>
 <dd><p>计算布林线</p>
@@ -417,14 +510,26 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="stock_ai.calcs.tech_ewm">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">tech_ewm</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_ewm"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_ewm" title="永久链接至目标">¶</a></dt>
-<dd><p>计算指数均线</p>
+<dt id="stock_ai.calcs.tech_ema">
+<code class="descclassname">stock_ai.calcs.</code><code class="descname">tech_ema</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_ema"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_ema" title="永久链接至目标">¶</a></dt>
+<dd><p>计算指数移动均线</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><p><strong>days</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 天数。默认值为5。</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_stock</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_daily</span><span class="p">(</span><span class="s1">&#39;601398&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">tech_ema</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<span class="go">date</span>
+<span class="go">2019-01-18    5.287964</span>
+<span class="go">2019-01-21    5.341976</span>
+<span class="go">2019-01-22    5.357984</span>
+<span class="go">2019-01-23    5.385323</span>
+<span class="go">2019-01-24    5.410215</span>
+<span class="go">Name: EMA, dtype: float64</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -436,6 +541,18 @@
 <dd class="field-odd"><p><strong>days</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 天数。默认值为5。</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_stock</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_daily</span><span class="p">(</span><span class="s1">&#39;601398&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">tech_ma</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<span class="go">date</span>
+<span class="go">2019-01-18    5.262</span>
+<span class="go">2019-01-21    5.312</span>
+<span class="go">2019-01-22    5.344</span>
+<span class="go">2019-01-23    5.384</span>
+<span class="go">2019-01-24    5.426</span>
+<span class="go">Name: MA, dtype: float64</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">

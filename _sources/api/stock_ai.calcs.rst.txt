@@ -15,12 +15,17 @@ calcs
     calc_year
     cum_return
     daily_return
+    dropna
+    fft
+    fillna
     is_trade_suspension
     kurtosis
+    pct_change
     sharpe_ratio
     skew
+    tech_bbands
     tech_boll
-    tech_ewm
+    tech_ema
     tech_ma
     tech_macd
 
@@ -33,12 +38,17 @@ calcs
 .. autofunction:: calc_year
 .. autofunction:: cum_return
 .. autofunction:: daily_return
+.. autofunction:: dropna
+.. autofunction:: fft
+.. autofunction:: fillna
 .. autofunction:: is_trade_suspension
 .. autofunction:: kurtosis
+.. autofunction:: pct_change
 .. autofunction:: sharpe_ratio
 .. autofunction:: skew
+.. autofunction:: tech_bbands
 .. autofunction:: tech_boll
-.. autofunction:: tech_ewm
+.. autofunction:: tech_ema
 .. autofunction:: tech_ma
 .. autofunction:: tech_macd
 

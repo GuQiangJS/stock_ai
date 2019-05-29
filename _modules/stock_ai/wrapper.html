@@ -84,8 +84,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.wrapper.html">wrapper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.ploter.html">ploter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.report.html">report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
 
             
@@ -166,7 +166,7 @@
 <span class="sd">        append_funcs (collections.OrderedDict): 附加其他列数据时的计算方法字典。</span>
 
 <span class="sd">            - key值为需要附加的列名。</span>
-<span class="sd">            - value值为可以为方法名称或者是[方法名,参数字典](详见 :mod:`.stock_ai.appender`)。</span>
+<span class="sd">            - value值为可以为方法名称或者是[方法名,参数字典](详见 :mod:`.stock_ai.calcs`)。</span>
 
 <span class="sd">            关于附加列名的赋值方式：</span>
 <span class="sd">                - 如果方法返回的是 :class:`pandas.Series`，用key值来赋值。</span>
@@ -191,7 +191,7 @@
 
 <span class="sd">        附加列只传递方法名（无参数）</span>
 
-<span class="sd">        &gt;&gt;&gt; funcs = {&#39;year&#39;: stock_ai.appender.calc_year}</span>
+<span class="sd">        &gt;&gt;&gt; funcs = {&#39;year&#39;: stock_ai.calcs.calc_year}</span>
 <span class="sd">        &gt;&gt;&gt; df = wrapper.dataframe_merge(df_1, df_2, append_funcs=funcs)</span>
 <span class="sd">        &gt;&gt;&gt; df[&#39;year&#39;].head()</span>
 <span class="sd">        date</span>

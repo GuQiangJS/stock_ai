@@ -1,0 +1,40 @@
+P
+========================
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.preprocessing
+
+.. autoclass:: P
+    :members: __init__
+
+
+
+.. rubric:: Attributes
+.. autosummary::
+    
+    P.x_shape
+    P.y_shape
+
+
+
+
+
+.. rubric:: Methods
+.. autosummary::
+    :nosignatures:
+    
+    P.trans_to_df
+    P.trans_to_numpy
+
+
+
+
+.. rubric:: Attributes
+
+.. autoattribute:: P.x_shape
+.. autoattribute:: P.y_shape
+.. rubric:: Methods
+
+.. automethod:: P.trans_to_df
+.. automethod:: P.trans_to_numpy

@@ -85,8 +85,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api/stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/stock_ai.wrapper.html">wrapper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/stock_ai.ploter.html">ploter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/stock_ai.report.html">report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
 
             
@@ -158,6 +158,7 @@
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#K"><strong>K</strong></a>
@@ -167,11 +168,15 @@
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
  
 </div>
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stock_ai.preprocessing.P.html#stock_ai.preprocessing.P.__init__">__init__ (stock_ai.preprocessing.P 属性)</a>
+</li>
       <li><a href="api/stock_ai.module.Index.html#stock_ai.module.Index.__init__">__init__() (stock_ai.module.Index 方法)</a>
 
       <ul>
@@ -180,6 +185,8 @@
         <li><a href="api/stock_ai.module.Stock.html#stock_ai.module.Stock.__init__">(stock_ai.module.Stock 方法)</a>
 </li>
         <li><a href="api/stock_ai.module.StockCN.html#stock_ai.module.StockCN.__init__">(stock_ai.module.StockCN 方法)</a>
+</li>
+        <li><a href="api/stock_ai.preprocessing.P1.html#stock_ai.preprocessing.P1.__init__">(stock_ai.preprocessing.P1 方法)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -226,6 +233,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/stock_ai.wrapper.html#stock_ai.wrapper.dataframe_merge">dataframe_merge() (在 stock_ai.wrapper 模块中)</a>
 </li>
+      <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.dropna">dropna() (在 stock_ai.calcs 模块中)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -233,6 +242,18 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/stock_ai.module.StockCN.html#stock_ai.module.StockCN.exchange">exchange (stock_ai.module.StockCN 属性)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.fft">fft() (在 stock_ai.calcs 模块中)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.fillna">fillna() (在 stock_ai.calcs 模块中)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -344,7 +365,13 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/stock_ai.ploter.html#stock_ai.ploter.plot_daily_return_histogram">plot_daily_return_histogram() (在 stock_ai.ploter 模块中)</a>
+      <li><a href="api/stock_ai.preprocessing.P.html#stock_ai.preprocessing.P">P (stock_ai.preprocessing 中的类)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stock_ai.preprocessing.P1.html#stock_ai.preprocessing.P1">P1 (stock_ai.preprocessing 中的类)</a>
+</li>
+      <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.pct_change">pct_change() (在 stock_ai.calcs 模块中)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -384,16 +411,60 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.tech_bbands">tech_bbands() (在 stock_ai.calcs 模块中)</a>
+</li>
       <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.tech_boll">tech_boll() (在 stock_ai.calcs 模块中)</a>
 </li>
-      <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.tech_ewm">tech_ewm() (在 stock_ai.calcs 模块中)</a>
+      <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.tech_ema">tech_ema() (在 stock_ai.calcs 模块中)</a>
+</li>
+      <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.tech_ma">tech_ma() (在 stock_ai.calcs 模块中)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.tech_ma">tech_ma() (在 stock_ai.calcs 模块中)</a>
-</li>
       <li><a href="api/stock_ai.calcs.html#stock_ai.calcs.tech_macd">tech_macd() (在 stock_ai.calcs 模块中)</a>
 </li>
+      <li><a href="api/stock_ai.preprocessing.P.html#stock_ai.preprocessing.P.trans_to_df">trans_to_df() (stock_ai.preprocessing.P 方法)</a>
+
+      <ul>
+        <li><a href="api/stock_ai.preprocessing.P1.html#stock_ai.preprocessing.P1.trans_to_df">(stock_ai.preprocessing.P1 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="api/stock_ai.preprocessing.P.html#stock_ai.preprocessing.P.trans_to_numpy">trans_to_numpy() (stock_ai.preprocessing.P 方法)</a>
+
+      <ul>
+        <li><a href="api/stock_ai.preprocessing.P1.html#stock_ai.preprocessing.P1.trans_to_numpy">(stock_ai.preprocessing.P1 方法)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stock_ai.preprocessing.P.html#stock_ai.preprocessing.P.x_shape">x_shape (stock_ai.preprocessing.P 属性)</a>
+
+      <ul>
+        <li><a href="api/stock_ai.preprocessing.P1.html#stock_ai.preprocessing.P1.x_shape">(stock_ai.preprocessing.P1 属性)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stock_ai.preprocessing.html#stock_ai.preprocessing.xy_split_1">xy_split_1() (在 stock_ai.preprocessing 模块中)</a>
+</li>
+      <li><a href="api/stock_ai.preprocessing.html#stock_ai.preprocessing.xy_split_2">xy_split_2() (在 stock_ai.preprocessing 模块中)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stock_ai.preprocessing.P.html#stock_ai.preprocessing.P.y_shape">y_shape (stock_ai.preprocessing.P 属性)</a>
+
+      <ul>
+        <li><a href="api/stock_ai.preprocessing.P1.html#stock_ai.preprocessing.P1.y_shape">(stock_ai.preprocessing.P1 属性)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
