@@ -7,6 +7,8 @@ import pprint
 from test import is_travis
 from test import get_stock_daily
 from test import get_index_daily
+from stock_ai import calcs
+import pandas as pd
 
 
 def test_load_stock_daily_online():
@@ -136,8 +138,8 @@ def test_load_money_supply_year_online():
 
 def test_merge():
     df_merge = test.merged_dataframe()
-    df_index=test.get_index_daily()
-    df_stock=test.get_stock_daily()
+    df_index = test.get_index_daily()
+    df_stock = test.get_stock_daily()
     assert not df_merge.empty
     print(df_merge.head())
     print(df_merge.tail())
@@ -149,3 +151,62 @@ def test_merge():
         assert c in df_merge.columns
         assert df_stock[col].dtype == df_merge[c].dtype
     print(df_merge.dtypes)
+
+
+def test_merge_dropcolumn():
+    columns = ['up_count', 'down_count']
+    df = data_processor.merge(
+        {
+            test.index_code: get_index_daily(),
+            test.stock_code: get_stock_daily()
+        },
+        append_funcs={
+            'drop_columns': (calcs.drop_column, {
+                'columns': columns,
+                'replace': True
+            })
+        })
+    for col in columns:
+        assert col not in df.columns
+    print(df.dtypes)
+
+
+def test_merge_doc():
+
+    def app(df, **kwargs):
+        name = kwargs.pop('name', 'o')
+        return pd.Series(
+            ['{0}_{1}'.format(name, i) for i in range(df.shape[0])],
+            index=df.index)
+
+    def drop(df, **kwargs):
+        return df.drop(**kwargs)
+
+    df = pd.DataFrame({
+        'key': ['K0', 'K1', 'K2', 'K3'],
+        'A': ['A0', 'A1', 'A2', 'A3'],
+        'B': ['A4', 'A5', 'A6', 'A7']
+    }).set_index('key')
+    other = pd.DataFrame({
+        'key': ['K0', 'K1', 'K2'],
+        'A': ['B0', 'B1', 'B2'],
+        'B': ['B3', 'B4', 'B5']
+    }).set_index('key')
+    print(data_processor.merge({'df': df, '_other': other}))
+
+    print(data_processor.merge({'df': df, '_other': other},
+                             append_funcs={
+                                 'drop_column': (drop, {
+                                     'columns': ['B'],
+                                     'replace': True
+                                 })
+                             }))
+
+    merge_df = data_processor.merge({
+        'df': df,
+        '_other': other
+    },
+                                    append_funcs={'C': [app, {
+                                        'name': 'N'
+                                    }]})
+    print(merge_df)

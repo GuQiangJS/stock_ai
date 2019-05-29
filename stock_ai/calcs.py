@@ -377,3 +377,8 @@ def sharpe_ratio(r=None, rf=None, r_std: float = None):
 
     result = (r_mean - rf_mean) / rf_std
     return result if isinstance(result, float) else result[0]
+
+
+def drop_column(data: pd.DataFrame, **kwargs):
+    """将数据源中的部分列丢弃，参考 :func:`pandas.DataFrame.drop`"""
+    return data.drop(**kwargs)

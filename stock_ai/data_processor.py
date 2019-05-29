@@ -635,16 +635,16 @@ def merge(dfs, append_funcs=None, **kwargs):
     """合并数据
 
     Args:
-        dfs (dict): 待合并的数据源字典。key值会被用来做 :func:`pandas.DataFrame.join` 方法中的 'rsuffix`。
+        dfs (dict): 待合并的数据源字典。key值会被用来做 :func:`pandas.DataFrame.join` 方法中的 ``rsuffix`` 参数。
 
             - key (str) 值为数据源名称。
-            - value (:class:`pands.DataFrame`) 值为数据源实例。
+            - value (:class:`pandas.DataFrame`) 值为数据源实例。
 
-        append_funcs (:class:`collections.OrderedDict`): 附加其他列数据时的计算方法字典。
-            默认为 None。
+        append_funcs (:class:`collections.OrderedDict`): 附加其他列数据时的计算方法字典。默认为 None。
 
             - key (str) 值为需要附加的列名。
-            - value 值为可以为方法名称或者是(方法名,参数/参数集合)(详见 :mod:`.stock_ai.calcs`)。
+            - value 值为可以是方法名称或者是(方法名,参数字典)(详见 :mod:`.stock_ai.calcs`)。
+                **如果需要使用方法返回的 :class:`pandas.DataFrame` 代替计算中的 :class:`pandas.DataFrame` 请在参数中包含 ``replace=True``**。
 
             关于附加列名的赋值方式：
                 - 如果方法返回的是 :class:`pandas.Series`，用key值来赋值。
@@ -652,10 +652,83 @@ def merge(dfs, append_funcs=None, **kwargs):
 
         how (str): 默认为 ``left``。参考 :meth:`pandas.DataFrame.join` 中同名参数。
 
+    Examples:
+        >>> df = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],
+        ...                    'A': ['A0', 'A1', 'A2', 'A3']}).set_index('key')
+              A   B
+        key
+        K0   A0  A4
+        K1   A1  A5
+        K2   A2  A6
+        K3   A3  A7
+
+        >>> other = pd.DataFrame({'key': ['K0', 'K1', 'K2'],
+        ...                       'B': ['B0', 'B1', 'B2']}).set_index('key')
+              A   B
+        key
+        K0   B0  B3
+        K1   B1  B4
+        K2   B2  B5
+
+        普通合并，因为两个数据源中包含相同的列名，所以后附加的列名会被变更。
+
+        >>> data_processor.merge({'df':df,'_other':other})
+              A   B A_other B_other
+        key
+        K0   A0  A4      B0      B3
+        K1   A1  A5      B1      B4
+        K2   A2  A6      B2      B5
+        K3   A3  A7     NaN     NaN
+
+        丢弃指定列
+
+        >>> def drop(df, **kwargs):
+        ...     return df.drop(**kwargs)
+        >>> data_processor.merge({'df': df, '_other': other},
+        ...                        append_funcs={
+        ...                            'drop_columns': (drop, {
+        ...                                'columns': ['B'],
+        ...                                'replace': True
+        ...                            })
+        ...                        })
+              A A_other B_other
+        key
+        K0   A0      B0      B3
+        K1   A1      B1      B4
+        K2   A2      B2      B5
+        K3   A3     NaN     NaN
+
+        增加计算列
+
+        >>> def app(df):
+        ...     return pd.Series(['C0','C1','C2','C3'],index=df.index)
+        >>> data_processor.merge({'df': df, '_other': other},
+        ...                      append_funcs={ 'C': app })
+              A   B A_other B_other   C
+        key
+        K0   A0  A4      B0      B3  C0
+        K1   A1  A5      B1      B4  C1
+        K2   A2  A6      B2      B5  C2
+        K3   A3  A7     NaN     NaN  C3
+
+        计算列指定参数
+
+        >>> def app(df,**kwargs):
+        ...     name=kwargs.pop('name','o')
+        ...     return pd.Series(['{0}_{1}'.format(name,i) for i in range(df.shape[0])],index=df.index)
+        >>> data_processor.merge({'df': df, '_other': other},
+        ...                      append_funcs={ 'C': [app,{'name': 'N'}] })
+              A   B A_other B_other    C
+        key
+        K0   A0  A4      B0      B3  N_0
+        K1   A1  A5      B1      B4  N_1
+        K2   A2  A6      B2      B5  N_2
+        K3   A3  A7     NaN     NaN  N_3
+
     Returns:
+        :class:`pandas.DataFrame`:
 
     See Also:
-        * :func:`stock_ai.wrapper.dataframe_merge`
         * :mod:`stock_ai.calcs`
         * :meth:`pandas.DataFrame.join`
 
@@ -673,6 +746,12 @@ def merge(dfs, append_funcs=None, **kwargs):
         for k, v in append_funcs.items():
             new_value = None
             if isinstance(v, (list, tuple)) and len(v) > 1:
+                if not isinstance(v[1], dict):
+                    raise ValueError
+                rep = v[1].pop('replace', False)  #是否替换数据，默认为False
+                if rep:
+                    df = v[0](df, **v[1])
+                    continue
                 new_value = v[0](df, **v[1])
             else:
                 new_value = v(df)
