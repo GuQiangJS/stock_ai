@@ -83,7 +83,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.data_processor.html">data_processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.calcs.html">calcs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.wrapper.html">wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.report.html">report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
@@ -779,6 +778,140 @@
     <span class="n">df</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">get_money_supply_bal</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="merge"><a class="viewcode-back" href="../../api/stock_ai.data_processor.html#stock_ai.data_processor.merge">[文档]</a><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">append_funcs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;合并数据</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dfs (dict): 待合并的数据源字典。key值会被用来做 :func:`pandas.DataFrame.join` 方法中的 ``rsuffix`` 参数。</span>
+
+<span class="sd">            - key (str) 值为数据源名称。</span>
+<span class="sd">            - value (:class:`pandas.DataFrame`) 值为数据源实例。</span>
+
+<span class="sd">        append_funcs (:class:`collections.OrderedDict`): 附加其他列数据时的计算方法字典。默认为 None。</span>
+
+<span class="sd">            - key (str) 值为需要附加的列名。</span>
+<span class="sd">            - value 值为可以是方法名称或者是(方法名,参数字典)(详见 :mod:`.stock_ai.calcs`)。</span>
+<span class="sd">                **如果需要使用方法返回的 :class:`pandas.DataFrame` 代替计算中的 :class:`pandas.DataFrame` 请在参数中包含 ``replace=True``**。</span>
+
+<span class="sd">            关于附加列名的赋值方式：</span>
+<span class="sd">                - 如果方法返回的是 :class:`pandas.Series`，用key值来赋值。</span>
+<span class="sd">                - 如果方法返回的是 :class:`pandas.DataFrame`，会用返回的 `DataFrame` 中的列名+Key值赋值。</span>
+
+<span class="sd">        how (str): 默认为 ``left``。参考 :meth:`pandas.DataFrame.join` 中同名参数。</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame({&#39;key&#39;: [&#39;K0&#39;, &#39;K1&#39;, &#39;K2&#39;, &#39;K3&#39;],</span>
+<span class="sd">        ...                    &#39;A&#39;: [&#39;A0&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;A3&#39;]}).set_index(&#39;key&#39;)</span>
+<span class="sd">              A   B</span>
+<span class="sd">        key</span>
+<span class="sd">        K0   A0  A4</span>
+<span class="sd">        K1   A1  A5</span>
+<span class="sd">        K2   A2  A6</span>
+<span class="sd">        K3   A3  A7</span>
+
+<span class="sd">        &gt;&gt;&gt; other = pd.DataFrame({&#39;key&#39;: [&#39;K0&#39;, &#39;K1&#39;, &#39;K2&#39;],</span>
+<span class="sd">        ...                       &#39;B&#39;: [&#39;B0&#39;, &#39;B1&#39;, &#39;B2&#39;]}).set_index(&#39;key&#39;)</span>
+<span class="sd">              A   B</span>
+<span class="sd">        key</span>
+<span class="sd">        K0   B0  B3</span>
+<span class="sd">        K1   B1  B4</span>
+<span class="sd">        K2   B2  B5</span>
+
+<span class="sd">        普通合并，因为两个数据源中包含相同的列名，所以后附加的列名会被变更。</span>
+
+<span class="sd">        &gt;&gt;&gt; data_processor.merge({&#39;df&#39;:df,&#39;_other&#39;:other})</span>
+<span class="sd">              A   B A_other B_other</span>
+<span class="sd">        key</span>
+<span class="sd">        K0   A0  A4      B0      B3</span>
+<span class="sd">        K1   A1  A5      B1      B4</span>
+<span class="sd">        K2   A2  A6      B2      B5</span>
+<span class="sd">        K3   A3  A7     NaN     NaN</span>
+
+<span class="sd">        丢弃指定列</span>
+
+<span class="sd">        &gt;&gt;&gt; def drop(df, **kwargs):</span>
+<span class="sd">        ...     return df.drop(**kwargs)</span>
+<span class="sd">        &gt;&gt;&gt; data_processor.merge({&#39;df&#39;: df, &#39;_other&#39;: other},</span>
+<span class="sd">        ...                        append_funcs={</span>
+<span class="sd">        ...                            &#39;drop_columns&#39;: (drop, {</span>
+<span class="sd">        ...                                &#39;columns&#39;: [&#39;B&#39;],</span>
+<span class="sd">        ...                                &#39;replace&#39;: True</span>
+<span class="sd">        ...                            })</span>
+<span class="sd">        ...                        })</span>
+<span class="sd">              A A_other B_other</span>
+<span class="sd">        key</span>
+<span class="sd">        K0   A0      B0      B3</span>
+<span class="sd">        K1   A1      B1      B4</span>
+<span class="sd">        K2   A2      B2      B5</span>
+<span class="sd">        K3   A3     NaN     NaN</span>
+
+<span class="sd">        增加计算列</span>
+
+<span class="sd">        &gt;&gt;&gt; def app(df):</span>
+<span class="sd">        ...     return pd.Series([&#39;C0&#39;,&#39;C1&#39;,&#39;C2&#39;,&#39;C3&#39;],index=df.index)</span>
+<span class="sd">        &gt;&gt;&gt; data_processor.merge({&#39;df&#39;: df, &#39;_other&#39;: other},</span>
+<span class="sd">        ...                      append_funcs={ &#39;C&#39;: app })</span>
+<span class="sd">              A   B A_other B_other   C</span>
+<span class="sd">        key</span>
+<span class="sd">        K0   A0  A4      B0      B3  C0</span>
+<span class="sd">        K1   A1  A5      B1      B4  C1</span>
+<span class="sd">        K2   A2  A6      B2      B5  C2</span>
+<span class="sd">        K3   A3  A7     NaN     NaN  C3</span>
+
+<span class="sd">        计算列指定参数</span>
+
+<span class="sd">        &gt;&gt;&gt; def app(df,**kwargs):</span>
+<span class="sd">        ...     name=kwargs.pop(&#39;name&#39;,&#39;o&#39;)</span>
+<span class="sd">        ...     return pd.Series([&#39;{0}_{1}&#39;.format(name,i) for i in range(df.shape[0])],index=df.index)</span>
+<span class="sd">        &gt;&gt;&gt; data_processor.merge({&#39;df&#39;: df, &#39;_other&#39;: other},</span>
+<span class="sd">        ...                      append_funcs={ &#39;C&#39;: [app,{&#39;name&#39;: &#39;N&#39;}] })</span>
+<span class="sd">              A   B A_other B_other    C</span>
+<span class="sd">        key</span>
+<span class="sd">        K0   A0  A4      B0      B3  N_0</span>
+<span class="sd">        K1   A1  A5      B1      B4  N_1</span>
+<span class="sd">        K2   A2  A6      B2      B5  N_2</span>
+<span class="sd">        K3   A3  A7     NaN     NaN  N_3</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :class:`pandas.DataFrame`:</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        * :mod:`stock_ai.calcs`</span>
+<span class="sd">        * :meth:`pandas.DataFrame.join`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">how</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;how&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dfs</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">dataframe</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">rsuffix</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">append_funcs</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">append_funcs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">new_value</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span>
+                <span class="n">rep</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>  <span class="c1">#是否替换数据，默认为False</span>
+                <span class="k">if</span> <span class="n">rep</span><span class="p">:</span>
+                    <span class="n">df</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="k">continue</span>
+                <span class="n">new_value</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new_value</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_value</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+                <span class="n">new_value</span> <span class="o">=</span> <span class="n">new_value</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_value</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+                <span class="n">new_value</span> <span class="o">=</span> <span class="n">new_value</span><span class="o">.</span><span class="n">add_suffix</span><span class="p">(</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span></div>
 </pre></div>
 

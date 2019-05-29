@@ -4,7 +4,6 @@
 ./_modules/stock_ai/module.html
 ./_modules/stock_ai/preprocessing.html
 ./_modules/stock_ai/report.html
-./_modules/stock_ai/wrapper.html
 ./_sources/api/stock_ai.calcs.rst.txt
 ./_sources/api/stock_ai.data_processor.rst.txt
 ./_sources/api/stock_ai.module.Index.rst.txt
@@ -16,7 +15,6 @@
 ./_sources/api/stock_ai.preprocessing.P1.rst.txt
 ./_sources/api/stock_ai.preprocessing.rst.txt
 ./_sources/api/stock_ai.report.rst.txt
-./_sources/api/stock_ai.wrapper.rst.txt
 ./_sources/index.rst.txt
 ./_static/basic.css
 ./_static/css/badge_only.css
@@ -83,7 +81,6 @@
 ./api/stock_ai.preprocessing.P1.html
 ./api/stock_ai.preprocessing.html
 ./api/stock_ai.report.html
-./api/stock_ai.wrapper.html
 ./genindex.html
 ./index.html
 ./objects.inv

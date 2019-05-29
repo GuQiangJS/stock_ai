@@ -36,7 +36,6 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="wrapper" href="stock_ai.wrapper.html" />
     <link rel="prev" title="StockCN" href="stock_ai.module.StockCN.html" /> 
 </head>
 
@@ -85,7 +84,6 @@
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.data_processor.html">data_processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">calcs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stock_ai.wrapper.html">wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
@@ -173,43 +171,46 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.daily_return" title="stock_ai.calcs.daily_return"><code class="xref py py-obj docutils literal notranslate"><span class="pre">daily_return</span></code></a></p></td>
 <td><p>计算日收益</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.dropna" title="stock_ai.calcs.dropna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropna</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.drop_column" title="stock_ai.calcs.drop_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_column</span></code></a></p></td>
+<td><p>将数据源中的部分列丢弃，参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.drop()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.dropna" title="stock_ai.calcs.dropna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropna</span></code></a></p></td>
 <td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.dropna()</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.fft" title="stock_ai.calcs.fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fft</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.fft" title="stock_ai.calcs.fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fft</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.fillna" title="stock_ai.calcs.fillna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillna</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.fillna" title="stock_ai.calcs.fillna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillna</span></code></a></p></td>
 <td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.fillna()</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.is_trade_suspension" title="stock_ai.calcs.is_trade_suspension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_trade_suspension</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.is_trade_suspension" title="stock_ai.calcs.is_trade_suspension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_trade_suspension</span></code></a></p></td>
 <td><p>返回是否为停牌</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.kurtosis" title="stock_ai.calcs.kurtosis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kurtosis</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.kurtosis" title="stock_ai.calcs.kurtosis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kurtosis</span></code></a></p></td>
 <td><p>计算峰度</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.pct_change" title="stock_ai.calcs.pct_change"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pct_change</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.pct_change" title="stock_ai.calcs.pct_change"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pct_change</span></code></a></p></td>
 <td><p>包装 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.pct_change()</span></code> 方法</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.sharpe_ratio" title="stock_ai.calcs.sharpe_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharpe_ratio</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.sharpe_ratio" title="stock_ai.calcs.sharpe_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharpe_ratio</span></code></a></p></td>
 <td><p>计算 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87">夏普比率</a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.skew" title="stock_ai.calcs.skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skew</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.skew" title="stock_ai.calcs.skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skew</span></code></a></p></td>
 <td><p>计算偏度</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_bbands" title="stock_ai.calcs.tech_bbands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_bbands</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_bbands" title="stock_ai.calcs.tech_bbands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_bbands</span></code></a></p></td>
 <td><p>布林带</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_boll" title="stock_ai.calcs.tech_boll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_boll</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_boll" title="stock_ai.calcs.tech_boll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_boll</span></code></a></p></td>
 <td><p>计算布林线</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_ema" title="stock_ai.calcs.tech_ema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_ema</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_ema" title="stock_ai.calcs.tech_ema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_ema</span></code></a></p></td>
 <td><p>计算指数移动均线</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_ma" title="stock_ai.calcs.tech_ma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_ma</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_ma" title="stock_ai.calcs.tech_ma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_ma</span></code></a></p></td>
 <td><p>计算移动均线</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_macd" title="stock_ai.calcs.tech_macd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_macd</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_macd" title="stock_ai.calcs.tech_macd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_macd</span></code></a></p></td>
 <td><p>计算MACD</p></td>
 </tr>
 </tbody>
@@ -307,6 +308,12 @@
 <dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.drop_column">
+<code class="descclassname">stock_ai.calcs.</code><code class="descname">drop_column</code><span class="sig-paren">(</span><em>data: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#drop_column"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.drop_column" title="永久链接至目标">¶</a></dt>
+<dd><p>将数据源中的部分列丢弃，参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.drop()</span></code></p>
 </dd></dl>
 
 <dl class="function">
@@ -599,8 +606,6 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="stock_ai.wrapper.html" class="btn btn-neutral float-right" title="wrapper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="stock_ai.module.StockCN.html" class="btn btn-neutral float-left" title="StockCN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

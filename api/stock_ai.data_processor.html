@@ -85,7 +85,6 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">data_processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.calcs.html">calcs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stock_ai.wrapper.html">wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
@@ -221,7 +220,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.load_stock_list_online" title="stock_ai.data_processor.load_stock_list_online"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_list_online</span></code></a></p></td>
 <td><p>从在线数据中获取股票列表</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.save_stock_daily_csv" title="stock_ai.data_processor.save_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_stock_daily_csv</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.data_processor.merge" title="stock_ai.data_processor.merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge</span></code></a></p></td>
+<td><p>合并数据</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.data_processor.save_stock_daily_csv" title="stock_ai.data_processor.save_stock_daily_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_stock_daily_csv</span></code></a></p></td>
 <td><p>保存股票日线数据至csv文件</p></td>
 </tr>
 </tbody>
@@ -875,6 +877,132 @@
 <span class="go">    000005  000005              2  世纪星源  3778.008125  stock_cn  sz      100</span>
 <span class="go">    000006  000006              2  深振业Ａ     5.270000  stock_cn  sz      100</span>
 </pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.data_processor.merge">
+<code class="descclassname">stock_ai.data_processor.</code><code class="descname">merge</code><span class="sig-paren">(</span><em>dfs</em>, <em>append_funcs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#merge"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.merge" title="永久链接至目标">¶</a></dt>
+<dd><p>合并数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.7)"><em>dict</em></a>) – <p>待合并的数据源字典。key值会被用来做 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code> 方法中的 <code class="docutils literal notranslate"><span class="pre">rsuffix</span></code> 参数。</p>
+<ul>
+<li><p>key (str) 值为数据源名称。</p></li>
+<li><p>value (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) 值为数据源实例。</p></li>
+</ul>
+</p></li>
+<li><p><strong>append_funcs</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(在 Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code></a>) – <p>附加其他列数据时的计算方法字典。默认为 None。</p>
+<ul>
+<li><p>key (str) 值为需要附加的列名。</p></li>
+<li><dl class="simple">
+<dt>value 值为可以是方法名称或者是(方法名,参数字典)(详见 <code class="xref py py-mod docutils literal notranslate"><span class="pre">stock_ai.calcs</span></code>)。</dt><dd><p><strong>如果需要使用方法返回的 :class:`pandas.DataFrame` 代替计算中的 :class:`pandas.DataFrame` 请在参数中包含 ``replace=True``</strong>。</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="simple">
+<dt>关于附加列名的赋值方式：</dt><dd><ul>
+<li><p>如果方法返回的是 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>，用key值来赋值。</p></li>
+<li><p>如果方法返回的是 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>，会用返回的 <cite>DataFrame</cite> 中的列名+Key值赋值。</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>how</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 默认为 <code class="docutils literal notranslate"><span class="pre">left</span></code>。参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a> 中同名参数。</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;K0&#39;</span><span class="p">,</span> <span class="s1">&#39;K1&#39;</span><span class="p">,</span> <span class="s1">&#39;K2&#39;</span><span class="p">,</span> <span class="s1">&#39;K3&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                   <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A0&#39;</span><span class="p">,</span> <span class="s1">&#39;A1&#39;</span><span class="p">,</span> <span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;A3&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+<span class="go">      A   B</span>
+<span class="go">key</span>
+<span class="go">K0   A0  A4</span>
+<span class="go">K1   A1  A5</span>
+<span class="go">K2   A2  A6</span>
+<span class="go">K3   A3  A7</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">other</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;K0&#39;</span><span class="p">,</span> <span class="s1">&#39;K1&#39;</span><span class="p">,</span> <span class="s1">&#39;K2&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">,</span> <span class="s1">&#39;B1&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+<span class="go">      A   B</span>
+<span class="go">key</span>
+<span class="go">K0   B0  B3</span>
+<span class="go">K1   B1  B4</span>
+<span class="go">K2   B2  B5</span>
+</pre></div>
+</div>
+<p>普通合并，因为两个数据源中包含相同的列名，所以后附加的列名会被变更。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">merge</span><span class="p">({</span><span class="s1">&#39;df&#39;</span><span class="p">:</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;_other&#39;</span><span class="p">:</span><span class="n">other</span><span class="p">})</span>
+<span class="go">      A   B A_other B_other</span>
+<span class="go">key</span>
+<span class="go">K0   A0  A4      B0      B3</span>
+<span class="go">K1   A1  A5      B1      B4</span>
+<span class="go">K2   A2  A6      B2      B5</span>
+<span class="go">K3   A3  A7     NaN     NaN</span>
+</pre></div>
+</div>
+<p>丢弃指定列</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">drop</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">merge</span><span class="p">({</span><span class="s1">&#39;df&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">,</span> <span class="s1">&#39;_other&#39;</span><span class="p">:</span> <span class="n">other</span><span class="p">},</span>
+<span class="gp">... </span>                       <span class="n">append_funcs</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>                           <span class="s1">&#39;drop_columns&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">drop</span><span class="p">,</span> <span class="p">{</span>
+<span class="gp">... </span>                               <span class="s1">&#39;columns&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                               <span class="s1">&#39;replace&#39;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="gp">... </span>                           <span class="p">})</span>
+<span class="gp">... </span>                       <span class="p">})</span>
+<span class="go">      A A_other B_other</span>
+<span class="go">key</span>
+<span class="go">K0   A0      B0      B3</span>
+<span class="go">K1   A1      B1      B4</span>
+<span class="go">K2   A2      B2      B5</span>
+<span class="go">K3   A3     NaN     NaN</span>
+</pre></div>
+</div>
+<p>增加计算列</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">app</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span><span class="s1">&#39;C3&#39;</span><span class="p">],</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">merge</span><span class="p">({</span><span class="s1">&#39;df&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">,</span> <span class="s1">&#39;_other&#39;</span><span class="p">:</span> <span class="n">other</span><span class="p">},</span>
+<span class="gp">... </span>                     <span class="n">append_funcs</span><span class="o">=</span><span class="p">{</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">app</span> <span class="p">})</span>
+<span class="go">      A   B A_other B_other   C</span>
+<span class="go">key</span>
+<span class="go">K0   A0  A4      B0      B3  C0</span>
+<span class="go">K1   A1  A5      B1      B4  C1</span>
+<span class="go">K2   A2  A6      B2      B5  C2</span>
+<span class="go">K3   A3  A7     NaN     NaN  C3</span>
+</pre></div>
+</div>
+<p>计算列指定参数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">app</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">_</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])],</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">merge</span><span class="p">({</span><span class="s1">&#39;df&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">,</span> <span class="s1">&#39;_other&#39;</span><span class="p">:</span> <span class="n">other</span><span class="p">},</span>
+<span class="gp">... </span>                     <span class="n">append_funcs</span><span class="o">=</span><span class="p">{</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">app</span><span class="p">,{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;N&#39;</span><span class="p">}]</span> <span class="p">})</span>
+<span class="go">      A   B A_other B_other    C</span>
+<span class="go">key</span>
+<span class="go">K0   A0  A4      B0      B3  N_0</span>
+<span class="go">K1   A1  A5      B1      B4  N_1</span>
+<span class="go">K2   A2  A6      B2      B5  N_2</span>
+<span class="go">K3   A3  A7     NaN     NaN  N_3</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<ul class="simple">
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">stock_ai.calcs</span></code></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join" title="(在 pandas v0.24.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.join()</span></code></a></p></li>
+</ul>
 </div>
 </dd></dl>
 

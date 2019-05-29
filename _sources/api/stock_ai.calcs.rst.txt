@@ -15,6 +15,7 @@ calcs
     calc_year
     cum_return
     daily_return
+    drop_column
     dropna
     fft
     fillna
@@ -38,6 +39,7 @@ calcs
 .. autofunction:: calc_year
 .. autofunction:: cum_return
 .. autofunction:: daily_return
+.. autofunction:: drop_column
 .. autofunction:: dropna
 .. autofunction:: fft
 .. autofunction:: fillna

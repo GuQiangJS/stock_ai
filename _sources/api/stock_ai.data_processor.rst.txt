@@ -31,6 +31,7 @@ data\_processor
     load_stock_list
     load_stock_list_mongodb
     load_stock_list_online
+    merge
     save_stock_daily_csv
 
 
@@ -58,6 +59,7 @@ data\_processor
 .. autofunction:: load_stock_list
 .. autofunction:: load_stock_list_mongodb
 .. autofunction:: load_stock_list_online
+.. autofunction:: merge
 .. autofunction:: save_stock_daily_csv
 
 

@@ -83,7 +83,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.data_processor.html">data_processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.calcs.html">calcs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.wrapper.html">wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.report.html">report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
@@ -528,6 +527,11 @@
 
     <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">r_mean</span> <span class="o">-</span> <span class="n">rf_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">rf_std</span>
     <span class="k">return</span> <span class="n">result</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="k">else</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="drop_column"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.drop_column">[文档]</a><span class="k">def</span> <span class="nf">drop_column</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;将数据源中的部分列丢弃，参考 :func:`pandas.DataFrame.drop`&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
