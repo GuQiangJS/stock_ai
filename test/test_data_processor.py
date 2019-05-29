@@ -5,6 +5,8 @@ import os
 import numpy as np
 import pprint
 from test import is_travis
+from test import get_stock_daily
+from test import get_index_daily
 
 
 def test_load_stock_daily_online():
@@ -130,3 +132,20 @@ def test_load_money_supply_year_online():
     print(df.dtypes)
     v = df.loc['2013']
     assert v['m2'] == 1106525
+
+
+def test_merge():
+    df_merge = test.merged_dataframe()
+    df_index=test.get_index_daily()
+    df_stock=test.get_stock_daily()
+    assert not df_merge.empty
+    print(df_merge.head())
+    print(df_merge.tail())
+    for col in df_index.columns:
+        assert col in df_merge.columns
+        assert df_index[col].dtype == df_merge[col].dtype
+    for col in df_stock.columns:
+        c = '{0}{1}'.format(col, test.stock_code)
+        assert c in df_merge.columns
+        assert df_stock[col].dtype == df_merge[c].dtype
+    print(df_merge.dtypes)

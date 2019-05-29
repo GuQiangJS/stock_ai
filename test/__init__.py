@@ -2,12 +2,22 @@ import os
 from stock_ai import data_processor
 import pandas as pd
 import logging
+import warnings
+
+warnings.filterwarnings("ignore")
 
 is_travis = "TRAVIS" in os.environ and os.environ["TRAVIS"] == "true"
 stock_code = '601398'
 index_code = '399300'
 
 __cache = {}  #日线数据缓存缓存
+
+
+def merged_dataframe()->dict:
+    return data_processor.merge({
+        index_code: get_index_daily(),
+        stock_code: get_stock_daily()
+    })
 
 
 def get_deposit_rate(n='dq1y') -> pd.Series:

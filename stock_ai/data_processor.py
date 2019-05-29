@@ -629,3 +629,58 @@ def load_money_supply_year_online(**kwargs):
     for col in df.columns:
         df[col] = pd.to_numeric(df[col], errors='coerce', downcast='float')
     return df
+
+
+def merge(dfs, append_funcs=None, **kwargs):
+    """合并数据
+
+    Args:
+        dfs (dict): 待合并的数据源字典。key值会被用来做 :func:`pandas.DataFrame.join` 方法中的 'rsuffix`。
+
+            - key (str) 值为数据源名称。
+            - value (:class:`pands.DataFrame`) 值为数据源实例。
+
+        append_funcs (:class:`collections.OrderedDict`): 附加其他列数据时的计算方法字典。
+            默认为 None。
+
+            - key (str) 值为需要附加的列名。
+            - value 值为可以为方法名称或者是(方法名,参数/参数集合)(详见 :mod:`.stock_ai.calcs`)。
+
+            关于附加列名的赋值方式：
+                - 如果方法返回的是 :class:`pandas.Series`，用key值来赋值。
+                - 如果方法返回的是 :class:`pandas.DataFrame`，会用返回的 `DataFrame` 中的列名+Key值赋值。
+
+        how (str): 默认为 ``left``。参考 :meth:`pandas.DataFrame.join` 中同名参数。
+
+    Returns:
+
+    See Also:
+        * :func:`stock_ai.wrapper.dataframe_merge`
+        * :mod:`stock_ai.calcs`
+        * :meth:`pandas.DataFrame.join`
+
+    """
+    how = kwargs.pop('how', 'left')
+    if not dfs:
+        raise ValueError
+    df = pd.DataFrame()
+    for name, dataframe in dfs.items():
+        if df.empty:
+            df = dataframe.copy()
+        else:
+            df = df.join(dataframe.copy(), rsuffix=name, how=how)
+    if append_funcs:
+        for k, v in append_funcs.items():
+            new_value = None
+            if isinstance(v, (list, tuple)) and len(v) > 1:
+                new_value = v[0](df, **v[1])
+            else:
+                new_value = v(df)
+            if isinstance(new_value, pd.Series):
+                new_value = new_value.to_frame(k)
+            elif isinstance(new_value, pd.DataFrame):
+                new_value = new_value.add_suffix('_' + k)
+            else:
+                raise NotImplementedError
+            df = df.join(new_value)
+    return df

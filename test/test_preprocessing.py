@@ -15,7 +15,7 @@ def test_preprocessing__xy_split_1():
     assert days == 2
     cols = ['c']
 
-    x, y = preprocessing._xy_split_1([pd.DataFrame(arr, columns=cols)],
+    x, y = preprocessing.xy_split_1([pd.DataFrame(arr, columns=cols)],
                                      window,
                                      days,
                                      x_cols=cols,
@@ -40,7 +40,7 @@ def test_preprocessing__xy_split_2():
     assert days == 2
     cols = ['c']
 
-    x, y = preprocessing._xy_split_2([pd.DataFrame(arr, columns=cols)],
+    x, y = preprocessing.xy_split_2([pd.DataFrame(arr, columns=cols)],
                                      window,
                                      days,
                                      x_cols=cols,
