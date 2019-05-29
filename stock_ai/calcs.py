@@ -1,6 +1,9 @@
 """数据计算器"""
 import pandas as pd
 from QUANTAXIS.QAIndicator import indicators
+from QUANTAXIS.QAIndicator import talib_indicators
+from QUANTAXIS.QAIndicator import talib_series
+import numpy as np
 
 
 def calc_year(df, **kwargs):
@@ -23,6 +26,27 @@ def calc_year(df, **kwargs):
         :class:`~pandas.Series`: 计算后的列。
     """
     return _create_series(df.index.year, df=df, dtype='int64')
+
+
+def fillna(df, **kwargs):
+    """:func:`pandas.DataFraem.fillna`
+
+    Args:
+        df (:class:`~pandas.DataFrame`): 原始数据。
+    """
+    return df.fillna(**kwargs)
+
+
+def dropna(df, **kwargs):
+    """:func:`pandas.DataFraem.dropna`
+
+    Args:
+        df (:class:`~pandas.DataFrame`): 原始数据。
+
+    Returns:
+
+    """
+    return df.dropna(**kwargs)
 
 
 def is_trade_suspension(df, **kwargs):
@@ -105,20 +129,99 @@ def tech_ma(df: pd.DataFrame, **kwargs) -> pd.Series:
 
     Args:
         days (int): 天数。默认值为5。
+
+    Examples:
+        >>> df_stock = data_processor.load_stock_daily('601398')
+        >>> calcs.tech_ma(df).tail()
+        date
+        2019-01-18    5.262
+        2019-01-21    5.312
+        2019-01-22    5.344
+        2019-01-23    5.384
+        2019-01-24    5.426
+        Name: MA, dtype: float64
     """
     days = kwargs.pop('days', 5)
-    return indicators.MA(df['close'], days)
+    ma = indicators.MA(df['close'], days)
+    return _create_series(ma, df, name='MA', dtype=ma.dtype)
 
 
-def tech_ewm(df: pd.DataFrame, **kwargs) -> pd.Series:
-    """计算指数均线
+def _STD(Series, N):
+    return pd.Series.rolling(Series, N).std()
+
+
+def fft(df: pd.DataFrame, **kwargs):
+    num = kwargs.pop('num', 3)
+    close_fft = np.fft.fft(np.asarray(df['close'].tolist()))
+    fft_df = pd.DataFrame({'fft': close_fft})
+    fft_df['absolute'] = fft_df['fft'].apply(lambda x: np.abs(x))
+    fft_df['angle'] = fft_df['fft'].apply(lambda x: np.angle(x))
+    fft_list = np.asarray(fft_df['fft'].tolist())
+    fft_list_m10 = np.copy(fft_list)
+    fft_list_m10[num:-num] = 0
+    return _create_series(np.fft.ifft(fft_list_m10),
+                          df=df,
+                          name='fft',
+                          dtype=close_fft.dtype)
+
+
+def tech_ema(df: pd.DataFrame, **kwargs) -> pd.Series:
+    """计算指数移动均线
 
     Args:
         days (int): 天数。默认值为5。
+
+    Examples:
+        >>> df_stock = data_processor.load_stock_daily('601398')
+        >>> calcs.tech_ema(df).tail()
+        date
+        2019-01-18    5.287964
+        2019-01-21    5.341976
+        2019-01-22    5.357984
+        2019-01-23    5.385323
+        2019-01-24    5.410215
+        Name: EMA, dtype: float64
     """
     days = kwargs.pop('days', 5)
-    indicators.QA_indicator_MA()
-    return indicators.EMA(df['close'], days)
+    ema = indicators.EMA(df['close'], days)
+    return _create_series(ema, df=df, dtype=ema.dtype, name='EMA')
+
+
+def tech_bbands(df: pd.DataFrame, **kwargs):
+    """布林带
+
+    Args:
+        df: 日线数据。
+        timeperiod (int): 窗口期。默认为 ``5``。
+        nbdevup (int): 上轨标准差。默认为 ``2``。
+        nbdevdn (int): 下轨标准差。默认为 ``2``。
+
+    Examples:
+        >>> df_stock = data_processor.load_stock_daily('601398')
+        >>> calcs.tech_bbands(df).tail()
+                     BOLL        UB        LB
+        date
+        2019-01-18  5.262  5.409919  5.114081
+        2019-01-21  5.312  5.514188  5.109812
+        2019-01-22  5.344  5.531403  5.156597
+        2019-01-23  5.384  5.543750  5.224250
+        2019-01-24  5.426  5.493231  5.358769
+
+    Returns:
+        :class:`pandas.DataFrame`
+    """
+    timeperiod = kwargs.pop('timeperiod', 5)
+    nbdevup = kwargs.pop('nbdevup', 2)
+    nbdevdn = kwargs.pop('nbdevdn', 2)
+    # matype = kwargs.pop('matype', 0)
+
+    C = df['close']
+    boll = tech_ma(df, days=timeperiod)
+    UB = boll + nbdevup * _STD(C, timeperiod)
+    LB = boll - nbdevdn * _STD(C, timeperiod)
+    DICT = {'BOLL': boll, 'UB': UB, 'LB': LB}
+
+    return pd.DataFrame(DICT)
 
 
 def tech_macd(df: pd.DataFrame, **kwargs):
@@ -172,7 +275,19 @@ def tech_boll(df: pd.DataFrame, **kwargs) -> pd.Series:
     return indicators.QA_indicator_BOLL(df, N, K)['BOLL']
 
 
-def daily_return(df: pd.DataFrame, **kwargs):
+def pct_change(df, **kwargs):
+    """包装 :func:`pandas.DataFrame.pct_change` 方法
+
+    Args:
+        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+
+    Return:
+        :class:`pandas.Series` or :class:`pandas.DataFrame`:
+    """
+    return df.pct_change()
+
+
+def daily_return(df, **kwargs):
     """计算日收益
 
     Args:

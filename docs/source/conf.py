@@ -28,7 +28,6 @@ version = ''
 # The full version, including alpha/beta/rc tags
 release = ''
 
-
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -77,7 +76,6 @@ exclude_patterns = []
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -106,12 +104,10 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 
-
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'stock_aidoc'
-
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -137,20 +133,15 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'stock_ai.tex', 'stock\\_ai Documentation',
-     'GuQiangJS', 'manual'),
+    (master_doc, 'stock_ai.tex', 'stock\\_ai Documentation', 'GuQiangJS',
+     'manual'),
 ]
-
 
 # -- Options for manual page output ------------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'stock_ai', 'stock_ai Documentation',
-     [author], 1)
-]
-
+man_pages = [(master_doc, 'stock_ai', 'stock_ai Documentation', [author], 1)]
 
 # -- Options for Texinfo output ----------------------------------------------
 
@@ -158,21 +149,23 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'stock_ai', 'stock_ai Documentation',
-     author, 'stock_ai', 'One line description of project.',
-     'Miscellaneous'),
+    (master_doc, 'stock_ai', 'stock_ai Documentation', author, 'stock_ai',
+     'One line description of project.', 'Miscellaneous'),
 ]
-
 
 # -- Extension configuration -------------------------------------------------
 
 # -- Options for intersphinx extension ---------------------------------------
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3', None),
     'pandas': ('https://pandas.pydata.org/pandas-docs/stable/', None),
     'numpy': ('https://docs.scipy.org/doc/numpy/', None),
-    'matplotlib': ('https://matplotlib.org/', None),}
+    'matplotlib': ('https://matplotlib.org/', None),
+    # 'keras': ('https://keras.io/zh/', None),
+    # 'keras': ('https://keras.io/', None), # doesn't work for keras
+}
 
 # -- Options for todo extension ----------------------------------------------
 

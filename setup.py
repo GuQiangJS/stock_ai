@@ -10,26 +10,24 @@ def readme():
         return f.read()
 
 
-setup(
-    name=NAME,
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
-    description=readme(),
-    long_description=readme(),
-    author='GuQiangJS',
-    author_email='guqiangjs@gmail.com',
-    url='https://github.com/GuQiangJS/stock_ai.git',
-    classifiers=[
-        'Development Status :: 4 - Beta',
-        'Environment :: Console',
-        'Intended Audience :: Science/Research',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3.7',
-        'Topic :: Scientific/Engineering',
-    ],
-    keywords='data',
-    install_requires=['QUANTAXIS', 'TensorFlow', 'pandas'],
-    packages=find_packages(),
-    zip_safe=False,
-    exclude_package_data={'': ['test_*.py']}
-)
+setup(name=NAME,
+      version=versioneer.get_version(),
+      cmdclass=versioneer.get_cmdclass(),
+      description=readme(),
+      long_description=readme(),
+      author='GuQiangJS',
+      author_email='guqiangjs@gmail.com',
+      url='https://github.com/GuQiangJS/stock_ai.git',
+      classifiers=[
+          'Development Status :: 4 - Beta',
+          'Environment :: Console',
+          'Intended Audience :: Science/Research',
+          'Operating System :: OS Independent',
+          'Programming Language :: Python :: 3.7',
+          'Topic :: Scientific/Engineering',
+      ],
+      keywords='data',
+      install_requires=['QUANTAXIS', 'TensorFlow', 'pandas', 'numpy', 'keras'],
+      packages=find_packages(),
+      zip_safe=False,
+      exclude_package_data={'': ['test_*.py']})

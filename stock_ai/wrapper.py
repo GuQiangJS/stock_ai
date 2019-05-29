@@ -15,7 +15,7 @@ def dataframe_merge(df1, df2, **kwargs):
         append_funcs (collections.OrderedDict): 附加其他列数据时的计算方法字典。
 
             - key值为需要附加的列名。
-            - value值为可以为方法名称或者是[方法名,参数字典](详见 :mod:`.stock_ai.appender`)。
+            - value值为可以为方法名称或者是[方法名,参数字典](详见 :mod:`.stock_ai.calcs`)。
 
             关于附加列名的赋值方式：
                 - 如果方法返回的是 :class:`pandas.Series`，用key值来赋值。
@@ -40,7 +40,7 @@ def dataframe_merge(df1, df2, **kwargs):
 
         附加列只传递方法名（无参数）
 
-        >>> funcs = {'year': stock_ai.appender.calc_year}
+        >>> funcs = {'year': stock_ai.calcs.calc_year}
         >>> df = wrapper.dataframe_merge(df_1, df_2, append_funcs=funcs)
         >>> df['year'].head()
         date

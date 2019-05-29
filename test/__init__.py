@@ -43,3 +43,8 @@ def get_index_daily(code: str = index_code) -> pd.DataFrame:
     logging.debug("Load Daily:" + code)
     __cache[code] = df
     return df
+
+
+def test_keras():
+    import keras
+    keras.models.model_from_json()

@@ -18,6 +18,31 @@ def _assert(func, col):
     assert np.array_equal(df['col'], col)
 
 
+def test_tech_bbands():
+    df = get_stock_daily().copy()
+    print(calcs.tech_bbands(df).tail())
+
+
+def test_tech_ema():
+    df = get_stock_daily().copy()
+    print(calcs.tech_ema(df).tail())
+
+
+def test_tech_ma():
+    df = get_stock_daily().copy()
+    print(calcs.tech_ma(df).tail())
+
+
+def test_fft():
+    df = get_stock_daily().copy()
+    fft=calcs.fft(df)
+    import matplotlib.pyplot as plt
+    plt.figure(figsize=(14, 7), dpi=100)
+    plt.plot(np.fft.ifft(fft))
+    plt.plot(df['close'])
+    plt.show()
+    print(fft)
+
 def test_append_year():
     _assert(calcs.calc_year, get_stock_daily().index.year)
 

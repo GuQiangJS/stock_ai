@@ -16,6 +16,7 @@
 * `conda activate stock_ai`
 * `pip install quantaxis` 或者 `pip --proxy=192.168.9.180:1080 install quantaxis`
 * `pip install --upgrade tensorflow` 或者 `pip install --upgrade tensorflow-gpu`
+* `pip install keras`
 * `pip install async_timeout` *(quantaxis需要，但是没有包含在安装请求中...)*
 * `pip install pytest`
 * `pip install coverage`
