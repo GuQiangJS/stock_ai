@@ -13,14 +13,16 @@ def calc_year(df, **kwargs):
         df (:class:`~pandas.DataFrame`): 原始数据。
 
     Examples:
-        >>> appender.calc_year(data_processor.load_stock_daily('601398')).head()
-        date
-        2006-10-27    2006
-        2006-10-30    2006
-        2006-10-31    2006
-        2006-11-01    2006
-        2006-11-02    2006
-        Name: col, dtype: int64
+        >>> from stock_ai import calcs
+        >>> dates = pd.date_range('20130101', periods=3, freq='Y')
+        >>> df = pd.DataFrame([1, 3, 5], index=dates, columns=list('A'))
+        >>> df
+                    A
+        2013-12-31  1
+        2014-12-31  3
+        2015-12-31  5
+        >>> calcs.calc_year(df).values
+        array([2013, 2014, 2015], dtype=int64)
 
     Returns:
         :class:`~pandas.Series`: 计算后的列。
@@ -109,14 +111,16 @@ def calc_month(df, **kwargs):
         df (:class:`~pandas.DataFrame`): 原始数据。
 
     Examples:
-        >>> appender.calc_month(data_processor.load_stock_daily('601398')).head()
-        date
-        2006-10-27    10
-        2006-10-30    10
-        2006-10-31    10
-        2006-11-01    11
-        2006-11-02    11
-        Name: col, dtype: int64
+        >>> from stock_ai import calcs
+        >>> dates = pd.date_range('20130101', periods=3, freq='M')
+        >>> df = pd.DataFrame([1, 3, 5], index=dates, columns=list('A'))
+        >>> df
+                    A
+        2013-01-31  1
+        2013-02-28  3
+        2013-03-31  5
+        >>> calcs.calc_month(df).values
+        array([1, 2, 3], dtype=int64)
 
     Returns:
         :class:`~pandas.Series`: 计算后的列。

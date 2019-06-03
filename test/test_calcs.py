@@ -49,6 +49,14 @@ def test_append_year():
     _assert(calcs.calc_year, get_stock_daily().index.year)
 
 
+def test_calc_year():
+    dates = pd.date_range('20130101', periods=3, freq='Y')
+    df = pd.DataFrame([1, 3, 5], index=dates, columns=list('A'))
+    dx=pd.DatetimeIndex(['2013-12-31', '2014-12-31', '2015-12-31'], dtype='datetime64[ns]')
+    dx.equals(df.index)
+    print(df)
+    print(calcs.calc_year(df).values)
+
 def test_append_month():
     _assert(calcs.calc_month, get_stock_daily().index.month)
 
