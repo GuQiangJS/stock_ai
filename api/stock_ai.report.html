@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="preprocessing" href="stock_ai.preprocessing.html" /> 
+    <link rel="next" title="StockCN" href="stock_ai.report.StockCN.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,7 +84,10 @@
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.data_processor.html">data_processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.calcs.html">calcs</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">report</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">report</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stock_ai.report.StockCN.html">StockCN</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
 
@@ -153,21 +156,56 @@
   <div class="section" id="report">
 <h1>report<a class="headerlink" href="#report" title="永久链接至标题">¶</a></h1>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-center">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.report.sharpe_ratio" title="stock_ai.report.sharpe_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharpe_ratio</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.report.load_stock_block" title="stock_ai.report.load_stock_block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_stock_block</span></code></a></p></td>
+<td><p>获取股票板块信息</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.report.sharpe_ratio" title="stock_ai.report.sharpe_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharpe_ratio</span></code></a></p></td>
 <td><p>计算指定行业的夏普比率</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.report.str2date" title="stock_ai.report.str2date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str2date</span></code></a></p></td>
+<td><p>将时间格式字符串转换为`datetime.datetime`类型。</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
 <dl class="function">
+<dt id="stock_ai.report.load_stock_block">
+<code class="sig-prename descclassname">stock_ai.report.</code><code class="sig-name descname">load_stock_block</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.report.load_stock_block" title="永久链接至目标">¶</a></dt>
+<dd><p>获取股票板块信息</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_block</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;601398&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">       blockname    code type source</span>
+<span class="go">code</span>
+<span class="go">601398       环渤海  601398   gn    tdx</span>
+<span class="go">601398       含H股  601398   gn    tdx</span>
+<span class="go">601398     沪深300  601398   yb    tdx</span>
+<span class="go">601398      融资融券  601398   yb    tdx</span>
+<span class="go">601398       环渤海  601398   yb    tdx</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>online</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – 是否获取在线数据。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>股票板块信息。</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="stock_ai.report.sharpe_ratio">
-<code class="descclassname">stock_ai.report.</code><code class="descname">sharpe_ratio</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/report.html#sharpe_ratio"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.report.sharpe_ratio" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.report.</code><code class="sig-name descname">sharpe_ratio</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/report.html#sharpe_ratio"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.report.sharpe_ratio" title="永久链接至目标">¶</a></dt>
 <dd><p>计算指定行业的夏普比率</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sharpe_ratio</span><span class="p">()</span>
@@ -207,6 +245,39 @@
 </dl>
 </dd></dl>
 
+<dl class="function">
+<dt id="stock_ai.report.str2date">
+<code class="sig-prename descclassname">stock_ai.report.</code><code class="sig-name descname">str2date</code><span class="sig-paren">(</span><em class="sig-param">str_date</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/util.html#str2date"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.report.str2date" title="永久链接至目标">¶</a></dt>
+<dd><p>将时间格式字符串转换为`datetime.datetime`类型。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>str_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 日期字符串。格式为 <cite>%Y-%m-%d</cite>。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(在 Python v3.7)">datetime.datetime</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p><cite>date2str</cite>。</p>
+</div>
+</dd></dl>
+
+<p class="rubric">Class</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stock_ai.report.StockCN.html#stock_ai.report.StockCN" title="stock_ai.report.StockCN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StockCN</span></code></a></p></td>
+<td><p>中国股票类型定义</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -217,7 +288,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="stock_ai.preprocessing.html" class="btn btn-neutral float-right" title="preprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="stock_ai.report.StockCN.html" class="btn btn-neutral float-right" title="StockCN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

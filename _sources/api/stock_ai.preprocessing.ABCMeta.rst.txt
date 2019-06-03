@@ -1,0 +1,32 @@
+ABCMeta
+==============================
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.preprocessing
+
+.. autoclass:: ABCMeta
+    :members: __init__
+
+
+
+
+
+
+
+.. rubric:: Methods
+.. autosummary::
+    :nosignatures:
+    
+    ABCMeta.__call__
+    ABCMeta.mro
+    ABCMeta.register
+
+
+
+
+.. rubric:: Methods
+
+.. automethod:: ABCMeta.__call__
+.. automethod:: ABCMeta.mro
+.. automethod:: ABCMeta.register

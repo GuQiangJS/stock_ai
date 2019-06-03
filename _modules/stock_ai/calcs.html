@@ -163,14 +163,16 @@
 <span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; appender.calc_year(data_processor.load_stock_daily(&#39;601398&#39;)).head()</span>
-<span class="sd">        date</span>
-<span class="sd">        2006-10-27    2006</span>
-<span class="sd">        2006-10-30    2006</span>
-<span class="sd">        2006-10-31    2006</span>
-<span class="sd">        2006-11-01    2006</span>
-<span class="sd">        2006-11-02    2006</span>
-<span class="sd">        Name: col, dtype: int64</span>
+<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="sd">        &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;Y&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; df</span>
+<span class="sd">                    A</span>
+<span class="sd">        2013-12-31  1</span>
+<span class="sd">        2014-12-31  3</span>
+<span class="sd">        2015-12-31  5</span>
+<span class="sd">        &gt;&gt;&gt; calcs.calc_year(df).values</span>
+<span class="sd">        array([2013, 2014, 2015], dtype=int64)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        :class:`~pandas.Series`: 计算后的列。</span>
@@ -259,14 +261,16 @@
 <span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; appender.calc_month(data_processor.load_stock_daily(&#39;601398&#39;)).head()</span>
-<span class="sd">        date</span>
-<span class="sd">        2006-10-27    10</span>
-<span class="sd">        2006-10-30    10</span>
-<span class="sd">        2006-10-31    10</span>
-<span class="sd">        2006-11-01    11</span>
-<span class="sd">        2006-11-02    11</span>
-<span class="sd">        Name: col, dtype: int64</span>
+<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="sd">        &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;M&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; df</span>
+<span class="sd">                    A</span>
+<span class="sd">        2013-01-31  1</span>
+<span class="sd">        2013-02-28  3</span>
+<span class="sd">        2013-03-31  5</span>
+<span class="sd">        &gt;&gt;&gt; calcs.calc_month(df).values</span>
+<span class="sd">        array([1, 2, 3], dtype=int64)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        :class:`~pandas.Series`: 计算后的列。</span>
@@ -449,7 +453,7 @@
     <span class="k">return</span> <span class="n">df</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="mi">1</span></div>
 
 
-<div class="viewcode-block" id="cum_return"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.cum_return">[文档]</a><span class="k">def</span> <span class="nf">cum_return</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="cum_return"><a class="viewcode-back" href="../../api/stock_ai.preprocessing.html#stock_ai.calcs.cum_return">[文档]</a><span class="k">def</span> <span class="nf">cum_return</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;计算累计收益</span>
 
 <span class="sd">    Args:</span>

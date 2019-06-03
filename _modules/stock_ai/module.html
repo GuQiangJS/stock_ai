@@ -176,10 +176,10 @@
         <span class="k">pass</span></div></div>
 
 
-<div class="viewcode-block" id="StockCN"><a class="viewcode-back" href="../../api/stock_ai.module.StockCN.html#stock_ai.module.StockCN">[文档]</a><span class="k">class</span> <span class="nc">StockCN</span><span class="p">(</span><span class="n">Stock</span><span class="p">):</span>
+<div class="viewcode-block" id="StockCN"><a class="viewcode-back" href="../../api/stock_ai.report.StockCN.html#stock_ai.module.StockCN">[文档]</a><span class="k">class</span> <span class="nc">StockCN</span><span class="p">(</span><span class="n">Stock</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;中国股票类型定义&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="StockCN.__init__"><a class="viewcode-back" href="../../api/stock_ai.module.StockCN.html#stock_ai.module.StockCN.__init__">[文档]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="StockCN.__init__"><a class="viewcode-back" href="../../api/stock_ai.report.StockCN.html#stock_ai.module.StockCN.__init__">[文档]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;构造函数</span>
 
 <span class="sd">        Args:</span>
@@ -265,7 +265,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">util</span><span class="o">.</span><span class="n">str2date</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">int2str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;ipo_date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
 
-<div class="viewcode-block" id="StockCN.get_cum_returns"><a class="viewcode-back" href="../../api/stock_ai.module.StockCN.html#stock_ai.module.StockCN.get_cum_returns">[文档]</a>    <span class="k">def</span> <span class="nf">get_cum_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="StockCN.get_cum_returns"><a class="viewcode-back" href="../../api/stock_ai.report.StockCN.html#stock_ai.module.StockCN.get_cum_returns">[文档]</a>    <span class="k">def</span> <span class="nf">get_cum_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;获取指定日期间的累计收益。</span>
 
 <span class="sd">        Args:</span>
@@ -279,7 +279,7 @@
         <span class="n">daily</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_daily</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">calcs</span><span class="o">.</span><span class="n">cum_return</span><span class="p">(</span><span class="n">daily</span><span class="p">[</span><span class="n">column</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="StockCN.get_sharpe_ratio"><a class="viewcode-back" href="../../api/stock_ai.module.StockCN.html#stock_ai.module.StockCN.get_sharpe_ratio">[文档]</a>    <span class="k">def</span> <span class="nf">get_sharpe_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="StockCN.get_sharpe_ratio"><a class="viewcode-back" href="../../api/stock_ai.report.StockCN.html#stock_ai.module.StockCN.get_sharpe_ratio">[文档]</a>    <span class="k">def</span> <span class="nf">get_sharpe_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;计算指定时间段的夏普比率。</span>
 
 <span class="sd">        Args:</span>
@@ -328,7 +328,7 @@
             <span class="k">return</span> <span class="n">calcs</span><span class="o">.</span><span class="n">sharpe_ratio</span><span class="p">(</span><span class="n">daily</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">rf</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="StockCN.get_daily"><a class="viewcode-back" href="../../api/stock_ai.module.StockCN.html#stock_ai.module.StockCN.get_daily">[文档]</a>    <span class="k">def</span> <span class="nf">get_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="StockCN.get_daily"><a class="viewcode-back" href="../../api/stock_ai.report.StockCN.html#stock_ai.module.StockCN.get_daily">[文档]</a>    <span class="k">def</span> <span class="nf">get_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;获取日线数据。</span>
 
 <span class="sd">        当前实例会缓存所有的日线数据。再从缓存中提取指定日期的数据作为返回值。</span>

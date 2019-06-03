@@ -153,7 +153,7 @@
   <div class="section" id="calcs">
 <h1>calcs<a class="headerlink" href="#calcs" title="永久链接至标题">¶</a></h1>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-center">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -218,7 +218,7 @@
 <p class="rubric">Methods</p>
 <dl class="function">
 <dt id="stock_ai.calcs.calc_month">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">calc_month</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#calc_month"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.calc_month" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">calc_month</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#calc_month"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.calc_month" title="永久链接至目标">¶</a></dt>
 <dd><p>计算月信息</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -226,14 +226,16 @@
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">appender</span><span class="o">.</span><span class="n">calc_month</span><span class="p">(</span><span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_daily</span><span class="p">(</span><span class="s1">&#39;601398&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">date</span>
-<span class="go">2006-10-27    10</span>
-<span class="go">2006-10-30    10</span>
-<span class="go">2006-10-31    10</span>
-<span class="go">2006-11-01    11</span>
-<span class="go">2006-11-02    11</span>
-<span class="go">Name: col, dtype: int64</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">stock_ai</span> <span class="k">import</span> <span class="n">calcs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;20130101&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">            A</span>
+<span class="go">2013-01-31  1</span>
+<span class="go">2013-02-28  3</span>
+<span class="go">2013-03-31  5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_month</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([1, 2, 3], dtype=int64)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -248,7 +250,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.calc_year">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">calc_year</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#calc_year"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.calc_year" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">calc_year</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#calc_year"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.calc_year" title="永久链接至目标">¶</a></dt>
 <dd><p>计算年信息</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -256,14 +258,16 @@
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">appender</span><span class="o">.</span><span class="n">calc_year</span><span class="p">(</span><span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_daily</span><span class="p">(</span><span class="s1">&#39;601398&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">date</span>
-<span class="go">2006-10-27    2006</span>
-<span class="go">2006-10-30    2006</span>
-<span class="go">2006-10-31    2006</span>
-<span class="go">2006-11-01    2006</span>
-<span class="go">2006-11-02    2006</span>
-<span class="go">Name: col, dtype: int64</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">stock_ai</span> <span class="k">import</span> <span class="n">calcs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;20130101&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">            A</span>
+<span class="go">2013-12-31  1</span>
+<span class="go">2014-12-31  3</span>
+<span class="go">2015-12-31  5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_year</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([2013, 2014, 2015], dtype=int64)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -278,7 +282,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.cum_return">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">cum_return</code><span class="sig-paren">(</span><em>data</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#cum_return"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.cum_return" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">cum_return</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#cum_return"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.cum_return" title="永久链接至目标">¶</a></dt>
 <dd><p>计算累计收益</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -295,7 +299,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.daily_return">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">daily_return</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#daily_return"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.daily_return" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">daily_return</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#daily_return"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.daily_return" title="永久链接至目标">¶</a></dt>
 <dd><p>计算日收益</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -312,13 +316,13 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.drop_column">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">drop_column</code><span class="sig-paren">(</span><em>data: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#drop_column"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.drop_column" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">drop_column</code><span class="sig-paren">(</span><em class="sig-param">data: pandas.core.frame.DataFrame</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#drop_column"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.drop_column" title="永久链接至目标">¶</a></dt>
 <dd><p>将数据源中的部分列丢弃，参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.drop()</span></code></p>
 </dd></dl>
 
 <dl class="function">
 <dt id="stock_ai.calcs.dropna">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">dropna</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#dropna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.dropna" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">dropna</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#dropna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.dropna" title="永久链接至目标">¶</a></dt>
 <dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.dropna()</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -330,12 +334,12 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.fft">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">fft</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#fft"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.fft" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">fft</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#fft"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.fft" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="stock_ai.calcs.fillna">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">fillna</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#fillna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.fillna" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">fillna</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#fillna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.fillna" title="永久链接至目标">¶</a></dt>
 <dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.fillna()</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -346,7 +350,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.is_trade_suspension">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">is_trade_suspension</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#is_trade_suspension"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.is_trade_suspension" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">is_trade_suspension</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#is_trade_suspension"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.is_trade_suspension" title="永久链接至目标">¶</a></dt>
 <dd><p>返回是否为停牌</p>
 <p>根据 <cite>df</cite> 中指定参数 <cite>colname</cite> 找到指定列，采用 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.Series.isna()</span></code> 判断。
 <code class="docutils literal notranslate"><span class="pre">True</span></code> 表示是停牌日。</p>
@@ -385,7 +389,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.kurtosis">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">kurtosis</code><span class="sig-paren">(</span><em>data</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#kurtosis"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.kurtosis" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">kurtosis</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#kurtosis"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.kurtosis" title="永久链接至目标">¶</a></dt>
 <dd><p>计算峰度</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -402,7 +406,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.pct_change">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">pct_change</code><span class="sig-paren">(</span><em>df</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#pct_change"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.pct_change" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">pct_change</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#pct_change"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.pct_change" title="永久链接至目标">¶</a></dt>
 <dd><p>包装 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.pct_change()</span></code> 方法</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -419,7 +423,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.sharpe_ratio">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">sharpe_ratio</code><span class="sig-paren">(</span><em>r=None</em>, <em>rf=None</em>, <em>r_std: float = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#sharpe_ratio"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.sharpe_ratio" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">sharpe_ratio</code><span class="sig-paren">(</span><em class="sig-param">r=None</em>, <em class="sig-param">rf=None</em>, <em class="sig-param">r_std: float = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#sharpe_ratio"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.sharpe_ratio" title="永久链接至目标">¶</a></dt>
 <dd><p>计算 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87">夏普比率</a></p>
 <p>夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；
 若为正值，代表基金报酬率高过波动风险；
@@ -444,7 +448,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.skew">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">skew</code><span class="sig-paren">(</span><em>data</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#skew"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.skew" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">skew</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#skew"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.skew" title="永久链接至目标">¶</a></dt>
 <dd><p>计算偏度</p>
 <p>&gt; 若数据分布是对称的，偏度为0；
 &gt; 若偏度&gt;0,则可认为分布为右偏，即分布有一条长尾在右；
@@ -465,7 +469,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.tech_bbands">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">tech_bbands</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_bbands"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_bbands" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">tech_bbands</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_bbands"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_bbands" title="永久链接至目标">¶</a></dt>
 <dd><p>布林带</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -498,7 +502,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.tech_boll">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">tech_boll</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_boll"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_boll" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">tech_boll</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_boll"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_boll" title="永久链接至目标">¶</a></dt>
 <dd><p>计算布林线</p>
 <div class="admonition seealso">
 <p class="admonition-title">参见</p>
@@ -518,7 +522,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.tech_ema">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">tech_ema</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_ema"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_ema" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">tech_ema</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_ema"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_ema" title="永久链接至目标">¶</a></dt>
 <dd><p>计算指数移动均线</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -541,7 +545,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.tech_ma">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">tech_ma</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_ma"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_ma" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">tech_ma</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_ma"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_ma" title="永久链接至目标">¶</a></dt>
 <dd><p>计算移动均线</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -564,7 +568,7 @@
 
 <dl class="function">
 <dt id="stock_ai.calcs.tech_macd">
-<code class="descclassname">stock_ai.calcs.</code><code class="descname">tech_macd</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_macd"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_macd" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">tech_macd</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#tech_macd"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.tech_macd" title="永久链接至目标">¶</a></dt>
 <dd><p>计算MACD</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>

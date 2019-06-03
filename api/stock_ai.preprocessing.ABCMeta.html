@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>P &mdash; stock_ai  文档</title>
+  <title>ABCMeta &mdash; stock_ai  文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="P1" href="stock_ai.preprocessing.P1.html" />
-    <link rel="prev" title="ABCMeta" href="stock_ai.preprocessing.ABCMeta.html" /> 
+    <link rel="next" title="P" href="stock_ai.preprocessing.P.html" />
+    <link rel="prev" title="preprocessing" href="stock_ai.preprocessing.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,8 +87,8 @@
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="stock_ai.preprocessing.ABCMeta.html">ABCMeta</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">P</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ABCMeta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stock_ai.preprocessing.P.html">P</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stock_ai.preprocessing.P1.html">P1</a></li>
 </ul>
 </li>
@@ -139,13 +139,13 @@
         
           <li><a href="stock_ai.preprocessing.html">preprocessing</a> &raquo;</li>
         
-      <li>P</li>
+      <li>ABCMeta</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/stock_ai.preprocessing.P.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/stock_ai.preprocessing.ABCMeta.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -158,34 +158,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="p">
-<h1>P<a class="headerlink" href="#p" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="abcmeta">
+<h1>ABCMeta<a class="headerlink" href="#abcmeta" title="永久链接至标题">¶</a></h1>
 <dl class="class">
-<dt id="stock_ai.preprocessing.P">
-<em class="property">class </em><code class="sig-prename descclassname">stock_ai.preprocessing.</code><code class="sig-name descname">P</code><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P" title="永久链接至目标">¶</a></dt>
-<dd><dl class="method">
-<dt id="stock_ai.preprocessing.P.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stock_ai.preprocessing.P.__init__" title="永久链接至目标">¶</a></dt>
+<dt id="stock_ai.preprocessing.ABCMeta">
+<em class="property">class </em><code class="sig-prename descclassname">stock_ai.preprocessing.</code><code class="sig-name descname">ABCMeta</code><a class="reference internal" href="../_modules/abc.html#ABCMeta"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.ABCMeta" title="永久链接至目标">¶</a></dt>
+<dd><p>Metaclass for defining Abstract Base Classes (ABCs).</p>
+<p>Use this metaclass to create an ABC.  An ABC can be subclassed
+directly, and then acts as a mix-in class.  You can also register
+unrelated concrete classes (even built-in classes) and unrelated
+ABCs as ‘virtual subclasses’ – these and their descendants will
+be considered subclasses of the registering ABC by the built-in
+issubclass() function, but the registering ABC won’t show up in
+their MRO (Method Resolution Order) nor will method
+implementations defined by the registering ABC be callable (not
+even via super()).</p>
+<dl class="method">
+<dt id="stock_ai.preprocessing.ABCMeta.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stock_ai.preprocessing.ABCMeta.__init__" title="永久链接至目标">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 </dd></dl>
 
-<p class="rubric">Attributes</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.preprocessing.P.x_shape" title="stock_ai.preprocessing.P.x_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">P.x_shape</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.preprocessing.P.y_shape" title="stock_ai.preprocessing.P.y_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">P.y_shape</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -193,35 +188,36 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.preprocessing.P.trans_to_df" title="stock_ai.preprocessing.P.trans_to_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">P.trans_to_df</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.preprocessing.ABCMeta.__call__" title="stock_ai.preprocessing.ABCMeta.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ABCMeta.__call__</span></code></a></p></td>
+<td><p>Call self as a function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.preprocessing.P.trans_to_numpy" title="stock_ai.preprocessing.P.trans_to_numpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">P.trans_to_numpy</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.preprocessing.ABCMeta.mro" title="stock_ai.preprocessing.ABCMeta.mro"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ABCMeta.mro</span></code></a></p></td>
+<td><p>return a type’s method resolution order</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.preprocessing.ABCMeta.register" title="stock_ai.preprocessing.ABCMeta.register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ABCMeta.register</span></code></a></p></td>
+<td><p>Register a virtual subclass of an ABC.</p></td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Attributes</p>
-<dl class="attribute">
-<dt id="stock_ai.preprocessing.P.x_shape">
-<code class="sig-prename descclassname">P.</code><code class="sig-name descname">x_shape</code><a class="headerlink" href="#stock_ai.preprocessing.P.x_shape" title="永久链接至目标">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="stock_ai.preprocessing.P.y_shape">
-<code class="sig-prename descclassname">P.</code><code class="sig-name descname">y_shape</code><a class="headerlink" href="#stock_ai.preprocessing.P.y_shape" title="永久链接至目标">¶</a></dt>
-<dd></dd></dl>
-
 <p class="rubric">Methods</p>
 <dl class="method">
-<dt id="stock_ai.preprocessing.P.trans_to_df">
-<code class="sig-prename descclassname">P.</code><code class="sig-name descname">trans_to_df</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P.trans_to_df"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P.trans_to_df" title="永久链接至目标">¶</a></dt>
-<dd></dd></dl>
+<dt id="stock_ai.preprocessing.ABCMeta.__call__">
+<code class="sig-prename descclassname">ABCMeta.</code><code class="sig-name descname">__call__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stock_ai.preprocessing.ABCMeta.__call__" title="永久链接至目标">¶</a></dt>
+<dd><p>Call self as a function.</p>
+</dd></dl>
 
 <dl class="method">
-<dt id="stock_ai.preprocessing.P.trans_to_numpy">
-<code class="sig-prename descclassname">P.</code><code class="sig-name descname">trans_to_numpy</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P.trans_to_numpy"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P.trans_to_numpy" title="永久链接至目标">¶</a></dt>
-<dd></dd></dl>
+<dt id="stock_ai.preprocessing.ABCMeta.mro">
+<code class="sig-prename descclassname">ABCMeta.</code><code class="sig-name descname">mro</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#stock_ai.preprocessing.ABCMeta.mro" title="永久链接至目标">¶</a></dt>
+<dd><p>return a type’s method resolution order</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stock_ai.preprocessing.ABCMeta.register">
+<code class="sig-prename descclassname">ABCMeta.</code><code class="sig-name descname">register</code><span class="sig-paren">(</span><em class="sig-param">subclass</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/abc.html#ABCMeta.register"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.ABCMeta.register" title="永久链接至目标">¶</a></dt>
+<dd><p>Register a virtual subclass of an ABC.</p>
+<p>Returns the subclass, to allow usage as a class decorator.</p>
+</dd></dl>
 
 </div>
 
@@ -233,10 +229,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="stock_ai.preprocessing.P1.html" class="btn btn-neutral float-right" title="P1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="stock_ai.preprocessing.P.html" class="btn btn-neutral float-right" title="P" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="stock_ai.preprocessing.ABCMeta.html" class="btn btn-neutral float-left" title="ABCMeta" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="stock_ai.preprocessing.html" class="btn btn-neutral float-left" title="preprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

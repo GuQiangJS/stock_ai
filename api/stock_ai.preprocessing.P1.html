@@ -86,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.calcs.html">calcs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stock_ai.preprocessing.ABCMeta.html">ABCMeta</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stock_ai.preprocessing.P.html">P</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">P1</a></li>
 </ul>
@@ -160,17 +161,17 @@
 <h1>P1<a class="headerlink" href="#p1" title="永久链接至标题">¶</a></h1>
 <dl class="class">
 <dt id="stock_ai.preprocessing.P1">
-<em class="property">class </em><code class="descclassname">stock_ai.preprocessing.</code><code class="descname">P1</code><span class="sig-paren">(</span><em>window=3, days=1, x_cols=['close'], y_cols=['close']</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P1"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P1" title="永久链接至目标">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">stock_ai.preprocessing.</code><code class="sig-name descname">P1</code><span class="sig-paren">(</span><em class="sig-param">window=3, days=1, x_cols=['close'], y_cols=['close']</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P1"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P1" title="永久链接至目标">¶</a></dt>
 <dd><dl class="method">
 <dt id="stock_ai.preprocessing.P1.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>window=3, days=1, x_cols=['close'], y_cols=['close']</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P1.__init__"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P1.__init__" title="永久链接至目标">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">window=3, days=1, x_cols=['close'], y_cols=['close']</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P1.__init__"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P1.__init__" title="永久链接至目标">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 </dd></dl>
 
 <p class="rubric">Attributes</p>
-<table class="longtable docutils align-center">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -185,7 +186,7 @@
 </tbody>
 </table>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-center">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -202,7 +203,7 @@
 <p class="rubric">Attributes</p>
 <dl class="attribute">
 <dt id="stock_ai.preprocessing.P1.x_shape">
-<code class="descclassname">P1.</code><code class="descname">x_shape</code><a class="headerlink" href="#stock_ai.preprocessing.P1.x_shape" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">P1.</code><code class="sig-name descname">x_shape</code><a class="headerlink" href="#stock_ai.preprocessing.P1.x_shape" title="永久链接至目标">¶</a></dt>
 <dd><p>x数据的数据维度</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
@@ -216,7 +217,7 @@
 
 <dl class="attribute">
 <dt id="stock_ai.preprocessing.P1.y_shape">
-<code class="descclassname">P1.</code><code class="descname">y_shape</code><a class="headerlink" href="#stock_ai.preprocessing.P1.y_shape" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">P1.</code><code class="sig-name descname">y_shape</code><a class="headerlink" href="#stock_ai.preprocessing.P1.y_shape" title="永久链接至目标">¶</a></dt>
 <dd><p>y数据的数据维度</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
@@ -231,7 +232,7 @@
 <p class="rubric">Methods</p>
 <dl class="method">
 <dt id="stock_ai.preprocessing.P1.trans_to_df">
-<code class="descclassname">P1.</code><code class="descname">trans_to_df</code><span class="sig-paren">(</span><em>data</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P1.trans_to_df"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P1.trans_to_df" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">P1.</code><code class="sig-name descname">trans_to_df</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P1.trans_to_df"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P1.trans_to_df" title="永久链接至目标">¶</a></dt>
 <dd><p>拆分数据源为x,y格式，使用 <a class="reference internal" href="stock_ai.preprocessing.html#stock_ai.preprocessing.xy_split_1" title="stock_ai.preprocessing.xy_split_1"><code class="xref py py-func docutils literal notranslate"><span class="pre">xy_split_1()</span></code></a>。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -248,7 +249,7 @@
 
 <dl class="method">
 <dt id="stock_ai.preprocessing.P1.trans_to_numpy">
-<code class="descclassname">P1.</code><code class="descname">trans_to_numpy</code><span class="sig-paren">(</span><em>data</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P1.trans_to_numpy"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P1.trans_to_numpy" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">P1.</code><code class="sig-name descname">trans_to_numpy</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#P1.trans_to_numpy"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.P1.trans_to_numpy" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 </div>

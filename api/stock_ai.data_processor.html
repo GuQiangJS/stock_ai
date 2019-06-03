@@ -154,7 +154,7 @@
   <div class="section" id="data-processor">
 <h1>data_processor<a class="headerlink" href="#data-processor" title="永久链接至标题">¶</a></h1>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-center">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -231,7 +231,7 @@
 <p class="rubric">Methods</p>
 <dl class="function">
 <dt id="stock_ai.data_processor.load_cpi_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_cpi_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_cpi_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_cpi_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_cpi_online</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_cpi_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_cpi_online" title="永久链接至目标">¶</a></dt>
 <dd><p>在线获取居民消费价格指数(CPI)</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">load_cpi_online</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -256,7 +256,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_deposit_rate_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_deposit_rate_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_deposit_rate_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_deposit_rate_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_deposit_rate_online</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_deposit_rate_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_deposit_rate_online" title="永久链接至目标">¶</a></dt>
 <dd><p>在线获取历史存款利率</p>
 <div class="admonition seealso">
 <p class="admonition-title">参见</p>
@@ -299,7 +299,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_index_daily">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_index_daily</code><span class="sig-paren">(</span><em>code</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_index_daily"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_index_daily" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_index_daily</code><span class="sig-paren">(</span><em class="sig-param">code</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_index_daily"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_index_daily" title="永久链接至目标">¶</a></dt>
 <dd><p>读取指数日线数据（在线或从数据库）</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -323,7 +323,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_index_daily_mongodb">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_index_daily_mongodb</code><span class="sig-paren">(</span><em>code</em>, <em>start</em>, <em>end</em>, <em>columns</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_index_daily_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_index_daily_mongodb" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_index_daily_mongodb</code><span class="sig-paren">(</span><em class="sig-param">code</em>, <em class="sig-param">start</em>, <em class="sig-param">end</em>, <em class="sig-param">columns</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_index_daily_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_index_daily_mongodb" title="永久链接至目标">¶</a></dt>
 <dd><p>读取指数本地日线数据</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -345,7 +345,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_index_daily_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_index_daily_online</code><span class="sig-paren">(</span><em>code</em>, <em>start</em>, <em>end</em>, <em>columns</em>, <em>times=5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_index_daily_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_index_daily_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_index_daily_online</code><span class="sig-paren">(</span><em class="sig-param">code</em>, <em class="sig-param">start</em>, <em class="sig-param">end</em>, <em class="sig-param">columns</em>, <em class="sig-param">times=5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_index_daily_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_index_daily_online" title="永久链接至目标">¶</a></dt>
 <dd><p>读取指数在线日线数据</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -368,7 +368,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_loan_rate_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_loan_rate_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_loan_rate_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_loan_rate_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_loan_rate_online</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_loan_rate_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_loan_rate_online" title="永久链接至目标">¶</a></dt>
 <dd><p>在线获取历史贷款利率</p>
 <div class="admonition seealso">
 <p class="admonition-title">参见</p>
@@ -416,7 +416,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_money_supply_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_money_supply_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_money_supply_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_money_supply_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_money_supply_online</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_money_supply_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_money_supply_online" title="永久链接至目标">¶</a></dt>
 <dd><p>在线获取货币供应量（月）</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_processor</span><span class="o">.</span><span class="n">load_money_supply_online</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -464,7 +464,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_money_supply_year_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_money_supply_year_online</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_money_supply_year_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_money_supply_year_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_money_supply_year_online</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_money_supply_year_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_money_supply_year_online" title="永久链接至目标">¶</a></dt>
 <dd><p>在线获取货币供应量（年底余额）</p>
 <dl>
 <dt>Examples: data_processor.load_money_supply_year_online().head()</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
@@ -506,7 +506,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_block">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_block</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_block" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_block</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_block" title="永久链接至目标">¶</a></dt>
 <dd><p>获取股票板块信息</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_block</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;601398&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -535,7 +535,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_block_mongodb">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_block_mongodb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_block_mongodb" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_block_mongodb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_block_mongodb" title="永久链接至目标">¶</a></dt>
 <dd><p>从数据库获取股票板块信息</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data_processor</span><span class="o">.</span><span class="n">load_stock_block_mongodb</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;601398&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -557,7 +557,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_block_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_block_online</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_block_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_block_online</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_block_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_block_online" title="永久链接至目标">¶</a></dt>
 <dd><p>在线获取股票板块信息</p>
 <p class="rubric">Notes</p>
 <p>在线数据只取tdx的数据。</p>
@@ -581,7 +581,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_daily">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_daily</code><span class="sig-paren">(</span><em>code</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_daily"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_daily" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_daily</code><span class="sig-paren">(</span><em class="sig-param">code</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_daily"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_daily" title="永久链接至目标">¶</a></dt>
 <dd><p>读取股票日线数据（在线或从数据库）</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -625,7 +625,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_daily_csv">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_daily_csv</code><span class="sig-paren">(</span><em>path</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_daily_csv"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_daily_csv" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_daily_csv</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_daily_csv"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_daily_csv" title="永久链接至目标">¶</a></dt>
 <dd><p>从CSV文件读取股票日线数据</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -648,7 +648,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_daily_mongodb">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_daily_mongodb</code><span class="sig-paren">(</span><em>code</em>, <em>start</em>, <em>end</em>, <em>fq</em>, <em>columns</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_daily_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_daily_mongodb" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_daily_mongodb</code><span class="sig-paren">(</span><em class="sig-param">code</em>, <em class="sig-param">start</em>, <em class="sig-param">end</em>, <em class="sig-param">fq</em>, <em class="sig-param">columns</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_daily_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_daily_mongodb" title="永久链接至目标">¶</a></dt>
 <dd><p>读取股票本地日线数据</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -671,7 +671,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_daily_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_daily_online</code><span class="sig-paren">(</span><em>code</em>, <em>start</em>, <em>end</em>, <em>columns</em>, <em>times=5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_daily_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_daily_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_daily_online</code><span class="sig-paren">(</span><em class="sig-param">code</em>, <em class="sig-param">start</em>, <em class="sig-param">end</em>, <em class="sig-param">columns</em>, <em class="sig-param">times=5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_daily_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_daily_online" title="永久链接至目标">¶</a></dt>
 <dd><p>读取股票在线日线数据</p>
 <p class="rubric">Notes</p>
 <p>在线数据只取tdx的数据。</p>
@@ -697,7 +697,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_info_mongodb">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_info_mongodb</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_info_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_info_mongodb" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_info_mongodb</code><span class="sig-paren">(</span><em class="sig-param">code</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_info_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_info_mongodb" title="永久链接至目标">¶</a></dt>
 <dd><p>从数据库中获取股票信息</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -758,7 +758,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_info_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_info_online</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_info_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_info_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_info_online</code><span class="sig-paren">(</span><em class="sig-param">code</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_info_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_info_online" title="永久链接至目标">¶</a></dt>
 <dd><p>在线获取股票信息</p>
 <p class="rubric">Notes</p>
 <p>在线数据只取tdx的数据。</p>
@@ -821,7 +821,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_list">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_list</code><span class="sig-paren">(</span><em>online=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_list"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_list" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_list</code><span class="sig-paren">(</span><em class="sig-param">online=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_list"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_list" title="永久链接至目标">¶</a></dt>
 <dd><p>获取股票列表</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -838,7 +838,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_list_mongodb">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_list_mongodb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_list_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_list_mongodb" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_list_mongodb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_list_mongodb"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_list_mongodb" title="永久链接至目标">¶</a></dt>
 <dd><p>从本地数据库中获取股票列表</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
@@ -863,7 +863,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.load_stock_list_online">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">load_stock_list_online</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_list_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_list_online" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">load_stock_list_online</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#load_stock_list_online"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.load_stock_list_online" title="永久链接至目标">¶</a></dt>
 <dd><p>从在线数据中获取股票列表</p>
 <p class="rubric">Notes</p>
 <p>在线数据只取tdx的数据。</p>
@@ -882,7 +882,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.merge">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">merge</code><span class="sig-paren">(</span><em>dfs</em>, <em>append_funcs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#merge"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.merge" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">merge</code><span class="sig-paren">(</span><em class="sig-param">dfs</em>, <em class="sig-param">append_funcs=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#merge"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.merge" title="永久链接至目标">¶</a></dt>
 <dd><p>合并数据</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -1008,7 +1008,7 @@
 
 <dl class="function">
 <dt id="stock_ai.data_processor.save_stock_daily_csv">
-<code class="descclassname">stock_ai.data_processor.</code><code class="descname">save_stock_daily_csv</code><span class="sig-paren">(</span><em>data</em>, <em>path</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#save_stock_daily_csv"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.save_stock_daily_csv" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.data_processor.</code><code class="sig-name descname">save_stock_daily_csv</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">path</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/data_processor.html#save_stock_daily_csv"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.data_processor.save_stock_daily_csv" title="永久链接至目标">¶</a></dt>
 <dd><p>保存股票日线数据至csv文件</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>

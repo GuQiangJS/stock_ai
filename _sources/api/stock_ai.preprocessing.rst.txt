@@ -11,6 +11,8 @@ preprocessing
 .. autosummary::
     :nosignatures:
     
+    cum_return
+    deepcopy
     xy_split_1
     xy_split_2
 
@@ -19,6 +21,8 @@ preprocessing
 
 .. rubric:: Methods
 
+.. autofunction:: cum_return
+.. autofunction:: deepcopy
 .. autofunction:: xy_split_1
 .. autofunction:: xy_split_2
 
@@ -30,6 +34,7 @@ preprocessing
     :toctree:
     :nosignatures:
     
+    ABCMeta
     P
     P1
 

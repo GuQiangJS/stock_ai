@@ -11,15 +11,26 @@ report
 .. autosummary::
     :nosignatures:
     
+    load_stock_block
     sharpe_ratio
+    str2date
 
 
 
 
 .. rubric:: Methods
 
+.. autofunction:: load_stock_block
 .. autofunction:: sharpe_ratio
+.. autofunction:: str2date
 
 
 
+
+.. rubric:: Class
+.. autosummary::
+    :toctree:
+    :nosignatures:
+    
+    StockCN
 
