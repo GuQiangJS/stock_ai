@@ -1,0 +1,52 @@
+OneHotEncoder
+============================
+
+.. autodoc_member_order: 'alphabetical'
+
+.. currentmodule:: stock_ai.calcs
+
+.. autoclass:: OneHotEncoder
+    :members: __init__
+
+
+
+.. rubric:: Attributes
+.. autosummary::
+    
+    OneHotEncoder.active_features_
+    OneHotEncoder.feature_indices_
+    OneHotEncoder.n_values_
+
+
+
+
+
+.. rubric:: Methods
+.. autosummary::
+    :nosignatures:
+    
+    OneHotEncoder.fit
+    OneHotEncoder.fit_transform
+    OneHotEncoder.get_feature_names
+    OneHotEncoder.get_params
+    OneHotEncoder.inverse_transform
+    OneHotEncoder.set_params
+    OneHotEncoder.transform
+
+
+
+
+.. rubric:: Attributes
+
+.. autoattribute:: OneHotEncoder.active_features_
+.. autoattribute:: OneHotEncoder.feature_indices_
+.. autoattribute:: OneHotEncoder.n_values_
+.. rubric:: Methods
+
+.. automethod:: OneHotEncoder.fit
+.. automethod:: OneHotEncoder.fit_transform
+.. automethod:: OneHotEncoder.get_feature_names
+.. automethod:: OneHotEncoder.get_params
+.. automethod:: OneHotEncoder.inverse_transform
+.. automethod:: OneHotEncoder.set_params
+.. automethod:: OneHotEncoder.transform

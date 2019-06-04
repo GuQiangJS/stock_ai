@@ -1,12 +1,15 @@
 ./_modules/abc.html
 ./_modules/copy.html
 ./_modules/index.html
+./_modules/sklearn/base.html
+./_modules/sklearn/preprocessing/_encoders.html
 ./_modules/stock_ai/calcs.html
 ./_modules/stock_ai/data_processor.html
 ./_modules/stock_ai/module.html
 ./_modules/stock_ai/preprocessing.html
 ./_modules/stock_ai/report.html
 ./_modules/stock_ai/util.html
+./_sources/api/stock_ai.calcs.OneHotEncoder.rst.txt
 ./_sources/api/stock_ai.calcs.rst.txt
 ./_sources/api/stock_ai.data_processor.rst.txt
 ./_sources/api/stock_ai.module.Index.rst.txt
@@ -75,6 +78,7 @@
 ./_static/translations.js
 ./_static/underscore-1.3.1.js
 ./_static/underscore.js
+./api/stock_ai.calcs.OneHotEncoder.html
 ./api/stock_ai.calcs.html
 ./api/stock_ai.data_processor.html
 ./api/stock_ai.module.Index.html

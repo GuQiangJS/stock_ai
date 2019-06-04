@@ -29,6 +29,7 @@ calcs
     tech_ema
     tech_ma
     tech_macd
+    trans_onehot
 
 
 
@@ -53,7 +54,15 @@ calcs
 .. autofunction:: tech_ema
 .. autofunction:: tech_ma
 .. autofunction:: tech_macd
+.. autofunction:: trans_onehot
 
 
 
+
+.. rubric:: Class
+.. autosummary::
+    :toctree:
+    :nosignatures:
+    
+    OneHotEncoder
 

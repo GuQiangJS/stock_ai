@@ -1,0 +1,618 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OneHotEncoder &mdash; stock_ai  文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="calcs" href="stock_ai.calcs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> stock_ai
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.data_processor.html">data_processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="stock_ai.calcs.html">calcs</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OneHotEncoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">stock_ai</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="stock_ai.calcs.html">calcs</a> &raquo;</li>
+        
+      <li>OneHotEncoder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/stock_ai.calcs.OneHotEncoder.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="onehotencoder">
+<h1>OneHotEncoder<a class="headerlink" href="#onehotencoder" title="永久链接至标题">¶</a></h1>
+<dl class="class">
+<dt id="stock_ai.calcs.OneHotEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">OneHotEncoder</code><span class="sig-paren">(</span><em class="sig-param">n_values=None</em>, <em class="sig-param">categorical_features=None</em>, <em class="sig-param">categories=None</em>, <em class="sig-param">drop=None</em>, <em class="sig-param">sparse=True</em>, <em class="sig-param">dtype=&lt;class 'numpy.float64'&gt;</em>, <em class="sig-param">handle_unknown='error'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sklearn/preprocessing/_encoders.html#OneHotEncoder"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder" title="永久链接至目标">¶</a></dt>
+<dd><p>Encode categorical integer features as a one-hot numeric array.</p>
+<p>The input to this transformer should be an array-like of integers or
+strings, denoting the values taken on by categorical (discrete) features.
+The features are encoded using a one-hot (aka ‘one-of-K’ or ‘dummy’)
+encoding scheme. This creates a binary column for each category and
+returns a sparse matrix or dense array.</p>
+<p>By default, the encoder derives the categories based on the unique values
+in each feature. Alternatively, you can also specify the <cite>categories</cite>
+manually.
+The OneHotEncoder previously assumed that the input features take on
+values in the range [0, max(values)). This behaviour is deprecated.</p>
+<p>This encoding is needed for feeding categorical data to many scikit-learn
+estimators, notably linear models and SVMs with the standard kernels.</p>
+<p>Note: a one-hot encoding of y labels should use a LabelBinarizer
+instead.</p>
+<p>Read more in the <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#preprocessing-categorical-features" title="(在 scikit-learn v0.21.2)"><span class="xref std std-ref">User Guide</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categories</strong> (<em>'auto'</em><em> or </em><em>a list of lists/arrays of values</em><em>, </em><em>default='auto'.</em>) – <p>Categories (unique values) per feature:</p>
+<ul>
+<li><p>’auto’ : Determine categories automatically from the training data.</p></li>
+<li><p>list : <code class="docutils literal notranslate"><span class="pre">categories[i]</span></code> holds the categories expected in the ith
+column. The passed categories should not mix strings and numeric
+values within a single feature, and should be sorted in case of
+numeric values.</p></li>
+</ul>
+<p>The used categories can be found in the <code class="docutils literal notranslate"><span class="pre">categories_</span></code> attribute.</p>
+</p></li>
+<li><p><strong>drop</strong> (<em>'first'</em><em> or </em><em>a list/array of shape</em><em> (</em><em>n_features</em><em>,</em><em>)</em><em>, </em><em>default=None.</em>) – <p>Specifies a methodology to use to drop one of the categories per
+feature. This is useful in situations where perfectly collinear
+features cause problems, such as when feeding the resulting data
+into a neural network or an unregularized regression.</p>
+<ul>
+<li><p>None : retain all features (the default).</p></li>
+<li><p>’first’ : drop the first category in each feature. If only one
+category is present, the feature will be dropped entirely.</p></li>
+<li><p>array : <code class="docutils literal notranslate"><span class="pre">drop[i]</span></code> is the category in feature <code class="docutils literal notranslate"><span class="pre">X[:,</span> <span class="pre">i]</span></code> that
+should be dropped.</p></li>
+</ul>
+</p></li>
+<li><p><strong>sparse</strong> (<em>boolean</em><em>, </em><em>default=True</em>) – Will return sparse matrix if set True else will return an array.</p></li>
+<li><p><strong>dtype</strong> (<em>number type</em><em>, </em><em>default=np.float</em>) – Desired dtype of output.</p></li>
+<li><p><strong>handle_unknown</strong> (<em>'error'</em><em> or </em><em>'ignore'</em><em>, </em><em>default='error'.</em>) – Whether to raise an error or ignore if an unknown categorical feature
+is present during transform (default is to raise). When this parameter
+is set to ‘ignore’ and an unknown category is encountered during
+transform, the resulting one-hot encoded columns for this feature
+will be all zeros. In the inverse transform, an unknown category
+will be denoted as None.</p></li>
+<li><p><strong>n_values</strong> (<em>'auto'</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a><em> or </em><em>array of ints</em><em>, </em><em>default='auto'</em>) – <p>Number of values per feature.</p>
+<ul>
+<li><p>’auto’ : determine value range from training data.</p></li>
+<li><dl class="simple">
+<dt>int<span class="classifier">number of categorical values per feature.</span></dt><dd><p>Each feature value should be in <code class="docutils literal notranslate"><span class="pre">range(n_values)</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>array<span class="classifier"><code class="docutils literal notranslate"><span class="pre">n_values[i]</span></code> is the number of categorical values in</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">X[:,</span> <span class="pre">i]</span></code>. Each feature value should be
+in <code class="docutils literal notranslate"><span class="pre">range(n_values[i])</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">0.20 版后已移除: </span>The <cite>n_values</cite> keyword was deprecated in version 0.20 and will
+be removed in 0.22. Use <cite>categories</cite> instead.</p>
+</div>
+</p></li>
+<li><p><strong>categorical_features</strong> (<em>'all'</em><em> or </em><em>array of indices</em><em> or </em><em>mask</em><em>, </em><em>default='all'</em>) – <p>Specify what features are treated as categorical.</p>
+<ul>
+<li><p>’all’: All features are treated as categorical.</p></li>
+<li><p>array of indices: Array of categorical feature indices.</p></li>
+<li><p>mask: Array of length n_features and with dtype=bool.</p></li>
+</ul>
+<p>Non-categorical features are always stacked to the right of the matrix.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">0.20 版后已移除: </span>The <cite>categorical_features</cite> keyword was deprecated in version
+0.20 and will be removed in 0.22.
+You can use the <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> instead.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="stock_ai.calcs.OneHotEncoder.categories_">
+<code class="sig-name descname">categories_</code><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.categories_" title="永久链接至目标">¶</a></dt>
+<dd><p>The categories of each feature determined during fitting
+(in order of the features in X and corresponding with the output
+of <code class="docutils literal notranslate"><span class="pre">transform</span></code>). This includes the category specified in <code class="docutils literal notranslate"><span class="pre">drop</span></code>
+(if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of arrays</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stock_ai.calcs.OneHotEncoder.drop_idx_">
+<code class="sig-name descname">drop_idx_</code><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.drop_idx_" title="永久链接至目标">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">drop_idx_[i]</span></code> is the index in <code class="docutils literal notranslate"><span class="pre">categories_[i]</span></code> of the category to
+be dropped for each feature. None if all the transformed features will
+be retained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stock_ai.calcs.OneHotEncoder.active_features_">
+<code class="sig-name descname">active_features_</code><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.active_features_" title="永久链接至目标">¶</a></dt>
+<dd><p>Indices for active features, meaning values that actually occur
+in the training set. Only available when n_values is <code class="docutils literal notranslate"><span class="pre">'auto'</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">0.20 版后已移除: </span>The <code class="docutils literal notranslate"><span class="pre">active_features_</span></code> attribute was deprecated in version
+0.20 and will be removed in 0.22.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stock_ai.calcs.OneHotEncoder.feature_indices_">
+<code class="sig-name descname">feature_indices_</code><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.feature_indices_" title="永久链接至目标">¶</a></dt>
+<dd><p>Indices to feature ranges.
+Feature <code class="docutils literal notranslate"><span class="pre">i</span></code> in the original data is mapped to features
+from <code class="docutils literal notranslate"><span class="pre">feature_indices_[i]</span></code> to <code class="docutils literal notranslate"><span class="pre">feature_indices_[i+1]</span></code>
+(and then potentially masked by <code class="docutils literal notranslate"><span class="pre">active_features_</span></code> afterwards)</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">0.20 版后已移除: </span>The <code class="docutils literal notranslate"><span class="pre">feature_indices_</span></code> attribute was deprecated in version
+0.20 and will be removed in 0.22.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stock_ai.calcs.OneHotEncoder.n_values_">
+<code class="sig-name descname">n_values_</code><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.n_values_" title="永久链接至目标">¶</a></dt>
+<dd><p>Maximum number of values per feature.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">0.20 版后已移除: </span>The <code class="docutils literal notranslate"><span class="pre">n_values_</span></code> attribute was deprecated in version
+0.20 and will be removed in 0.22.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<p>Given a dataset with two features, we let the encoder find the unique
+values per feature and transform the data to a binary one-hot encoding.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">OneHotEncoder</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">... </span><span class="c1"># doctest: +ELLIPSIS</span>
+<span class="gp">... </span><span class="c1"># doctest: +NORMALIZE_WHITESPACE</span>
+<span class="go">OneHotEncoder(categorical_features=None, categories=None, drop=None,</span>
+<span class="go">   dtype=&lt;... &#39;numpy.float64&#39;&gt;, handle_unknown=&#39;ignore&#39;,</span>
+<span class="go">   n_values=None, sparse=True)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">categories_</span>
+<span class="go">[array([&#39;Female&#39;, &#39;Male&#39;], dtype=object), array([1, 2, 3], dtype=object)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="go">array([[1., 0., 1., 0., 0.],</span>
+<span class="go">       [0., 1., 0., 0., 0.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="go">array([[&#39;Male&#39;, 1],</span>
+<span class="go">       [None, 2]], dtype=object)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="go">array([&#39;x0_Female&#39;, &#39;x0_Male&#39;, &#39;x1_1&#39;, &#39;x1_2&#39;, &#39;x1_3&#39;], dtype=object)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drop_enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drop_enc</span><span class="o">.</span><span class="n">categories_</span>
+<span class="go">[array([&#39;Female&#39;, &#39;Male&#39;], dtype=object), array([1, 2, 3], dtype=object)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drop_enc</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="go">array([[0., 0., 0.],</span>
+<span class="go">       [1., 1., 0.]])</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="(在 scikit-learn v0.21.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.preprocessing.OrdinalEncoder</span></code></a></dt><dd><p>performs an ordinal (integer) encoding of the categorical features.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.DictVectorizer.html#sklearn.feature_extraction.DictVectorizer" title="(在 scikit-learn v0.21.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.feature_extraction.DictVectorizer</span></code></a></dt><dd><p>performs a one-hot encoding of dictionary items (also handles string-valued features).</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="(在 scikit-learn v0.21.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.feature_extraction.FeatureHasher</span></code></a></dt><dd><p>performs an approximate one-hot encoding of dictionary items or strings.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer" title="(在 scikit-learn v0.21.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.preprocessing.LabelBinarizer</span></code></a></dt><dd><p>binarizes labels in a one-vs-all fashion.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer" title="(在 scikit-learn v0.21.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.preprocessing.MultiLabelBinarizer</span></code></a></dt><dd><p>transforms between iterable of iterables and a multilabel format, e.g. a (samples x classes) binary matrix indicating the presence of a class label.</p>
+</dd>
+</dl>
+</div>
+<dl class="method">
+<dt id="stock_ai.calcs.OneHotEncoder.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">n_values=None</em>, <em class="sig-param">categorical_features=None</em>, <em class="sig-param">categories=None</em>, <em class="sig-param">drop=None</em>, <em class="sig-param">sparse=True</em>, <em class="sig-param">dtype=&lt;class 'numpy.float64'&gt;</em>, <em class="sig-param">handle_unknown='error'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sklearn/preprocessing/_encoders.html#OneHotEncoder.__init__"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.__init__" title="永久链接至目标">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.active_features_" title="stock_ai.calcs.OneHotEncoder.active_features_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.active_features_</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.feature_indices_" title="stock_ai.calcs.OneHotEncoder.feature_indices_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.feature_indices_</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.n_values_" title="stock_ai.calcs.OneHotEncoder.n_values_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.n_values_</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.fit" title="stock_ai.calcs.OneHotEncoder.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.fit</span></code></a></p></td>
+<td><p>Fit OneHotEncoder to X.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.fit_transform" title="stock_ai.calcs.OneHotEncoder.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.fit_transform</span></code></a></p></td>
+<td><p>Fit OneHotEncoder to X, then transform X.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.get_feature_names" title="stock_ai.calcs.OneHotEncoder.get_feature_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.get_feature_names</span></code></a></p></td>
+<td><p>Return feature names for output features.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.get_params" title="stock_ai.calcs.OneHotEncoder.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.get_params</span></code></a></p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.inverse_transform" title="stock_ai.calcs.OneHotEncoder.inverse_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.inverse_transform</span></code></a></p></td>
+<td><p>Convert the back data to the original representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.set_params" title="stock_ai.calcs.OneHotEncoder.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.set_params</span></code></a></p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.OneHotEncoder.transform" title="stock_ai.calcs.OneHotEncoder.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder.transform</span></code></a></p></td>
+<td><p>Transform X using one-hot encoding.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<dl class="attribute">
+<dt>
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">active_features_</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">feature_indices_</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">n_values_</code></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="stock_ai.calcs.OneHotEncoder.fit">
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sklearn/preprocessing/_encoders.html#OneHotEncoder.fit"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.fit" title="永久链接至目标">¶</a></dt>
+<dd><p>Fit OneHotEncoder to X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – The data to determine the categories of each feature.</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stock_ai.calcs.OneHotEncoder.fit_transform">
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">fit_transform</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sklearn/preprocessing/_encoders.html#OneHotEncoder.fit_transform"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.fit_transform" title="永久链接至目标">¶</a></dt>
+<dd><p>Fit OneHotEncoder to X, then transform X.</p>
+<p>Equivalent to fit(X).transform(X) but more convenient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – The data to encode.</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p><strong>X_out</strong> – Transformed input.</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>sparse matrix if sparse=True else a 2-d array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stock_ai.calcs.OneHotEncoder.get_feature_names">
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">get_feature_names</code><span class="sig-paren">(</span><em class="sig-param">input_features=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sklearn/preprocessing/_encoders.html#OneHotEncoder.get_feature_names"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.get_feature_names" title="永久链接至目标">¶</a></dt>
+<dd><p>Return feature names for output features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>input_features</strong> (<em>list of string</em><em>, </em><em>length n_features</em><em>, </em><em>optional</em>) – String names for input features if available. By default,
+“x0”, “x1”, … “xn_features” is used.</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p><strong>output_feature_names</strong></p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>array of string, length n_output_features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stock_ai.calcs.OneHotEncoder.get_params">
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.get_params" title="永久链接至目标">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>boolean</em><em>, </em><em>optional</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p><strong>params</strong> – Parameter names mapped to their values.</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>mapping of string to any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stock_ai.calcs.OneHotEncoder.inverse_transform">
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">inverse_transform</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sklearn/preprocessing/_encoders.html#OneHotEncoder.inverse_transform"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.inverse_transform" title="永久链接至目标">¶</a></dt>
+<dd><p>Convert the back data to the original representation.</p>
+<p>In case unknown categories are encountered (all zeros in the
+one-hot encoding), <code class="docutils literal notranslate"><span class="pre">None</span></code> is used to represent this category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em> or </em><em>sparse matrix</em><em>, </em><em>shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_encoded_features</em><em>]</em>) – The transformed data.</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p><strong>X_tr</strong> – Inverse transformed array.</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>array-like, shape [n_samples, n_features]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stock_ai.calcs.OneHotEncoder.set_params">
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.set_params" title="永久链接至目标">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stock_ai.calcs.OneHotEncoder.transform">
+<code class="sig-prename descclassname">OneHotEncoder.</code><code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sklearn/preprocessing/_encoders.html#OneHotEncoder.transform"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.OneHotEncoder.transform" title="永久链接至目标">¶</a></dt>
+<dd><p>Transform X using one-hot encoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – The data to encode.</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p><strong>X_out</strong> – Transformed input.</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>sparse matrix if sparse=True else a 2-d array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="stock_ai.calcs.html" class="btn btn-neutral float-left" title="calcs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, GuQiangJS
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="OneHotEncoder" href="stock_ai.calcs.OneHotEncoder.html" />
     <link rel="prev" title="StockCN" href="stock_ai.module.StockCN.html" /> 
 </head>
 
@@ -83,7 +84,10 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.data_processor.html">data_processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">calcs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">calcs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stock_ai.calcs.OneHotEncoder.html">OneHotEncoder</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
@@ -212,6 +216,9 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.tech_macd" title="stock_ai.calcs.tech_macd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tech_macd</span></code></a></p></td>
 <td><p>计算MACD</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.trans_onehot" title="stock_ai.calcs.trans_onehot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trans_onehot</span></code></a></p></td>
+<td><p>转换 OneHot 编码</p></td>
 </tr>
 </tbody>
 </table>
@@ -601,6 +608,57 @@
 </dl>
 </dd></dl>
 
+<dl class="function">
+<dt id="stock_ai.calcs.trans_onehot">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">trans_onehot</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#trans_onehot"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.trans_onehot" title="永久链接至目标">¶</a></dt>
+<dd><p>转换 OneHot 编码</p>
+<blockquote>
+<div><p>设定参数 <code class="docutils literal notranslate"><span class="pre">sparse=False</span></code>，调用 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="(在 scikit-learn v0.21.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.preprocessing.OneHotEncoder</span></code></a>。</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>data</strong> – 一维数组或多维数组，可以为普通list,tuple，或np.array。</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">stock_ai</span> <span class="k">import</span> <span class="n">calcs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">trans_onehot</span><span class="p">([[</span><span class="mi">2016</span><span class="p">],</span> <span class="p">[</span><span class="mi">2017</span><span class="p">],</span> <span class="p">[</span><span class="mi">2018</span><span class="p">],</span> <span class="p">[</span><span class="mi">2018</span><span class="p">],</span> <span class="p">[</span><span class="mi">2019</span><span class="p">]])</span>
+<span class="go">array([[1., 0., 0., 0.],</span>
+<span class="go">       [0., 1., 0., 0.],</span>
+<span class="go">       [0., 0., 1., 0.],</span>
+<span class="go">       [0., 0., 1., 0.],</span>
+<span class="go">       [0., 0., 0., 1.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">trans_onehot</span><span class="p">([</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">])</span>
+<span class="go">array([[1., 0., 0., 0.],</span>
+<span class="go">       [0., 1., 0., 0.],</span>
+<span class="go">       [0., 0., 1., 0.],</span>
+<span class="go">       [0., 0., 1., 0.],</span>
+<span class="go">       [0., 0., 0., 1.]])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.preprocessing.OneHotEncoder.fit_transform()</span></code> 的返回值。</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>(2-d array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Class</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stock_ai.calcs.OneHotEncoder.html#stock_ai.calcs.OneHotEncoder" title="stock_ai.calcs.OneHotEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder</span></code></a></p></td>
+<td><p>Encode categorical integer features as a one-hot numeric array.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -610,6 +668,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stock_ai.calcs.OneHotEncoder.html" class="btn btn-neutral float-right" title="OneHotEncoder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="stock_ai.module.StockCN.html" class="btn btn-neutral float-left" title="StockCN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
