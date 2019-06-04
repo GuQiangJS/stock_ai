@@ -27,7 +27,9 @@ setup(name=NAME,
           'Topic :: Scientific/Engineering',
       ],
       keywords='data',
-      install_requires=['QUANTAXIS', 'TensorFlow', 'pandas', 'numpy', 'keras'],
+      install_requires=[
+          'QUANTAXIS', 'TensorFlow', 'pandas', 'numpy', 'keras', 'scikit-learn'
+      ],
       packages=find_packages(),
       zip_safe=False,
       exclude_package_data={'': ['test_*.py']})

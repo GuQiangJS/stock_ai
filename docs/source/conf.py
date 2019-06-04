@@ -163,6 +163,8 @@ intersphinx_mapping = {
     'pandas': ('https://pandas.pydata.org/pandas-docs/stable/', None),
     'numpy': ('https://docs.scipy.org/doc/numpy/', None),
     'matplotlib': ('https://matplotlib.org/', None),
+    'sklearn': ('http://scikit-learn.org/stable',
+            (None, './_intersphinx/sklearn-objects.inv'))
     # 'keras': ('https://keras.io/zh/', None),
     # 'keras': ('https://keras.io/', None), # doesn't work for keras
 }

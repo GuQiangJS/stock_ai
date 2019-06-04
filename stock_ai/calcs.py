@@ -4,6 +4,7 @@ from QUANTAXIS.QAIndicator import indicators
 from QUANTAXIS.QAIndicator import talib_indicators
 from QUANTAXIS.QAIndicator import talib_series
 import numpy as np
+from sklearn.preprocessing import OneHotEncoder
 
 
 def calc_year(df, **kwargs):
@@ -28,6 +29,41 @@ def calc_year(df, **kwargs):
         :class:`~pandas.Series`: 计算后的列。
     """
     return _create_series(df.index.year, df=df, dtype='int64')
+
+
+def trans_onehot(data):
+    """转换 OneHot 编码
+
+     设定参数 ``sparse=False``，调用 :py:class:`sklearn.preprocessing.OneHotEncoder`。
+
+    Args:
+        data: 一维数组或多维数组，可以为普通list,tuple，或np.array。
+
+    Examples:
+        >>> from stock_ai import calcs
+        >>> import numpy as np
+        >>> calcs.trans_onehot([[2016], [2017], [2018], [2018], [2019]])
+        array([[1., 0., 0., 0.],
+               [0., 1., 0., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 0., 1.]])
+        >>> calcs.trans_onehot([2016, 2017, 2018, 2018, 2019])
+        array([[1., 0., 0., 0.],
+               [0., 1., 0., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 0., 1.]])
+
+    Returns:
+        (2-d array): 参考 :py:func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。
+
+    """
+    n = np.array(data)
+    if len(n.shape) == 1:
+        #如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。
+        n = np.reshape(n, (n.shape[0], 1))
+    return OneHotEncoder(sparse=False).fit_transform(n)
 
 
 def fillna(df, **kwargs):

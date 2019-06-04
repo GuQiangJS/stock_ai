@@ -25,6 +25,7 @@ install:
   - pip uninstall -y pytdx
   - pip install  pytdx
   - pip install --upgrade tensorflow
+  - pip install -U scikit-learn
   - pip install coveralls
   - if [[ $DOCBUILD ]]; then
     pip install sphinx sphinx_rtd_theme doctr sphinxcontrib-napoleon;
