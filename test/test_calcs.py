@@ -119,13 +119,13 @@ def test_macd_series():
 
 def test_daily_return():
     df = test.merged_dataframe()
-    dr = calcs.daily_return(df['close'])
+    dr = calcs.calc_daily_return(df['close'])
     print(dr.tail())
 
 
 def test_cum_return():
     df = test.merged_dataframe()
-    dr = calcs.cum_return(df['close'].dropna())
+    dr = calcs.calc_cum_return(df['close'].dropna())
     print(dr.tail())
 
 

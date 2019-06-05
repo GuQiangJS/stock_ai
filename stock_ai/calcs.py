@@ -31,23 +31,32 @@ def calc_year(df, **kwargs):
     return _create_series(df.index.year, df=df, dtype='int64')
 
 
-def trans_onehot(data):
+def trans_onehot(data, **kwargs):
     """转换 OneHot 编码
 
-     设定参数 ``sparse=False``，调用 :py:class:`sklearn.preprocessing.OneHotEncoder`。
+     设定参数 ``sparse=False``，调用 :class:`sklearn.preprocessing.OneHotEncoder`。
 
     Args:
         data: 一维数组或多维数组，可以为普通list,tuple，或np.array。
+            也可以是 :class:`pandas.DataFrame` 或 :class:`pandas.Series`。
+            如果是 :class:`pandas.DataFrame` 时，需要通过 ``column`` 参数指定列名。
+        column (str): 当 ``data`` 是 :class:`pandas.DataFrame` 时需要指定计算的列。
 
     Examples:
         >>> from stock_ai import calcs
         >>> import numpy as np
+
+        传入数据为二维数组
+
         >>> calcs.trans_onehot([[2016], [2017], [2018], [2018], [2019]])
         array([[1., 0., 0., 0.],
                [0., 1., 0., 0.],
                [0., 0., 1., 0.],
                [0., 0., 1., 0.],
                [0., 0., 0., 1.]])
+
+        传入数据为一维数组
+
         >>> calcs.trans_onehot([2016, 2017, 2018, 2018, 2019])
         array([[1., 0., 0., 0.],
                [0., 1., 0., 0.],
@@ -55,15 +64,41 @@ def trans_onehot(data):
                [0., 0., 1., 0.],
                [0., 0., 0., 1.]])
 
+        传入数据为Seriese
+
+        >>> calcs.trans_onehot(pd.Series([2016, 2017, 2018, 2018, 2019]))
+        array([[1., 0., 0., 0.],
+               [0., 1., 0., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 0., 1.]])
+
+        传入数据为DataFrame
+
+        >>> df = pd.DataFrame([2016, 2017, 2018, 2018, 2019], columns=['y'])
+        >>> calcs.trans_onehot(df, column='y')
+        array([[1., 0., 0., 0.],
+               [0., 1., 0., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 0., 1.]])
+
     Returns:
-        (2-d array): 参考 :py:func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。
+        (二维数组): 参考 :func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。
 
     """
+    if isinstance(data, pd.DataFrame):
+        col = kwargs.pop('column', None)
+        if not col:
+            raise ValueError('当传入类型为 DataFrame 时，需要指定 column 参数。')
+        data = data[col].values
+    elif isinstance(data, pd.Series):
+        data = data.values
     n = np.array(data)
     if len(n.shape) == 1:
         #如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。
         n = np.reshape(n, (n.shape[0], 1))
-    return OneHotEncoder(sparse=False).fit_transform(n)
+    return OneHotEncoder(sparse=False,categories='auto').fit_transform(n)
 
 
 def fillna(df, **kwargs):
@@ -90,7 +125,7 @@ def dropna(df, **kwargs):
 def is_trade_suspension(df, **kwargs):
     """返回是否为停牌
 
-    根据 `df` 中指定参数 `colname` 找到指定列，采用 :func:`pandas.Series.isna` 判断。
+    根据 `df` 中指定参数 `column` 找到指定列，采用 :func:`pandas.Series.isna` 判断。
     ``True`` 表示是停牌日。
 
     See Also:
@@ -98,23 +133,19 @@ def is_trade_suspension(df, **kwargs):
 
     Args:
         df (:class:`~pandas.DataFrame`): 原始数据。
-        colname (str): 用来判断的列名。默认为 ``close``。
+        column (str): 用来判断的列名。默认为 ``close``。
 
     Examples:
-        >>> df_stock = data_processor.load_stock_daily('601398')
-        >>> df_index = data_processor.load_index_daily('399300')
-        >>> df = wrapper.dataframe_merge(df_stock, df_index)
-        >>> is_sus = calcs.is_trade_suspension(df)
-        >>> is_sus['2012-02-23'] # 2012-01-06 召开2012年度第1次临时股东大会，停牌一天 ，2012-02-23
-        True
-        >>> is_sus['2012-02-24']
-        False
+        >>> import pandas as pd
+        >>> from stock_ai import calcs
+        >>> df = pd.DataFrame({'A':[1,2,None,4,None]})
+        >>> calcs.is_trade_suspension(df, column='A').values
+        array([False, False,  True, False,  True])
 
     Returns:
-        :class:`~pandas.Series`: 如果是停牌数据则为True，否则为False。
+        :class:`pandas.Series`: 如果是停牌数据则为True，否则为False。
     """
-    colname = kwargs.pop('colname', 'close')
-    return df[colname].isna()
+    return df[kwargs.pop('column', 'close')].isna()
 
 
 def _create_series(data, df, **kwargs):
@@ -327,28 +358,75 @@ def pct_change(df, **kwargs):
     return df.pct_change()
 
 
-def daily_return(df, **kwargs):
+def calc_daily_return(df, **kwargs):
     """计算日收益
 
     Args:
         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
 
+    Examples:
+        >>> import pandas as pd
+        >>> from stock_ai import calcs
+
+        Series时
+
+        >>> s = pd.Series([1,2,3,4,5])
+        >>> calcs.calc_daily_return(s).values
+        array([1.        , 0.5       , 0.33333333, 0.25      ])
+
+        DataFrame时
+
+        >>> s = pd.DataFrame({'A':[1,2,3,4,5],
+        ...                   'B':[5,4,3,2,1]})
+        >>> s
+           A  B
+        0  1  5
+        1  2  4
+        2  3  3
+        3  4  2
+        4  5  1
+        >>> calcs.calc_daily_return(s).values
+        array([[ 1.        , -0.2       ],
+               [ 0.5       , -0.25      ],
+               [ 0.33333333, -0.33333333],
+               [ 0.25      , -0.5       ]])
+
     Return:
         :class:`pandas.Series` or :class:`pandas.DataFrame`:
     """
-    return df[:-1].values / df[1:] - 1
+    return df[1:].values / df[:-1] - 1
 
 
-def cum_return(data, **kwargs):
+def calc_cum_return(data, **kwargs):
     """计算累计收益
 
     Args:
         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
 
+    Examples:
+        >>> import pandas as pd
+        >>> from stock_ai import calcs
+
+        Series时
+
+        >>> s = pd.Series([2,2,3,4,5])
+        >>> calcs.calc_cum_return(s).values
+        array([1. , 1.5, 2. , 2.5])
+
+        DataFrame时
+
+        >>> s = pd.DataFrame({'A':[2,2,3,4,5],
+        ...                   'B':[5,4,3,2,1]})
+        >>> calcs.calc_cum_return(s).values
+        array([[1. , 0.8],
+               [1.5, 0.6],
+               [2. , 0.4],
+               [2.5, 0.2]])
+
     Return:
         :class:`pandas.Series` or :class:`pandas.DataFrame`:
     """
-    return data / data.iloc[0]
+    return data[1:] / data.iloc[0]
 
 
 def kurtosis(data, **kwargs):

@@ -164,7 +164,7 @@
 #             elif col in ['is_trade_suspension']:
 #                 df[col] = np.where(df[col], 1, 0)
 #             else:
-#                 df[col] = calcs.cum_return(df[col])
+#                 df[col] = calcs.calc_cum_return(df[col])
 #         return df
 #
 #     def _default_layers(self, first_layer_shape, last_layer_shape):

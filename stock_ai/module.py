@@ -127,7 +127,7 @@ class StockCN(Stock):
         end = kwargs.pop('end', None)
         column = kwargs.pop('column', 'close')
         daily = self.get_daily(start, end).copy()
-        return calcs.cum_return(daily[column])
+        return calcs.calc_cum_return(daily[column])
 
     def get_sharpe_ratio(self, **kwargs):
         """计算指定时间段的夏普比率。
