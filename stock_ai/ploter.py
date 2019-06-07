@@ -2,6 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import keras
+import pandas as pd
 
 sns.set()
 matplotlib.rcParams['font.family'] = 'sans-serif',
@@ -11,13 +12,16 @@ matplotlib.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 def __plot_keras_history(d: dict, title, ylabel, xlabel):
     """训练历史可视化"""
-    plt.title(title)
-    plt.ylabel(ylabel)
-    plt.xlabel(xlabel)
-    plt.legend(d.keys(), loc='upper left')
-    for v in d.values():
-        plt.plot(v)
-    return plt
+
+    return sns.lineplot(data=pd.DataFrame.from_dict(d))
+    #
+    # plt.title(title)
+    # plt.ylabel(ylabel)
+    # plt.xlabel(xlabel)
+    # plt.legend(d.keys(), loc='upper left')
+    # for n, v in d.items():
+    #     # plt.plot(v)
+    # return plt
 
 
 def plot_keras_history(his: keras.callbacks.History, **kwargs):
@@ -30,31 +34,47 @@ def plot_keras_history(his: keras.callbacks.History, **kwargs):
     Returns:
         :class:`matplotlib.pyplot`:
     """
+    def _a(d:dict,name:str,k,v):
+        if name not in d.keys():
+            d[name]={}
+        d[name][k]=v
+
     show = kwargs.pop('show', True)
-    result = []
+    plots = []
     # 绘制训练 & 验证的准确率值
     acc = {}
     if 'acc' in his.history:
-        acc['训练'] = his.history['acc']
+        _a(acc,'data','训练',his.history['acc'])
     if 'val_acc' in his.history:
-        acc['测试'] = his.history['val_acc']
+        _a(acc,'data','测试',his.history['val_acc'])
     if acc:
-        plt = __plot_keras_history(acc, '模型准确性', '准确性', '轮次')
-        result.append(plt)
-        if show:
-            plt.show()
+        acc['title'] = '模型准确性'
+        acc['ylabel'] = '准确性'
+        acc['xlabel'] = '轮次'
+        plots.append(acc)
     loss = {}
     if 'loss' in his.history:
-        loss['训练'] = his.history['loss']
+        _a(loss,'data','训练',his.history['loss'])
     if 'val_loss' in his.history:
-        loss['测试'] = his.history['val_loss']
+        _a(loss,'data','测试',his.history['val_loss'])
     if loss:
-        plt = __plot_keras_history(loss, '模型损失值', '损失值', '轮次')
-        result.append(plt)
-        if show:
-            plt.show()
+        loss['title'] = '模型损失值'
+        loss['ylabel'] = '损失值'
+        loss['xlabel'] = '轮次'
+        plots.append(loss)
+    if plots:
+        fig, axs = plt.subplots(nrows=len(plots))
+        for plot in plots:
+            ax=sns.lineplot(data=pd.DataFrame.from_dict(plot['data']),
+                         ax=axs[plots.index(plot)])
+            ax.set_xlabel(plot['xlabel'])
+            ax.set_ylabel(plot['ylabel'])
+            ax.set_title(plot['title'])
 
-    return result
+    plt.tight_layout()
+    if show:
+        plt.show()
+    return plt
 
 
 def plot_daily_return_histogram(data, **kwargs):
