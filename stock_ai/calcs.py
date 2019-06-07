@@ -76,7 +76,7 @@ def trans_onehot(data, **kwargs):
         传入数据为DataFrame
 
         >>> df = pd.DataFrame([2016, 2017, 2018, 2018, 2019], columns=['y'])
-        >>> calcs.trans_onehot(df, column='y')
+        >>> calcs.trans_onehot(df, column='y').values
         array([[1., 0., 0., 0.],
                [0., 1., 0., 0.],
                [0., 0., 1., 0.],
@@ -84,21 +84,30 @@ def trans_onehot(data, **kwargs):
                [0., 0., 0., 1.]])
 
     Returns:
-        (二维数组): 参考 :func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。
+        (二维数组 或 :class:`pandas.DataFrame`): 如果传入参数 ``data`` 类型为
+            :class:`pandas.DataFrame` ，name返回类型是 :class:`pandas.DataFrame` 。
+            否则是 二维数组。
+            参考 :func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。
 
     """
+    d = None
     if isinstance(data, pd.DataFrame):
         col = kwargs.pop('column', None)
         if not col:
             raise ValueError('当传入类型为 DataFrame 时，需要指定 column 参数。')
-        data = data[col].values
+        d = data[col].values
     elif isinstance(data, pd.Series):
-        data = data.values
-    n = np.array(data)
+        d = data.values
+    else:
+        d = data
+    n = np.array(d)
     if len(n.shape) == 1:
         #如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。
         n = np.reshape(n, (n.shape[0], 1))
-    return OneHotEncoder(sparse=False,categories='auto').fit_transform(n)
+    n = OneHotEncoder(sparse=False, categories='auto').fit_transform(n)
+    if isinstance(data, pd.DataFrame):
+        return pd.DataFrame(n, index=data.index)
+    return n
 
 
 def fillna(df, **kwargs):
@@ -200,6 +209,7 @@ def tech_ma(df: pd.DataFrame, **kwargs) -> pd.Series:
 
     Args:
         days (int): 天数。默认值为5。
+        column (str): 计算用列名。默认为 ``close``。
 
     Examples:
         >>> df_stock = data_processor.load_stock_daily('601398')
@@ -213,7 +223,8 @@ def tech_ma(df: pd.DataFrame, **kwargs) -> pd.Series:
         Name: MA, dtype: float64
     """
     days = kwargs.pop('days', 5)
-    ma = indicators.MA(df['close'], days)
+    column = kwargs.pop('column', 'close')
+    ma = indicators.MA(df[column], days)
     return _create_series(ma, df, name='MA', dtype=ma.dtype)
 
 
@@ -241,6 +252,7 @@ def tech_ema(df: pd.DataFrame, **kwargs) -> pd.Series:
 
     Args:
         days (int): 天数。默认值为5。
+        column (str): 计算用列名。默认为 ``close``。
 
     Examples:
         >>> df_stock = data_processor.load_stock_daily('601398')
@@ -254,7 +266,8 @@ def tech_ema(df: pd.DataFrame, **kwargs) -> pd.Series:
         Name: EMA, dtype: float64
     """
     days = kwargs.pop('days', 5)
-    ema = indicators.EMA(df['close'], days)
+    column = kwargs.pop('column', 'close')
+    ema = indicators.EMA(df[column], days)
     return _create_series(ema, df=df, dtype=ema.dtype, name='EMA')
 
 
@@ -346,23 +359,24 @@ def tech_boll(df: pd.DataFrame, **kwargs) -> pd.Series:
     return indicators.QA_indicator_BOLL(df, N, K)['BOLL']
 
 
-def pct_change(df, **kwargs):
-    """包装 :func:`pandas.DataFrame.pct_change` 方法
+# def pct_change(df, **kwargs):
+#     """包装 :func:`pandas.DataFrame.pct_change` 方法
+#
+#     Args:
+#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+#
+#     Return:
+#         :class:`pandas.Series` or :class:`pandas.DataFrame`:
+#     """
+#     return df.pct_change()
 
-    Args:
-        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
 
-    Return:
-        :class:`pandas.Series` or :class:`pandas.DataFrame`:
-    """
-    return df.pct_change()
-
-
-def calc_daily_return(df, **kwargs):
+def calc_daily_return(data, **kwargs):
     """计算日收益
 
     Args:
         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+        column (str): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。
 
     Examples:
         >>> import pandas as pd
@@ -372,7 +386,7 @@ def calc_daily_return(df, **kwargs):
 
         >>> s = pd.Series([1,2,3,4,5])
         >>> calcs.calc_daily_return(s).values
-        array([1.        , 0.5       , 0.33333333, 0.25      ])
+        array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])
 
         DataFrame时
 
@@ -386,15 +400,28 @@ def calc_daily_return(df, **kwargs):
         3  4  2
         4  5  1
         >>> calcs.calc_daily_return(s).values
-        array([[ 1.        , -0.2       ],
+        array([[        nan,         nan],
+               [ 1.        , -0.2       ],
                [ 0.5       , -0.25      ],
                [ 0.33333333, -0.33333333],
                [ 0.25      , -0.5       ]])
 
+        指定column
+
+        >>> calcs.calc_daily_return(s,column='A').values
+        array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])
+
     Return:
-        :class:`pandas.Series` or :class:`pandas.DataFrame`:
+        :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，
+            且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。
+            否则按照传入类型返回。
     """
-    return df[1:].values / df[:-1] - 1
+    d = data
+    if isinstance(data, pd.DataFrame):
+        column = kwargs.pop('column', None)
+        if column and column in data.columns:
+            d = data[column]
+    return d.pct_change()
 
 
 def calc_cum_return(data, **kwargs):
@@ -402,6 +429,7 @@ def calc_cum_return(data, **kwargs):
 
     Args:
         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+        column (str): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。
 
     Examples:
         >>> import pandas as pd
@@ -411,22 +439,36 @@ def calc_cum_return(data, **kwargs):
 
         >>> s = pd.Series([2,2,3,4,5])
         >>> calcs.calc_cum_return(s).values
-        array([1. , 1.5, 2. , 2.5])
+        array([0. , 0.5, 1. , 1.5])
 
         DataFrame时
 
         >>> s = pd.DataFrame({'A':[2,2,3,4,5],
         ...                   'B':[5,4,3,2,1]})
         >>> calcs.calc_cum_return(s).values
-        array([[1. , 0.8],
-               [1.5, 0.6],
-               [2. , 0.4],
-               [2.5, 0.2]])
+        array([[ 0. , -0.2],
+               [ 0.5, -0.4],
+               [ 1. , -0.6],
+               [ 1.5, -0.8]])
+
+        DataFrame时
+
+        >>> s = pd.DataFrame({'A':[2,2,3,4,5],
+        ...                   'B':[5,4,3,2,1]})
+        >>> calcs.calc_cum_return(s,column='A').values
+        array([0. , 0.5, 1. , 1.5])
 
     Return:
-        :class:`pandas.Series` or :class:`pandas.DataFrame`:
+        :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，
+            且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。
+            否则按照传入类型返回。
     """
-    return data[1:] / data.iloc[0]
+    d = data
+    if isinstance(data, pd.DataFrame):
+        column = kwargs.pop('column', None)
+        if column and column in data.columns:
+            d = data[column]
+    return d[1:] / d.iloc[0] - 1
 
 
 def kurtosis(data, **kwargs):
