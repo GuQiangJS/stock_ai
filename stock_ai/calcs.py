@@ -149,12 +149,13 @@ def is_trade_suspension(df, **kwargs):
         >>> from stock_ai import calcs
         >>> df = pd.DataFrame({'A':[1,2,None,4,None]})
         >>> calcs.is_trade_suspension(df, column='A').values
-        array([False, False,  True, False,  True])
+        array([0., 0., 1., 0., 1.])
 
     Returns:
         :class:`pandas.Series`: 如果是停牌数据则为True，否则为False。
     """
-    return df[kwargs.pop('column', 'close')].isna()
+    s = df[kwargs.pop('column', 'close')]
+    return s.isna().replace({True: 1., False: 0.})
 
 
 def _create_series(data, df, **kwargs):
