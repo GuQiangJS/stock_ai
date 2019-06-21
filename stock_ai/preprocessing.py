@@ -6,7 +6,6 @@
 
 from abc import ABCMeta
 from copy import deepcopy
-from stock_ai.calcs import calc_cum_return
 import numpy as np
 
 
@@ -35,7 +34,7 @@ def xy_split_1(dfs, window, days, x_cols, y_cols=['close'], **kwargs):
 
     Args:
         dfs ([:class:`pandas.DataFrame`]): 待拆分的数据集。
-        norm_func: 数据构造器。接受参数类型为 :class:`pandas.DataFrame`，返回类型为 :class:`pandas.DataFrame` 的静态方法即可。默认为 :func:`stock_ai.calcs.calc_cum_return`。
+        norm_func: 数据构造器。接受参数类型为 :class:`pandas.DataFrame`，返回类型为 :class:`pandas.DataFrame` 的静态方法即可。默认为 None。
         window (int): 窗口期。
         days (int): 结果期。
         x_cols (tuple(str)): x 取列集合。
@@ -81,7 +80,7 @@ def xy_split_1(dfs, window, days, x_cols, y_cols=['close'], **kwargs):
     """
     X = []
     Y = []
-    norm_func = kwargs.pop('norm_func', calc_cum_return)
+    norm_func = kwargs.pop('norm_func', None)
     for df in dfs:
         df_tmp = df.copy()
         if norm_func:

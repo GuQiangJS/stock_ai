@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/test/test_preprocessing.py" line="76" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7fdfab49-443b-4940-b856-82035c78ebd8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/source/data_reader.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/stock_ai.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stock_ai.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/index.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_ai/data_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_ai/data_reader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_ai/calcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_ai/calcs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_ai/ploter.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_ai/ploter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_ai/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_ai/preprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,17 +22,61 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="273" />
+    <option name="myElementSize" value="193" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="stock_ai" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stock_ai/data_reader.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/test_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+            <state relative-caret-position="171">
+              <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stock_ai/preprocessing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
-                <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#175#198#0" expanded="true" />
+                <element signature="e#322#515#0" />
+                <element signature="e#2667#4573#0" />
+                <element signature="e#4826#4975#0" />
+                <element signature="e#5022#5167#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stock_ai/calcs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="531" column="1" selection-start-line="531" selection-start-column="1" selection-end-line="531" selection-end-column="1" />
+              <folding>
+                <element signature="e#12#31#0" expanded="true" />
+                <element signature="e#244#274#0" />
+                <element signature="e#12#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -36,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="95">
+              <caret line="9" column="20" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="20" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -46,44 +95,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_init.py">
+        <entry file="file://$PROJECT_DIR$/stock_ai/ploter.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="95">
-              <caret line="5" column="22" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="22" />
+              <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#17#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/source/data_reader.rst">
-          <provider selected="true" editor-type-id="restructured-text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stock_ai/util.py">
+        <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/matplotlib/pyplot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="64" selection-start-column="64" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/source/index.rst">
-          <provider selected="true" editor-type-id="restructured-text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="172" column="52" selection-start-line="172" selection-start-column="52" selection-end-line="172" selection-end-column="52" />
-              <folding>
-                <element signature="e#564#573#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="217">
+              <caret line="1159" column="26" selection-start-line="1159" selection-start-column="13" selection-end-line="1159" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -99,12 +126,48 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>theme</find>
-      <find>autodoc</find>
-      <find>extensions</find>
-      <find>root</find>
-      <find>pip install sphinx sphinx_rtd_theme doctr sphinxcontrib-napoleon</find>
+      <find>optimizers</find>
+      <find>:mod</find>
+      <find>tech_ewm</find>
+      <find>hist</find>
+      <find>appender</find>
+      <find>:mo</find>
+      <find>:m</find>
+      <find>iloc[0]</find>
+      <find>imp</find>
+      <find>keras.</find>
+      <find>lstm</find>
+      <find>__append_layers</find>
+      <find>loss</find>
+      <find>train</find>
+      <find>callba</find>
+      <find>ms</find>
+      <find>output_unit</find>
+      <find>_get_data</find>
+      <find>_get_append_funcs</find>
+      <find>append_funcs</find>
+      <find>logging</find>
+      <find>calc_cum_return</find>
+      <find>write</find>
+      <find>columns</find>
+      <find>size</find>
+      <find>0303030</find>
+      <find>preprocessing</find>
+      <find>_norm</find>
+      <find>norm</find>
+      <find>calcs</find>
     </findStrings>
+    <replaceStrings>
+      <replace>dp</replace>
+      <replace>*</replace>
+      <replace>:class:</replace>
+      <replace>:`~pandas</replace>
+      <replace>:func:</replace>
+      <replace>calcs</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>D:\Github\stock_ai\stock_ai</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -112,30 +175,65 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MANIFEST.in" />
-        <option value="$PROJECT_DIR$/setup.py" />
-        <option value="$PROJECT_DIR$/docs/make.bat" />
-        <option value="$PROJECT_DIR$/stock_ai/unit.py" />
-        <option value="$PROJECT_DIR$/stock_ai/util.py" />
         <option value="$PROJECT_DIR$/pycharm设置.md" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/test/__init__.py" />
-        <option value="$PROJECT_DIR$/test/test_init.py" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/docs/source/stock_ai/index.rst" />
         <option value="$PROJECT_DIR$/docs/source/auto_modules.rst" />
-        <option value="$PROJECT_DIR$/docs/source/index.rst" />
         <option value="$PROJECT_DIR$/docs/source/data_reader.rst" />
         <option value="$PROJECT_DIR$/stock_ai/data_reader.py" />
+        <option value="$PROJECT_DIR$/test/test_init.py" />
+        <option value="$PROJECT_DIR$/docs/source/modules.rst" />
+        <option value="$PROJECT_DIR$/docs/source/_templates/autosummary.rst" />
+        <option value="$PROJECT_DIR$/docs/source/_templates/module.rst" />
+        <option value="$PROJECT_DIR$/docs/source/data_processor.rst" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/stock_ai/module/stock.py" />
+        <option value="$PROJECT_DIR$/docs/source/_templates/autosummary/module_class.rst" />
+        <option value="$PROJECT_DIR$/stock_ai/util.py" />
+        <option value="$PROJECT_DIR$/docs/source/reference/index.rst" />
+        <option value="$PROJECT_DIR$/docs/source/api/stock_ai.data_processor.rst" />
+        <option value="$PROJECT_DIR$/docs/source/api/stock_ai.module.rst" />
+        <option value="$PROJECT_DIR$/docs/source/_templates/autosummary/class000.rst" />
+        <option value="$PROJECT_DIR$/docs/source/api/stock_ai.module.Stock.rst" />
+        <option value="$PROJECT_DIR$/docs/source/api/stock_ai.module.StockCN.rst" />
+        <option value="$PROJECT_DIR$/test/test_appender.py" />
+        <option value="$PROJECT_DIR$/docs/source/_templates/autosummary/class.rst" />
+        <option value="$PROJECT_DIR$/docs/source/_templates/autosummary/module.rst" />
+        <option value="$PROJECT_DIR$/stock_ai/appender.py" />
+        <option value="$PROJECT_DIR$/test/test_indexcn.py" />
+        <option value="$PROJECT_DIR$/test/test_ploter.py" />
+        <option value="$PROJECT_DIR$/test/local_test.py" />
+        <option value="$PROJECT_DIR$/stock_ai/report.py" />
+        <option value="$PROJECT_DIR$/test/test_report.py" />
+        <option value="$PROJECT_DIR$/stock_ai/__init__.py" />
+        <option value="$PROJECT_DIR$/test/test_stockcn.py" />
+        <option value="$PROJECT_DIR$/stock_ai/module.py" />
+        <option value="$PROJECT_DIR$/docs/source/calcs.rst" />
+        <option value="$PROJECT_DIR$/stock_ai/keras.py" />
+        <option value="$PROJECT_DIR$/stock_ai/wrapper.py" />
+        <option value="$PROJECT_DIR$/test/test_wrapper.py" />
+        <option value="$PROJECT_DIR$/docs/source/index.rst" />
+        <option value="$PROJECT_DIR$/test/test_keras.py" />
+        <option value="$PROJECT_DIR$/test/test_preprocessing.py" />
+        <option value="$PROJECT_DIR$/test/test_data_processor.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/docs/source/conf.py" />
+        <option value="$PROJECT_DIR$/test/test_calcs.py" />
+        <option value="$PROJECT_DIR$/stock_ai/data_processor.py" />
+        <option value="$PROJECT_DIR$/test/__init__.py" />
+        <option value="$PROJECT_DIR$/stock_ai/calcs.py" />
+        <option value="$PROJECT_DIR$/test/test_train.py" />
+        <option value="$PROJECT_DIR$/stock_ai/preprocessing.py" />
+        <option value="$PROJECT_DIR$/stock_ai/ploter.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1448" />
-    <option name="y" value="34" />
-    <option name="width" value="1370" />
-    <option name="height" value="823" />
+    <option name="x" value="216" />
+    <option name="y" value="300" />
+    <option name="width" value="1616" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -149,17 +247,6 @@
             <path>
               <item name="stock_ai" type="b2602c69:ProjectViewProjectNode" />
               <item name="stock_ai" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock_ai" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock_ai" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock_ai" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock_ai" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stock_ai" type="b2602c69:ProjectViewProjectNode" />
@@ -180,17 +267,19 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/build" />
-    <property name="settings.editor.selected.configurable" value="com.ludditelabs.autodoc.intellij.config.PluginConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/stock_ai" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="PyCoverageOptionsProvider">
     <option name="myUseBundledCoveragePy" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\stock_ai\docs\source\_templates\autosummary" />
       <recent name="D:\Github\stock_ai\docs" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Github\stock_ai\docs" />
     </key>
   </component>
@@ -206,29 +295,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python docs.sphinx task in ">
-    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="stock_ai" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/__init__.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python tests.pytest for test_train.test_train">
     <configuration default="true" type="docs" factoryName="Sphinx task">
       <module name="stock_ai" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -263,7 +330,7 @@
       <option name="docutils_open_in_browser" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_init.test_read_from_csv" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_train.test_data_df" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="stock_ai" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -275,21 +342,94 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_init.test_read_from_csv&quot;" />
+      <option name="_new_target" value="&quot;test_train.test_data_df&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_train.test_get_data" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="stock_ai" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_train.test_get_data&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_train.test_get_data_df" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="stock_ai" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_train.test_get_data_df&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_train.test_plot_data_df" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="stock_ai" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_train.test_plot_data_df&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_train.test_train" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="stock_ai" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_train.test_train&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.__init__" />
       <item itemvalue="Python docs.sphinx task in " />
-      <item itemvalue="Python tests.pytest for test_init.test_read_from_csv" />
+      <item itemvalue="Python tests.pytest for test_train.test_train" />
+      <item itemvalue="Python tests.pytest for test_train.test_data_df" />
+      <item itemvalue="Python tests.pytest for test_train.test_plot_data_df" />
+      <item itemvalue="Python tests.pytest for test_train.test_get_data_df" />
+      <item itemvalue="Python tests.pytest for test_train.test_get_data" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for test_init.test_read_from_csv" />
-        <item itemvalue="Python.__init__" />
+        <item itemvalue="Python tests.pytest for test_train.test_train" />
+        <item itemvalue="Python tests.pytest for test_train.test_get_data_df" />
+        <item itemvalue="Python tests.pytest for test_train.test_get_data" />
+        <item itemvalue="Python tests.pytest for test_train.test_plot_data_df" />
+        <item itemvalue="Python tests.pytest for test_train.test_data_df" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -304,20 +444,71 @@
       <workItem from="1557459731615" duration="5651000" />
       <workItem from="1557470496550" duration="6108000" />
       <workItem from="1557564794010" duration="798000" />
-      <workItem from="1557565610301" duration="3830000" />
+      <workItem from="1557565610301" duration="4840000" />
+      <workItem from="1557580970815" duration="58023000" />
+      <workItem from="1557969104599" duration="1458000" />
+      <workItem from="1557984431188" duration="3841000" />
+      <workItem from="1558014472013" duration="9658000" />
+      <workItem from="1558052893918" duration="28866000" />
+      <workItem from="1558312718548" duration="13646000" />
+      <workItem from="1558399958767" duration="10235000" />
+      <workItem from="1558487395451" duration="4346000" />
+      <workItem from="1558506389909" duration="43010000" />
+      <workItem from="1559091277225" duration="9065000" />
+      <workItem from="1559567978906" duration="1486000" />
+      <workItem from="1559657635300" duration="2607000" />
+      <workItem from="1559696844444" duration="10496000" />
+      <workItem from="1559725312272" duration="11299000" />
+      <workItem from="1559894904775" duration="6783000" />
+      <workItem from="1560213741284" duration="6198000" />
+      <workItem from="1560258540133" duration="4878000" />
+      <workItem from="1560489273316" duration="1464000" />
+      <workItem from="1560523488459" duration="3557000" />
+      <workItem from="1560645477225" duration="3737000" />
+      <workItem from="1560819704689" duration="17388000" />
+      <workItem from="1560921660627" duration="5007000" />
+      <workItem from="1560991335283" duration="231000" />
+      <workItem from="1560991683799" duration="579000" />
+      <workItem from="1560992282876" duration="3119000" />
+      <workItem from="1561015609525" duration="5781000" />
+      <workItem from="1561123579759" duration="1248000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_for_test_init_test_read_from_csv - 2019.05.10 at 15h 54m 45s.xml">
-      <configuration name="pytest for test_init.test_read_from_csv" configurationId="tests" />
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.20 at 16h 21m 54s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_for_test_init_test_read_from_csv - 2019.05.10 at 15h 57m 11s.xml">
-      <configuration name="pytest for test_init.test_read_from_csv" configurationId="tests" />
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.20 at 16h 24m 11s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.20 at 16h 24m 22s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.20 at 16h 25m 58s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.20 at 16h 28m 47s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.20 at 17h 29m 08s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.20 at 17h 51m 05s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.21 at 21h 32m 13s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.21 at 21h 33m 55s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_train_test_train - 2019.06.21 at 21h 35m 34s.xml">
+      <configuration name="pytest for test_train.test_train" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16387000" />
+    <option name="totallyTimeSpent" value="285172000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -329,183 +520,748 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1432" y="-11" width="1456" height="886" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2191977" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5868984" visible="true" weight="0.17590618" />
+      <window_info id="Structure" order="1" sideWeight="0.4131016" side_tool="true" visible="true" weight="0.17590618" />
+      <window_info id="Favorites" order="2" sideWeight="0.22181818" side_tool="true" weight="0.28151864" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32978722" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.23803191" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32978722" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.41044775" weight="0.4481383" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.52025586" weight="0.4348404" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.32978722" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5050143" side_tool="true" weight="0.33909574" />
+      <window_info anchor="bottom" id="Python Console" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="bottom" content_ui="combo" x="286" y="508" width="1208" height="402" id="Run" order="13" sideWeight="0.39379084" visible="true" weight="0.19742489" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.3295129" />
+      <window_info active="true" anchor="right" id="SciView" order="4" sideWeight="0.49601063" visible="true" weight="0.39818764" />
+      <window_info active="true" anchor="right" id="Coverage" order="5" sideWeight="0.50398934" side_tool="true" visible="true" weight="0.23352435" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.27226463" visible="true" weight="0.21848138" />
+      <window_info id="Structure" order="1" sideWeight="0.72773534" side_tool="true" weight="0.21848138" />
+      <window_info id="Favorites" order="2" sideWeight="0.22181818" side_tool="true" weight="0.28151864" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.41044775" weight="0.4481383" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.52025586" visible="true" weight="0.21409574" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.32978722" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5050143" side_tool="true" weight="0.33909574" />
+      <window_info anchor="bottom" id="Python Console" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="bottom" content_ui="combo" x="286" y="508" width="1208" height="402" id="Run" order="13" sideWeight="0.39379084" weight="0.47739363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.16977078" />
-      <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.32378224" />
-    </layout>
+      <window_info active="true" anchor="right" id="SciView" order="4" sideWeight="0.49601063" visible="true" weight="0.37535816" />
+      <window_info active="true" anchor="right" id="Coverage" order="5" sideWeight="0.50398934" side_tool="true" visible="true" weight="0.23352435" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stock_ai/keras.py</url>
+          <line>328</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/test_calcs.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stock_ai/calcs.py</url>
+          <line>474</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/test_train.py</url>
+          <line>209</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="tests">
+        <watch expression="x_train" />
+        <watch expression="y_train" />
+      </configuration>
+      <configuration name="PythonConfigurationType">
+        <watch expression="df.index[-1].date()" />
+        <watch expression="df.index[0].date()" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/stock_ai$sphinx_task_in_.coverage" NAME="sphinx task in  Coverage Results" MODIFIED="1557565899426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/stock_ai$sphinx_task_in_.coverage" NAME="sphinx task in  Coverage Results" MODIFIED="1557800462067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_merge_doc.coverage" NAME="pytest for test_data_processor.test_merge_doc Coverage Results" MODIFIED="1559109535156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_appender_test_append_year.coverage" NAME="pytest for test_appender.test_append_year Coverage Results" MODIFIED="1558064377235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_dividend_online.coverage" NAME="pytest for test_data_processor.test_load_stock_dividend_online Coverage Results" MODIFIED="1558015720910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_merge_dropcolumn.coverage" NAME="pytest for test_data_processor.test_merge_dropcolumn Coverage Results" MODIFIED="1559101109003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_test_wrapper_test_stock_index_merge_online_appendfuncs.coverage" NAME="pytest for test.test_wrapper.test_stock_index_merge_online_appendfuncs Coverage Results" MODIFIED="1558075006124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_kurtosis.coverage" NAME="pytest for test_calcs.test_kurtosis Coverage Results" MODIFIED="1558317377280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_is_trade_suspension.coverage" NAME="pytest for test_calcs.test_is_trade_suspension Coverage Results" MODIFIED="1559094606652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_list_online.coverage" NAME="pytest for test_data_processor.test_load_stock_list_online Coverage Results" MODIFIED="1557814411577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_block_mongodb.coverage" NAME="pytest for test_data_processor.test_load_stock_block_mongodb Coverage Results" MODIFIED="1557817510673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_appender_test_append_month.coverage" NAME="pytest for test_appender.test_append_month Coverage Results" MODIFIED="1558064405200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_daily_csv.coverage" NAME="pytest for test_data_processor.test_load_stock_daily_csv Coverage Results" MODIFIED="1557725935930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_deposit_rate_online.coverage" NAME="pytest for test_data_processor.test_load_deposit_rate_online Coverage Results" MODIFIED="1558021359865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_call.coverage" NAME="pytest for test_calcs.test_call Coverage Results" MODIFIED="1558074773007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_keras_test_keras.coverage" NAME="pytest for test_keras.test_keras Coverage Results" MODIFIED="1558753237428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_init_test_read_from_csv.coverage" NAME="pytest for test_init.test_read_from_csv Coverage Results" MODIFIED="1557718350890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_wrapper_test_stock_index_merge_online_appendfuncs.coverage" NAME="pytest for test_wrapper.test_stock_index_merge_online_appendfuncs Coverage Results" MODIFIED="1558056829389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_tech_ma.coverage" NAME="pytest for test_calcs.test_tech_ma Coverage Results" MODIFIED="1558418804801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_stockcn_test_get_info_mongodb.coverage" NAME="pytest for test_stockcn.test_get_info_mongodb Coverage Results" MODIFIED="1557986490656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_in_test_appender_py.coverage" NAME="pytest in test_calcs.py Coverage Results" MODIFIED="1558073760058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_tech_ewm.coverage" NAME="pytest for test_calcs.test_tech_ewm Coverage Results" MODIFIED="1558418846287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_train_test_get_data.coverage" NAME="pytest for test_train.test_get_data Coverage Results" MODIFIED="1560837701849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_ploter_test_plot_daily_return_histogram.coverage" NAME="pytest for test_ploter.test_plot_daily_return_histogram Coverage Results" MODIFIED="1558085644460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/stock_ai$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1557474741571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_init_test_read_from_csv.coverage" NAME="pytest for test_init.test_read_from_csv Coverage Results" MODIFIED="1557474899568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_in_test_calcs_py.coverage" NAME="pytest in test_calcs.py Coverage Results" MODIFIED="1559094543738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_stockcn_test_get_sharpe_ratio.coverage" NAME="pytest for test_stockcn.test_get_sharpe_ratio Coverage Results" MODIFIED="1558331334991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_in_test.coverage" NAME="pytest in test Coverage Results" MODIFIED="1559094995605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_hs300s.coverage" NAME="pytest for test_data_processor.test_load_hs300s Coverage Results" MODIFIED="1558019242779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_wrapper_test_stock_index_merge_appendfuncs_has_params.coverage" NAME="pytest for test_wrapper.test_stock_index_merge_appendfuncs_has_params Coverage Results" MODIFIED="1558404736149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_test_data_processor_test_load_stock_daily_online.coverage" NAME="pytest for test.test_data_processor.test_load_stock_daily_online Coverage Results" MODIFIED="1557988234844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_indexcn_test_getdaily_online.coverage" NAME="pytest for test_indexcn.test_getdaily_online Coverage Results" MODIFIED="1557988107209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_preprocessing_test_P1.coverage" NAME="pytest for test_preprocessing.test_P1 Coverage Results" MODIFIED="1558665580765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_list_mongo.coverage" NAME="pytest for test_data_processor.test_load_stock_list_mongo Coverage Results" MODIFIED="1557813502366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_calc_year.coverage" NAME="pytest for test_calcs.test_calc_year Coverage Results" MODIFIED="1559568990740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_indexcn_test_getdaily_mongodb.coverage" NAME="pytest for test_indexcn.test_getdaily_mongodb Coverage Results" MODIFIED="1557987974832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_train_test_get_data_df.coverage" NAME="pytest for test_train.test_get_data_df Coverage Results" MODIFIED="1560838444584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_stockcn_test_get_info_online.coverage" NAME="pytest for test_stockcn.test_get_info_online Coverage Results" MODIFIED="1557969682142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_preprocessing_test_P1_in_real_data.coverage" NAME="pytest for test_preprocessing.test_P1_in_real_data Coverage Results" MODIFIED="1558701915719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_train_test_data.coverage" NAME="pytest for test_train.test_data Coverage Results" MODIFIED="1560233222026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_stockcn_test_getblock_online.coverage" NAME="pytest for test_stockcn.test_getblock_online Coverage Results" MODIFIED="1558401048268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_skew.coverage" NAME="pytest for test_calcs.test_skew Coverage Results" MODIFIED="1558317309633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_tech_ema.coverage" NAME="pytest for test_calcs.test_tech_ema Coverage Results" MODIFIED="1558418681354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_train_test_train.coverage" NAME="pytest for test_train.test_train Coverage Results" MODIFIED="1561124109627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_in_test_stockcn_py.coverage" NAME="pytest in test_stockcn.py Coverage Results" MODIFIED="1557987544200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$Doctests_in_wrapper.coverage" NAME="Doctests in wrapper Coverage Results" MODIFIED="1558075036816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock_ai" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_cum_return.coverage" NAME="pytest for test_calcs.test_cum_return Coverage Results" MODIFIED="1558320189524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_preprocessing_test_preprocessing__xy_split_1.coverage" NAME="pytest for test_preprocessing.test_preprocessing__xy_split_1 Coverage Results" MODIFIED="1558663275571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$Doctest_calc_daily_return.coverage" NAME="Doctest calc_daily_return Coverage Results" MODIFIED="1559712705658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock_ai" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_train_test_print_merge_data.coverage" NAME="pytest for test_train.test_print_merge_data Coverage Results" MODIFIED="1560232755111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_append_year.coverage" NAME="pytest for test_calcs.test_append_year Coverage Results" MODIFIED="1558073743677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_sharpe_ratio.coverage" NAME="pytest for test_calcs.test_sharpe_ratio Coverage Results" MODIFIED="1558320027633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_reshape.coverage" NAME="pytest for test_calcs.test_reshape Coverage Results" MODIFIED="1559658725022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_block_online.coverage" NAME="pytest for test_data_processor.test_load_stock_block_online Coverage Results" MODIFIED="1557817550513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_stockcn_test_getrelated_codes.coverage" NAME="pytest for test_stockcn.test_getrelated_codes Coverage Results" MODIFIED="1558404112316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_tech_bbands.coverage" NAME="pytest for test_calcs.test_tech_bbands Coverage Results" MODIFIED="1558418259374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$local_test.coverage" NAME="local_test Coverage Results" MODIFIED="1558332359254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_rolling_mean.coverage" NAME="pytest for test_calcs.test_rolling_mean Coverage Results" MODIFIED="1558077654758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_info_mongo.coverage" NAME="pytest for test_data_processor.test_load_stock_info_mongo Coverage Results" MODIFIED="1557816602723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_money_supply_online.coverage" NAME="pytest for test_data_processor.test_load_money_supply_online Coverage Results" MODIFIED="1558020391119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_daily_return.coverage" NAME="pytest for test_calcs.test_daily_return Coverage Results" MODIFIED="1558320112428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_report_test_sharpe_ratio.coverage" NAME="pytest for test_report.test_sharpe_ratio Coverage Results" MODIFIED="1558334472808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$Doctest_calc_month.coverage" NAME="Doctest calc_month Coverage Results" MODIFIED="1559569243602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock_ai" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_preprocessing_test_preprocessing__xy_split_2.coverage" NAME="pytest for test_preprocessing.test_preprocessing__xy_split_2 Coverage Results" MODIFIED="1558663470164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_train_test_plot_data_df.coverage" NAME="pytest for test_train.test_plot_data_df Coverage Results" MODIFIED="1560258719735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$Doctest_trans_onehot.coverage" NAME="Doctest trans_onehot Coverage Results" MODIFIED="1559703605891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock_ai" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_keras_test_data.coverage" NAME="pytest for test_keras.test_data Coverage Results" MODIFIED="1558595187026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_stockcn_test_getindustries.coverage" NAME="pytest for test_stockcn.test_getindustries Coverage Results" MODIFIED="1557986513858" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$Doctest_calc_year.coverage" NAME="Doctest calc_year Coverage Results" MODIFIED="1559569160369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock_ai" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_stockcn_test_stockcn_construct.coverage" NAME="pytest for test_stockcn.test_stockcn_construct Coverage Results" MODIFIED="1557884511592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_indexcn_test_construct.coverage" NAME="pytest for test_indexcn.test_construct Coverage Results" MODIFIED="1557987664903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$Doctest_tech_ma.coverage" NAME="Doctest tech_ma Coverage Results" MODIFIED="1559713615240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock_ai" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_fft.coverage" NAME="pytest for test_calcs.test_fft Coverage Results" MODIFIED="1558420098518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_merge.coverage" NAME="pytest for test_data_processor.test_merge Coverage Results" MODIFIED="1559101104356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_cpi_online.coverage" NAME="pytest for test_data_processor.test_load_cpi_online Coverage Results" MODIFIED="1558020521064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_info_online.coverage" NAME="pytest for test_data_processor.test_load_stock_info_online Coverage Results" MODIFIED="1557817638888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_list.coverage" NAME="pytest for test_data_processor.test_load_stock_list Coverage Results" MODIFIED="1557814510753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_train_test_data_df.coverage" NAME="pytest for test_train.test_data_df Coverage Results" MODIFIED="1560233504689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_onehot_encode.coverage" NAME="pytest for test_calcs.test_onehot_encode Coverage Results" MODIFIED="1559659974031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$Doctest_calc_cum_return.coverage" NAME="Doctest calc_cum_return Coverage Results" MODIFIED="1559704682183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock_ai" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_wrapper_test_stock_index_merge_online.coverage" NAME="pytest for test_wrapper.test_stock_index_merge_online Coverage Results" MODIFIED="1558055868168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_calcs_test_macd_series.coverage" NAME="pytest for test_calcs.test_macd_series Coverage Results" MODIFIED="1558082303624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_in_test_wrapper_py.coverage" NAME="pytest in test_wrapper.py Coverage Results" MODIFIED="1558075065958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_in_test_report_py.coverage" NAME="pytest in test_report.py Coverage Results" MODIFIED="1558334501748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_money_supply_year_online.coverage" NAME="pytest for test_data_processor.test_load_money_supply_year_online Coverage Results" MODIFIED="1558020454473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_stockcn_test_getdaily_online.coverage" NAME="pytest for test_stockcn.test_getdaily_online Coverage Results" MODIFIED="1557901134006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_loan_rate_online.coverage" NAME="pytest for test_data_processor.test_load_loan_rate_online Coverage Results" MODIFIED="1558021383905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$pytest_for_test_data_processor_test_load_stock_daily_online.coverage" NAME="pytest for test_data_processor.test_load_stock_daily_online Coverage Results" MODIFIED="1557899980351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/stock_ai$Doctest_is_trade_suspension.coverage" NAME="Doctest is_trade_suspension Coverage Results" MODIFIED="1560041290745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock_ai" />
   </component>
   <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>sns.lineplot(data=df[[
+            col for col in col_x
+            if 'onehot' not in col and 'is_suspension' not in col
+        ]])</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>df[[
+            col for col in col_x
+            if 'onehot' not in col and 'is_suspension' not in col
+        ]]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>[
+            col for col in col_x
+            if 'onehot' not in col and 'is_suspension' not in col
+        ]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sns.lineplot(data=pd.DataFrame.from_dict(plot['data']),
+                         ax=axs[plots.index(plot)])</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sns.lineplot(data=pd.DataFrame.from_dict(plot['data']),
+                         ax=axs[plots.index(plot)],
+                         ylabel=plot['ylabel'],
+                         xlabel=plot['xlabel'])</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sns.lineplot(data=pd.DataFrame.from_dict(plot['data']),
+                         ax=axs[plots.index(plot)],
+                         title=plot['title'],
+                         ylabel=plot['ylabel'],
+                         xlabel=plot['xlabel'])</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3', 'K4', 'K5'],
+                       'A': ['A0', 'A1', 'A2', 'A3', 'A4', 'A5']}).set_index('key')</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3', 'K4', 'K5'],
+                       'A': ['A0', 'A1', 'A2', 'A3', 'A4', 'A5']},index='key')</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>model.fit(train_x_np,
+              train_y_np,
+              batch_size=64,
+              epochs=5,
+              validation_data=(val_x_np, val_y_np))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>year==2018</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i==len(rate.index)-1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i==len(rate.index)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>df_csv.dtypes</expression-string>
+        <expression-string>p1.trans_to_numpy(data=df, norm_func=None)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df.dtypes</expression-string>
+        <expression-string>df[col_x]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df.equals(df_csv)</expression-string>
+        <expression-string>[test.index_code]+other_code</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>get_stock_daily(code)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>len(plots)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>train_y.dtype</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>train_x.dtype</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>train_y[1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>train_x[2]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/setup.py">
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/keras/callbacks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-2483">
+          <caret line="487" column="8" selection-start-line="487" selection-start-column="8" selection-end-line="487" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/QUANTAXIS/QAUtil/QADate_trade.py">
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/keras/engine/sequential.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="7134" column="4" selection-start-line="7134" selection-start-column="4" selection-end-line="7134" selection-end-column="4" />
+        <state relative-caret-position="220">
+          <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MANIFEST.in">
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/keras/engine/base_layer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        <state relative-caret-position="198">
+          <caret line="1093" column="8" selection-start-line="1093" selection-start-column="8" selection-end-line="1093" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pycharm设置" />
-    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/pandas/core/generic.py">
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/abc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="2883" column="33" selection-start-line="2883" selection-start-column="25" selection-end-line="2883" selection-end-column="33" />
+        <state relative-caret-position="450">
+          <caret line="83" column="33" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="285">
-            <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pycharm设置.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="323">
-            <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/source/stock_ai/index.rst">
-      <provider selected="true" editor-type-id="restructured-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Makefile">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/make.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_init.py">
+    <entry file="file://$PROJECT_DIR$/stock_ai/util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="22" />
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/python_stubs/-1180883402/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-664">
+          <caret line="4212" column="8" selection-start-line="4212" selection-start-column="8" selection-end-line="4212" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/pandas/core/series.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="101" column="6" selection-start-line="101" selection-start-column="6" selection-end-line="101" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/pandas/core/ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="1540" selection-start-line="1540" selection-end-line="1540" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/numpy/core/multiarray.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="302" column="4" selection-start-line="302" selection-start-column="4" selection-end-line="302" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/pytdx/hq.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/source/index.rst">
+      <provider selected="true" editor-type-id="restructured-text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="377" column="39" selection-start-line="377" selection-start-column="34" selection-end-line="377" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/pandas/core/indexes/datetimes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="1391" column="8" selection-start-line="1391" selection-start-column="4" selection-end-line="1391" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1349">
+          <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_data_processor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3781">
+          <caret line="209" column="51" selection-start-line="209" selection-start-column="40" selection-end-line="209" selection-end-column="51" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/QUANTAXIS/QAFetch/QAQuery.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1235">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="25" column="67" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="68" />
+        <state relative-caret-position="477">
+          <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stock_ai/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="64" selection-start-column="64" selection-end-column="64" />
+    <entry file="file://$PROJECT_DIR$/MANIFEST.in">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="361">
+            <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/source/data_reader.rst">
-      <provider selected="true" editor-type-id="restructured-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/source/index.rst">
-      <provider selected="true" editor-type-id="restructured-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stock_ai/data_reader.py">
+    <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        <state relative-caret-position="486">
+          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/source/conf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="172" column="52" selection-start-line="172" selection-start-column="52" selection-end-line="172" selection-end-column="52" />
+        <state relative-caret-position="3135">
+          <caret line="166" column="57" selection-start-line="166" selection-start-column="57" selection-end-line="166" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-24">
           <folding>
-            <element signature="e#564#573#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_ploter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_calcs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1729">
+          <caret line="113" column="23" selection-start-line="113" selection-start-column="23" selection-end-line="113" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#730#795#0" />
+            <element signature="e#818#1035#0" />
+            <element signature="e#1153#1594#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_wrapper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_stockcn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="8" column="73" selection-start-line="8" selection-end-line="8" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_indexcn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_ai/wrapper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1313">
+          <caret line="12" column="79" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/h5py/_hl/files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-905">
+          <caret line="306" column="8" selection-start-line="306" selection-start-column="8" selection-end-line="306" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_ai/module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3059">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_ai/keras.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="235" column="57" lean-forward="true" selection-start-line="233" selection-start-column="10" selection-end-line="235" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/keras/engine/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-654">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+          <folding>
+            <element signature="e#50#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_keras.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="67" column="39" lean-forward="true" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/travis设置.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="608">
+            <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_ai/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/pandas/core/dtypes/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1729">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/h5py/_hl/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1824">
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_ai/report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding>
+            <element signature="e#193#2524#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/pandas/core/generic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179246">
+          <caret line="9483" column="8" selection-start-line="9483" selection-start-column="8" selection-end-line="9483" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/matplotlib/axes/_axes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3819">
+          <caret line="241" column="8" selection-start-line="241" selection-start-column="8" selection-end-line="241" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/matplotlib/artist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1387">
+          <caret line="85" column="13" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_ai/data_processor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1805">
+          <caret line="633" column="4" selection-start-line="633" selection-start-column="4" selection-end-line="633" selection-end-column="4" />
+          <folding>
+            <element signature="e#13#38#0" expanded="true" />
+            <element signature="e#419#653#0" />
+            <element signature="e#698#2351#0" />
+            <element signature="e#2423#3390#0" />
+            <element signature="e#3439#4339#0" />
+            <element signature="e#4407#5198#0" />
+            <element signature="e#5243#6199#0" />
+            <element signature="e#6271#7202#0" />
+            <element signature="e#7808#8016#0" />
+            <element signature="e#8053#8809#0" />
+            <element signature="e#8847#9567#0" />
+            <element signature="e#9609#11275#0" />
+            <element signature="e#11316#13030#0" />
+            <element signature="e#13069#13747#0" />
+            <element signature="e#13786#14188#0" />
+            <element signature="e#14226#14645#0" />
+            <element signature="e#14692#15885#0" />
+            <element signature="e#15929#17477#0" />
+            <element signature="e#17515#17990#0" />
+            <element signature="e#18037#19518#0" />
+            <element signature="e#19570#20645#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/matplotlib/figure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25460">
+          <caret line="1374" column="8" selection-start-line="1374" selection-start-column="8" selection-end-line="1374" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/seaborn/relational.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="1063" column="4" selection-start-line="1063" selection-start-column="4" selection-end-line="1063" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/QUANTAXIS/QAIndicator/indicators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="661">
+          <caret line="91" column="54" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_ai/calcs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="531" column="1" selection-start-line="531" selection-start-column="1" selection-end-line="531" selection-end-column="1" />
+          <folding>
+            <element signature="e#12#31#0" expanded="true" />
+            <element signature="e#244#274#0" />
+            <element signature="e#12#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/stock_ai/Lib/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="1159" column="26" selection-start-line="1159" selection-start-column="13" selection-end-line="1159" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_ai/preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#175#198#0" expanded="true" />
+            <element signature="e#322#515#0" />
+            <element signature="e#2667#4573#0" />
+            <element signature="e#4826#4975#0" />
+            <element signature="e#5022#5167#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_ai/ploter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
         </state>
       </provider>
     </entry>

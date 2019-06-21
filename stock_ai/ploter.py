@@ -41,29 +41,21 @@ def plot_keras_history(his: keras.callbacks.History, **kwargs):
 
     show = kwargs.pop('show', True)
     plots = []
-    # 绘制训练 & 验证的准确率值
-    acc = {}
-    if 'acc' in his.history:
-        _a(acc,'data','训练',his.history['acc'])
-    if 'val_acc' in his.history:
-        _a(acc,'data','测试',his.history['val_acc'])
-    if acc:
-        acc['title'] = '模型准确性'
-        acc['ylabel'] = '准确性'
-        acc['xlabel'] = '轮次'
-        plots.append(acc)
-    loss = {}
-    if 'loss' in his.history:
-        _a(loss,'data','训练',his.history['loss'])
-    if 'val_loss' in his.history:
-        _a(loss,'data','测试',his.history['val_loss'])
-    if loss:
-        loss['title'] = '模型损失值'
-        loss['ylabel'] = '损失值'
-        loss['xlabel'] = '轮次'
-        plots.append(loss)
+    # # 绘制训练 & 验证的准确率值
+    # acc = {}
+    for n in his.history.keys():
+        if 'val_' not in n:
+            d={}
+            _a(d, 'data', 'Train', his.history[n])
+            if 'val_'+n in his.history.keys():
+                _a(d, 'data', 'Test', his.history['val_'+n])
+            d['ylabel'] = 'Value'
+            d['xlabel'] = 'Epochs'
+            d['title']=n
+            plots.append(d)
+
     if plots:
-        fig, axs = plt.subplots(nrows=len(plots))
+        fig, axs = plt.subplots(nrows=len(plots),figsize=(100,len(plots)*10))
         for plot in plots:
             ax=sns.lineplot(data=pd.DataFrame.from_dict(plot['data']),
                          ax=axs[plots.index(plot)])
