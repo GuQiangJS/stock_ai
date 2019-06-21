@@ -157,128 +157,128 @@
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">OneHotEncoder</span>
 
 
-<div class="viewcode-block" id="calc_year"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.calc_year">[文档]</a><span class="k">def</span> <span class="nf">calc_year</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;计算年信息</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
-<span class="sd">        &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;Y&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
-<span class="sd">        &gt;&gt;&gt; df</span>
-<span class="sd">                    A</span>
-<span class="sd">        2013-12-31  1</span>
-<span class="sd">        2014-12-31  3</span>
-<span class="sd">        2015-12-31  5</span>
-<span class="sd">        &gt;&gt;&gt; calcs.calc_year(df).values</span>
-<span class="sd">        array([2013, 2014, 2015], dtype=int64)</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        :class:`~pandas.Series`: 计算后的列。</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_create_series</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="trans_onehot"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.trans_onehot">[文档]</a><span class="k">def</span> <span class="nf">trans_onehot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;转换 OneHot 编码</span>
-
-<span class="sd">     设定参数 ``sparse=False``，调用 :class:`sklearn.preprocessing.OneHotEncoder`。</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        data: 一维数组或多维数组，可以为普通list,tuple，或np.array。</span>
-<span class="sd">            也可以是 :class:`pandas.DataFrame` 或 :class:`pandas.Series`。</span>
-<span class="sd">            如果是 :class:`pandas.DataFrame` 时，需要通过 ``column`` 参数指定列名。</span>
-<span class="sd">        column (str): 当 ``data`` 是 :class:`pandas.DataFrame` 时需要指定计算的列。</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
-<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
-
-<span class="sd">        传入数据为二维数组</span>
-
-<span class="sd">        &gt;&gt;&gt; calcs.trans_onehot([[2016], [2017], [2018], [2018], [2019]])</span>
-<span class="sd">        array([[1., 0., 0., 0.],</span>
-<span class="sd">               [0., 1., 0., 0.],</span>
-<span class="sd">               [0., 0., 1., 0.],</span>
-<span class="sd">               [0., 0., 1., 0.],</span>
-<span class="sd">               [0., 0., 0., 1.]])</span>
-
-<span class="sd">        传入数据为一维数组</span>
-
-<span class="sd">        &gt;&gt;&gt; calcs.trans_onehot([2016, 2017, 2018, 2018, 2019])</span>
-<span class="sd">        array([[1., 0., 0., 0.],</span>
-<span class="sd">               [0., 1., 0., 0.],</span>
-<span class="sd">               [0., 0., 1., 0.],</span>
-<span class="sd">               [0., 0., 1., 0.],</span>
-<span class="sd">               [0., 0., 0., 1.]])</span>
-
-<span class="sd">        传入数据为Seriese</span>
-
-<span class="sd">        &gt;&gt;&gt; calcs.trans_onehot(pd.Series([2016, 2017, 2018, 2018, 2019]))</span>
-<span class="sd">        array([[1., 0., 0., 0.],</span>
-<span class="sd">               [0., 1., 0., 0.],</span>
-<span class="sd">               [0., 0., 1., 0.],</span>
-<span class="sd">               [0., 0., 1., 0.],</span>
-<span class="sd">               [0., 0., 0., 1.]])</span>
-
-<span class="sd">        传入数据为DataFrame</span>
-
-<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame([2016, 2017, 2018, 2018, 2019], columns=[&#39;y&#39;])</span>
-<span class="sd">        &gt;&gt;&gt; calcs.trans_onehot(df, column=&#39;y&#39;).values</span>
-<span class="sd">        array([[1., 0., 0., 0.],</span>
-<span class="sd">               [0., 1., 0., 0.],</span>
-<span class="sd">               [0., 0., 1., 0.],</span>
-<span class="sd">               [0., 0., 1., 0.],</span>
-<span class="sd">               [0., 0., 0., 1.]])</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        (二维数组 或 :class:`pandas.DataFrame`): 如果传入参数 ``data`` 类型为</span>
-<span class="sd">            :class:`pandas.DataFrame` ，name返回类型是 :class:`pandas.DataFrame` 。</span>
-<span class="sd">            否则是 二维数组。</span>
-<span class="sd">            参考 :func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-        <span class="n">col</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">col</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;当传入类型为 DataFrame 时，需要指定 column 参数。&#39;</span><span class="p">)</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">data</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="c1">#如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">n</span></div>
-
-
-<div class="viewcode-block" id="fillna"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.fillna">[文档]</a><span class="k">def</span> <span class="nf">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;:func:`pandas.DataFraem.fillna`</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="dropna"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.dropna">[文档]</a><span class="k">def</span> <span class="nf">dropna</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;:func:`pandas.DataFraem.dropna`</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
-
-<span class="sd">    Returns:</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+<span class="c1"># def calc_year(df, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;计算年信息</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
+<span class="c1">#</span>
+<span class="c1">#     Examples:</span>
+<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="c1">#         &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;Y&#39;)</span>
+<span class="c1">#         &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
+<span class="c1">#         &gt;&gt;&gt; df</span>
+<span class="c1">#                     A</span>
+<span class="c1">#         2013-12-31  1</span>
+<span class="c1">#         2014-12-31  3</span>
+<span class="c1">#         2015-12-31  5</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.calc_year(df).values</span>
+<span class="c1">#         array([2013, 2014, 2015], dtype=int64)</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#         :class:`~pandas.Series`: 计算后的列。</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     return _create_series(df.index.year, df=df, dtype=&#39;int64&#39;)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def trans_onehot(data, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;转换 OneHot 编码</span>
+<span class="c1">#</span>
+<span class="c1">#      设定参数 ``sparse=False``，调用 :class:`sklearn.preprocessing.OneHotEncoder`。</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         data: 一维数组或多维数组，可以为普通list,tuple，或np.array。</span>
+<span class="c1">#             也可以是 :class:`pandas.DataFrame` 或 :class:`pandas.Series`。</span>
+<span class="c1">#             如果是 :class:`pandas.DataFrame` 时，需要通过 ``column`` 参数指定列名。</span>
+<span class="c1">#         column (str): 当 ``data`` 是 :class:`pandas.DataFrame` 时需要指定计算的列。</span>
+<span class="c1">#</span>
+<span class="c1">#     Examples:</span>
+<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="c1">#         &gt;&gt;&gt; import numpy as np</span>
+<span class="c1">#</span>
+<span class="c1">#         传入数据为二维数组</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.trans_onehot([[2016], [2017], [2018], [2018], [2019]])</span>
+<span class="c1">#         array([[1., 0., 0., 0.],</span>
+<span class="c1">#                [0., 1., 0., 0.],</span>
+<span class="c1">#                [0., 0., 1., 0.],</span>
+<span class="c1">#                [0., 0., 1., 0.],</span>
+<span class="c1">#                [0., 0., 0., 1.]])</span>
+<span class="c1">#</span>
+<span class="c1">#         传入数据为一维数组</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.trans_onehot([2016, 2017, 2018, 2018, 2019])</span>
+<span class="c1">#         array([[1., 0., 0., 0.],</span>
+<span class="c1">#                [0., 1., 0., 0.],</span>
+<span class="c1">#                [0., 0., 1., 0.],</span>
+<span class="c1">#                [0., 0., 1., 0.],</span>
+<span class="c1">#                [0., 0., 0., 1.]])</span>
+<span class="c1">#</span>
+<span class="c1">#         传入数据为Seriese</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.trans_onehot(pd.Series([2016, 2017, 2018, 2018, 2019]))</span>
+<span class="c1">#         array([[1., 0., 0., 0.],</span>
+<span class="c1">#                [0., 1., 0., 0.],</span>
+<span class="c1">#                [0., 0., 1., 0.],</span>
+<span class="c1">#                [0., 0., 1., 0.],</span>
+<span class="c1">#                [0., 0., 0., 1.]])</span>
+<span class="c1">#</span>
+<span class="c1">#         传入数据为DataFrame</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; df = pd.DataFrame([2016, 2017, 2018, 2018, 2019], columns=[&#39;y&#39;])</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.trans_onehot(df, column=&#39;y&#39;).values</span>
+<span class="c1">#         array([[1., 0., 0., 0.],</span>
+<span class="c1">#                [0., 1., 0., 0.],</span>
+<span class="c1">#                [0., 0., 1., 0.],</span>
+<span class="c1">#                [0., 0., 1., 0.],</span>
+<span class="c1">#                [0., 0., 0., 1.]])</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#         (二维数组 或 :class:`pandas.DataFrame`): 如果传入参数 ``data`` 类型为</span>
+<span class="c1">#             :class:`pandas.DataFrame` ，name返回类型是 :class:`pandas.DataFrame` 。</span>
+<span class="c1">#             否则是 二维数组。</span>
+<span class="c1">#             参考 :func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。</span>
+<span class="c1">#</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     d = None</span>
+<span class="c1">#     if isinstance(data, pd.DataFrame):</span>
+<span class="c1">#         col = kwargs.pop(&#39;column&#39;, None)</span>
+<span class="c1">#         if not col:</span>
+<span class="c1">#             raise ValueError(&#39;当传入类型为 DataFrame 时，需要指定 column 参数。&#39;)</span>
+<span class="c1">#         d = data[col].values</span>
+<span class="c1">#     elif isinstance(data, pd.Series):</span>
+<span class="c1">#         d = data.values</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         d = data</span>
+<span class="c1">#     n = np.array(d)</span>
+<span class="c1">#     if len(n.shape) == 1:</span>
+<span class="c1">#         #如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。</span>
+<span class="c1">#         n = np.reshape(n, (n.shape[0], 1))</span>
+<span class="c1">#     n = OneHotEncoder(sparse=False, categories=&#39;auto&#39;).fit_transform(n)</span>
+<span class="c1">#     if isinstance(data, pd.DataFrame):</span>
+<span class="c1">#         return pd.DataFrame(n, index=data.index)</span>
+<span class="c1">#     return n</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def fillna(df, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;:func:`pandas.DataFraem.fillna`</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     return df.fillna(**kwargs)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def dropna(df, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;:func:`pandas.DataFraem.dropna`</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     return df.dropna(**kwargs)</span>
 
 
 <div class="viewcode-block" id="is_trade_suspension"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.is_trade_suspension">[文档]</a><span class="k">def</span> <span class="nf">is_trade_suspension</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -302,216 +302,331 @@
 <span class="sd">        array([0., 0., 1., 0., 1.])</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        :class:`pandas.Series`: 如果是停牌数据则为True，否则为False。</span>
+<span class="sd">        :class:`pandas.Series`: 如果是停牌数据则为1，否则为0。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">)]</span>
     <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="mf">0.</span><span class="p">})</span></div>
 
-
-<span class="k">def</span> <span class="nf">_create_series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        data: 参考 :func:`~pandas.Series` 中同名参数。</span>
-<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
-<span class="sd">        **kwargs:</span>
-
-<span class="sd">    Returns:</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">dtype</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">copy</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">fastpath</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;fastpath&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
-                     <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
-                     <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-                     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
-                     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
-                     <span class="n">fastpath</span><span class="o">=</span><span class="n">fastpath</span><span class="p">)</span>
-
-
-<div class="viewcode-block" id="calc_month"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.calc_month">[文档]</a><span class="k">def</span> <span class="nf">calc_month</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;计算月信息</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
-<span class="sd">        &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;M&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
-<span class="sd">        &gt;&gt;&gt; df</span>
-<span class="sd">                    A</span>
-<span class="sd">        2013-01-31  1</span>
-<span class="sd">        2013-02-28  3</span>
-<span class="sd">        2013-03-31  5</span>
-<span class="sd">        &gt;&gt;&gt; calcs.calc_month(df).values</span>
-<span class="sd">        array([1, 2, 3], dtype=int64)</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        :class:`~pandas.Series`: 计算后的列。</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_create_series</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="tech_ma"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.tech_ma">[文档]</a><span class="k">def</span> <span class="nf">tech_ma</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;计算移动均线</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        days (int): 天数。默认值为5。</span>
-<span class="sd">        column (str): 计算用列名。默认为 ``close``。</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; df_stock = data_processor.load_stock_daily(&#39;601398&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; calcs.tech_ma(df).tail()</span>
-<span class="sd">        date</span>
-<span class="sd">        2019-01-18    5.262</span>
-<span class="sd">        2019-01-21    5.312</span>
-<span class="sd">        2019-01-22    5.344</span>
-<span class="sd">        2019-01-23    5.384</span>
-<span class="sd">        2019-01-24    5.426</span>
-<span class="sd">        Name: MA, dtype: float64</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">days</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">column</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">)</span>
-    <span class="n">ma</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">MA</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">days</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">_create_series</span><span class="p">(</span><span class="n">ma</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;MA&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ma</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span></div>
-
-
-<span class="k">def</span> <span class="nf">_STD</span><span class="p">(</span><span class="n">Series</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">Series</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-
-
-<div class="viewcode-block" id="fft"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.fft">[文档]</a><span class="k">def</span> <span class="nf">fft</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">num</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">close_fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
-    <span class="n">fft_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;fft&#39;</span><span class="p">:</span> <span class="n">close_fft</span><span class="p">})</span>
-    <span class="n">fft_df</span><span class="p">[</span><span class="s1">&#39;absolute&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fft_df</span><span class="p">[</span><span class="s1">&#39;fft&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">fft_df</span><span class="p">[</span><span class="s1">&#39;angle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fft_df</span><span class="p">[</span><span class="s1">&#39;fft&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">fft_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fft_df</span><span class="p">[</span><span class="s1">&#39;fft&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-    <span class="n">fft_list_m10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">fft_list</span><span class="p">)</span>
-    <span class="n">fft_list_m10</span><span class="p">[</span><span class="n">num</span><span class="p">:</span><span class="o">-</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">_create_series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">fft_list_m10</span><span class="p">),</span>
-                          <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
-                          <span class="n">name</span><span class="o">=</span><span class="s1">&#39;fft&#39;</span><span class="p">,</span>
-                          <span class="n">dtype</span><span class="o">=</span><span class="n">close_fft</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="tech_ema"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.tech_ema">[文档]</a><span class="k">def</span> <span class="nf">tech_ema</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;计算指数移动均线</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        days (int): 天数。默认值为5。</span>
-<span class="sd">        column (str): 计算用列名。默认为 ``close``。</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; df_stock = data_processor.load_stock_daily(&#39;601398&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; calcs.tech_ema(df).tail()</span>
-<span class="sd">        date</span>
-<span class="sd">        2019-01-18    5.287964</span>
-<span class="sd">        2019-01-21    5.341976</span>
-<span class="sd">        2019-01-22    5.357984</span>
-<span class="sd">        2019-01-23    5.385323</span>
-<span class="sd">        2019-01-24    5.410215</span>
-<span class="sd">        Name: EMA, dtype: float64</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">days</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">column</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">)</span>
-    <span class="n">ema</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">days</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">_create_series</span><span class="p">(</span><span class="n">ema</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ema</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;EMA&#39;</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="tech_bbands"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.tech_bbands">[文档]</a><span class="k">def</span> <span class="nf">tech_bbands</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;布林带</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        df: 日线数据。</span>
-<span class="sd">        timeperiod (int): 窗口期。默认为 ``5``。</span>
-<span class="sd">        nbdevup (int): 上轨标准差。默认为 ``2``。</span>
-<span class="sd">        nbdevdn (int): 下轨标准差。默认为 ``2``。</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; df_stock = data_processor.load_stock_daily(&#39;601398&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; calcs.tech_bbands(df).tail()</span>
-<span class="sd">                     BOLL        UB        LB</span>
-<span class="sd">        date</span>
-<span class="sd">        2019-01-18  5.262  5.409919  5.114081</span>
-<span class="sd">        2019-01-21  5.312  5.514188  5.109812</span>
-<span class="sd">        2019-01-22  5.344  5.531403  5.156597</span>
-<span class="sd">        2019-01-23  5.384  5.543750  5.224250</span>
-<span class="sd">        2019-01-24  5.426  5.493231  5.358769</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        :class:`pandas.DataFrame`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">timeperiod</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;timeperiod&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">nbdevup</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;nbdevup&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">nbdevdn</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;nbdevdn&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="c1"># matype = kwargs.pop(&#39;matype&#39;, 0)</span>
-
-    <span class="n">C</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span>
-    <span class="n">boll</span> <span class="o">=</span> <span class="n">tech_ma</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">days</span><span class="o">=</span><span class="n">timeperiod</span><span class="p">)</span>
-    <span class="n">UB</span> <span class="o">=</span> <span class="n">boll</span> <span class="o">+</span> <span class="n">nbdevup</span> <span class="o">*</span> <span class="n">_STD</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">timeperiod</span><span class="p">)</span>
-    <span class="n">LB</span> <span class="o">=</span> <span class="n">boll</span> <span class="o">-</span> <span class="n">nbdevdn</span> <span class="o">*</span> <span class="n">_STD</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">timeperiod</span><span class="p">)</span>
-    <span class="n">DICT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;BOLL&#39;</span><span class="p">:</span> <span class="n">boll</span><span class="p">,</span> <span class="s1">&#39;UB&#39;</span><span class="p">:</span> <span class="n">UB</span><span class="p">,</span> <span class="s1">&#39;LB&#39;</span><span class="p">:</span> <span class="n">LB</span><span class="p">}</span>
-
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">DICT</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="tech_macd"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.tech_macd">[文档]</a><span class="k">def</span> <span class="nf">tech_macd</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;计算MACD</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        short (int): 默认值12。</span>
-<span class="sd">        long (int): 默认值26。</span>
-<span class="sd">        mid (int): 默认值9。</span>
-<span class="sd">        columns (str): 取得列。默认为 ``MACD``。实际包含 ``[&#39;DIF&#39;,&#39;DEA&#39;,&#39;MACD&#39;]``</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; df_stock = data_processor.load_stock_daily(&#39;601398&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; df_index = data_processor.load_index_daily(&#39;399300&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; df = wrapper.dataframe_merge(df_stock, df_index)</span>
-<span class="sd">        &gt;&gt;&gt; calcs.tech_macd(df).tail()</span>
-<span class="sd">                         DIF       DEA      MACD</span>
-<span class="sd">        date</span>
-<span class="sd">        2019-01-18 -0.013661 -0.029889  0.032456</span>
-<span class="sd">        2019-01-21  0.002288 -0.023454  0.051484</span>
-<span class="sd">        2019-01-22  0.009972 -0.016769  0.053482</span>
-<span class="sd">        2019-01-23  0.019867 -0.009441  0.058617</span>
-<span class="sd">        2019-01-24  0.028989 -0.001755  0.061488</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        :class:`pandas.Series` 或者 :class:`pandas.DataFrame`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">short</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;short&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-    <span class="n">long</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;long&#39;</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
-    <span class="n">mid</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-    <span class="n">columns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span> <span class="s1">&#39;MACD&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">indicators</span><span class="o">.</span><span class="n">QA_indicator_MACD</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">short</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">mid</span><span class="p">)[</span><span class="n">columns</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="tech_boll"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.tech_boll">[文档]</a><span class="k">def</span> <span class="nf">tech_boll</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;计算布林线</span>
-
-<span class="sd">    See Also:</span>
-<span class="sd">        https://zh.wikipedia.org/wiki/%E5%B8%83%E6%9E%97%E5%B8%A6</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        df:</span>
-<span class="sd">        window (int): 窗口期。默认值为 20。</span>
-<span class="sd">        n (int): 标准差。默认值为 2。</span>
-
-<span class="sd">    Returns:</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-    <span class="n">K</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">indicators</span><span class="o">.</span><span class="n">QA_indicator_BOLL</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">K</span><span class="p">)[</span><span class="s1">&#39;BOLL&#39;</span><span class="p">]</span></div>
-
-
-<span class="c1"># def pct_change(df, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;包装 :func:`pandas.DataFrame.pct_change` 方法</span>
+<span class="c1">#</span>
+<span class="c1"># def _create_series(data, df, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         data: 参考 :func:`~pandas.Series` 中同名参数。</span>
+<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
+<span class="c1">#         **kwargs:</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     name = kwargs.pop(&#39;name&#39;, None)</span>
+<span class="c1">#     dtype = kwargs.pop(&#39;dtype&#39;, None)</span>
+<span class="c1">#     copy = kwargs.pop(&#39;copy&#39;, None)</span>
+<span class="c1">#     fastpath = kwargs.pop(&#39;fastpath&#39;, None)</span>
+<span class="c1">#     return pd.Series(data,</span>
+<span class="c1">#                      index=df.index,</span>
+<span class="c1">#                      name=name,</span>
+<span class="c1">#                      dtype=dtype,</span>
+<span class="c1">#                      copy=copy,</span>
+<span class="c1">#                      fastpath=fastpath)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def calc_month(df, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;计算月信息</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
+<span class="c1">#</span>
+<span class="c1">#     Examples:</span>
+<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="c1">#         &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;M&#39;)</span>
+<span class="c1">#         &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
+<span class="c1">#         &gt;&gt;&gt; df</span>
+<span class="c1">#                     A</span>
+<span class="c1">#         2013-01-31  1</span>
+<span class="c1">#         2013-02-28  3</span>
+<span class="c1">#         2013-03-31  5</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.calc_month(df).values</span>
+<span class="c1">#         array([1, 2, 3], dtype=int64)</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#         :class:`~pandas.Series`: 计算后的列。</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     return _create_series(df.index.month, df=df, dtype=&#39;int64&#39;)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def tech_ma(df: pd.DataFrame, **kwargs) -&gt; pd.Series:</span>
+<span class="c1">#     &quot;&quot;&quot;计算移动均线</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         days (int): 天数。默认值为5。</span>
+<span class="c1">#         column (str): 计算用列名。默认为 ``close``。</span>
+<span class="c1">#</span>
+<span class="c1">#     Examples:</span>
+<span class="c1">#         &gt;&gt;&gt; df_stock = data_processor.load_stock_daily(&#39;601398&#39;)</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.tech_ma(df).tail()</span>
+<span class="c1">#         date</span>
+<span class="c1">#         2019-01-18    5.262</span>
+<span class="c1">#         2019-01-21    5.312</span>
+<span class="c1">#         2019-01-22    5.344</span>
+<span class="c1">#         2019-01-23    5.384</span>
+<span class="c1">#         2019-01-24    5.426</span>
+<span class="c1">#         Name: MA, dtype: float64</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     days = kwargs.pop(&#39;days&#39;, 5)</span>
+<span class="c1">#     column = kwargs.pop(&#39;column&#39;, &#39;close&#39;)</span>
+<span class="c1">#     ma = indicators.MA(df[column], days)</span>
+<span class="c1">#     return _create_series(ma, df, name=&#39;MA&#39;, dtype=ma.dtype)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def _STD(Series, N):</span>
+<span class="c1">#     return pd.Series.rolling(Series, N).std()</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def fft(df: pd.DataFrame, **kwargs):</span>
+<span class="c1">#     num = kwargs.pop(&#39;num&#39;, 3)</span>
+<span class="c1">#     close_fft = np.fft.fft(np.asarray(df[&#39;close&#39;].tolist()))</span>
+<span class="c1">#     fft_df = pd.DataFrame({&#39;fft&#39;: close_fft})</span>
+<span class="c1">#     fft_df[&#39;absolute&#39;] = fft_df[&#39;fft&#39;].apply(lambda x: np.abs(x))</span>
+<span class="c1">#     fft_df[&#39;angle&#39;] = fft_df[&#39;fft&#39;].apply(lambda x: np.angle(x))</span>
+<span class="c1">#     fft_list = np.asarray(fft_df[&#39;fft&#39;].tolist())</span>
+<span class="c1">#     fft_list_m10 = np.copy(fft_list)</span>
+<span class="c1">#     fft_list_m10[num:-num] = 0</span>
+<span class="c1">#     return _create_series(np.fft.ifft(fft_list_m10),</span>
+<span class="c1">#                           df=df,</span>
+<span class="c1">#                           name=&#39;fft&#39;,</span>
+<span class="c1">#                           dtype=close_fft.dtype)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def tech_ema(df: pd.DataFrame, **kwargs) -&gt; pd.Series:</span>
+<span class="c1">#     &quot;&quot;&quot;计算指数移动均线</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         days (int): 天数。默认值为5。</span>
+<span class="c1">#         column (str): 计算用列名。默认为 ``close``。</span>
+<span class="c1">#</span>
+<span class="c1">#     Examples:</span>
+<span class="c1">#         &gt;&gt;&gt; df_stock = data_processor.load_stock_daily(&#39;601398&#39;)</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.tech_ema(df).tail()</span>
+<span class="c1">#         date</span>
+<span class="c1">#         2019-01-18    5.287964</span>
+<span class="c1">#         2019-01-21    5.341976</span>
+<span class="c1">#         2019-01-22    5.357984</span>
+<span class="c1">#         2019-01-23    5.385323</span>
+<span class="c1">#         2019-01-24    5.410215</span>
+<span class="c1">#         Name: EMA, dtype: float64</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     days = kwargs.pop(&#39;days&#39;, 5)</span>
+<span class="c1">#     column = kwargs.pop(&#39;column&#39;, &#39;close&#39;)</span>
+<span class="c1">#     ema = indicators.EMA(df[column], days)</span>
+<span class="c1">#     return _create_series(ema, df=df, dtype=ema.dtype, name=&#39;EMA&#39;)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def tech_bbands(df: pd.DataFrame, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;布林带</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         df: 日线数据。</span>
+<span class="c1">#         timeperiod (int): 窗口期。默认为 ``5``。</span>
+<span class="c1">#         nbdevup (int): 上轨标准差。默认为 ``2``。</span>
+<span class="c1">#         nbdevdn (int): 下轨标准差。默认为 ``2``。</span>
+<span class="c1">#</span>
+<span class="c1">#     Examples:</span>
+<span class="c1">#         &gt;&gt;&gt; df_stock = data_processor.load_stock_daily(&#39;601398&#39;)</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.tech_bbands(df).tail()</span>
+<span class="c1">#                      BOLL        UB        LB</span>
+<span class="c1">#         date</span>
+<span class="c1">#         2019-01-18  5.262  5.409919  5.114081</span>
+<span class="c1">#         2019-01-21  5.312  5.514188  5.109812</span>
+<span class="c1">#         2019-01-22  5.344  5.531403  5.156597</span>
+<span class="c1">#         2019-01-23  5.384  5.543750  5.224250</span>
+<span class="c1">#         2019-01-24  5.426  5.493231  5.358769</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#         :class:`pandas.DataFrame`</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     timeperiod = kwargs.pop(&#39;timeperiod&#39;, 5)</span>
+<span class="c1">#     nbdevup = kwargs.pop(&#39;nbdevup&#39;, 2)</span>
+<span class="c1">#     nbdevdn = kwargs.pop(&#39;nbdevdn&#39;, 2)</span>
+<span class="c1">#     # matype = kwargs.pop(&#39;matype&#39;, 0)</span>
+<span class="c1">#</span>
+<span class="c1">#     C = df[&#39;close&#39;]</span>
+<span class="c1">#     boll = tech_ma(df, days=timeperiod)</span>
+<span class="c1">#     UB = boll + nbdevup * _STD(C, timeperiod)</span>
+<span class="c1">#     LB = boll - nbdevdn * _STD(C, timeperiod)</span>
+<span class="c1">#     DICT = {&#39;BOLL&#39;: boll, &#39;UB&#39;: UB, &#39;LB&#39;: LB}</span>
+<span class="c1">#</span>
+<span class="c1">#     return pd.DataFrame(DICT)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def tech_macd(df: pd.DataFrame, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;计算MACD</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         short (int): 默认值12。</span>
+<span class="c1">#         long (int): 默认值26。</span>
+<span class="c1">#         mid (int): 默认值9。</span>
+<span class="c1">#         columns (str): 取得列。默认为 ``MACD``。实际包含 ``[&#39;DIF&#39;,&#39;DEA&#39;,&#39;MACD&#39;]``</span>
+<span class="c1">#</span>
+<span class="c1">#     Examples:</span>
+<span class="c1">#         &gt;&gt;&gt; df_stock = data_processor.load_stock_daily(&#39;601398&#39;)</span>
+<span class="c1">#         &gt;&gt;&gt; df_index = data_processor.load_index_daily(&#39;399300&#39;)</span>
+<span class="c1">#         &gt;&gt;&gt; df = wrapper.dataframe_merge(df_stock, df_index)</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.tech_macd(df).tail()</span>
+<span class="c1">#                          DIF       DEA      MACD</span>
+<span class="c1">#         date</span>
+<span class="c1">#         2019-01-18 -0.013661 -0.029889  0.032456</span>
+<span class="c1">#         2019-01-21  0.002288 -0.023454  0.051484</span>
+<span class="c1">#         2019-01-22  0.009972 -0.016769  0.053482</span>
+<span class="c1">#         2019-01-23  0.019867 -0.009441  0.058617</span>
+<span class="c1">#         2019-01-24  0.028989 -0.001755  0.061488</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#         :class:`pandas.Series` 或者 :class:`pandas.DataFrame`</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     short = kwargs.pop(&#39;short&#39;, 12)</span>
+<span class="c1">#     long = kwargs.pop(&#39;long&#39;, 26)</span>
+<span class="c1">#     mid = kwargs.pop(&#39;mid&#39;, 9)</span>
+<span class="c1">#     columns = kwargs.pop(&#39;columns&#39;, &#39;MACD&#39;)</span>
+<span class="c1">#     return indicators.QA_indicator_MACD(df, short, long, mid)[columns]</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def tech_boll(df: pd.DataFrame, **kwargs) -&gt; pd.Series:</span>
+<span class="c1">#     &quot;&quot;&quot;计算布林线</span>
+<span class="c1">#</span>
+<span class="c1">#     See Also:</span>
+<span class="c1">#         https://zh.wikipedia.org/wiki/%E5%B8%83%E6%9E%97%E5%B8%A6</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         df:</span>
+<span class="c1">#         window (int): 窗口期。默认值为 20。</span>
+<span class="c1">#         n (int): 标准差。默认值为 2。</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     N = kwargs.pop(&#39;N&#39;, 20)</span>
+<span class="c1">#     K = kwargs.pop(&#39;K&#39;, 2)</span>
+<span class="c1">#     return indicators.QA_indicator_BOLL(df, N, K)[&#39;BOLL&#39;]</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># # def pct_change(df, **kwargs):</span>
+<span class="c1"># #     &quot;&quot;&quot;包装 :func:`pandas.DataFrame.pct_change` 方法</span>
+<span class="c1"># #</span>
+<span class="c1"># #     Args:</span>
+<span class="c1"># #         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+<span class="c1"># #</span>
+<span class="c1"># #     Return:</span>
+<span class="c1"># #         :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
+<span class="c1"># #     &quot;&quot;&quot;</span>
+<span class="c1"># #     return df.pct_change()</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def calc_daily_return(data, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;计算日收益</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+<span class="c1">#         columns (str 或 字符串集合): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。</span>
+<span class="c1">#</span>
+<span class="c1">#     Examples:</span>
+<span class="c1">#         &gt;&gt;&gt; import pandas as pd</span>
+<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="c1">#</span>
+<span class="c1">#         Series时</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; s = pd.Series([1,2,3,4,5])</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.calc_daily_return(s).values</span>
+<span class="c1">#         array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
+<span class="c1">#</span>
+<span class="c1">#         DataFrame时</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[1,2,3,4,5],</span>
+<span class="c1">#         ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
+<span class="c1">#         &gt;&gt;&gt; s</span>
+<span class="c1">#            A  B</span>
+<span class="c1">#         0  1  5</span>
+<span class="c1">#         1  2  4</span>
+<span class="c1">#         2  3  3</span>
+<span class="c1">#         3  4  2</span>
+<span class="c1">#         4  5  1</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.calc_daily_return(s).values</span>
+<span class="c1">#         array([[        nan,         nan],</span>
+<span class="c1">#                [ 1.        , -0.2       ],</span>
+<span class="c1">#                [ 0.5       , -0.25      ],</span>
+<span class="c1">#                [ 0.33333333, -0.33333333],</span>
+<span class="c1">#                [ 0.25      , -0.5       ]])</span>
+<span class="c1">#</span>
+<span class="c1">#         指定columns</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.calc_daily_return(s,columns=&#39;A&#39;).values</span>
+<span class="c1">#         array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
+<span class="c1">#</span>
+<span class="c1">#     Return:</span>
+<span class="c1">#         :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，</span>
+<span class="c1">#             且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。</span>
+<span class="c1">#             否则按照传入类型返回。</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     d = data</span>
+<span class="c1">#     if isinstance(data, pd.DataFrame):</span>
+<span class="c1">#         columns = kwargs.pop(&#39;columns&#39;, None)</span>
+<span class="c1">#         if columns:</span>
+<span class="c1">#             if isinstance(columns,str) and columns in data.columns:</span>
+<span class="c1">#                 d = data[columns]</span>
+<span class="c1">#             elif set(data.columns) &gt; set(columns):</span>
+<span class="c1">#                 d = data[columns]</span>
+<span class="c1">#     return d.pct_change()</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def calc_cum_return(data, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;计算累计收益</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+<span class="c1">#         column (str): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。</span>
+<span class="c1">#</span>
+<span class="c1">#     Examples:</span>
+<span class="c1">#         &gt;&gt;&gt; import pandas as pd</span>
+<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="c1">#</span>
+<span class="c1">#         Series时</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; s = pd.Series([2,2,3,4,5])</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.calc_cum_return(s).values</span>
+<span class="c1">#         array([0. , 0.5, 1. , 1.5])</span>
+<span class="c1">#</span>
+<span class="c1">#         DataFrame时</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[2,2,3,4,5],</span>
+<span class="c1">#         ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.calc_cum_return(s).values</span>
+<span class="c1">#         array([[ 0. , -0.2],</span>
+<span class="c1">#                [ 0.5, -0.4],</span>
+<span class="c1">#                [ 1. , -0.6],</span>
+<span class="c1">#                [ 1.5, -0.8]])</span>
+<span class="c1">#</span>
+<span class="c1">#         DataFrame时</span>
+<span class="c1">#</span>
+<span class="c1">#         &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[2,2,3,4,5],</span>
+<span class="c1">#         ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
+<span class="c1">#         &gt;&gt;&gt; calcs.calc_cum_return(s,column=&#39;A&#39;).values</span>
+<span class="c1">#         array([0. , 0.5, 1. , 1.5])</span>
+<span class="c1">#</span>
+<span class="c1">#     Return:</span>
+<span class="c1">#         :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，</span>
+<span class="c1">#             且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。</span>
+<span class="c1">#             否则按照传入类型返回。</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     d = data</span>
+<span class="c1">#     if isinstance(data, pd.DataFrame):</span>
+<span class="c1">#         column = kwargs.pop(&#39;column&#39;, None)</span>
+<span class="c1">#         if column and column in data.columns:</span>
+<span class="c1">#             d = data[column]</span>
+<span class="c1">#     return d[1:] / d.iloc[0] - 1</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def kurtosis(data, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;计算峰度</span>
 <span class="c1">#</span>
 <span class="c1">#     Args:</span>
 <span class="c1">#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
@@ -519,180 +634,68 @@
 <span class="c1">#     Return:</span>
 <span class="c1">#         :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
 <span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     return df.pct_change()</span>
-
-
-<div class="viewcode-block" id="calc_daily_return"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.calc_daily_return">[文档]</a><span class="k">def</span> <span class="nf">calc_daily_return</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;计算日收益</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
-<span class="sd">        column (str): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
-<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
-
-<span class="sd">        Series时</span>
-
-<span class="sd">        &gt;&gt;&gt; s = pd.Series([1,2,3,4,5])</span>
-<span class="sd">        &gt;&gt;&gt; calcs.calc_daily_return(s).values</span>
-<span class="sd">        array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
-
-<span class="sd">        DataFrame时</span>
-
-<span class="sd">        &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[1,2,3,4,5],</span>
-<span class="sd">        ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
-<span class="sd">        &gt;&gt;&gt; s</span>
-<span class="sd">           A  B</span>
-<span class="sd">        0  1  5</span>
-<span class="sd">        1  2  4</span>
-<span class="sd">        2  3  3</span>
-<span class="sd">        3  4  2</span>
-<span class="sd">        4  5  1</span>
-<span class="sd">        &gt;&gt;&gt; calcs.calc_daily_return(s).values</span>
-<span class="sd">        array([[        nan,         nan],</span>
-<span class="sd">               [ 1.        , -0.2       ],</span>
-<span class="sd">               [ 0.5       , -0.25      ],</span>
-<span class="sd">               [ 0.33333333, -0.33333333],</span>
-<span class="sd">               [ 0.25      , -0.5       ]])</span>
-
-<span class="sd">        指定column</span>
-
-<span class="sd">        &gt;&gt;&gt; calcs.calc_daily_return(s,column=&#39;A&#39;).values</span>
-<span class="sd">        array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
-
-<span class="sd">    Return:</span>
-<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，</span>
-<span class="sd">            且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。</span>
-<span class="sd">            否则按照传入类型返回。</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">data</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-        <span class="n">column</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">column</span> <span class="ow">and</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="calc_cum_return"><a class="viewcode-back" href="../../api/stock_ai.preprocessing.html#stock_ai.calcs.calc_cum_return">[文档]</a><span class="k">def</span> <span class="nf">calc_cum_return</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;计算累计收益</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
-<span class="sd">        column (str): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
-<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
-
-<span class="sd">        Series时</span>
-
-<span class="sd">        &gt;&gt;&gt; s = pd.Series([2,2,3,4,5])</span>
-<span class="sd">        &gt;&gt;&gt; calcs.calc_cum_return(s).values</span>
-<span class="sd">        array([0. , 0.5, 1. , 1.5])</span>
-
-<span class="sd">        DataFrame时</span>
-
-<span class="sd">        &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[2,2,3,4,5],</span>
-<span class="sd">        ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
-<span class="sd">        &gt;&gt;&gt; calcs.calc_cum_return(s).values</span>
-<span class="sd">        array([[ 0. , -0.2],</span>
-<span class="sd">               [ 0.5, -0.4],</span>
-<span class="sd">               [ 1. , -0.6],</span>
-<span class="sd">               [ 1.5, -0.8]])</span>
-
-<span class="sd">        DataFrame时</span>
-
-<span class="sd">        &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[2,2,3,4,5],</span>
-<span class="sd">        ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
-<span class="sd">        &gt;&gt;&gt; calcs.calc_cum_return(s,column=&#39;A&#39;).values</span>
-<span class="sd">        array([0. , 0.5, 1. , 1.5])</span>
-
-<span class="sd">    Return:</span>
-<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，</span>
-<span class="sd">            且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。</span>
-<span class="sd">            否则按照传入类型返回。</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">data</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-        <span class="n">column</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">column</span> <span class="ow">and</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">/</span> <span class="n">d</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span></div>
-
-
-<div class="viewcode-block" id="kurtosis"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.kurtosis">[文档]</a><span class="k">def</span> <span class="nf">kurtosis</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;计算峰度</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
-
-<span class="sd">    Return:</span>
-<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="skew"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.skew">[文档]</a><span class="k">def</span> <span class="nf">skew</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;计算偏度</span>
-
-<span class="sd">    &gt; 若数据分布是对称的，偏度为0；</span>
-<span class="sd">    &gt; 若偏度&gt;0,则可认为分布为右偏，即分布有一条长尾在右；</span>
-<span class="sd">    &gt; 若偏度&lt;0，则可认为分布为左偏，即分布有一条长尾在左；</span>
-<span class="sd">    &gt; 同时偏度的绝对值越大，说明分布的偏移程度越严重。</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
-
-<span class="sd">    Return:</span>
-<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">skew</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="sharpe_ratio"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.sharpe_ratio">[文档]</a><span class="k">def</span> <span class="nf">sharpe_ratio</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">r_std</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;计算 `夏普比率`_</span>
-
-<span class="sd">    夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；</span>
-<span class="sd">    若为正值，代表基金报酬率高过波动风险；</span>
-<span class="sd">    若为负值，代表基金操作风险大过于报酬率。</span>
-<span class="sd">    这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        r (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 收益数据表或均值(`float`)。</span>
-<span class="sd">        rf (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 无风险收益率表或均值( `float` )。</span>
-<span class="sd">        r_std: 参数 `r` 的标准差。如果 `r` 传入的是 :class:`pandas.DataFrame` or :class:`pandas.Series` 则无需传入此参数。</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        float: 计算后的夏普比率。</span>
-
-<span class="sd">    .. _夏普比率:</span>
-<span class="sd">        https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># 夏普比率是回报与风险的比率。公式为：</span>
-    <span class="c1"># （Rp - Rf） / ？p</span>
-    <span class="c1"># 其中：</span>
-    <span class="c1">#</span>
-    <span class="c1"># Rp = 投资者投资组合的预期回报率</span>
-    <span class="c1"># Rf = 无风险回报率</span>
-    <span class="c1"># ？p = 投资组合的标准差，风险度量</span>
-
-    <span class="n">r_mean</span> <span class="o">=</span> <span class="n">r</span>
-    <span class="n">rf_mean</span> <span class="o">=</span> <span class="n">rf</span>
-    <span class="n">rf_std</span> <span class="o">=</span> <span class="n">r_std</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
-        <span class="n">r_mean</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-        <span class="n">rf_std</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
-        <span class="n">rf_mean</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">r_mean</span> <span class="o">-</span> <span class="n">rf_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">rf_std</span>
-    <span class="k">return</span> <span class="n">result</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="k">else</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="drop_column"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.drop_column">[文档]</a><span class="k">def</span> <span class="nf">drop_column</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;将数据源中的部分列丢弃，参考 :func:`pandas.DataFrame.drop`&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+<span class="c1">#     return data.kurtosis()</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def skew(data, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;计算偏度</span>
+<span class="c1">#</span>
+<span class="c1">#     &gt; 若数据分布是对称的，偏度为0；</span>
+<span class="c1">#     &gt; 若偏度&gt;0,则可认为分布为右偏，即分布有一条长尾在右；</span>
+<span class="c1">#     &gt; 若偏度&lt;0，则可认为分布为左偏，即分布有一条长尾在左；</span>
+<span class="c1">#     &gt; 同时偏度的绝对值越大，说明分布的偏移程度越严重。</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+<span class="c1">#</span>
+<span class="c1">#     Return:</span>
+<span class="c1">#         :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     return data.skew()</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def sharpe_ratio(r=None, rf=None, r_std: float = None):</span>
+<span class="c1">#     &quot;&quot;&quot;计算 `夏普比率`_</span>
+<span class="c1">#</span>
+<span class="c1">#     夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；</span>
+<span class="c1">#     若为正值，代表基金报酬率高过波动风险；</span>
+<span class="c1">#     若为负值，代表基金操作风险大过于报酬率。</span>
+<span class="c1">#     这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         r (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 收益数据表或均值(`float`)。</span>
+<span class="c1">#         rf (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 无风险收益率表或均值( `float` )。</span>
+<span class="c1">#         r_std: 参数 `r` 的标准差。如果 `r` 传入的是 :class:`pandas.DataFrame` or :class:`pandas.Series` 则无需传入此参数。</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#         float: 计算后的夏普比率。</span>
+<span class="c1">#</span>
+<span class="c1">#     .. _夏普比率:</span>
+<span class="c1">#         https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     # 夏普比率是回报与风险的比率。公式为：</span>
+<span class="c1">#     # （Rp - Rf） / ？p</span>
+<span class="c1">#     # 其中：</span>
+<span class="c1">#     #</span>
+<span class="c1">#     # Rp = 投资者投资组合的预期回报率</span>
+<span class="c1">#     # Rf = 无风险回报率</span>
+<span class="c1">#     # ？p = 投资组合的标准差，风险度量</span>
+<span class="c1">#</span>
+<span class="c1">#     r_mean = r</span>
+<span class="c1">#     rf_mean = rf</span>
+<span class="c1">#     rf_std = r_std</span>
+<span class="c1">#     if isinstance(r, pd.DataFrame) or isinstance(r, pd.Series):</span>
+<span class="c1">#         r_mean = r.mean()</span>
+<span class="c1">#         rf_std = r.std()</span>
+<span class="c1">#     if isinstance(rf, pd.DataFrame) or isinstance(rf, pd.Series):</span>
+<span class="c1">#         rf_mean = rf.mean()</span>
+<span class="c1">#</span>
+<span class="c1">#     result = (r_mean - rf_mean) / rf_std</span>
+<span class="c1">#     return result if isinstance(result, float) else result[0]</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def drop_column(data: pd.DataFrame, **kwargs):</span>
+<span class="c1">#     &quot;&quot;&quot;将数据源中的部分列丢弃，参考 :func:`pandas.DataFrame.drop`&quot;&quot;&quot;</span>
+<span class="c1">#     return data.drop(**kwargs)</span>
 </pre></div>
 
            </div>

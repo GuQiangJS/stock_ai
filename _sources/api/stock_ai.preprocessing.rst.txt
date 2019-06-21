@@ -11,7 +11,6 @@ preprocessing
 .. autosummary::
     :nosignatures:
     
-    calc_cum_return
     deepcopy
     xy_split_1
     xy_split_2
@@ -21,7 +20,6 @@ preprocessing
 
 .. rubric:: Methods
 
-.. autofunction:: calc_cum_return
 .. autofunction:: deepcopy
 .. autofunction:: xy_split_1
 .. autofunction:: xy_split_2

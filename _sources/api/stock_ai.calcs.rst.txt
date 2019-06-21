@@ -11,48 +11,14 @@ calcs
 .. autosummary::
     :nosignatures:
     
-    calc_cum_return
-    calc_daily_return
-    calc_month
-    calc_year
-    drop_column
-    dropna
-    fft
-    fillna
     is_trade_suspension
-    kurtosis
-    sharpe_ratio
-    skew
-    tech_bbands
-    tech_boll
-    tech_ema
-    tech_ma
-    tech_macd
-    trans_onehot
 
 
 
 
 .. rubric:: Methods
 
-.. autofunction:: calc_cum_return
-.. autofunction:: calc_daily_return
-.. autofunction:: calc_month
-.. autofunction:: calc_year
-.. autofunction:: drop_column
-.. autofunction:: dropna
-.. autofunction:: fft
-.. autofunction:: fillna
 .. autofunction:: is_trade_suspension
-.. autofunction:: kurtosis
-.. autofunction:: sharpe_ratio
-.. autofunction:: skew
-.. autofunction:: tech_bbands
-.. autofunction:: tech_boll
-.. autofunction:: tech_ema
-.. autofunction:: tech_ma
-.. autofunction:: tech_macd
-.. autofunction:: trans_onehot
 
 
 
