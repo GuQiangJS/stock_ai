@@ -171,9 +171,6 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.preprocessing.xy_split_1" title="stock_ai.preprocessing.xy_split_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_split_1</span></code></a></p></td>
 <td><p>拆分数据</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.preprocessing.xy_split_2" title="stock_ai.preprocessing.xy_split_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_split_2</span></code></a></p></td>
-<td><p>拆分数据</p></td>
-</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -186,7 +183,7 @@
 
 <dl class="function">
 <dt id="stock_ai.preprocessing.xy_split_1">
-<code class="sig-prename descclassname">stock_ai.preprocessing.</code><code class="sig-name descname">xy_split_1</code><span class="sig-paren">(</span><em class="sig-param">dfs, window, days, x_cols, y_cols=['close'], **kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#xy_split_1"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.xy_split_1" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">stock_ai.preprocessing.</code><code class="sig-name descname">xy_split_1</code><span class="sig-paren">(</span><em class="sig-param">dfs, window, days, x_cols=None, y_cols=['close'], skip=0, **kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#xy_split_1"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.xy_split_1" title="永久链接至目标">¶</a></dt>
 <dd><p>拆分数据</p>
 <p>返回的 <cite>x</cite> 和 <cite>y</cite> 结果。
 与 <cite>xy_split_2</cite> 的区别在于。本函数拆分的结果集y的开始值是 <strong>相对于结果集x的最后一条数据</strong> 的。</p>
@@ -197,7 +194,8 @@
 <li><p><strong>norm_func</strong> – 数据构造器。接受参数类型为 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>，返回类型为 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> 的静态方法即可。默认为 None。</p></li>
 <li><p><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 窗口期。</p></li>
 <li><p><strong>days</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 结果期。</p></li>
-<li><p><strong>x_cols</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.7)"><em>tuple</em></a><em>(</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>)</em>) – x 取列集合。</p></li>
+<li><p><strong>skip</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 窗口期与结果期之间需要跳过的日期数量。默认为0。</p></li>
+<li><p><strong>x_cols</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.7)"><em>tuple</em></a><em>(</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>)</em>) – x 取列集合。如果为None，则取df的所有列。</p></li>
 <li><p><strong>y_cols</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.7)"><em>tuple</em></a><em>(</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>)</em>) – y 取列集合。默认为 <code class="docutils literal notranslate"><span class="pre">['close']</span></code>。</p></li>
 </ul>
 </dd>
@@ -217,95 +215,41 @@
 <div class="admonition seealso">
 <p class="admonition-title">参见</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#stock_ai.preprocessing.xy_split_2" title="stock_ai.preprocessing.xy_split_2"><code class="xref py py-func docutils literal notranslate"><span class="pre">xy_split_2()</span></code></a></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">xy_split_2()</span></code></p></li>
 </ul>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">days</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">window</span><span class="p">,</span> <span class="n">days</span>
-<span class="go">4, 2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xy_split_1</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])],</span>
-<span class="gp">... </span>                   <span class="n">window</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">col_name</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">window</span><span class="o">=</span><span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">days</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skip</span><span class="o">=</span><span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">window</span><span class="o">+</span><span class="n">days</span><span class="o">+</span><span class="n">skip</span><span class="p">)]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([0, 1, 2, 3, 4], dtype=int64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xy_split_1</span><span class="p">([</span><span class="n">df</span><span class="p">],</span><span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span><span class="n">days</span><span class="o">=</span><span class="n">days</span><span class="p">,</span><span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">y_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
-<span class="go">[      c</span>
-<span class="go">    0  1.0</span>
-<span class="go">    1  1.5</span>
-<span class="go">    2  2.0</span>
-<span class="go">    3  2.5]</span>
+<span class="go">[   c</span>
+<span class="go">0  0</span>
+<span class="go">1  1</span>
+<span class="go">2  2</span>
+<span class="go">3  3]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<span class="go">[4    1.2</span>
-<span class="go"> 5    1.4</span>
-<span class="go"> Name: c, dtype: float64]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">&lt;class &#39;pandas.core.series.DataFrame&#39;&gt;</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="stock_ai.preprocessing.xy_split_2">
-<code class="sig-prename descclassname">stock_ai.preprocessing.</code><code class="sig-name descname">xy_split_2</code><span class="sig-paren">(</span><em class="sig-param">dfs, window, days, x_cols, y_cols=['close'], **kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/preprocessing.html#xy_split_2"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.preprocessing.xy_split_2" title="永久链接至目标">¶</a></dt>
-<dd><p>拆分数据</p>
-<p>返回的 <cite>train</cite> 和 <cite>test</cite> 结果。</p>
-<ul class="simple">
-<li><p>与 <cite>xy_split_1</cite> 的区别在于。本函数拆分的结果集y的开始值是**相对于结果集x的第一条数据**的。</p></li>
-</ul>
-<dl class="field-list simple">
-<dt class="field-odd">参数</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dfs</strong> ([<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>]) – 待拆分的数据集。</p></li>
-<li><p><strong>norm_func</strong> – 数据构造器。接受参数类型为 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>，返回类型为 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> 的静态方法即可。默认为 <code class="xref py py-func docutils literal notranslate"><span class="pre">stock_ai.calcs.calc_cum_return()</span></code>。</p></li>
-<li><p><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 窗口期</p></li>
-<li><p><strong>days</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.7)"><em>int</em></a>) – 结果期</p></li>
-<li><p><strong>x_cols</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.7)"><em>tuple</em></a><em>(</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>)</em>) – x 取列集合。</p></li>
-<li><p><strong>y_cols</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.7)"><em>tuple</em></a><em>(</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a><em>)</em>) – y 取列集合。默认为 <code class="docutils literal notranslate"><span class="pre">['close']</span></code>。</p></li>
-</ul>
-</dd>
-<dt class="field-even">返回</dt>
-<dd class="field-even"><p><p>按照 window,days 拆分后的集合。
-分别表示为 [x,y]。所使用的的列分别由 <cite>x_cols</cite> 和 <cite>y_cols</cite> 指定。</p>
-<p>根据 <cite>x_cols</cite> 和 <cite>y_cols</cite> 确定返回类型，如果是单独字符串则返回值中
-的元素类型为 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>，如果是字符串数组或元组时返回值
-中的元素类型为 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>。</p>
-<p><strong>Y 返回的结果是相对于返回集合的第一条数据做的`norm`处理。</strong></p>
-</p>
-</dd>
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p>[[<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> 或者 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>],[<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> 或者 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>]]</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">参见</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#stock_ai.preprocessing.xy_split_1" title="stock_ai.preprocessing.xy_split_1"><code class="xref py py-func docutils literal notranslate"><span class="pre">xy_split_1()</span></code></a></p></li>
-</ul>
-</div>
-<p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">days</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">window</span><span class="p">,</span> <span class="n">days</span>
-<span class="go">4, 2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_xy_split_2</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])],</span>
-<span class="gp">... </span>                             <span class="n">window</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">col_name</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="go">[   c</span>
+<span class="go">4  4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skip</span><span class="o">=</span><span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">window</span><span class="o">+</span><span class="n">days</span><span class="o">+</span><span class="n">skip</span><span class="p">)]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([0, 1, 2, 3, 4, 5, 6], dtype=int64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xy_split_1</span><span class="p">([</span><span class="n">df</span><span class="p">],</span><span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span><span class="n">days</span><span class="o">=</span><span class="n">days</span><span class="p">,</span><span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">y_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
-<span class="go">[      c</span>
-<span class="go">    0  1.0</span>
-<span class="go">    1  1.5</span>
-<span class="go">    2  2.0</span>
-<span class="go">    3  2.5]</span>
+<span class="go">[   c</span>
+<span class="go">0  0</span>
+<span class="go">1  1</span>
+<span class="go">2  2</span>
+<span class="go">3  3]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<span class="go">[4    3.0</span>
-<span class="go">5    3.5</span>
-<span class="go">Name: c, dtype: float64]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">&lt;class &#39;pandas.core.series.DataFrame&#39;&gt;</span>
+<span class="go">[   c</span>
+<span class="go">6  6]</span>
 </pre></div>
 </div>
 </dd></dl>

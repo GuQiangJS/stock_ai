@@ -12,6 +12,7 @@ calcs
     :nosignatures:
     
     is_trade_suspension
+    trans_onehot
 
 
 
@@ -19,6 +20,7 @@ calcs
 .. rubric:: Methods
 
 .. autofunction:: is_trade_suspension
+.. autofunction:: trans_onehot
 
 
 

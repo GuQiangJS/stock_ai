@@ -13,7 +13,6 @@ preprocessing
     
     deepcopy
     xy_split_1
-    xy_split_2
 
 
 
@@ -22,7 +21,6 @@ preprocessing
 
 .. autofunction:: deepcopy
 .. autofunction:: xy_split_1
-.. autofunction:: xy_split_2
 
 
 

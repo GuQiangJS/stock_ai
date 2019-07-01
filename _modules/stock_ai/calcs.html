@@ -181,83 +181,83 @@
 <span class="c1">#     return _create_series(df.index.year, df=df, dtype=&#39;int64&#39;)</span>
 <span class="c1">#</span>
 <span class="c1">#</span>
-<span class="c1"># def trans_onehot(data, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;转换 OneHot 编码</span>
-<span class="c1">#</span>
-<span class="c1">#      设定参数 ``sparse=False``，调用 :class:`sklearn.preprocessing.OneHotEncoder`。</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         data: 一维数组或多维数组，可以为普通list,tuple，或np.array。</span>
-<span class="c1">#             也可以是 :class:`pandas.DataFrame` 或 :class:`pandas.Series`。</span>
-<span class="c1">#             如果是 :class:`pandas.DataFrame` 时，需要通过 ``column`` 参数指定列名。</span>
-<span class="c1">#         column (str): 当 ``data`` 是 :class:`pandas.DataFrame` 时需要指定计算的列。</span>
-<span class="c1">#</span>
-<span class="c1">#     Examples:</span>
-<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
-<span class="c1">#         &gt;&gt;&gt; import numpy as np</span>
-<span class="c1">#</span>
-<span class="c1">#         传入数据为二维数组</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.trans_onehot([[2016], [2017], [2018], [2018], [2019]])</span>
-<span class="c1">#         array([[1., 0., 0., 0.],</span>
-<span class="c1">#                [0., 1., 0., 0.],</span>
-<span class="c1">#                [0., 0., 1., 0.],</span>
-<span class="c1">#                [0., 0., 1., 0.],</span>
-<span class="c1">#                [0., 0., 0., 1.]])</span>
-<span class="c1">#</span>
-<span class="c1">#         传入数据为一维数组</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.trans_onehot([2016, 2017, 2018, 2018, 2019])</span>
-<span class="c1">#         array([[1., 0., 0., 0.],</span>
-<span class="c1">#                [0., 1., 0., 0.],</span>
-<span class="c1">#                [0., 0., 1., 0.],</span>
-<span class="c1">#                [0., 0., 1., 0.],</span>
-<span class="c1">#                [0., 0., 0., 1.]])</span>
-<span class="c1">#</span>
-<span class="c1">#         传入数据为Seriese</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.trans_onehot(pd.Series([2016, 2017, 2018, 2018, 2019]))</span>
-<span class="c1">#         array([[1., 0., 0., 0.],</span>
-<span class="c1">#                [0., 1., 0., 0.],</span>
-<span class="c1">#                [0., 0., 1., 0.],</span>
-<span class="c1">#                [0., 0., 1., 0.],</span>
-<span class="c1">#                [0., 0., 0., 1.]])</span>
-<span class="c1">#</span>
-<span class="c1">#         传入数据为DataFrame</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; df = pd.DataFrame([2016, 2017, 2018, 2018, 2019], columns=[&#39;y&#39;])</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.trans_onehot(df, column=&#39;y&#39;).values</span>
-<span class="c1">#         array([[1., 0., 0., 0.],</span>
-<span class="c1">#                [0., 1., 0., 0.],</span>
-<span class="c1">#                [0., 0., 1., 0.],</span>
-<span class="c1">#                [0., 0., 1., 0.],</span>
-<span class="c1">#                [0., 0., 0., 1.]])</span>
-<span class="c1">#</span>
-<span class="c1">#     Returns:</span>
-<span class="c1">#         (二维数组 或 :class:`pandas.DataFrame`): 如果传入参数 ``data`` 类型为</span>
-<span class="c1">#             :class:`pandas.DataFrame` ，name返回类型是 :class:`pandas.DataFrame` 。</span>
-<span class="c1">#             否则是 二维数组。</span>
-<span class="c1">#             参考 :func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。</span>
-<span class="c1">#</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     d = None</span>
-<span class="c1">#     if isinstance(data, pd.DataFrame):</span>
-<span class="c1">#         col = kwargs.pop(&#39;column&#39;, None)</span>
-<span class="c1">#         if not col:</span>
-<span class="c1">#             raise ValueError(&#39;当传入类型为 DataFrame 时，需要指定 column 参数。&#39;)</span>
-<span class="c1">#         d = data[col].values</span>
-<span class="c1">#     elif isinstance(data, pd.Series):</span>
-<span class="c1">#         d = data.values</span>
-<span class="c1">#     else:</span>
-<span class="c1">#         d = data</span>
-<span class="c1">#     n = np.array(d)</span>
-<span class="c1">#     if len(n.shape) == 1:</span>
-<span class="c1">#         #如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。</span>
-<span class="c1">#         n = np.reshape(n, (n.shape[0], 1))</span>
-<span class="c1">#     n = OneHotEncoder(sparse=False, categories=&#39;auto&#39;).fit_transform(n)</span>
-<span class="c1">#     if isinstance(data, pd.DataFrame):</span>
-<span class="c1">#         return pd.DataFrame(n, index=data.index)</span>
-<span class="c1">#     return n</span>
+<div class="viewcode-block" id="trans_onehot"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.trans_onehot">[文档]</a><span class="k">def</span> <span class="nf">trans_onehot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;转换 OneHot 编码</span>
+
+<span class="sd">     设定参数 ``sparse=False``，调用 :class:`sklearn.preprocessing.OneHotEncoder`。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data: 一维数组或多维数组，可以为普通list,tuple，或np.array。</span>
+<span class="sd">            也可以是 :class:`pandas.DataFrame` 或 :class:`pandas.Series`。</span>
+<span class="sd">            如果是 :class:`pandas.DataFrame` 时，需要通过 ``column`` 参数指定列名。</span>
+<span class="sd">        column (str): 当 ``data`` 是 :class:`pandas.DataFrame` 时需要指定计算的列。</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+
+<span class="sd">        传入数据为二维数组</span>
+
+<span class="sd">        &gt;&gt;&gt; calcs.trans_onehot([[2016], [2017], [2018], [2018], [2019]])</span>
+<span class="sd">        array([[1., 0., 0., 0.],</span>
+<span class="sd">               [0., 1., 0., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 0., 1.]])</span>
+
+<span class="sd">        传入数据为一维数组</span>
+
+<span class="sd">        &gt;&gt;&gt; calcs.trans_onehot([2016, 2017, 2018, 2018, 2019])</span>
+<span class="sd">        array([[1., 0., 0., 0.],</span>
+<span class="sd">               [0., 1., 0., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 0., 1.]])</span>
+
+<span class="sd">        传入数据为Seriese</span>
+
+<span class="sd">        &gt;&gt;&gt; calcs.trans_onehot(pd.Series([2016, 2017, 2018, 2018, 2019]))</span>
+<span class="sd">        array([[1., 0., 0., 0.],</span>
+<span class="sd">               [0., 1., 0., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 0., 1.]])</span>
+
+<span class="sd">        传入数据为DataFrame</span>
+
+<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame([2016, 2017, 2018, 2018, 2019], columns=[&#39;y&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; calcs.trans_onehot(df, column=&#39;y&#39;).values</span>
+<span class="sd">        array([[1., 0., 0., 0.],</span>
+<span class="sd">               [0., 1., 0., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 0., 1.]])</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (二维数组 或 :class:`pandas.DataFrame`): 如果传入参数 ``data`` 类型为</span>
+<span class="sd">            :class:`pandas.DataFrame` ，name返回类型是 :class:`pandas.DataFrame` 。</span>
+<span class="sd">            否则是 二维数组。</span>
+<span class="sd">            参考 :func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">col</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;当传入类型为 DataFrame 时，需要指定 column 参数。&#39;</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1">#如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">n</span></div>
 <span class="c1">#</span>
 <span class="c1">#</span>
 <span class="c1"># def fillna(df, **kwargs):</span>
