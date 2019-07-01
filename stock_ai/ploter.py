@@ -55,7 +55,9 @@ def plot_keras_history(his: keras.callbacks.History, **kwargs):
             plots.append(d)
 
     if plots:
-        fig, axs = plt.subplots(nrows=len(plots),figsize=(100,len(plots)*10))
+        figSize_w=kwargs.pop('figSize_w',10)
+        figSize_h=kwargs.pop('figSize_h',5)
+        fig, axs = plt.subplots(nrows=len(plots),figsize=(figSize_w,len(plots)*figSize_h))
         for plot in plots:
             ax=sns.lineplot(data=pd.DataFrame.from_dict(plot['data']),
                          ax=axs[plots.index(plot)])

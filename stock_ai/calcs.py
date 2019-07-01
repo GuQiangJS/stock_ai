@@ -31,83 +31,83 @@ from sklearn.preprocessing import OneHotEncoder
 #     return _create_series(df.index.year, df=df, dtype='int64')
 #
 #
-# def trans_onehot(data, **kwargs):
-#     """转换 OneHot 编码
-#
-#      设定参数 ``sparse=False``，调用 :class:`sklearn.preprocessing.OneHotEncoder`。
-#
-#     Args:
-#         data: 一维数组或多维数组，可以为普通list,tuple，或np.array。
-#             也可以是 :class:`pandas.DataFrame` 或 :class:`pandas.Series`。
-#             如果是 :class:`pandas.DataFrame` 时，需要通过 ``column`` 参数指定列名。
-#         column (str): 当 ``data`` 是 :class:`pandas.DataFrame` 时需要指定计算的列。
-#
-#     Examples:
-#         >>> from stock_ai import calcs
-#         >>> import numpy as np
-#
-#         传入数据为二维数组
-#
-#         >>> calcs.trans_onehot([[2016], [2017], [2018], [2018], [2019]])
-#         array([[1., 0., 0., 0.],
-#                [0., 1., 0., 0.],
-#                [0., 0., 1., 0.],
-#                [0., 0., 1., 0.],
-#                [0., 0., 0., 1.]])
-#
-#         传入数据为一维数组
-#
-#         >>> calcs.trans_onehot([2016, 2017, 2018, 2018, 2019])
-#         array([[1., 0., 0., 0.],
-#                [0., 1., 0., 0.],
-#                [0., 0., 1., 0.],
-#                [0., 0., 1., 0.],
-#                [0., 0., 0., 1.]])
-#
-#         传入数据为Seriese
-#
-#         >>> calcs.trans_onehot(pd.Series([2016, 2017, 2018, 2018, 2019]))
-#         array([[1., 0., 0., 0.],
-#                [0., 1., 0., 0.],
-#                [0., 0., 1., 0.],
-#                [0., 0., 1., 0.],
-#                [0., 0., 0., 1.]])
-#
-#         传入数据为DataFrame
-#
-#         >>> df = pd.DataFrame([2016, 2017, 2018, 2018, 2019], columns=['y'])
-#         >>> calcs.trans_onehot(df, column='y').values
-#         array([[1., 0., 0., 0.],
-#                [0., 1., 0., 0.],
-#                [0., 0., 1., 0.],
-#                [0., 0., 1., 0.],
-#                [0., 0., 0., 1.]])
-#
-#     Returns:
-#         (二维数组 或 :class:`pandas.DataFrame`): 如果传入参数 ``data`` 类型为
-#             :class:`pandas.DataFrame` ，name返回类型是 :class:`pandas.DataFrame` 。
-#             否则是 二维数组。
-#             参考 :func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。
-#
-#     """
-#     d = None
-#     if isinstance(data, pd.DataFrame):
-#         col = kwargs.pop('column', None)
-#         if not col:
-#             raise ValueError('当传入类型为 DataFrame 时，需要指定 column 参数。')
-#         d = data[col].values
-#     elif isinstance(data, pd.Series):
-#         d = data.values
-#     else:
-#         d = data
-#     n = np.array(d)
-#     if len(n.shape) == 1:
-#         #如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。
-#         n = np.reshape(n, (n.shape[0], 1))
-#     n = OneHotEncoder(sparse=False, categories='auto').fit_transform(n)
-#     if isinstance(data, pd.DataFrame):
-#         return pd.DataFrame(n, index=data.index)
-#     return n
+def trans_onehot(data, **kwargs):
+    """转换 OneHot 编码
+
+     设定参数 ``sparse=False``，调用 :class:`sklearn.preprocessing.OneHotEncoder`。
+
+    Args:
+        data: 一维数组或多维数组，可以为普通list,tuple，或np.array。
+            也可以是 :class:`pandas.DataFrame` 或 :class:`pandas.Series`。
+            如果是 :class:`pandas.DataFrame` 时，需要通过 ``column`` 参数指定列名。
+        column (str): 当 ``data`` 是 :class:`pandas.DataFrame` 时需要指定计算的列。
+
+    Examples:
+        >>> from stock_ai import calcs
+        >>> import numpy as np
+
+        传入数据为二维数组
+
+        >>> calcs.trans_onehot([[2016], [2017], [2018], [2018], [2019]])
+        array([[1., 0., 0., 0.],
+               [0., 1., 0., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 0., 1.]])
+
+        传入数据为一维数组
+
+        >>> calcs.trans_onehot([2016, 2017, 2018, 2018, 2019])
+        array([[1., 0., 0., 0.],
+               [0., 1., 0., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 0., 1.]])
+
+        传入数据为Seriese
+
+        >>> calcs.trans_onehot(pd.Series([2016, 2017, 2018, 2018, 2019]))
+        array([[1., 0., 0., 0.],
+               [0., 1., 0., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 0., 1.]])
+
+        传入数据为DataFrame
+
+        >>> df = pd.DataFrame([2016, 2017, 2018, 2018, 2019], columns=['y'])
+        >>> calcs.trans_onehot(df, column='y').values
+        array([[1., 0., 0., 0.],
+               [0., 1., 0., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 1., 0.],
+               [0., 0., 0., 1.]])
+
+    Returns:
+        (二维数组 或 :class:`pandas.DataFrame`): 如果传入参数 ``data`` 类型为
+            :class:`pandas.DataFrame` ，name返回类型是 :class:`pandas.DataFrame` 。
+            否则是 二维数组。
+            参考 :func:`sklearn.preprocessing.OneHotEncoder.fit_transform` 的返回值。
+
+    """
+    d = None
+    if isinstance(data, pd.DataFrame):
+        col = kwargs.pop('column', None)
+        if not col:
+            raise ValueError('当传入类型为 DataFrame 时，需要指定 column 参数。')
+        d = data[col].values
+    elif isinstance(data, pd.Series):
+        d = data.values
+    else:
+        d = data
+    n = np.array(d)
+    if len(n.shape) == 1:
+        #如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。
+        n = np.reshape(n, (n.shape[0], 1))
+    n = OneHotEncoder(sparse=False, categories='auto').fit_transform(n)
+    if isinstance(data, pd.DataFrame):
+        return pd.DataFrame(n, index=data.index)
+    return n
 #
 #
 # def fillna(df, **kwargs):
