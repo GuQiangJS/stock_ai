@@ -108,3 +108,19 @@ def plot_daily_return_histogram(data, **kwargs):
     if show:
         plt.show()
     return plt
+
+
+def plot_pred_compare_real(real, pred, **kwargs):
+    figSize_w=kwargs.pop('figSize_w',10)
+    figSize_h=kwargs.pop('figSize_h',5)
+    d = pd.DataFrame({'real': real, 'pred': pred.reshape(pred.shape[0])})
+
+    plots=2
+    fig, axs = plt.subplots(nrows=plots,figsize=(figSize_w, plots * figSize_h))
+    ax1=sns.lineplot(data=d, ax=axs[0])
+    c = pd.DataFrame(((d['pred'] - d['real']) / d['real']))
+    ax2 = sns.lineplot(data=c, ax=axs[1])
+    ax2.title.set_text('计算值与真实值的差率')
+    plt.tight_layout()
+    plt.show()
+    return d,c
