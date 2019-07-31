@@ -6,6 +6,7 @@
 ./_modules/stock_ai/calcs.html
 ./_modules/stock_ai/data_processor.html
 ./_modules/stock_ai/module.html
+./_modules/stock_ai/ploter.html
 ./_modules/stock_ai/preprocessing.html
 ./_modules/stock_ai/report.html
 ./_modules/stock_ai/util.html
@@ -17,6 +18,7 @@
 ./_sources/api/stock_ai.module.Stock.rst.txt
 ./_sources/api/stock_ai.module.StockCN.rst.txt
 ./_sources/api/stock_ai.module.rst.txt
+./_sources/api/stock_ai.ploter.rst.txt
 ./_sources/api/stock_ai.preprocessing.ABCMeta.rst.txt
 ./_sources/api/stock_ai.preprocessing.P.rst.txt
 ./_sources/api/stock_ai.preprocessing.P1.rst.txt
@@ -86,6 +88,7 @@
 ./api/stock_ai.module.Stock.html
 ./api/stock_ai.module.StockCN.html
 ./api/stock_ai.module.html
+./api/stock_ai.ploter.html
 ./api/stock_ai.preprocessing.ABCMeta.html
 ./api/stock_ai.preprocessing.P.html
 ./api/stock_ai.preprocessing.P1.html
