@@ -11,7 +11,17 @@ calcs
 .. autosummary::
     :nosignatures:
     
+    calc_cum_return
+    calc_daily_return
+    calc_month
+    calc_year
+    drop_column
+    dropna
+    fillna
     is_trade_suspension
+    kurtosis
+    sharpe_ratio
+    skew
     trans_onehot
 
 
@@ -19,7 +29,17 @@ calcs
 
 .. rubric:: Methods
 
+.. autofunction:: calc_cum_return
+.. autofunction:: calc_daily_return
+.. autofunction:: calc_month
+.. autofunction:: calc_year
+.. autofunction:: drop_column
+.. autofunction:: dropna
+.. autofunction:: fillna
 .. autofunction:: is_trade_suspension
+.. autofunction:: kurtosis
+.. autofunction:: sharpe_ratio
+.. autofunction:: skew
 .. autofunction:: trans_onehot
 
 

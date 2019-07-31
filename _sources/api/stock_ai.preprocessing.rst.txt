@@ -7,30 +7,9 @@ preprocessing
 
 
 
-.. rubric:: Methods
-.. autosummary::
-    :nosignatures:
-    
-    deepcopy
-    xy_split_1
 
 
 
 
-.. rubric:: Methods
 
-.. autofunction:: deepcopy
-.. autofunction:: xy_split_1
-
-
-
-
-.. rubric:: Class
-.. autosummary::
-    :toctree:
-    :nosignatures:
-    
-    ABCMeta
-    P
-    P1
 

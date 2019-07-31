@@ -150,38 +150,35 @@
             
   <h1>stock_ai.calcs 源代码</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;数据计算器&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">QUANTAXIS.QAIndicator</span> <span class="k">import</span> <span class="n">indicators</span>
-<span class="kn">from</span> <span class="nn">QUANTAXIS.QAIndicator</span> <span class="k">import</span> <span class="n">talib_indicators</span>
-<span class="kn">from</span> <span class="nn">QUANTAXIS.QAIndicator</span> <span class="k">import</span> <span class="n">talib_series</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">OneHotEncoder</span>
 
 
-<span class="c1"># def calc_year(df, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;计算年信息</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
-<span class="c1">#</span>
-<span class="c1">#     Examples:</span>
-<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
-<span class="c1">#         &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;Y&#39;)</span>
-<span class="c1">#         &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
-<span class="c1">#         &gt;&gt;&gt; df</span>
-<span class="c1">#                     A</span>
-<span class="c1">#         2013-12-31  1</span>
-<span class="c1">#         2014-12-31  3</span>
-<span class="c1">#         2015-12-31  5</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.calc_year(df).values</span>
-<span class="c1">#         array([2013, 2014, 2015], dtype=int64)</span>
-<span class="c1">#</span>
-<span class="c1">#     Returns:</span>
-<span class="c1">#         :class:`~pandas.Series`: 计算后的列。</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     return _create_series(df.index.year, df=df, dtype=&#39;int64&#39;)</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
+<div class="viewcode-block" id="calc_year"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.calc_year">[文档]</a><span class="k">def</span> <span class="nf">calc_year</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算年信息</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="sd">        &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;Y&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; df</span>
+<span class="sd">                    A</span>
+<span class="sd">        2013-12-31  1</span>
+<span class="sd">        2014-12-31  3</span>
+<span class="sd">        2015-12-31  5</span>
+<span class="sd">        &gt;&gt;&gt; calcs.calc_year(df).values</span>
+<span class="sd">        array([2013, 2014, 2015], dtype=int64)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :class:`~pandas.Series`: 计算后的列。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_create_series</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="trans_onehot"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.trans_onehot">[文档]</a><span class="k">def</span> <span class="nf">trans_onehot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;转换 OneHot 编码</span>
 
@@ -253,33 +250,33 @@
         <span class="n">d</span> <span class="o">=</span> <span class="n">data</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="c1">#如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。</span>
+        <span class="c1"># 如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">n</span></div>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># def fillna(df, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;:func:`pandas.DataFraem.fillna`</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     return df.fillna(**kwargs)</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># def dropna(df, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;:func:`pandas.DataFraem.dropna`</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
-<span class="c1">#</span>
-<span class="c1">#     Returns:</span>
-<span class="c1">#</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     return df.dropna(**kwargs)</span>
+
+
+<div class="viewcode-block" id="fillna"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.fillna">[文档]</a><span class="k">def</span> <span class="nf">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;:func:`pandas.DataFraem.fillna`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="dropna"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.dropna">[文档]</a><span class="k">def</span> <span class="nf">dropna</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;:func:`pandas.DataFraem.dropna`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="is_trade_suspension"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.is_trade_suspension">[文档]</a><span class="k">def</span> <span class="nf">is_trade_suspension</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -308,53 +305,54 @@
     <span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">)]</span>
     <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="mf">0.</span><span class="p">})</span></div>
 
-<span class="c1">#</span>
-<span class="c1"># def _create_series(data, df, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         data: 参考 :func:`~pandas.Series` 中同名参数。</span>
-<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
-<span class="c1">#         **kwargs:</span>
-<span class="c1">#</span>
-<span class="c1">#     Returns:</span>
-<span class="c1">#</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     name = kwargs.pop(&#39;name&#39;, None)</span>
-<span class="c1">#     dtype = kwargs.pop(&#39;dtype&#39;, None)</span>
-<span class="c1">#     copy = kwargs.pop(&#39;copy&#39;, None)</span>
-<span class="c1">#     fastpath = kwargs.pop(&#39;fastpath&#39;, None)</span>
-<span class="c1">#     return pd.Series(data,</span>
-<span class="c1">#                      index=df.index,</span>
-<span class="c1">#                      name=name,</span>
-<span class="c1">#                      dtype=dtype,</span>
-<span class="c1">#                      copy=copy,</span>
-<span class="c1">#                      fastpath=fastpath)</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># def calc_month(df, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;计算月信息</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         df (:class:`~pandas.DataFrame`): 原始数据。</span>
-<span class="c1">#</span>
-<span class="c1">#     Examples:</span>
-<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
-<span class="c1">#         &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;M&#39;)</span>
-<span class="c1">#         &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
-<span class="c1">#         &gt;&gt;&gt; df</span>
-<span class="c1">#                     A</span>
-<span class="c1">#         2013-01-31  1</span>
-<span class="c1">#         2013-02-28  3</span>
-<span class="c1">#         2013-03-31  5</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.calc_month(df).values</span>
-<span class="c1">#         array([1, 2, 3], dtype=int64)</span>
-<span class="c1">#</span>
-<span class="c1">#     Returns:</span>
-<span class="c1">#         :class:`~pandas.Series`: 计算后的列。</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     return _create_series(df.index.month, df=df, dtype=&#39;int64&#39;)</span>
-<span class="c1">#</span>
+
+<span class="k">def</span> <span class="nf">_create_series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data: 参考 :func:`~pandas.Series` 中同名参数。</span>
+<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
+<span class="sd">        **kwargs:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">copy</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">fastpath</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;fastpath&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+                     <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                     <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+                     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+                     <span class="n">fastpath</span><span class="o">=</span><span class="n">fastpath</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="calc_month"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.calc_month">[文档]</a><span class="k">def</span> <span class="nf">calc_month</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算月信息</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (:class:`~pandas.DataFrame`): 原始数据。</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
+<span class="sd">        &gt;&gt;&gt; dates = pd.date_range(&#39;20130101&#39;, periods=3, freq=&#39;M&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame([1, 3, 5], index=dates, columns=list(&#39;A&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; df</span>
+<span class="sd">                    A</span>
+<span class="sd">        2013-01-31  1</span>
+<span class="sd">        2013-02-28  3</span>
+<span class="sd">        2013-03-31  5</span>
+<span class="sd">        &gt;&gt;&gt; calcs.calc_month(df).values</span>
+<span class="sd">        array([1, 2, 3], dtype=int64)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :class:`~pandas.Series`: 计算后的列。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_create_series</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span></div>
+
+
 <span class="c1">#</span>
 <span class="c1"># def tech_ma(df: pd.DataFrame, **kwargs) -&gt; pd.Series:</span>
 <span class="c1">#     &quot;&quot;&quot;计算移动均线</span>
@@ -523,180 +521,180 @@
 <span class="c1"># #     return df.pct_change()</span>
 <span class="c1">#</span>
 <span class="c1">#</span>
-<span class="c1"># def calc_daily_return(data, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;计算日收益</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
-<span class="c1">#         columns (str 或 字符串集合): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。</span>
-<span class="c1">#</span>
-<span class="c1">#     Examples:</span>
-<span class="c1">#         &gt;&gt;&gt; import pandas as pd</span>
-<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
-<span class="c1">#</span>
-<span class="c1">#         Series时</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; s = pd.Series([1,2,3,4,5])</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.calc_daily_return(s).values</span>
-<span class="c1">#         array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
-<span class="c1">#</span>
-<span class="c1">#         DataFrame时</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[1,2,3,4,5],</span>
-<span class="c1">#         ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
-<span class="c1">#         &gt;&gt;&gt; s</span>
-<span class="c1">#            A  B</span>
-<span class="c1">#         0  1  5</span>
-<span class="c1">#         1  2  4</span>
-<span class="c1">#         2  3  3</span>
-<span class="c1">#         3  4  2</span>
-<span class="c1">#         4  5  1</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.calc_daily_return(s).values</span>
-<span class="c1">#         array([[        nan,         nan],</span>
-<span class="c1">#                [ 1.        , -0.2       ],</span>
-<span class="c1">#                [ 0.5       , -0.25      ],</span>
-<span class="c1">#                [ 0.33333333, -0.33333333],</span>
-<span class="c1">#                [ 0.25      , -0.5       ]])</span>
-<span class="c1">#</span>
-<span class="c1">#         指定columns</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.calc_daily_return(s,columns=&#39;A&#39;).values</span>
-<span class="c1">#         array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
-<span class="c1">#</span>
-<span class="c1">#     Return:</span>
-<span class="c1">#         :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，</span>
-<span class="c1">#             且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。</span>
-<span class="c1">#             否则按照传入类型返回。</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     d = data</span>
-<span class="c1">#     if isinstance(data, pd.DataFrame):</span>
-<span class="c1">#         columns = kwargs.pop(&#39;columns&#39;, None)</span>
-<span class="c1">#         if columns:</span>
-<span class="c1">#             if isinstance(columns,str) and columns in data.columns:</span>
-<span class="c1">#                 d = data[columns]</span>
-<span class="c1">#             elif set(data.columns) &gt; set(columns):</span>
-<span class="c1">#                 d = data[columns]</span>
-<span class="c1">#     return d.pct_change()</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># def calc_cum_return(data, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;计算累计收益</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
-<span class="c1">#         column (str): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。</span>
-<span class="c1">#</span>
-<span class="c1">#     Examples:</span>
-<span class="c1">#         &gt;&gt;&gt; import pandas as pd</span>
-<span class="c1">#         &gt;&gt;&gt; from stock_ai import calcs</span>
-<span class="c1">#</span>
-<span class="c1">#         Series时</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; s = pd.Series([2,2,3,4,5])</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.calc_cum_return(s).values</span>
-<span class="c1">#         array([0. , 0.5, 1. , 1.5])</span>
-<span class="c1">#</span>
-<span class="c1">#         DataFrame时</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[2,2,3,4,5],</span>
-<span class="c1">#         ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.calc_cum_return(s).values</span>
-<span class="c1">#         array([[ 0. , -0.2],</span>
-<span class="c1">#                [ 0.5, -0.4],</span>
-<span class="c1">#                [ 1. , -0.6],</span>
-<span class="c1">#                [ 1.5, -0.8]])</span>
-<span class="c1">#</span>
-<span class="c1">#         DataFrame时</span>
-<span class="c1">#</span>
-<span class="c1">#         &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[2,2,3,4,5],</span>
-<span class="c1">#         ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
-<span class="c1">#         &gt;&gt;&gt; calcs.calc_cum_return(s,column=&#39;A&#39;).values</span>
-<span class="c1">#         array([0. , 0.5, 1. , 1.5])</span>
-<span class="c1">#</span>
-<span class="c1">#     Return:</span>
-<span class="c1">#         :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，</span>
-<span class="c1">#             且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。</span>
-<span class="c1">#             否则按照传入类型返回。</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     d = data</span>
-<span class="c1">#     if isinstance(data, pd.DataFrame):</span>
-<span class="c1">#         column = kwargs.pop(&#39;column&#39;, None)</span>
-<span class="c1">#         if column and column in data.columns:</span>
-<span class="c1">#             d = data[column]</span>
-<span class="c1">#     return d[1:] / d.iloc[0] - 1</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># def kurtosis(data, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;计算峰度</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
-<span class="c1">#</span>
-<span class="c1">#     Return:</span>
-<span class="c1">#         :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     return data.kurtosis()</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># def skew(data, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;计算偏度</span>
-<span class="c1">#</span>
-<span class="c1">#     &gt; 若数据分布是对称的，偏度为0；</span>
-<span class="c1">#     &gt; 若偏度&gt;0,则可认为分布为右偏，即分布有一条长尾在右；</span>
-<span class="c1">#     &gt; 若偏度&lt;0，则可认为分布为左偏，即分布有一条长尾在左；</span>
-<span class="c1">#     &gt; 同时偏度的绝对值越大，说明分布的偏移程度越严重。</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
-<span class="c1">#</span>
-<span class="c1">#     Return:</span>
-<span class="c1">#         :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     return data.skew()</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># def sharpe_ratio(r=None, rf=None, r_std: float = None):</span>
-<span class="c1">#     &quot;&quot;&quot;计算 `夏普比率`_</span>
-<span class="c1">#</span>
-<span class="c1">#     夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；</span>
-<span class="c1">#     若为正值，代表基金报酬率高过波动风险；</span>
-<span class="c1">#     若为负值，代表基金操作风险大过于报酬率。</span>
-<span class="c1">#     这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。</span>
-<span class="c1">#</span>
-<span class="c1">#     Args:</span>
-<span class="c1">#         r (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 收益数据表或均值(`float`)。</span>
-<span class="c1">#         rf (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 无风险收益率表或均值( `float` )。</span>
-<span class="c1">#         r_std: 参数 `r` 的标准差。如果 `r` 传入的是 :class:`pandas.DataFrame` or :class:`pandas.Series` 则无需传入此参数。</span>
-<span class="c1">#     Returns:</span>
-<span class="c1">#         float: 计算后的夏普比率。</span>
-<span class="c1">#</span>
-<span class="c1">#     .. _夏普比率:</span>
-<span class="c1">#         https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     # 夏普比率是回报与风险的比率。公式为：</span>
-<span class="c1">#     # （Rp - Rf） / ？p</span>
-<span class="c1">#     # 其中：</span>
-<span class="c1">#     #</span>
-<span class="c1">#     # Rp = 投资者投资组合的预期回报率</span>
-<span class="c1">#     # Rf = 无风险回报率</span>
-<span class="c1">#     # ？p = 投资组合的标准差，风险度量</span>
-<span class="c1">#</span>
-<span class="c1">#     r_mean = r</span>
-<span class="c1">#     rf_mean = rf</span>
-<span class="c1">#     rf_std = r_std</span>
-<span class="c1">#     if isinstance(r, pd.DataFrame) or isinstance(r, pd.Series):</span>
-<span class="c1">#         r_mean = r.mean()</span>
-<span class="c1">#         rf_std = r.std()</span>
-<span class="c1">#     if isinstance(rf, pd.DataFrame) or isinstance(rf, pd.Series):</span>
-<span class="c1">#         rf_mean = rf.mean()</span>
-<span class="c1">#</span>
-<span class="c1">#     result = (r_mean - rf_mean) / rf_std</span>
-<span class="c1">#     return result if isinstance(result, float) else result[0]</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># def drop_column(data: pd.DataFrame, **kwargs):</span>
-<span class="c1">#     &quot;&quot;&quot;将数据源中的部分列丢弃，参考 :func:`pandas.DataFrame.drop`&quot;&quot;&quot;</span>
-<span class="c1">#     return data.drop(**kwargs)</span>
+<div class="viewcode-block" id="calc_daily_return"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.calc_daily_return">[文档]</a><span class="k">def</span> <span class="nf">calc_daily_return</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算日收益</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+<span class="sd">        columns (str 或 字符串集合): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
+
+<span class="sd">        Series时</span>
+
+<span class="sd">        &gt;&gt;&gt; s = pd.Series([1,2,3,4,5])</span>
+<span class="sd">        &gt;&gt;&gt; calcs.calc_daily_return(s).values</span>
+<span class="sd">        array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
+
+<span class="sd">        DataFrame时</span>
+
+<span class="sd">        &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[1,2,3,4,5],</span>
+<span class="sd">        ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
+<span class="sd">        &gt;&gt;&gt; s</span>
+<span class="sd">           A  B</span>
+<span class="sd">        0  1  5</span>
+<span class="sd">        1  2  4</span>
+<span class="sd">        2  3  3</span>
+<span class="sd">        3  4  2</span>
+<span class="sd">        4  5  1</span>
+<span class="sd">        &gt;&gt;&gt; calcs.calc_daily_return(s).values</span>
+<span class="sd">        array([[        nan,         nan],</span>
+<span class="sd">               [ 1.        , -0.2       ],</span>
+<span class="sd">               [ 0.5       , -0.25      ],</span>
+<span class="sd">               [ 0.33333333, -0.33333333],</span>
+<span class="sd">               [ 0.25      , -0.5       ]])</span>
+
+<span class="sd">        指定columns</span>
+
+<span class="sd">        &gt;&gt;&gt; calcs.calc_daily_return(s,columns=&#39;A&#39;).values</span>
+<span class="sd">        array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，</span>
+<span class="sd">            且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。</span>
+<span class="sd">            否则按照传入类型返回。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">columns</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">columns</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">set</span><span class="p">(</span><span class="n">columns</span><span class="p">):</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="calc_cum_return"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.calc_cum_return">[文档]</a><span class="k">def</span> <span class="nf">calc_cum_return</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算累计收益</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+<span class="sd">        column (str): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">        &gt;&gt;&gt; from stock_ai import calcs</span>
+
+<span class="sd">        Series时</span>
+
+<span class="sd">        &gt;&gt;&gt; s = pd.Series([2,2,3,4,5])</span>
+<span class="sd">        &gt;&gt;&gt; calcs.calc_cum_return(s).values</span>
+<span class="sd">        array([0. , 0.5, 1. , 1.5])</span>
+
+<span class="sd">        DataFrame时</span>
+
+<span class="sd">        &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[2,2,3,4,5],</span>
+<span class="sd">        ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
+<span class="sd">        &gt;&gt;&gt; calcs.calc_cum_return(s).values</span>
+<span class="sd">        array([[ 0. , -0.2],</span>
+<span class="sd">               [ 0.5, -0.4],</span>
+<span class="sd">               [ 1. , -0.6],</span>
+<span class="sd">               [ 1.5, -0.8]])</span>
+
+<span class="sd">        DataFrame时</span>
+
+<span class="sd">        &gt;&gt;&gt; s = pd.DataFrame({&#39;A&#39;:[2,2,3,4,5],</span>
+<span class="sd">        ...                   &#39;B&#39;:[5,4,3,2,1]})</span>
+<span class="sd">        &gt;&gt;&gt; calcs.calc_cum_return(s,column=&#39;A&#39;).values</span>
+<span class="sd">        array([0. , 0.5, 1. , 1.5])</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，</span>
+<span class="sd">            且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。</span>
+<span class="sd">            否则按照传入类型返回。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">column</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">column</span> <span class="ow">and</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">/</span> <span class="n">d</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="kurtosis"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.kurtosis">[文档]</a><span class="k">def</span> <span class="nf">kurtosis</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算峰度</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="skew"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.skew">[文档]</a><span class="k">def</span> <span class="nf">skew</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算偏度</span>
+
+<span class="sd">    &gt; 若数据分布是对称的，偏度为0；</span>
+<span class="sd">    &gt; 若偏度&gt;0,则可认为分布为右偏，即分布有一条长尾在右；</span>
+<span class="sd">    &gt; 若偏度&lt;0，则可认为分布为左偏，即分布有一条长尾在左；</span>
+<span class="sd">    &gt; 同时偏度的绝对值越大，说明分布的偏移程度越严重。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        :class:`pandas.Series` or :class:`pandas.DataFrame`:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">skew</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="sharpe_ratio"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.sharpe_ratio">[文档]</a><span class="k">def</span> <span class="nf">sharpe_ratio</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">r_std</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算 `夏普比率`_</span>
+
+<span class="sd">    夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；</span>
+<span class="sd">    若为正值，代表基金报酬率高过波动风险；</span>
+<span class="sd">    若为负值，代表基金操作风险大过于报酬率。</span>
+<span class="sd">    这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        r (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 收益数据表或均值(`float`)。</span>
+<span class="sd">        rf (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 无风险收益率表或均值( `float` )。</span>
+<span class="sd">        r_std: 参数 `r` 的标准差。如果 `r` 传入的是 :class:`pandas.DataFrame` or :class:`pandas.Series` 则无需传入此参数。</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: 计算后的夏普比率。</span>
+
+<span class="sd">    .. _夏普比率:</span>
+<span class="sd">        https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 夏普比率是回报与风险的比率。公式为：</span>
+    <span class="c1"># （Rp - Rf） / ？p</span>
+    <span class="c1"># 其中：</span>
+    <span class="c1">#</span>
+    <span class="c1"># Rp = 投资者投资组合的预期回报率</span>
+    <span class="c1"># Rf = 无风险回报率</span>
+    <span class="c1"># ？p = 投资组合的标准差，风险度量</span>
+
+    <span class="n">r_mean</span> <span class="o">=</span> <span class="n">r</span>
+    <span class="n">rf_mean</span> <span class="o">=</span> <span class="n">rf</span>
+    <span class="n">rf_std</span> <span class="o">=</span> <span class="n">r_std</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+        <span class="n">r_mean</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">rf_std</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+        <span class="n">rf_mean</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">r_mean</span> <span class="o">-</span> <span class="n">rf_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">rf_std</span>
+    <span class="k">return</span> <span class="n">result</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="k">else</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="drop_column"><a class="viewcode-back" href="../../api/stock_ai.calcs.html#stock_ai.calcs.drop_column">[文档]</a><span class="k">def</span> <span class="nf">drop_column</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;将数据源中的部分列丢弃，参考 :func:`pandas.DataFrame.drop`&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

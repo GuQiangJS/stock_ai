@@ -164,8 +164,38 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.is_trade_suspension" title="stock_ai.calcs.is_trade_suspension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_trade_suspension</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.calc_cum_return" title="stock_ai.calcs.calc_cum_return"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_cum_return</span></code></a></p></td>
+<td><p>计算累计收益</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.calc_daily_return" title="stock_ai.calcs.calc_daily_return"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_daily_return</span></code></a></p></td>
+<td><p>计算日收益</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.calc_month" title="stock_ai.calcs.calc_month"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_month</span></code></a></p></td>
+<td><p>计算月信息</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.calc_year" title="stock_ai.calcs.calc_year"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_year</span></code></a></p></td>
+<td><p>计算年信息</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.drop_column" title="stock_ai.calcs.drop_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_column</span></code></a></p></td>
+<td><p>将数据源中的部分列丢弃，参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.drop()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.dropna" title="stock_ai.calcs.dropna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropna</span></code></a></p></td>
+<td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.dropna()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.fillna" title="stock_ai.calcs.fillna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillna</span></code></a></p></td>
+<td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.fillna()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.is_trade_suspension" title="stock_ai.calcs.is_trade_suspension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_trade_suspension</span></code></a></p></td>
 <td><p>返回是否为停牌</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.kurtosis" title="stock_ai.calcs.kurtosis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kurtosis</span></code></a></p></td>
+<td><p>计算峰度</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.sharpe_ratio" title="stock_ai.calcs.sharpe_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharpe_ratio</span></code></a></p></td>
+<td><p>计算 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87">夏普比率</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stock_ai.calcs.skew" title="stock_ai.calcs.skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skew</span></code></a></p></td>
+<td><p>计算偏度</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#stock_ai.calcs.trans_onehot" title="stock_ai.calcs.trans_onehot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trans_onehot</span></code></a></p></td>
 <td><p>转换 OneHot 编码</p></td>
@@ -173,6 +203,215 @@
 </tbody>
 </table>
 <p class="rubric">Methods</p>
+<dl class="function">
+<dt id="stock_ai.calcs.calc_cum_return">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">calc_cum_return</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#calc_cum_return"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.calc_cum_return" title="永久链接至目标">¶</a></dt>
+<dd><p>计算累计收益</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> 或 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – 待计算的数据。</p></li>
+<li><p><strong>column</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.7)"><em>str</em></a>) – 当传入 data 为 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> 时，可以传入需要计算的列。</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">stock_ai</span> <span class="k">import</span> <span class="n">calcs</span>
+</pre></div>
+</div>
+<p>Series时</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_cum_return</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([0. , 0.5, 1. , 1.5])</span>
+</pre></div>
+</div>
+<p>DataFrame时</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="s1">&#39;B&#39;</span><span class="p">:[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_cum_return</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([[ 0. , -0.2],</span>
+<span class="go">       [ 0.5, -0.4],</span>
+<span class="go">       [ 1. , -0.6],</span>
+<span class="go">       [ 1.5, -0.8]])</span>
+</pre></div>
+</div>
+<p>DataFrame时</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="s1">&#39;B&#39;</span><span class="p">:[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_cum_return</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([0. , 0.5, 1. , 1.5])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>当传入参数 <code class="docutils literal notranslate"><span class="pre">column</span></code> 不为空，</dt><dd><p>且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>。
+否则按照传入类型返回。</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.calc_daily_return">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">calc_daily_return</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#calc_daily_return"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.calc_daily_return" title="永久链接至目标">¶</a></dt>
+<dd><p>计算日收益</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> 或 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – 待计算的数据。</p></li>
+<li><p><strong>columns</strong> (<em>str 或 字符串集合</em>) – 当传入 data 为 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> 时，可以传入需要计算的列。</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">stock_ai</span> <span class="k">import</span> <span class="n">calcs</span>
+</pre></div>
+</div>
+<p>Series时</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_daily_return</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
+</pre></div>
+</div>
+<p>DataFrame时</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="s1">&#39;B&#39;</span><span class="p">:[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">   A  B</span>
+<span class="go">0  1  5</span>
+<span class="go">1  2  4</span>
+<span class="go">2  3  3</span>
+<span class="go">3  4  2</span>
+<span class="go">4  5  1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_daily_return</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([[        nan,         nan],</span>
+<span class="go">       [ 1.        , -0.2       ],</span>
+<span class="go">       [ 0.5       , -0.25      ],</span>
+<span class="go">       [ 0.33333333, -0.33333333],</span>
+<span class="go">       [ 0.25      , -0.5       ]])</span>
+</pre></div>
+</div>
+<p>指定columns</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_daily_return</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>当传入参数 <code class="docutils literal notranslate"><span class="pre">column</span></code> 不为空，</dt><dd><p>且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>。
+否则按照传入类型返回。</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.calc_month">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">calc_month</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#calc_month"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.calc_month" title="永久链接至目标">¶</a></dt>
+<dd><p>计算月信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>df</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 原始数据。</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">stock_ai</span> <span class="k">import</span> <span class="n">calcs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;20130101&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">            A</span>
+<span class="go">2013-01-31  1</span>
+<span class="go">2013-02-28  3</span>
+<span class="go">2013-03-31  5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_month</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([1, 2, 3], dtype=int64)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>计算后的列。</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.calc_year">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">calc_year</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#calc_year"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.calc_year" title="永久链接至目标">¶</a></dt>
+<dd><p>计算年信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>df</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 原始数据。</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">stock_ai</span> <span class="k">import</span> <span class="n">calcs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;20130101&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">            A</span>
+<span class="go">2013-12-31  1</span>
+<span class="go">2014-12-31  3</span>
+<span class="go">2015-12-31  5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcs</span><span class="o">.</span><span class="n">calc_year</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([2013, 2014, 2015], dtype=int64)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>计算后的列。</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.drop_column">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">drop_column</code><span class="sig-paren">(</span><em class="sig-param">data: pandas.core.frame.DataFrame</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#drop_column"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.drop_column" title="永久链接至目标">¶</a></dt>
+<dd><p>将数据源中的部分列丢弃，参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.drop()</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.dropna">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">dropna</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#dropna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.dropna" title="永久链接至目标">¶</a></dt>
+<dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.dropna()</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>df</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 原始数据。</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.fillna">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">fillna</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#fillna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.fillna" title="永久链接至目标">¶</a></dt>
+<dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFraem.fillna()</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>df</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – 原始数据。</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="function">
 <dt id="stock_ai.calcs.is_trade_suspension">
 <code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">is_trade_suspension</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#is_trade_suspension"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.is_trade_suspension" title="永久链接至目标">¶</a></dt>
@@ -205,6 +444,69 @@
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.kurtosis">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">kurtosis</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#kurtosis"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.kurtosis" title="永久链接至目标">¶</a></dt>
+<dd><p>计算峰度</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> 或 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – 待计算的数据。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.sharpe_ratio">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">sharpe_ratio</code><span class="sig-paren">(</span><em class="sig-param">r=None</em>, <em class="sig-param">rf=None</em>, <em class="sig-param">r_std: float = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#sharpe_ratio"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.sharpe_ratio" title="永久链接至目标">¶</a></dt>
+<dd><p>计算 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87">夏普比率</a></p>
+<p>夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；
+若为正值，代表基金报酬率高过波动风险；
+若为负值，代表基金操作风险大过于报酬率。
+这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> or float) – 收益数据表或均值(<cite>float</cite>)。</p></li>
+<li><p><strong>rf</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> or float) – 无风险收益率表或均值( <cite>float</cite> )。</p></li>
+<li><p><strong>r_std</strong> – 参数 <cite>r</cite> 的标准差。如果 <cite>r</cite> 传入的是 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> 则无需传入此参数。</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>计算后的夏普比率。</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(在 Python v3.7)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stock_ai.calcs.skew">
+<code class="sig-prename descclassname">stock_ai.calcs.</code><code class="sig-name descname">skew</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stock_ai/calcs.html#skew"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#stock_ai.calcs.skew" title="永久链接至目标">¶</a></dt>
+<dd><p>计算偏度</p>
+<p>&gt; 若数据分布是对称的，偏度为0；
+&gt; 若偏度&gt;0,则可认为分布为右偏，即分布有一条长尾在右；
+&gt; 若偏度&lt;0，则可认为分布为左偏，即分布有一条长尾在左；
+&gt; 同时偏度的绝对值越大，说明分布的偏移程度越严重。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> 或 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – 待计算的数据。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(在 pandas v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
