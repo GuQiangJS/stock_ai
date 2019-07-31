@@ -1,14 +1,12 @@
-import test
-from stock_ai import data_processor
-import pytest
-import os
-import numpy as np
-import pprint
-from test import is_travis
-from test import get_stock_daily
-from test import get_index_daily
-from stock_ai import calcs
 import pandas as pd
+import pytest
+
+import test
+from stock_ai import calcs
+from stock_ai import data_processor
+from test import get_index_daily
+from test import get_stock_daily
+from test import is_travis
 
 
 def test_load_stock_daily_online():
@@ -34,8 +32,8 @@ def test_load_stock_list_mongo():
     df = data_processor.load_stock_list_mongodb()
     assert not df.empty
     for name in [
-            'code', 'decimal_point', 'name', 'pre_close', 'sec', 'sse',
-            'volunit'
+        'code', 'decimal_point', 'name', 'pre_close', 'sec', 'sse',
+        'volunit'
     ]:
         assert name in df.columns
 
@@ -46,8 +44,8 @@ def test_load_stock_list_online():
     print(df.head())
     assert not df.empty
     for name in [
-            'code', 'decimal_point', 'name', 'pre_close', 'sec', 'sse',
-            'volunit'
+        'code', 'decimal_point', 'name', 'pre_close', 'sec', 'sse',
+        'volunit'
     ]:
         assert name in df.columns
 
@@ -172,7 +170,6 @@ def test_merge_dropcolumn():
 
 
 def test_merge_doc():
-
     def app(df, **kwargs):
         name = kwargs.pop('name', 'o')
         return pd.Series(
@@ -195,18 +192,18 @@ def test_merge_doc():
     print(data_processor.merge({'df': df, '_other': other}))
 
     print(data_processor.merge({'df': df, '_other': other},
-                             append_funcs={
-                                 'drop_column': (drop, {
-                                     'columns': ['B'],
-                                     'replace': True
-                                 })
-                             }))
+                               append_funcs={
+                                   'drop_column': (drop, {
+                                       'columns': ['B'],
+                                       'replace': True
+                                   })
+                               }))
 
     merge_df = data_processor.merge({
         'df': df,
         '_other': other
     },
-                                    append_funcs={'C': [app, {
-                                        'name': 'N'
-                                    }]})
+        append_funcs={'C': [app, {
+            'name': 'N'
+        }]})
     print(merge_df)

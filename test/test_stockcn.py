@@ -1,8 +1,9 @@
-from stock_ai.module import StockCN
-import pytest
-import os
 import datetime
+
+import pytest
+
 from stock_ai import util
+from stock_ai.module import StockCN
 from test import is_travis
 
 

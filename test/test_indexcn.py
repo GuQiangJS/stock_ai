@@ -1,9 +1,10 @@
-from stock_ai.module import IndexCN
-import pytest
-from stock_ai.util import date2str
 import numpy as np
-import os
+import pytest
+
+from stock_ai.module import IndexCN
+from stock_ai.util import date2str
 from test import is_travis
+
 
 def test_getdaily_online():
     d1 = _test_index_daily(IndexCN('399300', getdaily_online=True))

@@ -1,16 +1,16 @@
-import pytest
-import pandas as pd
-from stock_ai import data_processor
-from stock_ai import calcs
-from stock_ai import wrapper
-from stock_ai.util import str2date
+import logging
+
 import numpy as np
+import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
+
+import test
+from stock_ai import calcs
+from stock_ai import data_processor
+from stock_ai.util import str2date
+from test import get_deposit_rate
 from test import get_index_daily
 from test import get_stock_daily
-from test import get_deposit_rate
-import logging
-import test
-from sklearn.preprocessing import OneHotEncoder
 
 
 def _assert(func, col):
@@ -18,36 +18,6 @@ def _assert(func, col):
     df['col'] = func(df)
     print(df['col'].head())
     assert np.array_equal(df['col'], col)
-
-
-def test_tech_bbands():
-    df = get_stock_daily().copy()
-    print(calcs.tech_bbands(df).tail())
-
-
-def test_tech_ema():
-    df = get_stock_daily().copy()
-    print(calcs.tech_ema(df).tail())
-
-
-def test_tech_ma():
-    df = get_stock_daily().copy()
-    print(calcs.tech_ma(df).tail())
-
-
-def test_fft():
-    df = get_stock_daily().copy()
-    fft = calcs.fft(df)
-    import matplotlib.pyplot as plt
-    plt.figure(figsize=(14, 7), dpi=100)
-    plt.plot(np.fft.ifft(fft))
-    plt.plot(df['close'])
-    plt.show()
-    print(fft)
-
-
-def test_append_year():
-    _assert(calcs.calc_year, get_stock_daily().index.year)
 
 
 def test_onehot_encode():
@@ -89,6 +59,7 @@ def test_append_month():
 
 
 def test_is_trade_suspension():
+    """测试是否停牌的计算"""
     df = data_processor.merge(
         {
             test.stock_code: get_stock_daily(),
@@ -100,21 +71,6 @@ def test_is_trade_suspension():
     assert is_sus['2012-02-23']
     assert not is_sus['2012-02-24']
     print(is_sus['2012-02-23'])
-
-
-def test_rolling_mean():
-    df = test.merged_dataframe()
-    days = 7
-    rm = calcs.tech_ma(df, days=days)
-    print(rm.tail())
-    rm1 = df['close'].rolling(window=days).mean()
-    pd.Series.equals(rm, rm1)
-
-
-def test_macd_series():
-    df = test.merged_dataframe()
-    macd = calcs.tech_macd(df)
-    print(macd.tail())
 
 
 def test_daily_return():
@@ -139,9 +95,9 @@ def test_sharpe_ratio():
         if s >= df_s and e <= df_e:
             df = data_processor.merge({
                 test.index_code:
-                get_index_daily().loc[s:e],
+                    get_index_daily().loc[s:e],
                 test.stock_code:
-                get_stock_daily().loc[s:e]
+                    get_stock_daily().loc[s:e]
             })
             k = '{0}~{1}'.format(s, e)
             v = calcs.sharpe_ratio(df['close'].dropna(), rate[i])

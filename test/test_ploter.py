@@ -1,9 +1,9 @@
 import pytest
-from test import get_stock_daily
-from test import get_index_daily
-from test import is_travis
+
 from stock_ai import calcs
 from stock_ai import ploter
+from test import get_stock_daily
+from test import is_travis
 
 
 @pytest.mark.skipif(condition=is_travis,

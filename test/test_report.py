@@ -1,6 +1,7 @@
-from stock_ai.report import sharpe_ratio
-from stock_ai.module import StockCN
 import pytest
+
+from stock_ai.module import StockCN
+from stock_ai.report import sharpe_ratio
 from test import is_travis
 
 

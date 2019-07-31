@@ -1,36 +1,33 @@
 """数据计算器"""
-import pandas as pd
-from QUANTAXIS.QAIndicator import indicators
-from QUANTAXIS.QAIndicator import talib_indicators
-from QUANTAXIS.QAIndicator import talib_series
 import numpy as np
+import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 
 
-# def calc_year(df, **kwargs):
-#     """计算年信息
-#
-#     Args:
-#         df (:class:`~pandas.DataFrame`): 原始数据。
-#
-#     Examples:
-#         >>> from stock_ai import calcs
-#         >>> dates = pd.date_range('20130101', periods=3, freq='Y')
-#         >>> df = pd.DataFrame([1, 3, 5], index=dates, columns=list('A'))
-#         >>> df
-#                     A
-#         2013-12-31  1
-#         2014-12-31  3
-#         2015-12-31  5
-#         >>> calcs.calc_year(df).values
-#         array([2013, 2014, 2015], dtype=int64)
-#
-#     Returns:
-#         :class:`~pandas.Series`: 计算后的列。
-#     """
-#     return _create_series(df.index.year, df=df, dtype='int64')
-#
-#
+def calc_year(df, **kwargs):
+    """计算年信息
+
+    Args:
+        df (:class:`~pandas.DataFrame`): 原始数据。
+
+    Examples:
+        >>> from stock_ai import calcs
+        >>> dates = pd.date_range('20130101', periods=3, freq='Y')
+        >>> df = pd.DataFrame([1, 3, 5], index=dates, columns=list('A'))
+        >>> df
+                    A
+        2013-12-31  1
+        2014-12-31  3
+        2015-12-31  5
+        >>> calcs.calc_year(df).values
+        array([2013, 2014, 2015], dtype=int64)
+
+    Returns:
+        :class:`~pandas.Series`: 计算后的列。
+    """
+    return _create_series(df.index.year, df=df, dtype='int64')
+
+
 def trans_onehot(data, **kwargs):
     """转换 OneHot 编码
 
@@ -102,33 +99,33 @@ def trans_onehot(data, **kwargs):
         d = data
     n = np.array(d)
     if len(n.shape) == 1:
-        #如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。
+        # 如果是一维数组，则转换为二维数组。因为OneHotEncoder只接受二维数组。
         n = np.reshape(n, (n.shape[0], 1))
     n = OneHotEncoder(sparse=False, categories='auto').fit_transform(n)
     if isinstance(data, pd.DataFrame):
         return pd.DataFrame(n, index=data.index)
     return n
-#
-#
-# def fillna(df, **kwargs):
-#     """:func:`pandas.DataFraem.fillna`
-#
-#     Args:
-#         df (:class:`~pandas.DataFrame`): 原始数据。
-#     """
-#     return df.fillna(**kwargs)
-#
-#
-# def dropna(df, **kwargs):
-#     """:func:`pandas.DataFraem.dropna`
-#
-#     Args:
-#         df (:class:`~pandas.DataFrame`): 原始数据。
-#
-#     Returns:
-#
-#     """
-#     return df.dropna(**kwargs)
+
+
+def fillna(df, **kwargs):
+    """:func:`pandas.DataFraem.fillna`
+
+    Args:
+        df (:class:`~pandas.DataFrame`): 原始数据。
+    """
+    return df.fillna(**kwargs)
+
+
+def dropna(df, **kwargs):
+    """:func:`pandas.DataFraem.dropna`
+
+    Args:
+        df (:class:`~pandas.DataFrame`): 原始数据。
+
+    Returns:
+
+    """
+    return df.dropna(**kwargs)
 
 
 def is_trade_suspension(df, **kwargs):
@@ -157,53 +154,54 @@ def is_trade_suspension(df, **kwargs):
     s = df[kwargs.pop('column', 'close')]
     return s.isna().replace({True: 1., False: 0.})
 
-#
-# def _create_series(data, df, **kwargs):
-#     """
-#
-#     Args:
-#         data: 参考 :func:`~pandas.Series` 中同名参数。
-#         df (:class:`~pandas.DataFrame`): 原始数据。
-#         **kwargs:
-#
-#     Returns:
-#
-#     """
-#     name = kwargs.pop('name', None)
-#     dtype = kwargs.pop('dtype', None)
-#     copy = kwargs.pop('copy', None)
-#     fastpath = kwargs.pop('fastpath', None)
-#     return pd.Series(data,
-#                      index=df.index,
-#                      name=name,
-#                      dtype=dtype,
-#                      copy=copy,
-#                      fastpath=fastpath)
-#
-#
-# def calc_month(df, **kwargs):
-#     """计算月信息
-#
-#     Args:
-#         df (:class:`~pandas.DataFrame`): 原始数据。
-#
-#     Examples:
-#         >>> from stock_ai import calcs
-#         >>> dates = pd.date_range('20130101', periods=3, freq='M')
-#         >>> df = pd.DataFrame([1, 3, 5], index=dates, columns=list('A'))
-#         >>> df
-#                     A
-#         2013-01-31  1
-#         2013-02-28  3
-#         2013-03-31  5
-#         >>> calcs.calc_month(df).values
-#         array([1, 2, 3], dtype=int64)
-#
-#     Returns:
-#         :class:`~pandas.Series`: 计算后的列。
-#     """
-#     return _create_series(df.index.month, df=df, dtype='int64')
-#
+
+def _create_series(data, df, **kwargs):
+    """
+
+    Args:
+        data: 参考 :func:`~pandas.Series` 中同名参数。
+        df (:class:`~pandas.DataFrame`): 原始数据。
+        **kwargs:
+
+    Returns:
+
+    """
+    name = kwargs.pop('name', None)
+    dtype = kwargs.pop('dtype', None)
+    copy = kwargs.pop('copy', None)
+    fastpath = kwargs.pop('fastpath', None)
+    return pd.Series(data,
+                     index=df.index,
+                     name=name,
+                     dtype=dtype,
+                     copy=copy,
+                     fastpath=fastpath)
+
+
+def calc_month(df, **kwargs):
+    """计算月信息
+
+    Args:
+        df (:class:`~pandas.DataFrame`): 原始数据。
+
+    Examples:
+        >>> from stock_ai import calcs
+        >>> dates = pd.date_range('20130101', periods=3, freq='M')
+        >>> df = pd.DataFrame([1, 3, 5], index=dates, columns=list('A'))
+        >>> df
+                    A
+        2013-01-31  1
+        2013-02-28  3
+        2013-03-31  5
+        >>> calcs.calc_month(df).values
+        array([1, 2, 3], dtype=int64)
+
+    Returns:
+        :class:`~pandas.Series`: 计算后的列。
+    """
+    return _create_series(df.index.month, df=df, dtype='int64')
+
+
 #
 # def tech_ma(df: pd.DataFrame, **kwargs) -> pd.Series:
 #     """计算移动均线
@@ -372,177 +370,177 @@ def is_trade_suspension(df, **kwargs):
 # #     return df.pct_change()
 #
 #
-# def calc_daily_return(data, **kwargs):
-#     """计算日收益
-#
-#     Args:
-#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
-#         columns (str 或 字符串集合): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。
-#
-#     Examples:
-#         >>> import pandas as pd
-#         >>> from stock_ai import calcs
-#
-#         Series时
-#
-#         >>> s = pd.Series([1,2,3,4,5])
-#         >>> calcs.calc_daily_return(s).values
-#         array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])
-#
-#         DataFrame时
-#
-#         >>> s = pd.DataFrame({'A':[1,2,3,4,5],
-#         ...                   'B':[5,4,3,2,1]})
-#         >>> s
-#            A  B
-#         0  1  5
-#         1  2  4
-#         2  3  3
-#         3  4  2
-#         4  5  1
-#         >>> calcs.calc_daily_return(s).values
-#         array([[        nan,         nan],
-#                [ 1.        , -0.2       ],
-#                [ 0.5       , -0.25      ],
-#                [ 0.33333333, -0.33333333],
-#                [ 0.25      , -0.5       ]])
-#
-#         指定columns
-#
-#         >>> calcs.calc_daily_return(s,columns='A').values
-#         array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])
-#
-#     Return:
-#         :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，
-#             且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。
-#             否则按照传入类型返回。
-#     """
-#     d = data
-#     if isinstance(data, pd.DataFrame):
-#         columns = kwargs.pop('columns', None)
-#         if columns:
-#             if isinstance(columns,str) and columns in data.columns:
-#                 d = data[columns]
-#             elif set(data.columns) > set(columns):
-#                 d = data[columns]
-#     return d.pct_change()
-#
-#
-# def calc_cum_return(data, **kwargs):
-#     """计算累计收益
-#
-#     Args:
-#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
-#         column (str): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。
-#
-#     Examples:
-#         >>> import pandas as pd
-#         >>> from stock_ai import calcs
-#
-#         Series时
-#
-#         >>> s = pd.Series([2,2,3,4,5])
-#         >>> calcs.calc_cum_return(s).values
-#         array([0. , 0.5, 1. , 1.5])
-#
-#         DataFrame时
-#
-#         >>> s = pd.DataFrame({'A':[2,2,3,4,5],
-#         ...                   'B':[5,4,3,2,1]})
-#         >>> calcs.calc_cum_return(s).values
-#         array([[ 0. , -0.2],
-#                [ 0.5, -0.4],
-#                [ 1. , -0.6],
-#                [ 1.5, -0.8]])
-#
-#         DataFrame时
-#
-#         >>> s = pd.DataFrame({'A':[2,2,3,4,5],
-#         ...                   'B':[5,4,3,2,1]})
-#         >>> calcs.calc_cum_return(s,column='A').values
-#         array([0. , 0.5, 1. , 1.5])
-#
-#     Return:
-#         :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，
-#             且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。
-#             否则按照传入类型返回。
-#     """
-#     d = data
-#     if isinstance(data, pd.DataFrame):
-#         column = kwargs.pop('column', None)
-#         if column and column in data.columns:
-#             d = data[column]
-#     return d[1:] / d.iloc[0] - 1
-#
-#
-# def kurtosis(data, **kwargs):
-#     """计算峰度
-#
-#     Args:
-#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
-#
-#     Return:
-#         :class:`pandas.Series` or :class:`pandas.DataFrame`:
-#     """
-#     return data.kurtosis()
-#
-#
-# def skew(data, **kwargs):
-#     """计算偏度
-#
-#     > 若数据分布是对称的，偏度为0；
-#     > 若偏度>0,则可认为分布为右偏，即分布有一条长尾在右；
-#     > 若偏度<0，则可认为分布为左偏，即分布有一条长尾在左；
-#     > 同时偏度的绝对值越大，说明分布的偏移程度越严重。
-#
-#     Args:
-#         data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
-#
-#     Return:
-#         :class:`pandas.Series` or :class:`pandas.DataFrame`:
-#     """
-#     return data.skew()
-#
-#
-# def sharpe_ratio(r=None, rf=None, r_std: float = None):
-#     """计算 `夏普比率`_
-#
-#     夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；
-#     若为正值，代表基金报酬率高过波动风险；
-#     若为负值，代表基金操作风险大过于报酬率。
-#     这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。
-#
-#     Args:
-#         r (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 收益数据表或均值(`float`)。
-#         rf (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 无风险收益率表或均值( `float` )。
-#         r_std: 参数 `r` 的标准差。如果 `r` 传入的是 :class:`pandas.DataFrame` or :class:`pandas.Series` 则无需传入此参数。
-#     Returns:
-#         float: 计算后的夏普比率。
-#
-#     .. _夏普比率:
-#         https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87
-#     """
-#     # 夏普比率是回报与风险的比率。公式为：
-#     # （Rp - Rf） / ？p
-#     # 其中：
-#     #
-#     # Rp = 投资者投资组合的预期回报率
-#     # Rf = 无风险回报率
-#     # ？p = 投资组合的标准差，风险度量
-#
-#     r_mean = r
-#     rf_mean = rf
-#     rf_std = r_std
-#     if isinstance(r, pd.DataFrame) or isinstance(r, pd.Series):
-#         r_mean = r.mean()
-#         rf_std = r.std()
-#     if isinstance(rf, pd.DataFrame) or isinstance(rf, pd.Series):
-#         rf_mean = rf.mean()
-#
-#     result = (r_mean - rf_mean) / rf_std
-#     return result if isinstance(result, float) else result[0]
-#
-#
-# def drop_column(data: pd.DataFrame, **kwargs):
-#     """将数据源中的部分列丢弃，参考 :func:`pandas.DataFrame.drop`"""
-#     return data.drop(**kwargs)
+def calc_daily_return(data, **kwargs):
+    """计算日收益
+
+    Args:
+        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+        columns (str 或 字符串集合): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。
+
+    Examples:
+        >>> import pandas as pd
+        >>> from stock_ai import calcs
+
+        Series时
+
+        >>> s = pd.Series([1,2,3,4,5])
+        >>> calcs.calc_daily_return(s).values
+        array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])
+
+        DataFrame时
+
+        >>> s = pd.DataFrame({'A':[1,2,3,4,5],
+        ...                   'B':[5,4,3,2,1]})
+        >>> s
+           A  B
+        0  1  5
+        1  2  4
+        2  3  3
+        3  4  2
+        4  5  1
+        >>> calcs.calc_daily_return(s).values
+        array([[        nan,         nan],
+               [ 1.        , -0.2       ],
+               [ 0.5       , -0.25      ],
+               [ 0.33333333, -0.33333333],
+               [ 0.25      , -0.5       ]])
+
+        指定columns
+
+        >>> calcs.calc_daily_return(s,columns='A').values
+        array([       nan, 1.        , 0.5       , 0.33333333, 0.25      ])
+
+    Return:
+        :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，
+            且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。
+            否则按照传入类型返回。
+    """
+    d = data
+    if isinstance(data, pd.DataFrame):
+        columns = kwargs.pop('columns', None)
+        if columns:
+            if isinstance(columns, str) and columns in data.columns:
+                d = data[columns]
+            elif set(data.columns) > set(columns):
+                d = data[columns]
+    return d.pct_change()
+
+
+def calc_cum_return(data, **kwargs):
+    """计算累计收益
+
+    Args:
+        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+        column (str): 当传入 data 为 :class:`pandas.DataFrame` 时，可以传入需要计算的列。
+
+    Examples:
+        >>> import pandas as pd
+        >>> from stock_ai import calcs
+
+        Series时
+
+        >>> s = pd.Series([2,2,3,4,5])
+        >>> calcs.calc_cum_return(s).values
+        array([0. , 0.5, 1. , 1.5])
+
+        DataFrame时
+
+        >>> s = pd.DataFrame({'A':[2,2,3,4,5],
+        ...                   'B':[5,4,3,2,1]})
+        >>> calcs.calc_cum_return(s).values
+        array([[ 0. , -0.2],
+               [ 0.5, -0.4],
+               [ 1. , -0.6],
+               [ 1.5, -0.8]])
+
+        DataFrame时
+
+        >>> s = pd.DataFrame({'A':[2,2,3,4,5],
+        ...                   'B':[5,4,3,2,1]})
+        >>> calcs.calc_cum_return(s,column='A').values
+        array([0. , 0.5, 1. , 1.5])
+
+    Return:
+        :class:`pandas.Series` or :class:`pandas.DataFrame`: 当传入参数 ``column`` 不为空，
+            且df的类型为 DataFrame，且指定的列名包含在 df 中时，返回 :class:`pandas.Series`。
+            否则按照传入类型返回。
+    """
+    d = data
+    if isinstance(data, pd.DataFrame):
+        column = kwargs.pop('column', None)
+        if column and column in data.columns:
+            d = data[column]
+    return d[1:] / d.iloc[0] - 1
+
+
+def kurtosis(data, **kwargs):
+    """计算峰度
+
+    Args:
+        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+
+    Return:
+        :class:`pandas.Series` or :class:`pandas.DataFrame`:
+    """
+    return data.kurtosis()
+
+
+def skew(data, **kwargs):
+    """计算偏度
+
+    > 若数据分布是对称的，偏度为0；
+    > 若偏度>0,则可认为分布为右偏，即分布有一条长尾在右；
+    > 若偏度<0，则可认为分布为左偏，即分布有一条长尾在左；
+    > 同时偏度的绝对值越大，说明分布的偏移程度越严重。
+
+    Args:
+        data (:class:`pandas.Series` 或 :class:`pandas.DataFrame`): 待计算的数据。
+
+    Return:
+        :class:`pandas.Series` or :class:`pandas.DataFrame`:
+    """
+    return data.skew()
+
+
+def sharpe_ratio(r=None, rf=None, r_std: float = None):
+    """计算 `夏普比率`_
+
+    夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；
+    若为正值，代表基金报酬率高过波动风险；
+    若为负值，代表基金操作风险大过于报酬率。
+    这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。
+
+    Args:
+        r (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 收益数据表或均值(`float`)。
+        rf (:class:`pandas.DataFrame` or :class:`pandas.Series` or float): 无风险收益率表或均值( `float` )。
+        r_std: 参数 `r` 的标准差。如果 `r` 传入的是 :class:`pandas.DataFrame` or :class:`pandas.Series` 则无需传入此参数。
+    Returns:
+        float: 计算后的夏普比率。
+
+    .. _夏普比率:
+        https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87
+    """
+    # 夏普比率是回报与风险的比率。公式为：
+    # （Rp - Rf） / ？p
+    # 其中：
+    #
+    # Rp = 投资者投资组合的预期回报率
+    # Rf = 无风险回报率
+    # ？p = 投资组合的标准差，风险度量
+
+    r_mean = r
+    rf_mean = rf
+    rf_std = r_std
+    if isinstance(r, pd.DataFrame) or isinstance(r, pd.Series):
+        r_mean = r.mean()
+        rf_std = r.std()
+    if isinstance(rf, pd.DataFrame) or isinstance(rf, pd.Series):
+        rf_mean = rf.mean()
+
+    result = (r_mean - rf_mean) / rf_std
+    return result if isinstance(result, float) else result[0]
+
+
+def drop_column(data: pd.DataFrame, **kwargs):
+    """将数据源中的部分列丢弃，参考 :func:`pandas.DataFrame.drop`"""
+    return data.drop(**kwargs)
