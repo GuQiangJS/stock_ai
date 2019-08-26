@@ -82,14 +82,11 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="stock_ai.data_processor.html">data_processor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stock_ai.module.html">module</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="stock_ai.calcs.html">calcs</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">OneHotEncoder</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.ploter.html">ploter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stock_ai.report.html">report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_ai.preprocessing.html">preprocessing</a></li>
 </ul>
 
@@ -330,8 +327,8 @@ values per feature and transform the data to a binary one-hot encoding.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="gp">... </span><span class="c1"># doctest: +ELLIPSIS</span>
-<span class="gp">... </span><span class="c1"># doctest: +NORMALIZE_WHITESPACE</span>
+<span class="gp">... </span>
+<span class="gp">... </span>
 <span class="go">OneHotEncoder(categorical_features=None, categories=None, drop=None,</span>
 <span class="go">   dtype=&lt;... &#39;numpy.float64&#39;&gt;, handle_unknown=&#39;ignore&#39;,</span>
 <span class="go">   n_values=None, sparse=True)</span>
